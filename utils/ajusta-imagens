@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+from PIL import Image
+import sys
+import subprocess
+
+ALTURA_MAX = 8.5
+ASPECTO = 4/3
+DPI = 150
+
+def tamanho(f):
+    im = Image.open(f)
+    xres, yres = im.info["dpi"]
+    # converte a resolução para pontos por cm
+    xres /= 2.54
+    yres /= 2.54
+    largura, altura = im.size
+    # altura e largura em cm
+    return largura, altura, largura / xres, altura / yres
+
+def muda_altura(f, largura, altura):
+    print('Ajustando ' + f)
+    ret = subprocess.call('convert -extent %dx%d -gravity center %s %s' %(largura, altura, f, f), shell=True)
+    if ret:
+        raise Exception()
+
+def ajusta_dpi(f):
+    subprocess.call('convert -density %d -units pixelsperinch %s %s' % (DPI, f, f), shell=True)
+
+def main():
+    for f in sys.argv[1:]:
+        ajusta_dpi(f)
+        largura, altura, largura_cm, altura_cm = tamanho(f)
+        if altura_cm > ALTURA_MAX and largura < int(ASPECTO * altura):
+            largura = int(ASPECTO * altura)
+            muda_altura(f, largura, altura)
+
+if __name__ == '__main__':
+    main()

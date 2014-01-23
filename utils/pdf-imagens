@@ -1,0 +1,13 @@
+#!/bin/bash
+
+F=$(tempfile)
+PDF=$F.pdf
+
+for f in $(echo $@ | tr " " "\n" | sort -h); do
+    echo "## $f" >> $F
+    echo "![]($f)" >> $F
+    echo >> $F
+done
+
+echo "Gerando $PDF"
+pandoc -f markdown $F -t beamer -o $PDF

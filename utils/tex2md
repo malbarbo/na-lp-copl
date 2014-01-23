@@ -1,0 +1,18 @@
+#!/bin/bash
+
+for f in $@; do
+    t="${f%.*}.md"
+    echo "Convertendo $f para $t"
+    sed -e 's/\\pause/pause/' "$f" | \
+      pandoc -s -f latex --columns=80 --atx-headers -t markdown | \
+       sed -e 's/pause/\\pause/g' \
+           -e 's/\[fragile\]<span>/### /g' \
+           -e 's/<span>/### /g' \
+           -e 's/<\/span>//g' \
+           -e 's/\[fragile\]/### /g' \
+           -e 's/\[plain\]//g' \
+           -e 's/### Conteúdo//g' \
+           -e 's/!\[image\](/![](imagens\//g' | \
+               awk -v RS='\n\n\n\n' 1 > "$t"
+    echo -e "\n<!-- vim: set spell spelllang=pt_br: -->" >> "$t"
+done
