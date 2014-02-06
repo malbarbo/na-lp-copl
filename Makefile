@@ -3,10 +3,14 @@
 SHELL=/bin/bash
 
 DEST_DIR=pdfs
+
 IMAGENS_DIR=imagens
 
-SOURCES=$(addprefix $(DEST_DIR)/, $(wildcard *.md))
-PDFS=$(SOURCES:.md=.pdf)
+IGNORAR=README.md
+
+SOURCES=$(filter-out $(IGNORAR), $(wildcard *.md))
+
+PDFS=$(addprefix $(DEST_DIR)/, $(SOURCES:.md=.pdf))
 
 default:
 	@if [ ! -e $(IMAGENS_DIR)/copl-1-1.png ]; then make imagens; fi
