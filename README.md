@@ -3,6 +3,10 @@
 Estas notas de aula são baseadas no livro "Concepts of Programming Languages"
 (9ª edição).
 
+Veja as notas de aula sobre os paradigmas de programação
+[lógico](https://github.com/malbarbo/na-proglog)
+e [funcional](https://github.com/malbarbo/na-progfun).
+
 # Licença
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
