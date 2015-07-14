@@ -19,7 +19,7 @@ def read_ints(min, max, message):
                 return
         except:
             pass
-        
+
         print "Invalid input:", s
 
 def distribute_grades(grades):
@@ -35,7 +35,7 @@ def print_frequency(frequency):
         limit1 = 10 * i
         limit2 = limit1 + 9 if i < 9 else 100
         print "%8d%8d%8d" % (limit1, limit2, frequency[i])
- 
+
 def main():
     grades = read_ints(0, 100, "Grade (0-100 or -1 to end): ")
     frequency = distribute_grades(grades)

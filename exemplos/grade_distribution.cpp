@@ -12,7 +12,7 @@ int main()
     class NegativeInputException {
         public: NegativeInputException() {
             cout << "End of input data reached" << endl;
-        }        
+        }
     };
 
     int freq[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

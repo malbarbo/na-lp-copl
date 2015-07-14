@@ -31,7 +31,7 @@ void dump(const char* label, pointer m, int n) {
 int main(int argc, char* args[]) {
     Base b;
     b.c1 = 0x1234ABCD;
-    b.c2 = 0x56789;    
+    b.c2 = 0x56789;
     pointer pb = (pointer) &b;
     Derivada d;
     pointer pd = (pointer) &d;

@@ -140,7 +140,7 @@ $if(title)$
 \begin{frame}[plain]
   \vspace{1.5cm}
   \titlepage
-  \begin{center} 
+  \begin{center}
     \href{http://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}
 
     {\tiny
