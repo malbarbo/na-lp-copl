@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: mais do que uma ocorrência de \pause em uma linha
+
 for f in $@; do
     t="${f%.*}.md"
     echo "Convertendo $f para $t"
