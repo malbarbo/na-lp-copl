@@ -118,7 +118,7 @@ title: Linguagens de programação lógicas
 
 -   Exemplos
 
-    -   $\forall X$ . (woman($X$)$\supset $human($X$))
+    -   $\forall X$ . (woman($X$) $\supset$ human($X$))
 
     -   $\exists X$ . (mother(mary,$X$) $\cap$ male($X$))
 

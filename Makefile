@@ -12,6 +12,9 @@ SOURCES=$(filter-out $(IGNORAR), $(wildcard *.md))
 
 PDFS=$(addprefix $(DEST_DIR)/, $(SOURCES:.md=.pdf))
 
+PANDOC=./local/bin/pandoc
+PANDOC_VERSION=2.2.2.1
+
 default:
 	@if [ ! -e $(IMAGENS_DIR)/copl-1-1.png ]; then make imagens; fi
 	@echo Executando make em paralelo [$(shell nproc) tarefas]
@@ -19,10 +22,10 @@ default:
 
 all: $(PDFS)
 
-$(DEST_DIR)/%.pdf: %.md templates/default.beamer $(IMAGENS_DIR)/*
+$(DEST_DIR)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC)
 	@mkdir -p $(DEST_DIR)
 	@echo $@
-	@pandoc --data-dir ./ --toc $< -t beamer -o $@
+	@$(PANDOC) -t beamer --template templates/default.latex -o $@ $<
 
 ajusta-imagens:
 	@echo Ajustanto imagens
@@ -44,6 +47,10 @@ imagens: copl-imagens.zip
 copl-imagens.zip:
 	@echo Downloading arquivo com as imagens do livro
 	@wget -c -q ftp://ftp.awl.com/cseng/authors/sebesta/concepts9e/0136079180_ppf.zip -O copl-imagens.zip
+
+$(PANDOC):
+	mkdir -p local
+	curl -L https://github.com/jgm/pandoc/releases/download/$(PANDOC_VERSION)/pandoc-$(PANDOC_VERSION)-linux.tar.gz | tar xz -C local --strip-components=1
 
 clean:
 	@echo Removendo $(DEST_DIR)
