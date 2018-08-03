@@ -1,5 +1,8 @@
 \PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
+% Corrigi incompatilidade com o tema metropolis
+% Veja https://github.com/matze/mtheme/pull/243
+\PassOptionsToPackage{no-math}{fontspec}
 $if(colorlinks)$
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 $endif$$if(dir)$$if(latex-dir-rtl)$
@@ -193,6 +196,18 @@ $if(graphics)$
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
+
+% Adapta o dpi das images para evitar ter que colocar width em muitas imagens
+\pdfimageresolution=144
+\AtBeginDocument{%
+  \letcs\oig{@orig\string\includegraphics}%
+  \renewcommand<>\includegraphics[2][]{%
+    \only#3{%
+      {\centering\oig[{#1}]{#2}\par}%
+    }%
+  }%
+}
+
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
@@ -345,7 +360,7 @@ $endif$
 \begin{document}
 $if(title)$
 $if(beamer)$
-\frame{\titlepage}
+\frame[plain]{\titlepage}
 $else$
 \maketitle
 $endif$
@@ -362,7 +377,7 @@ $include-before$
 $endfor$
 $if(toc)$
 $if(beamer)$
-\begin{frame}
+\begin{frame}[plain]{Conteúdo}
 \tableofcontents[hideallsubsections]
 \end{frame}
 $else$

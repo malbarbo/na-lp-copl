@@ -25,7 +25,15 @@ all: $(PDFS)
 $(DEST_DIR)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC)
 	@mkdir -p $(DEST_DIR)
 	@echo $@
-	@$(PANDOC) -t beamer --template templates/default.latex -o $@ $<
+	@$(PANDOC) \
+		--template templates/default.latex \
+		--toc \
+		--standalone \
+		-V theme:metropolis \
+		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
+		-V classoption:aspectratio=169 \
+		-t beamer \
+		-o $@ $<
 
 ajusta-imagens:
 	@echo Ajustanto imagens
