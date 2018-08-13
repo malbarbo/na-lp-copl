@@ -67,8 +67,8 @@ $(PANDOC):
 	curl -L https://github.com/jgm/pandoc/releases/download/$(PANDOC_VERSION)/pandoc-$(PANDOC_VERSION)-linux.tar.gz | tar xz -C local --strip-components=1
 
 clean:
-	@echo Removendo $(DEST_DIR)
-	@rm -rf $(DEST_DIR)
+	@echo Removendo $(DEST_PDF) e $(DEST_TEX)
+	@rm -rf $(DEST_PDF) e $(DEST_TEX)
 
 clean-imagens:
 	@echo "Removendo $(IMAGENS_DIR)/copl-*"
