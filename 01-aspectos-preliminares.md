@@ -242,6 +242,13 @@ Nível de abstração
     - Abstrações sobre os detalhes do computador
 
 
+## Classes de linguagens
+
+Linguagens de _scripting_
+
+- "Juntar" programas escritos em outras linguagens
+
+
 Métodos de implementação
 ========================
 
@@ -278,16 +285,48 @@ Critérios para avaliação de linguagens
 
 ## Critérios para avaliação de linguagens
 
-- Facilidade de leitura (legibilidade)
+- Alguns critérios podem ser controversos
+- Alguns critérios são objetivos, enquanto outros não
+- Algumas pessoas valorizam mais alguns critérios do que outros
+    - O Sebesta valoriza muito as características que permitem que erros possam
+      ser detectados em tempo de compilação
+    - Ele parece preferir que o compilador vigie o programador ao invés de dar
+      liberdade para o programador
+
+
+## Critérios para avaliação de linguagens
+
+- Legibilidade (facilidade de leitura)
+
+    - Deve ser considerada em relação ao domínio do problema
 
 - Facilidade de escrita
+
+    - Deve ser considerada em relação ao domínio do problema
 
 - Confiabilidade
 
 - Custo
 
 
-## Facilidade de leitura
+## Critérios para avaliação de linguagens
+
+\footnotesize
+
+| Característica         | Legibilidade | Facilidade de escrita | Confiabilidade |
+|------------------------|:------------:|:---------------------:|:--------------:|
+| Simplicidade           |  $\bullet$   |      $\bullet$        |   $\bullet$    |
+| Ortogonalidade         |  $\bullet$   |      $\bullet$        |   $\bullet$    |
+| Tipos de dados         |  $\bullet$   |      $\bullet$        |   $\bullet$    |
+| Projeto de sintaxe     |  $\bullet$   |      $\bullet$        |   $\bullet$    |
+| Suporte para abstração |              |      $\bullet$        |   $\bullet$    |
+| Expressividade         |              |      $\bullet$        |   $\bullet$    |
+| Verificação de tipos   |              |                       |   $\bullet$    |
+| Tratamento de exceções |              |                       |   $\bullet$    |
+| Apelidos restritos     |              |                       |   $\bullet$    |
+
+
+## Legibilidade
 
 Simplicidade
 
@@ -295,12 +334,12 @@ Simplicidade
 
 - Poucas formas de expressar cada operação
 
-- Mínima sobrecarga de operador
+- Sobrecarga de operadores?
 
 - Muito simples não é bom (assembly)
 
 
-## Facilidade de leitura
+## Legibilidade
 
 Ortogonalidade
 
@@ -315,13 +354,14 @@ Ortogonalidade
   e ortogonalidade
 
 
-## Facilidade de leitura
+## Legibilidade
 
 Tipos de dados
 
 - Tipos pré-definidos adequados
 
-\pause
+
+## Legibilidade
 
 Sintaxe
 
@@ -338,18 +378,18 @@ Simplicidade e ortogonalidade
 
 - Poucas construções e um conjunto consistente de formas de combinação
 
-\pause
+## Facilidade de escrita
 
 Suporte para abstração
 
-- Definir e usar estruturas e operações de maneira que os detalhes
-   possam ser ignorados
+- Definir e usar estruturas e operações de maneira que os detalhes possam ser
+  ignorados
 
 - Suporte a subprogramas
 
 - Suporte a tipos abstratos de dados
 
-\pause
+## Facilidade de escrita
 
 Expressividade
 
@@ -358,11 +398,14 @@ Expressividade
 
 ## Confiabilidade
 
-- Verificação de tipos \pause
+Um programa é dito confiável quando está de acordo com suas especificações em
+todas as condições
 
-- Manipulação de exceções \pause
+- Verificação de tipos
 
-- Apelidos \pause
+- Tratamento de exceções
+
+- Apelidos (um ou mais nomes para acessar a mesma célula de memória)
 
 - Facilidade de leitura e escrita
 
@@ -385,23 +428,23 @@ Expressividade
 - Maior peso no custo: escrita, manutenção e confiabilidade
 
 
-## Outros 
+## Outros
 
-- Outros critérios
+Outros critérios
 
- - Portabilidade
+- Portabilidade
 
- - Padronização
+- Padronização
 
- \pause
+\pause
 
-- Diferentes visões
+Diferentes visões
 
- - Programador
+- Programador
 
- - Projetista da linguagem
+- Projetista da linguagem
 
- - Implementador da linguagem
+- Implementador da linguagem
 
 
 Influências no projeto de linguagens
