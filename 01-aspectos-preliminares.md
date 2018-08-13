@@ -1,276 +1,434 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Aspectos preliminares
 ---
 
-# Razões para estudar conceitos de linguagens de programação
+Razões para estudar conceitos de linguagens de programação
+==========================================================
 
-### Razões para estudar conceitos de linguagens de programação
+## Razões para estudar conceitos de linguagens de programação
 
--   Aumentar a capacidade de expressar ideias \pause
+- Aumentar a capacidade de expressar ideias \pause
 
--   Melhorar as condições de escolha da linguagem apropriada para cada problema
-    \pause
+- Melhorar as condições de escolha da linguagem apropriada para cada problema
+ \pause
 
--   Aumentar a capacidade de aprender novas linguagens \pause
+- Aumentar a capacidade de aprender novas linguagens \pause
 
--   Melhorar o uso das linguagens já conhecidas \pause
+- Melhorar o uso das linguagens já conhecidas \pause
 
--   Entender a importância da implementação \pause
+- Entender a importância da implementação \pause
 
--   Avanço da área de computação
+- Avanço da área de computação
 
-# Domínios de programação
 
-### Domínios de programação
 
--   Aplicações científicas \pause
+Domínios de programação
+=======================
 
-    -   Estruturas simples (arranjos e matrizes)
+## Domínios de programação
 
-    -   Muitas operações com pontos flutuantes
+Linguagens de programação com objetivos diferentes
 
-    -   Fortran, Algol, C/C++
+- Desde controle de usinas nucleares até jogos em dispositivos móveis
 
-    -   Fortress, Mathlab (Octave), numpy (Python)
 
-    \pause
+## Domínios de programação
 
--   Aplicações comerciais \pause
+Aplicações científicas
 
-    -   Produção de relatórios
+- Estruturas simples (arranjos e matrizes)
 
-    -   Formatação de números decimais e caracteres
+- Muitas operações com pontos flutuantes
 
-    -   Cobol
+- Fortran, C/C++
 
-    \pause
+- Recentemente
 
--   Inteligência artificial \pause
+    - Hardware especializado (GPU, TPU)
 
-    -   Manipulação de símbolos (lista ligada)
+    - Python (numpy), Octave (Mathlab), Julia
 
-    -   Criação e execução de código
 
-    -   Lisp, Prolog
+## Domínios de programação
 
-    -   C/C++
+Aplicações comerciais
 
-### Domínios de programação
+- Inicialmente
 
--   Software de sistema \pause
+    - Integração com banco de dados
 
-    -   Eficiência devido ao uso contínuo
+    - Produção de relatórios
 
-    -   C/C++
+    - Armazenamento e manipulação de números decimais e texto
 
-    -   D, Go, Rust
+    - Cobol
 
-    \pause
+- Atualmente
 
--   Web \pause
+    - Muitos requisitos
 
-    -   Código dentro do documento
+    - Muitas linguagens
 
-    -   Javascript, PHP, Java, Ruby, Python
 
-# Critérios para avaliação de linguagens
+## Domínios de programação
 
-### Critérios para avaliação de linguagens
+Inteligência artificial
 
--   Facilidade de leitura (legibilidade)
+- Manipulação de símbolos (estruturas encadeadas ao invés de arranjos)
 
--   Facilidade de escrita
+- Criação e execução de código
 
--   Confiabilidade
+- Lisp, Prolog
 
--   Custo
+- Atualmente
 
-### Critérios para avaliação de linguagens
+    - Métodos numéricos
 
--   Facilidade de leitura
+    - Python, C/C++
 
-    -   Simplicidade
 
-        -   Um conjunto bom de características e construções
+## Domínios de programação
 
-        -   Poucas formas de expressar cada operação
+Software de sistema
 
-        -   Mínima sobrecarga de operador
+- Software básico e ferramentas de suporte a programação
 
-        -   Muito simples não é bom (assembly)
+    - Sistemas operacionais
 
-        \pause
+        - Construções para interfaceamento com dispostos externos
 
-    -   Ortogonalidade
+        - Eficiência devido ao uso contínuo
 
-        -   Poucas características podem ser combinadas de várias maneiras
+    - Compiladores e interpretadores \pause
 
-        -   Uma característica deve ser independente do contexto que é usada
-            (exceções a regra são ruins)
+- E os softwares que são executados continuamente? \pause
 
-        -   Muito ortogonalidade não é bom (Algol68)
+    - Navegadores, \pause Sistemas web \pause
 
-        -   Linguagens funcionais oferecem uma boa combinação de simplicidade e
-            ortogonalidade
+- C/C++, \pause D, Go, Rust
 
-### Critérios para avaliação de linguagens
 
--   Facilidade de leitura
+## Domínios de programação
 
-    -   Tipos de dados
+Sistemas Web
 
-        -   Tipos pré-definidos adequados
+- Apresentação de conteúdo dinâmico
 
-        \pause
+    - Código junto com a tecnologia de apresentação
 
-    -   Sintaxe
+    - Inicialmente
 
-        -   Flexibilidade para nomear identificadores
+        - PHP, Javascript
 
-        -   Forma de criar instruções compostas
+\pause
 
-        -   A forma deve ter relação com o significado
+- Segurança
 
-### Critérios para avaliação de linguagens
+- Escalabilidade
 
--   Facilidade de escrita
+- Desempenho
 
-    -   Simplicidade e ortogonalidade
+- Integração com sistemas existentes
 
-        -   Poucas construções e um conjunto consistente de formas de combinação
 
-        \pause
 
-    -   Suporte para abstração
+Classes de linguagens
+========================
 
-        -   Definir e usar estruturas e operações de maneira que os detalhes
-            possam ser ignorados
+## Classes de linguagens
 
-        -   Suporte a subprogramas
+É comum a seguinte classificação hierárquica:
 
-        -   Suporte a tipos abstratos de dados
+- Imperativas
 
-        \pause
+    - Procedurais (Fortran, Pascal, C, ...)
 
-    -   Expressividade
+    - Orientada a Objetos (Smalltalk, Java, C++, ...)
 
-        -   Maneira conveniente de expressar a computação
+- Declarativas
 
-### Critérios para avaliação de linguagens
+  - Funcionais (Lisp/Scheme, Haskell,  Ocaml, ...)
 
--   Confiabilidade
+  - Lógicas (Prolog)
 
-    -   Verificação de tipos \pause
+## Classes de linguagens
 
-    -   Manipulação de exceções \pause
+A maioria das linguagens é multiparadigma, por isso, ao invés de classificação
+hierárquica é mais útil identificar as características de cada paradigma
+presente em uma linguagem.
 
-    -   Apelidos \pause
+## Classes de linguagens
 
-    -   Facilidade de leitura e escrita
+A seguir, mostramos como o problema de encontrar o valor máximo em uma lista não
+vazia de números inteiros pode ser resolvido utilizando os paradigmas
+imperativo, funcional e lógico.
 
-### Critérios para avaliação de linguagens
+## Imperativo
 
--   Custo
+- Inicialize a variável `max` com o primeiro elemento da lista
+- Para cada elemento `x` da lista a partir do segundo elemento, faça:
+    - Se `x` é maior do `max`, então atribua o valor `x` para `max`
+- A variável `max` contém o maior valor da lista
 
-    -   Treinar programadores \pause
+## Imperativo
 
-    -   Escrever programas \pause
+```c
+int maximo(int lst[], size_t n)
+{
+    assert(n > 0);
+    int max = lst[0];
+    for (int i = 1; i < n; i++) {
+        if (lst[i] > max) {
+            max = lst[i];
+        }
+    }
+    return max;
+}
+```
 
-    -   Compilar programas \pause
+## Funcional
 
-    -   Executar programas \pause
+- O valor `maximo(lst)` é definido como:
+    - O primeiro elemento de `lst` se `lst` só tem um elemento
+    - O primeiro elemento de `lst` se ele é maior do que o `maximo` do restante
+      de `lst`
+    - `maximo` do restante de `lst` se ele é maior ou igual ao primeiro
+      elemento de `lst`
+- Para computar o valor de `maximo` de uma dada lista, expanda e simplifique
+  esta definição até que ela termine
 
-    -   Confiabilidade \pause
+## Funcional
 
-    -   Manutenção \pause
+```scheme
+(define (maximo lst)
+  (cond
+    [(empty? (rest lst))
+     (first lst)]
+    [(> (first lst) (maximo (rest lst)))
+     (first lst)]
+    [else (maximo (rest lst))]))
+```
 
-    -   Maior peso no custo: escrita, manutenção e confiabilidade
 
+## Lógico
 
-### Critérios para avaliação de linguagens
+- A proposição `maximo(lst, x)` é verdadeira se:
+  - `x` é o único elemento de `lst`; ou
+  - `x` é primeiro elemento de `lst` e `maximo(restante lst, m)` é verdadeiro e
+    `x` é maior do que `m`; ou
+  - `p` é o primeiro elemento de `lst` e `maximo(restante lst, x)` é verdadeiro
+    `x` é maior ou igual a `p`
 
--   Outros critérios
 
-    -   Portabilidade
+## Lógico
 
-    -   Padronização
+```prolog
+maximo([X], X).
+maximo([X | Xs], X) :- maximo(Xs, M), X > M.
+maximo([P | Xs], X) :- maximo(Xs, X), X >= P.
+```
 
-    \pause
+## Classes de linguagens
 
--   Diferentes visões
+Nível de abstração
 
-    -   Programador
+- Baixo nível
 
-    -   Projetista da linguagem
+    - Poucas abstrações sobre os detalhes do computador
 
-    -   Implementador da linguagem
+- Alto nível
 
-# Influências no projeto de linguagens
+    - Abstrações sobre os detalhes do computador
 
-### Influências no projeto de linguagens
 
--   Arquitetura do Computador
+Métodos de implementação
+========================
 
-    -   Arquitetura de von Neumann
+## Métodos de implementação
 
-    -   Arquiteturas multicore
+- Compilação
 
-    -   Outras?
+- Interpretação
 
-    \pause
+- Híbrido
 
--   Metodologias de Programação
 
-    -   Orientada a processos
+## Métodos de implementação
 
-    -   Orientada a dados
+![Interface em camadas de computadores virtuais, fornecida por um sistema de
+computação típico](figs/1-2.pdf){ width=6.5cm }
 
-    -   Orientação a objetos
+## Métodos de implementação - Compilação
 
-# Categorias de linguagens
+![](figs/1-3.pdf){ width=5cm }
 
-### Categorias de linguagens
+## Métodos de implementação - Interpretação
 
--   Imperativas: \pause Algol68, Fortran, Cobol, Ruby, Python, Go, Java, Pascal,
-    C/C++, ... \pause
+![](figs/1-4.pdf){ width=3cm }
 
--   Funcionais ou Aplicativas: Lisp, Haskell, ML, Scheme, Erlang, Ocaml, F\#,
-    Miranda, ... \pause
+## Métodos de implementação - Híbrido
 
--   Lógicas ou Declarativas: Prolog, Planner, QA-4, Popler, Conniver, QLISP,
-    Mercury, Oz, Frill, ...
+![](figs/1-5.pdf){ width=3cm }
 
-# Métodos de implementação
 
-### Métodos de implementação
 
--   Compilação
+Critérios para avaliação de linguagens
+======================================
 
--   Interpretação
+## Critérios para avaliação de linguagens
 
--   Híbrido
+- Facilidade de leitura (legibilidade)
 
-### Métodos de implementação
+- Facilidade de escrita
 
-![](imagens/copl-1-2.png)
+- Confiabilidade
 
-### Métodos de implementação - Compilação
+- Custo
 
-![](imagens/copl-1-3.png)
 
-### Métodos de implementação - Interpretação
+## Facilidade de leitura
 
-![](imagens/copl-1-4.png)
+Simplicidade
 
-### Métodos de implementação - Híbrido
+- Um conjunto bom de características e construções
 
-![](imagens/copl-1-5.png)
+- Poucas formas de expressar cada operação
 
-# Referências
+- Mínima sobrecarga de operador
 
-### Referências
+- Muito simples não é bom (assembly)
 
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 1.
 
+## Facilidade de leitura
 
-<!-- vim: set spell spelllang=pt_br: -->
+Ortogonalidade
+
+- Poucas características podem ser combinadas de várias maneiras
+
+- Uma característica deve ser independente do contexto que é usada (exceções
+  a regra são ruins)
+
+- Muito ortogonalidade não é bom (Algol68)
+
+- Linguagens funcionais oferecem uma boa combinação de simplicidade
+  e ortogonalidade
+
+
+## Facilidade de leitura
+
+Tipos de dados
+
+- Tipos pré-definidos adequados
+
+\pause
+
+Sintaxe
+
+- Flexibilidade para nomear identificadores
+
+- Forma de criar instruções compostas
+
+- A forma deve ter relação com o significado
+
+
+## Facilidade de escrita
+
+Simplicidade e ortogonalidade
+
+- Poucas construções e um conjunto consistente de formas de combinação
+
+\pause
+
+Suporte para abstração
+
+- Definir e usar estruturas e operações de maneira que os detalhes
+   possam ser ignorados
+
+- Suporte a subprogramas
+
+- Suporte a tipos abstratos de dados
+
+\pause
+
+Expressividade
+
+- Maneira conveniente de expressar a computação
+
+
+## Confiabilidade
+
+- Verificação de tipos \pause
+
+- Manipulação de exceções \pause
+
+- Apelidos \pause
+
+- Facilidade de leitura e escrita
+
+
+## Custo
+
+
+- Treinar programadores
+
+- Escrever programas
+
+- Compilar programas
+
+- Executar programas
+
+- Confiabilidade
+
+- Manutenção
+
+- Maior peso no custo: escrita, manutenção e confiabilidade
+
+
+## Outros 
+
+- Outros critérios
+
+ - Portabilidade
+
+ - Padronização
+
+ \pause
+
+- Diferentes visões
+
+ - Programador
+
+ - Projetista da linguagem
+
+ - Implementador da linguagem
+
+
+Influências no projeto de linguagens
+====================================
+
+## Influências no projeto de linguagens
+
+Arquitetura do Computador
+
+- Arquitetura de von Neumann
+
+- Arquiteturas multicore
+
+- Outras?
+
+\pause
+
+Metodologias de Programação
+
+- Orientada a processos
+
+- Orientada a dados
+
+- Orientação a objetos
+
+
+
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 1.
