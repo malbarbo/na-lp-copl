@@ -25,20 +25,18 @@ Creative Commons - Atribuição-CompartilhaIgual 4.0 Internacional</a>.
 
 # Requisitos
 
-- Pacotes: `pandoc` (>= 12), `texlive`, `texlive-xetex`, `texlive-fonts-extra`,
+- Pacotes: `texlive`, `texlive-xetex`, `texlive-fonts-extra`,
   `texlive-lang-portuguese`, python3-pil
 
 # TODO
 
--   Adicionar informações de compilação
+- Adicionar informações de compilação
 
--   Anotar os erros (que são muitos) do livro
+- Anotar os erros do livro
 
--   Atualizar para a 10ª edição do livro
+- Atualizar para a 11ª edição do livro
 
--   Criar imagens vetoriais e com licença livre
-
--   Copiar os TODO dos arquivos tex
+- Copiar os TODO dos antigos arquivos tex
 
 
-<!-- % vim: set ft=markdown ts=2 spell spelllang=pt_br: -->
+<!-- % vim: set ft=markdown ts=4 spell spelllang=pt_br: -->
