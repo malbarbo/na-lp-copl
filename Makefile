@@ -1,19 +1,26 @@
-.PHONY: all default imagens clean clean-imagens clean-all ajusta-imagens
+.PHONY: all tex default imagens clean clean-imagens clean-all ajusta-imagens
 
 SHELL=/bin/bash
-
-DEST_DIR=pdfs
-
+DEST_PDF=pdfs
+DEST_TEX=tex
 IMAGENS_DIR=imagens
-
 IGNORAR=README.md
-
 SOURCES=$(filter-out $(IGNORAR), $(wildcard *.md))
-
-PDFS=$(addprefix $(DEST_DIR)/, $(SOURCES:.md=.pdf))
-
-PANDOC=./local/bin/pandoc
+PDFS=$(addprefix $(DEST_PDF)/, $(SOURCES:.md=.pdf))
+TEX=$(addprefix $(DEST_TEX)/, $(SOURCES:.md=.tex))
 PANDOC_VERSION=2.2.2.1
+PANDOC=./local/bin/pandoc
+PANDOC_CMD=$(PANDOC) \
+		--template templates/default.latex \
+		--toc \
+		--standalone \
+		-V author:"Marco A L Barbosa" \
+		-V institute:"Departamento de Informática\\\\Universidade Estadual de Maringá" \
+		-V theme:metropolis \
+		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
+		-V header-includes:"\captionsetup[figure]{labelformat=empty}" \
+		-V header-includes:"\usepackage{caption}" \
+		-t beamer
 
 default:
 	@if [ ! -e $(IMAGENS_DIR)/copl-1-1.png ]; then make imagens; fi
@@ -22,18 +29,17 @@ default:
 
 all: $(PDFS)
 
-$(DEST_DIR)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC)
-	@mkdir -p $(DEST_DIR)
+tex: $(TEX)
+
+$(DEST_PDF)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
+	@mkdir -p $(DEST_PDF)
 	@echo $@
-	@$(PANDOC) \
-		--template templates/default.latex \
-		--toc \
-		--standalone \
-		-V theme:metropolis \
-		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
-		-V classoption:aspectratio=169 \
-		-t beamer \
-		-o $@ $<
+	@$(PANDOC_CMD) -o $@ $<
+
+$(DEST_TEX)/%.tex: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
+	@mkdir -p $(DEST_TEX)
+	@echo $@
+	@$(PANDOC_CMD) -o $@ $<
 
 ajusta-imagens:
 	@echo Ajustanto imagens
