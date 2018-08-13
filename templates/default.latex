@@ -197,15 +197,14 @@ $if(graphics)$
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
 
-% Adapta o dpi das images para evitar ter que colocar width em muitas imagens
-\pdfimageresolution=144
-\AtBeginDocument{%
-  \letcs\oig{@orig\string\includegraphics}%
-  \renewcommand<>\includegraphics[2][]{%
-    \only#3{%
-      {\centering\oig[{#1}]{#2}\par}%
-    }%
-  }%
+% Centraliza as imagens
+\AtBeginDocument{
+  \letcs\oig{@orig\string\includegraphics}
+  \renewcommand<>\includegraphics[2][]{
+    \only#3{
+      {\centering\oig[{#1}]{#2}\par}
+    }
+  }
 }
 
 % Scale images if necessary, so that they will not overflow the page
@@ -357,10 +356,17 @@ $if(logo)$
 $endif$
 $endif$
 
+\usetikzlibrary{positioning}
+
 \begin{document}
 $if(title)$
 $if(beamer)$
-\frame[plain]{\titlepage}
+\begin{frame}[plain]
+  \titlepage
+  \begin{tikzpicture}[overlay, remember picture]
+    \node[above =0.1cm of current page.south] {\small{\url{http://malbarbo.pro.br}}};
+  \end{tikzpicture}
+\end{frame}
 $else$
 \maketitle
 $endif$
