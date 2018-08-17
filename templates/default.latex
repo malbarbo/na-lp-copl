@@ -357,6 +357,11 @@ $endif$
 $endif$
 
 \usetikzlibrary{positioning}
+\usepackage{ccicons}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
 
 \begin{document}
 $if(title)$
@@ -364,7 +369,14 @@ $if(beamer)$
 \begin{frame}[plain]
   \titlepage
   \begin{tikzpicture}[overlay, remember picture]
-    \node[above =0.1cm of current page.south] {\small{\url{http://malbarbo.pro.br}}};
+    \linespread{0.75}
+    \node[above =0.1cm of current page.south, align=center] {
+        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}\\
+        \vspace{-0.1cm}
+        \tiny Este trabalho está licenciado com uma Licença Creative Commons -
+        Atribuição-CompartilhaIgual 4.0 Internacional.\\
+        \tiny \url{http://github.com/malbarbo/na-lp-copl}
+    };
   \end{tikzpicture}
 \end{frame}
 $else$
