@@ -14,8 +14,8 @@ PANDOC_CMD=$(PANDOC) \
 		--template templates/default.latex \
 		--toc \
 		--standalone \
-		-V author:"Marco A L Barbosa" \
-		-V institute:"Departamento de Informática\\\\Universidade Estadual de Maringá" \
+		-V author:"Marco A L Barbosa\\\\\\href{http://malbarbo.pro.br}{malbarbo.pro.br}" \
+		-V institute:"\\href{http://din.uem.br}{Departamento de Informática}\\\\\\href{http://www.uem.br}{Universidade Estadual de Maringá}{}" \
 		-V theme:metropolis \
 		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
 		-V header-includes:"\captionsetup[figure]{labelformat=empty}" \
