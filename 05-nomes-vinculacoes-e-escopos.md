@@ -2,253 +2,277 @@
 title: Nomes, vinculações e escopos
 ---
 
-# Introdução
+Introdução
+==========
 
-### Introdução
+## Introdução
 
--   Linguagens imperativas são baseadas na arquitetura de von Neumann
+- Linguagens imperativas são baseadas na arquitetura de von Neumann
 
--   A variáveis são uma abstração das células de memória
+- A variáveis são uma abstração das células de memória
 
-    -   Inteiros
+    - Inteiros
 
-    -   Array com 3 dimensões
+    - Array com 3 dimensões
 
--   As variáveis tem um conjunto de propriedades: tipo, valor, memória, escopo,
-    etc.
+- As variáveis tem um conjunto de propriedades: tipo, valor, memória, escopo,
+  etc.
 
--   Vamos estudar questões sobre a semântica das variáveis
+- Vamos estudar questões sobre a semântica das variáveis
 
-# Nomes
 
-### Nomes
 
--   **Nomes** ou identificadores são associados a rótulos, subprogramas,
-    variáveis, etc
+Nomes
+=====
 
--   Questões de projeto para os nomes
+## Nomes
 
-    -   Os nomes são sensíveis ao caso?
+- **Nomes** ou identificadores são associados a rótulos, subprogramas,
+  variáveis, etc
 
-    -   As palavras especiais são palavras reservadas ou palavras chave?
+- Questões de projeto para os nomes
 
-### Nomes
+    - Os nomes são sensíveis ao caso?
 
--   Tamanho
+    - As palavras especiais são palavras reservadas ou palavras chave?
 
-    -   Limite pequeno para o tamanho do nome dificulta a leitura
 
-    -   Fortran 95: 31
+## Nomes
 
-    -   C99: nomes internos, sem limites, mas apenas 63 são significativos
+- Tamanho
 
-    -   C99: nomes externos, 31
+    - Limite pequeno para o tamanho do nome dificulta a leitura
 
-    -   Ada: pelo menos 200
+    - Fortran 95: 31
 
-    -   C++, Java, C\#: sem limites
+    - C99: nomes internos, sem limites, mas apenas 63 são significativos
 
-    \pause
+    - C99: nomes externos, 31
 
--   Caracteres especiais
+    - Ada: pelo menos 200
 
-    -   PHP: nomes de variáveis precisam iniciar com `$`
+    - C++, Java, C\#: sem limites
 
-    -   Perl: inicia com um caractere especial que indica o tipo: `$` escalar, `@`
+
+## Nomes
+
+- Caracteres especiais
+
+    - PHP: nomes de variáveis precisam iniciar com `$`
+
+    - Perl: inicia com um caractere especial que indica o tipo: `$` escalar, `@`
         array e `%` hash
 
-    -   Ruby: variáveis de instância iniciam com `@` e variáveis de classe com `@@`
+    - Ruby: variáveis de instância iniciam com `@` e variáveis de classe com `@@`
 
-    -   Avaliação?
+    - Avaliação?
 
-### Nomes
 
--   Sensível ao caso
+## Nomes
 
-    -   Desvantagem: nomes que parecem iguais são diferentes
+- Sensível ao caso
 
-    -   Nomes nas linguagens baseadas em C são sensíveis ao caso
+    - Desvantagem: nomes que parecem iguais são diferentes
 
-    -   Outras linguagens não são
+    - Nomes nas linguagens baseadas em C são sensíveis ao caso
 
-    -   Nomes pré-definidos (bibliotecas) em Java e C\# incluem maiúsculas e
-        minúsculas (bom ou ruim?)
+    - Outras linguagens não são
 
-    \pause
+    - Nomes pré-definidos (bibliotecas) em Java e C\# incluem maiúsculas
+      e minúsculas (bom ou ruim?)
 
--   Palavras especiais
 
-    -   Ajudam na legibilidade, são usadas para separar cláusulas
+## Nomes
 
-    -   Uma **palavra chave** é uma palavra que tem um significado especial em
-        determinados contextos
+- Palavras especiais
 
-        -   `Integer apple` ; significado especial, tipo da variável
+    - Ajudam na legibilidade, são usadas para separar cláusulas
 
-        -   `Integer = 4`
+    - Uma **palavra chave** é uma palavra que tem um significado especial em
+      determinados contextos
 
-        -   Dificulta a legibilidade
+        - `Integer apple` ; significado especial, tipo da variável
 
-    -   Uma **palavra reservada** é uma palavra que não pode ser usada como um
+        - `Integer = 4`
+
+        - Dificulta a legibilidade
+
+    - Uma **palavra reservada** é uma palavra que não pode ser usada como um
         nome
 
-        -   Muitas palavras reservadas podem restringir as opções de nomes do
-            programador
+        - Muitas palavras reservadas podem restringir as opções de nomes do
+        programador
 
-        -   Ex: Cobol tem 300 palavras reservadas
+        - Ex: Cobol tem 300 palavras reservadas
 
-# Variáveis
 
-### Variáveis
 
--   Abstração de célula(s) de memória
+Variáveis
+=========
 
--   Caracterizada como uma sextupla
+## Variáveis
 
-    -   Nome
+- Abstração de célula(s) de memória
 
-    -   Tipo
+- Caracterizada como uma sextupla
 
-    -   Endereço (l-value)
+    - Nome
 
-    -   Valor (r-value)
+    - Tipo
 
-    -   Tempo de vida
+    - Endereço (l-value)
 
-    -   Escopo
+    - Valor (r-value)
 
-### Variáveis
+    - Tempo de vida
 
--   Nome
+    - Escopo
 
-    -   Existem células de memória (variáveis) que não têm nome
 
--   Endereço (l-value)
+## Variáveis
 
-    -   É o endereço da memória da máquina que a variável está associada
+- Nome
 
-    -   Uma variável pode ter diferente endereços ao longo da execução do
+    - Existem células de memória (variáveis) que não têm nome
+
+- Endereço (l-value)
+
+    - É o endereço da memória da máquina que a variável está associada
+
+    - Uma variável pode ter diferente endereços ao longo da execução do
         programa
 
-    -   Várias variável podem ter o mesmo endereço (apelidos)
+    - Várias variável podem ter o mesmo endereço (apelidos)
 
--   Tipo
 
-    -   Determina o intervalo de valores e as operações
+## Variáveis
 
--   Valor (r-value)
+- Tipo
 
-    -   É o conteúdo da célula (abstrata) de memória associada com a variável
+    - Determina o intervalo de valores e as operações
 
-    -   Célula física vs célula abstrata
+- Valor (r-value)
 
-# O conceito de vinculação
+    - É o conteúdo da célula (abstrata) de memória associada com a variável
 
-### O conceito de vinculação
+    - Célula física vs célula abstrata
 
--   Associação entre um atributo e uma entidade
 
--   Momento da vinculação (quando a vinculação ocorre)
 
-    -   Projeto da linguagem
+O conceito de vinculação
+========================
 
-    -   Implementação da linguagem
+## O conceito de vinculação
 
-    -   Tempo de compilação
+- Associação entre um atributo e uma entidade
 
-    -   Tempo de ligação
+- Momento da vinculação (quando a vinculação ocorre)
 
-    -   Tempo de carregamento
+    - Projeto da linguagem
 
-    -   Tempo de execução
+    - Implementação da linguagem
 
-    \pause
+    - Tempo de compilação
 
--   Exemplo
+    - Tempo de ligação
 
-    ```c
-    int cont;
-    ...
-    cont = cont + 1;
-    printf("contagem: %d\n", cont);
+    - Tempo de carregamento
+
+    - Tempo de execução
+
+
+## O conceito de vinculação
+
+Exemplo
+
+```c
+int cont;
+...
+cont = cont + 1;
+printf("contagem: %d\n", cont);
+```
+
+
+Compreender quando as vinculações ocorrem é pré requisito para entender a
+semântica de uma linguagem de programação
+
+
+## Vinculação de atributos a variáveis
+
+- Vinculação estática
+
+    - ocorre antes da execução do programa e permanece inalterada
+
+- Vinculação dinâmica
+
+    - ocorre ou é altera durante a execução do programa
+
+
+## Vinculação estática de tipo
+
+- Como o tipo é especificado?
+
+    - Declaração explícita
+
+        - `int x`
+
+    - Declaração implícita (através de convenção)
+
+        - Fortran: variáveis (que não foram explicitamente declaradas) cujo o
+        nome começa com `I`, `J`, `K`, `L`, `M`, ou `N` são inteiras, caso
+        contrário, reais
+
+        - Perl: nome inicia com `$`, `@` ou `%`
+
+        - Facilita a escrita, mas prejudica a confiabilidade (nem tanto no
+        Perl)
+
+
+## Vinculação dinâmica de tipo
+
+- O tipo da variável não é especificada por uma declaração e nem é possível
+  determinar o tipo pelo nome
+
+- O tipo é vinculado quando um valor é atribuído a variável
+
+    ```python
+    list = [10.2, 3.5] # esta não é uma boa prática
+    list = 47
     ```
 
-    \pause
 
--   Compreender quando as vinculações ocorrem é pré requisito para entender a
-    semântica de uma linguagem de programação
+## Vinculação dinâmica de tipo
 
-### Vinculação de atributos a variáveis
+- Vantagens \pause
 
--   Vinculação estática
+    - Flexibilidade
 
-    -   ocorre antes da execução do programa e permanece inalterada
+    - Expressividade
 
--   Vinculação dinâmica
-
-    -   ocorre ou é altera durante a execução do programa
-
-### Vinculação estática de tipo
-
--   Como o tipo é especificado?
-
-    -   Declaração explícita
-
-        -   `int x`
-
-    -   Declaração implícita (através de convenção)
-
-        -   Fortran: variáveis (que não foram explicitamente declaradas) cujo o
-            nome começa com `I`, `J`, `K`, `L`, `M`, ou `N` são inteiras, caso
-            contrário, reais
-
-        -   Perl: nome inicia com `$`, `@` ou `%`
-
-        -   Facilita a escrita, mas prejudica a confiabilidade (nem tanto no
-            Perl)
-
-### Vinculação dinâmica de tipo
-
--   O tipo da variável não é especificada por uma declaração e nem é possível
-    determinar o tipo pelo nome
-
--   O tipo é vinculado quando um valor é atribuído a variável
-
-    -   `list = [10.2, 3.5]; // exemplo ruim`
-
-    -   `list = 47; // isto deve ser evitado`
-
-    \pause
-
--   Vantagens \pause
-
-    -   Flexibilidade
-
-    -   Expressividade
-
-    -   Facilidade de escrita
+    - Facilidade de escrita
 
         ```python
         def max(x, y):
-          return x if x >= y else y
+        return x if x >= y else y
         ```
 
     \pause
 
--   Desvantagens \pause
+- Desvantagens \pause
 
-    -   Menos confiável (a detecção de erros de tipo pelo compilador é reduzida)
+    - Menos confiável (a detecção de erros de tipo pelo compilador é reduzida)
 
-    -   Custo (checagem dinâmica de tipo e interpretação)
+    - Custo (checagem dinâmica de tipo e interpretação)
 
-    -   Dificuldade em criar um bom suporte nos editores
+    - Dificuldade em criar um bom suporte nos editores
 
-### Vinculação estática de tipo
 
--   Inferência de tipo: os tipos são determinados pelo compilador a partir do
-    contexto
+## Vinculação estática de tipo
 
--   Exemplo ML:
+- Inferência de tipo: os tipos são determinados pelo compilador a partir do
+  contexto
+
+- Exemplo ML:
 
     ```ocaml
     fun vezes10(x) = 10 * x;
@@ -258,381 +282,432 @@ title: Nomes, vinculações e escopos
     fun quadrado(x): real = x * x;
     ```
 
-### Vinculação de memória e tempo de vida
+## Vinculação de memória e tempo de vida
 
--   **Alocação**: tomar uma célula de memória de um conjunto de memória
-    disponível
+- **Alocação**: tomar uma célula de memória de um conjunto de memória
+  disponível
 
--   **Desalocação**: devolver uma célula de memória desvinculada ao conjunto de
-    memória disponível
+- **Desalocação**: devolver uma célula de memória desvinculada ao conjunto de
+  memória disponível
 
--   **Tempo de vida**: é o tempo durante o qual a variável está vinculada a uma
-    célula de memória específica \pause
+- **Tempo de vida**: é o tempo durante o qual a variável está vinculada a uma
+  célula de memória específica
 
--   Classificação segundo tempo de vida de variáveis escalares
 
-    -   Estática
+## Vinculação de memória e tempo de vida
 
-    -   Dinâmica na pilha
+- Classificação segundo tempo de vida de variáveis escalares
 
-    -   Dinâmica explícita no heap
+    - Estática
 
-    -   Dinâmica implícita no heap
+    - Dinâmica na pilha
 
-### Vinculação de memória e tempo de vida
+    - Dinâmica explícita no heap
 
--   Estática: vinculada a célula de memória antes da execução do programa e
-    permanece vinculada a mesma célula durante a execução
+    - Dinâmica implícita no heap
 
-    -   Exemplos: Variáveis globais, variável static dentro de uma função em C
+
+## Vinculação de memória e tempo de vida
+
+- Estática: vinculada a célula de memória antes da execução do programa
+  e permanece vinculada a mesma célula durante a execução
+
+    - Exemplos: Variáveis globais, variável `static` dentro de uma função em C
         \pause
 
-    -   Vantagens: eficiência, sensibilidade a história
+    - Vantagens: eficiência, sensibilidade a história
 
-    -   Desvantagens: flexibilidade (não suporta recursão), a mesma memória não
-        pode ser compartilhada por variáveis diferentes
+    - Desvantagens: flexibilidade (não suporta recursão), a mesma memória não
+      pode ser compartilhada por variáveis diferentes
 
-    \pause
 
--   Dinâmica na pilha: vinculada a célula de memória quando a sua declaração é
+## Vinculação de memória e tempo de vida
+
+- Dinâmica na pilha: vinculada a célula de memória quando a sua declaração é
     elaborada
 
-    -   Exemplos: Variáveis locais em Java \pause
+    - Exemplos: Variáveis locais em Java \pause
 
-    -   Vantagens: permite recursão e compartilhamento de memória
+    - Vantagens: permite recursão e compartilhamento de memória
 
-    -   Desvantagens: Custo da alocação e desalocação, subprogramas não podem
-        ser sensível ao contexto, acesso indireto
+    - Desvantagens: Custo da alocação e desalocação, subprogramas não podem ser
+      sensível ao contexto, acesso indireto
 
-### Vinculação de memória e tempo de vida
 
--   Dinâmica explícita no heap: alocada explicitamente pelo programador, a
-    alocação acontece em tempo de execução
+## Vinculação de memória e tempo de vida
 
-    -   Exemplos: new em C++, malloc em C \pause
+- Dinâmica explícita no heap: alocada explicitamente pelo programador,
+  a alocação acontece em tempo de execução
 
-    -   Vantagens: permite criação de estruturas de dados dinâmicas
+    - Exemplos: `new` em C++, `malloc` em C \pause
 
-    -   Desvantagens: ineficiência e difícil utilização de ponteiros e
-        referências
+    - Vantagens: permite criação de estruturas de dados dinâmicas
 
-    \pause
+    - Desvantagens: ineficiência e difícil utilização de ponteiros
+      e referências
 
--   Dinâmica implícita no heap: é vinculada a memória do heap apenas quanto é
-    atribuída
 
-    -   Exemplos: Javascript, Python, etc \pause
+## Vinculação de memória e tempo de vida
 
-    -   Vantagens: flexibilidade
+- Dinâmica implícita no heap: é vinculada a memória do heap apenas quanto
+  é atribuída
 
-    -   Desvantagens: ineficiência, todos os atributos são dinâmicos
+    - Exemplos: Javascript, Python, etc \pause
 
-### Vinculação de memória e tempo de vida
+    - Vantagens: flexibilidade
+
+    - Desvantagens: ineficiência, todos os atributos são dinâmicos
+
+
+## Vinculação de memória e tempo de vida
 
 ```c
 #include<stdlib.h>
 
+// estática
 int max = 100;
 int main() {
-  int i = 0;
-  while (i < max) {
-    int *x = malloc(sizeof(int));
-    ...
-  }
+    // dinâmica na pilha
+    int i = 0;
+    while (i < max) {
+        // dinâmica no heap
+        int *x = malloc(sizeof(int));
+        ...
+    }
 }
 ```
 
-# Escopo
 
-### Escopo
 
--   **Escopo** é o conjunto de expressões em que uma variável é visível
+Escopo
+======
 
--   Uma variável **não local** a um unidade de programa é uma variável não
-    declarada nesta unidade mas acessível nela
+## Escopo
 
--   As regras de escopo de uma linguagens de programação determinam como uma
+- **Escopo** é o conjunto de expressões em que uma variável é visível
+
+- Uma variável **não local** a um unidade de programa é uma variável não
+  declarada nesta unidade mas acessível nela
+
+- As regras de escopo de uma linguagens de programação determinam como uma
     ocorrência particular de um nome é associado a uma variável
 
-    -   Escopo estático
+    - Escopo estático
 
-    -   Escopo dinâmico
+    - Escopo dinâmico
 
-### Escopo estático
 
--   Introduzido pelo Algol 60 como um método para associar nomes a variáveis não
-    locais
+## Escopo estático
 
--   Também chamado de escopo léxico (baseado no texto do programa)
+- Introduzido pelo Algol 60 como um método para associar nomes a variáveis não
+  locais
 
--   Pode ser determinado em tempo de compilação
+- Também chamado de escopo léxico (baseado no texto do programa)
 
-    -   Um escopo estático que aninha outro escopo é chamado de **ancestral
-        estático**
+- Pode ser determinado em tempo de compilação
 
-    -   O ancestral estático mais perto é chamado de **pai estático**
+    - Um escopo estático que aninha outro escopo é chamado de **ancestral
+      estático**
 
-    -   Método de busca: busca a declaração, primeiro local, depois no pai
-        estático, até que o nome seja encontrado
+    - O ancestral estático mais perto é chamado de **pai estático**
 
--   Usado pela maioria das linguagens
+    - Método de busca: busca a declaração, primeiro local, depois no pai
+      estático, até que o nome seja encontrado
 
-### Escopo estático - Exemplo de Ada
+- Usado pela maioria das linguagens
 
+
+## Escopo estático - Exemplo de Ada
+
+<div class="columns">
+<div class="column" width="50%">
+\small
 ```ada
 procedure Big is
   X : Integer;
   procedure Sub1 is
     X : Integer;
-    begin
-      ... X ...
-    end;
-  procedure Sub2 is
-    begin
-      ... X ...
-    end;
   begin
-    ...
+    ... X ...
   end;
+  procedure Sub2 is
+  begin
+    ... X ...
+  end;
+begin
+  ...
+end;
 ```
-
-<!-- FIXME: fora do slide --!>
-
+</div>
+<div class="column" width="50%">
 \pause
 
--   A referência a variável `X` no corpo de `Sub2` se refere a que variável?
-    \pause `X` de `Big`. \pause
+- A referência a variável `X` no corpo de `Sub2` se refere a que variável?
+  \pause `X` de `Big`. \pause
 
--   A referência a variável `X` no corpo de `Sub1` se refere a que variável?
-    \pause `X` de Sub1. \pause
+- A referência a variável `X` no corpo de `Sub1` se refere a que variável?
+  \pause `X` de Sub1. \pause
 
--   Como a variável `X` de `Big` pode ser referenciada em `Sub1`. \pause `Big.X`
+- Como a variável `X` de `Big` pode ser referenciada em `Sub1`? \pause `Big.X`
+</div>
+</div>
 
-### Escopo estático
 
--   Variáveis podem ser ocultas em um escopo se houver uma declaração “mais”
-    perto com o mesmo nome
+## Escopo estático
 
--   Algumas linguagens fornecem um mecanismo para acessar estas variáveis
-    ocultas. Exemplo anterior do Ada
+- Variáveis podem ser ocultas em um escopo se houver uma declaração “mais”
+  perto com o mesmo nome
 
--   Bloco é uma forma de criar escopo estático dentro de uma unidade de
-    programa. \pause Exemplo em C (não permitido em Java e C\# por usar o mesmo
-    nome count)
+- Algumas linguagens fornecem um mecanismo para acessar estas variáveis
+  ocultas. Exemplo anterior do Ada
+
+
+## Escopo estático
+
+- Bloco é uma forma de criar escopo estático dentro de uma unidade de programa.
+
+- Exemplo em C (não permitido em Java e C\# por usar o mesmo nome count)
+
+    \small
 
     ```c
     void sub() {
-      int count;
-      ...
-      while ( ... ) {
         int count;
         ...
-      }
+        while ( ... ) {
+            int count;
+            ...
+        }
     }
     ```
 
-### Escopo estático
 
--   Escopo global (variáveis declaras fora de funções)
+## Escopo estático
 
-    -   PHP: através da variável `$GLOBALS` ou declarado o nome `global`
+- Escopo global (variáveis declaras fora de funções)
 
-    -   Python: variável global pode ser referenciada, mas para receber uma
-        atribução o nome tem que ser declarado `global`
+    - PHP: através da variável `$GLOBALS` ou declarado o nome `global`
 
-### Escopo estático
+    - Python: variável global pode ser referenciada, mas para receber uma
+      atribuição o nome tem que ser declarado `global`
 
--   Avaliação \pause
 
-    -   Funciona bem em muitas situações
+## Escopo estático
 
-    -   Permite mais acesso do que é necessário
+- Avaliação \pause
 
-    -   Induz a criação de variáveis globais
+    - Funciona bem em muitas situações
 
-### Escopo dinâmico
+    - Permite mais acesso do que é necessário
 
--   Baseia-se na sequência de chamadas a subprogramas e não na estrutura textual
-    (temporal vs espacial)
+    - Induz a criação de variáveis globais
 
--   Determinado em tempo de execução
 
--   As referências as variáveis são conectadas as declarações fazendo uma busca
-    através da sequência de chamadas de subprogramas
+## Escopo dinâmico
 
--   Exemplos de linguagens: APL, SNOBOL4, primeiras versões de Lisp, Perl,
-    Common Lisp
+- Baseia-se na sequência de chamadas a subprogramas e não na estrutura textual
+  (temporal vs espacial)
 
-### Escopo dinâmico - Exemplo
+- Determinado em tempo de execução
 
+- As referências as variáveis são conectadas as declarações fazendo uma busca
+  através da sequência de chamadas de subprogramas
+
+- Exemplos de linguagens: APL, SNOBOL4, primeiras versões de Lisp, Perl, Common
+  Lisp
+
+## Escopo dinâmico - Exemplo
+
+<div class="columns">
+<div class="column" width="50%">
+\small
 ```ada
 procedure Big is
   X : Integer;
   procedure Sub1 is
     X : Integer;
-    begin
-      ... X ...
-    end;
+  begin
+    ... X ...
+  end;
   procedure Sub2 is
     begin
-      ... X ...
+    ... X ...
     end;
-  begin
-    ...
-  end;
+begin
+  ...
+end;
 ```
 
+</div>
+<div class="column" width="50%">
 \pause
 
--   A referência a variável `X` no corpo de `Sub2` se refere a que variável?
-    \pause Depende da sequência de chamadas de funções. \pause
+- A referência a variável `X` no corpo de `Sub2` se refere a que variável?
+  \pause Depende da sequência de chamadas de funções. \pause
 
--   `Big` chama `Sub1` que chama `Sub2`? `X` de `Sub1`. \pause
+- `Big` chama `Sub1` que chama `Sub2`? \pause `X` de `Sub1`
 
--   `Big` chama `Sub2`? `X` de `Big`.
+- `Big` chama `Sub2`? \pause `X` de `Big`.
+</div>
+</div>
 
-### Escopo dinâmico
 
--   Avaliação \pause
+## Escopo dinâmico
 
-    -   Vantagem sutil na passagem de parâmetros (exemplo?)
+- Avaliação \pause
 
-    -   Quando um subprograma está em execução, suas variáveis são visíveis para
+    - Vantagem sutil na passagem de parâmetros (exemplo?)
+
+    - Quando um subprograma está em execução, suas variáveis são visíveis para
         todos os subprogramas chamados por ele
 
-    -   Dificuldade de leitura
+    - Dificuldade de leitura
 
-    -   Custo de acesso
+    - Custo de acesso
 
-    -   Impossível fazer checagem do tipo das variáveis
+    - Impossível fazer checagem do tipo das variáveis
 
-# Escopo e tempo de vida
 
-### Escopo e tempo de vida
+Escopo e tempo de vida
+======================
 
--   Escopo e tempo de vida estão relacionados, mas são conceitos diferentes
+## Escopo e tempo de vida
 
-    -   Escopo (estático) é espacial
+- Escopo e tempo de vida estão relacionados, mas são conceitos diferentes
 
-    -   Tempo de vida é temporal
+    - Escopo (estático) é espacial
+
+    - Tempo de vida é temporal
 
     \pause
 
--   Qual é o tempo de vida e o escopo de um variável local static em C/C++?
-    \pause
+- Qual é o tempo de vida e o escopo de um variável local static em C/C++?
 
--   E no exemplo a seguir, qual é o tempo de vida e o escopo da variável soma?
+## Escopo e tempo de vida
+
+- No exemplo a seguir, qual é o tempo de vida e o escopo da variável soma?
 
     ```python
     def imprime_cabecalho():
-      ...
+        ...
+
     def calcula(a, b):
-      soma = a + b
-      imprime_cabecalho()
-      ...
+        soma = a + b
+        imprime_cabecalho()
+
+    ...
     ```
 
-# Ambientes de referenciamento
 
-### Ambientes de referenciamento
+Ambientes de referenciamento
+============================
 
--   É o conjunto de variáveis visíveis em uma determinada expressão
+## Ambientes de referenciamento
 
--   Nas linguagens com escopo estático, são as variáveis locais mais todas as
-    variáveis visíveis de todos os escopos externos
+- É o conjunto de variáveis visíveis em uma determinada expressão
 
--   Nas linguagens com escopo dinâmico, são as variáveis locais mais todas as
-    variáveis visíveis em todos os subprogramas ativos
+- Nas linguagens com escopo estático, são as variáveis locais mais todas as
+  variáveis visíveis de todos os escopos externos
 
-### Ambientes de referenciamento
+- Nas linguagens com escopo dinâmico, são as variáveis locais mais todas as
+  variáveis visíveis em todos os subprogramas ativos
+
+## Ambientes de referenciamento
+
+<div class="columns">
+<div class="column" width="50%">
+\scriptsize
 
 ```ada
 procedure Exemplo is
   A, B : Integer;
   procedure Sub1 is
     X, Y : Integer;
-    begin
-      ... (1)
-    end
+  begin
+    ... (1)
+  end
   procedure Sub2 is
     X : Integer;
     procedure Sub3 is
       X : Integer;
-      begin
-        ... (2)
-      end
     begin
-      ... (3)
+      ... (2)
     end
   begin
-    ... (4)
+    ... (3)
   end
+begin
+  ... (4)
+end
 ```
+</div>
+<div class="column" width="50%">
+- Considerando escopo estático, quais os ambientes de referenciamento nos
+  pontos 1, 2 e 3? \pause
 
-###
+- 1: `X` e `Y` de `Sub1`, `A` e `B` de `Exemplo` \pause
 
-<!-- FIXME: colocar as perguntas no mesmo slide --!>
+- 2: `X` de `Sub3`, `A` e `B` de `Exemplo` \pause
 
--   Considerando escopo estático, quais os ambientes de referenciamento nos
-    pontos 1, 2 e 3? \pause
+- 3: `X` de `Sub2`, `A` e `B` de `Exemplo`
+</div>
+</div>
 
--   1: `X` e `Y` de `Sub1`, `A` e `B` de `Exemplo` \pause
+## Ambientes de referenciamento
 
--   2: `X` de `Sub3`, `A` e `B` de `Exemplo` \pause
-
--   3: `X` de `Sub2`, `A` e `B` de `Exemplo`
-
-### Ambientes de referenciamento
-
+<div class="columns">
+<div class="column" width="50%">
+\small
 ```c
 void sub1() {
-  int a, b;
-  ... (1)
+    int a, b;
+    ... (1)
 }
 void sub2() {
-  int b, c;
-  ... (2)
-  sub1();
+    int b, c;
+    ... (2)
+    sub1();
 }
 void main() {
-  int c, d;
-  ... (3)
-  sub2();
+    int c, d;
+    ... (3)
+    sub2();
 }
 ```
+</div>
+<div class="column" width="50%">
+- Considerando escopo dinâmico, e a sequência de chamada `main`, `sub2`,
+  `sub1`, quais os ambientes de referenciamento nos pontos 1, 2 e 3? \pause
 
-<!-- FIXME: fora do slide --!>
+- 1: `a` e `b` de `sub1`, `c` de `sub2`, `d` de `main` \pause
 
-\pause
+- 2: `b` e `c` de `sub2`, `d` de `main` \pause
 
--   Considerando escopo dinâmico, e a sequência de chamada `main`, `sub2`,
-    `sub1`, quais os ambientes de referenciamento nos pontos 1, 2 e 3? \pause
+- 3: `c` e `d` de `main`
 
--   1: `a` e `b` de `sub1`, `c` de `sub2`, `d` de `main` \pause
+</div>
+</div>
 
--   2: `b` e `c` de `sub2`, `d` de `main` \pause
 
--   3: `c` e `d` de `main`
+Constantes nomeadas
+===================
 
-# Constantes nomeadas
+## Constantes nomeadas
 
-### Constantes nomeadas
+- Uma **constante nomeada** é uma variável que o valor é vinculado apenas uma
+  vez
 
--   Uma **constante nomeada** é uma variável que o valor é vinculado apenas uma
-    vez
+- Usado para parametrizar programas
 
--   Usado para parametrizar programas
+- A vinculação dos valores a constantes nomeadas pode ser estáticas ou
+  dinâmicas
 
--   A vinculação dos valores a constantes nomeadas pode ser estáticas ou
-    dinâmicas
+- Vantagens: legibilidade e facilidade de modificação
 
--   Vantagens: legibilidade e facilidade de modificação
 
-# Referências
+## Referências
 
-### Referências
-
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 5.
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 5.
 
 
 <!-- vim: set spell spelllang=pt_br: -->
