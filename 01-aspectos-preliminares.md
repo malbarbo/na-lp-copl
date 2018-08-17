@@ -152,17 +152,20 @@ Classes de linguagens
 
   - Lógicas (Prolog)
 
+
 ## Classes de linguagens
 
 A maioria das linguagens é multiparadigma, por isso, ao invés de classificação
 hierárquica é mais útil identificar as características de cada paradigma
 presente em uma linguagem.
 
+
 ## Classes de linguagens
 
 A seguir, mostramos como o problema de encontrar o valor máximo em uma lista não
 vazia de números inteiros pode ser resolvido utilizando os paradigmas
 imperativo, funcional e lógico.
+
 
 ## Imperativo
 
@@ -171,7 +174,10 @@ imperativo, funcional e lógico.
     - Se `x` é maior do `max`, então atribua o valor `x` para `max`
 - A variável `max` contém o maior valor da lista
 
+
 ## Imperativo
+
+Código em C
 
 ```c
 int maximo(int lst[], size_t n)
@@ -187,6 +193,7 @@ int maximo(int lst[], size_t n)
 }
 ```
 
+
 ## Funcional
 
 - O valor `maximo(lst)` é definido como:
@@ -195,10 +202,14 @@ int maximo(int lst[], size_t n)
       de `lst`
     - `maximo` do restante de `lst` se ele é maior ou igual ao primeiro
       elemento de `lst`
+
 - Para computar o valor de `maximo` de uma dada lista, expanda e simplifique
   esta definição até que ela termine
 
+
 ## Funcional
+
+Código em Racket
 
 ```scheme
 (define (maximo lst)
@@ -220,8 +231,13 @@ int maximo(int lst[], size_t n)
   - `p` é o primeiro elemento de `lst` e `maximo(restante lst, x)` é verdadeiro
     `x` é maior ou igual a `p`
 
+- Para computar o valor máximo de uma dada lista, busque por um valor `x` que
+  permita provar que a proposição `maximo(lst, x)` é verdadeira.
+
 
 ## Lógico
+
+Código em Prolog
 
 ```prolog
 maximo([X], X).
@@ -247,6 +263,7 @@ Nível de abstração
 Linguagens de _scripting_
 
 - "Juntar" programas escritos em outras linguagens
+
 
 
 Métodos de implementação
@@ -285,13 +302,17 @@ Critérios para avaliação de linguagens
 
 ## Critérios para avaliação de linguagens
 
+- Como os recursos das linguagens influenciam o desenvolvimento de software?
+
 - Alguns critérios podem ser controversos
+
 - Alguns critérios são objetivos, enquanto outros não
+
 - Algumas pessoas valorizam mais alguns critérios do que outros
+
     - O Sebesta valoriza muito as características que permitem que erros possam
-      ser detectados em tempo de compilação
-    - Ele parece preferir que o compilador vigie o programador ao invés de dar
-      liberdade para o programador
+      ser detectados em tempo de compilação, mas estas características podem
+      tornam os programas mais difíceis de serem mantidos do que o necessário
 
 
 ## Critérios para avaliação de linguagens
@@ -354,6 +375,51 @@ Ortogonalidade
   e ortogonalidade
 
 
+## Exemplo de falta de ortogonalidade em C
+
+\scriptsize
+
+<div class="columns">
+<div class="column" width="50%">
+```c
+typedef struct par {
+    int primeiro;
+    int segundo;
+} par;
+
+void f(par x) {
+    x.primeiro = 10;
+}
+
+void test_f() {
+    par x = {1, 2};
+    // passagem de parâmetro
+    // por valor
+    f(x);
+    assert(x.primeiro == 1);
+}
+```
+</div>
+<div class="column" width="50%">
+\pause
+
+```c
+void g(int x[2]) {
+    x[0] = 10;
+}
+
+void test_g() {
+    int x[2] = {1, 2};
+    // vetores não podem ser passados
+    // como parâmetro por valor!
+    g(x);
+    assert(x[0] == 10);
+}
+```
+</div>
+</div>
+
+
 ## Legibilidade
 
 Tipos de dados
@@ -367,7 +433,7 @@ Sintaxe
 
 - Flexibilidade para nomear identificadores
 
-- Forma de criar instruções compostas
+- Forma de criar sentenças compostas
 
 - A forma deve ter relação com o significado
 
@@ -377,6 +443,7 @@ Sintaxe
 Simplicidade e ortogonalidade
 
 - Poucas construções e um conjunto consistente de formas de combinação
+
 
 ## Facilidade de escrita
 
@@ -389,11 +456,17 @@ Suporte para abstração
 
 - Suporte a tipos abstratos de dados
 
+
 ## Facilidade de escrita
 
 Expressividade
 
 - Maneira conveniente de expressar a computação
+
+## Facilidade de escrita
+
+Algumas linguagens tem a sintaxe e/ou a semântica tão densas e bizarras que são
+chamadas de "Linguagens somente de escrita"!
 
 
 ## Confiabilidade
@@ -409,23 +482,135 @@ todas as condições
 
 - Facilidade de leitura e escrita
 
+## Confiabilidade
+
+Os testes automatizados são extremamente importantes para aumentar a
+confiabilidade/manutenibilidade dos programas
+
+- Especificação executável
+
+- Frameworks de testes
+
+
+## Uso de apelidos em C++, Java e Rust
+
+\tiny
+
+<div class="columns">
+<div class="column" width="33%">
+C++
+
+\ 
+
+```cpp
+vector<int> v = {10, 20, 30};
+int soma = 0;
+for (int &x : v) {
+    soma += x;
+    if (x == 20) {
+        v.push_back(1);
+    }
+}
+assert(soma == 61);
+```
+
+\ 
+
+Pode ou não falhar... `x` pode referenciar memória desalocada
+</div>
+<div class="column" width="33%">
+\pause
+
+Java
+
+\ 
+
+```java
+ArrayList<Integer> lista =
+    new ArrayList<>(
+        asList(10, 20, 30));
+int soma = 0;
+for (Integer x : lista) {
+    soma += x;
+    if (x == 20) {
+        lista.add(1);
+    }
+}
+assert soma == 61;
+```
+
+\ 
+
+Falha na execução: `lista.add` gera o erro `java.util.ConcurrentModificationException`
+</div>
+<div class="column" width="33%">
+\pause
+
+Rust
+
+\ 
+
+```rust
+let mut v = vec![10, 20, 30];
+let mut soma = 0;
+for &x in &v {
+    soma += x;
+    if x == 20 {
+        v.push(1);
+    }
+}
+assert_eq!(soma, 61);
+```
+
+\ 
+
+Falha na compilação: cannot borrow `v` as mutable because it is also borrowed
+as immutable
+</div>
+</div>
+
 
 ## Custo
 
+Os fatores que mais afetam os custos são
+
+- Desenvolvimento
+
+- Manutenção
+
+- Confiabilidade
+
+## Custo
 
 - Treinar programadores
 
 - Escrever programas
 
+- Aspectos importantes
+
+    - Ambiente de desenvolvimento (IDE)
+
+    - Gerenciamento de pacotes
+
+
+## Custo
+
 - Compilar programas
 
 - Executar programas
 
+- Aspectos importantes
+
+    - Compiladores/Interpretadores (software livre)
+
+    - Linguagens com execução eficiente
+
+
+## Custo
+
 - Confiabilidade
 
 - Manutenção
-
-- Maior peso no custo: escrita, manutenção e confiabilidade
 
 
 ## Outros
@@ -445,6 +630,7 @@ Diferentes visões
 - Projetista da linguagem
 
 - Implementador da linguagem
+
 
 
 Influências no projeto de linguagens
