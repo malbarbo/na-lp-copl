@@ -1,317 +1,337 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Tipos de dados
 ---
 
-<!-- FIXME: sumário extenso !-->
+Introdução
+==========
 
-# Introdução
+## Introdução
 
-### Introdução
+- Um **tipo de dado** define a coleção de valores e um conjunto de operações
+  nestes valores
 
--   Um **tipo de dado** define a coleção de valores e um conjunto de operações
-    nestes valores
+- É importante que uma linguagem de programação forneça uma coleção apropriada
+  de tipos de dados \pause
 
--   É importante que uma linguagem de programação forneça uma coleção apropriada
-    de tipos de dados \pause
+- Utilidade \pause
 
--   Utilidade \pause
+    - Detecção de erros
 
-    -   Detecção de erros
+    - Modularização
 
-    -   Modularização
+    - Documentação
 
-    -   Documentação
+    - Criação de ferramental
 
-    -   Criação de ferramental
 
-### Introdução
+## Introdução
 
--   Sistema de tipos
+- Sistema de tipos
 
-    -   Define como um tipo é associada a uma expressão
+    - Define como um tipo é associada a uma expressão
 
-    -   Incluí regras para equivalência e compatibilidade de tipos
+    - Incluí regras para equivalência e compatibilidade de tipos
 
--   Entender o sistema de tipos de uma linguagem é um dos aspectos mais
-    importante para entender a sua semântica
+- Entender o sistema de tipos de uma linguagem é um dos aspectos mais
+  importante para entender a sua semântica
 
--   Questão de projeto relativa a todos os tipos de dados
+- Questão de projeto relativa a todos os tipos de dados
 
-    -   Quais operações podem ser utilizadas em variáveis de um determinado tipo
-        e como elas são especificadas?
+    - Quais operações podem ser utilizadas em variáveis de um determinado tipo
+      e como elas são especificadas?
 
-# Tipos primitivos
 
-### Tipos primitivos
 
--   **Tipos primitivos** são aqueles que não são definidos em termos de outros
-    tipos
+Tipos primitivos
+================
 
--   Quase todas as linguagens de programação fornecem um conjunto de tipos
-    primitivos
+## Tipos primitivos
 
--   Usados com construções de tipo para fornecer os tipos estruturados
+- **Tipos primitivos** são aqueles que não são definidos em termos de outros
+  tipos
 
--   Os mais comuns são
+- Quase todas as linguagens de programação fornecem um conjunto de tipos
+  primitivos
 
-    -   Tipos numéricos
+- Usados com construções de tipo para fornecer os tipos estruturados
 
-    -   Tipos booleanos
+- Os mais comuns são
 
-    -   Tipos caracteres
+    - Tipos numéricos
 
-### Tipos primitivos
+    - Tipos booleanos
 
--   Tipos numéricos
+    - Tipos caracteres
 
-    -   Inteiro
 
-        -   Vários tamanhos
+## Tipos primitivos
 
-        -   Várias representações
+- Tipos numéricos
 
-        -   Com ou sem sinal
+    - Inteiro
 
-        -   Tamanho ilimitado
+        - Vários tamanhos
 
-        \pause
+        - Várias representações
 
-    -   Ponto flutuante
+        - Com ou sem sinal
 
-        -   Modelo (aproximado) dos números reais
+        - Tamanho ilimitado \pause
 
-        -   Padronização IEEE 754 (float e double)
+    - Ponto flutuante
 
-### Tipos primitivos
+        - Modelo (aproximado) dos números reais
 
--   Tipos numéricos
+        - Padronização IEEE 754 (float e double)
 
-    -   Número complexo
 
-        -   Par de números com ponto flutuante
+## Tipos primitivos
 
-        -   Literal em Python: `7 + 3j`
+- Tipos numéricos
 
-        \pause
+    - Número complexo
 
-    -   Decimal
+        - Par de números com ponto flutuante
 
-        -   Utilizado em aplicações financeiras
+        - Literal em Python: `7 + 3j` \pause
 
-        -   Armazenado com um número fixo de dígitos em forma codificada (BCD)
+    - Decimal
 
-        -   Cobol, C\#
+        - Utilizado em aplicações financeiras
 
-        -   Vantagem: precisão
+        - Armazenado com um número fixo de dígitos em forma codificada (BCD)
 
-        -   Desvantagem: intervalo limitado, desperdício de memória
+        - Cobol, C\#
 
-### Tipos primitivos
+        - Vantagem: precisão
 
--   Tipo booleano
+        - Desvantagem: intervalo limitado, desperdício de memória
 
-    -   O mais simples de todos
 
-    -   Dois valores: `true` e `false`
+## Tipos primitivos
 
-    -   Pode ser implementado com 1 bit, mas em geral é implementado com uma
-        palavra da memória
+- Tipo booleano
 
-    -   Algumas linguagens (C89) não tem tipo booleano, valores inteiros iguais
-        a zero são considerados falsos e valores diferentes de zero verdadeiros
+    - O mais simples de todos
 
-    -   O tipo boolean é mais legível que inteiros quando usados na
-        representação de flags e switches
+    - Dois valores: `true` e `false`
 
-### Tipos primitivos
+    - Pode ser implementado com 1 bit, mas em geral é implementado com uma
+      palavra da memória
 
--   Tipo caractere
+    - Algumas linguagens (C89) não tem tipo booleano, valores inteiros iguais
+      a zero são considerados falsos e valores diferentes de zero verdadeiros
 
-    -   Caracteres são armazenados no computador como valores numéricos
+    - O tipo boolean é mais legível que inteiros quando usados na representação
+      de flags e switches
 
-    -   Os valores numéricos são mapeados para caracteres através de tabelas
 
-        -   ASCII (7 bits - 127 valores)
+## Tipos primitivos
 
-        -   ISO 8859-1 (8 bits - 256 valores)
+- Tipo caractere
 
-        -   Unicode (16 - não é suficiente, e 32 bits - suficiente para
-            representar todos os caracteres utilizados pelos humanos)
+    - Caracteres são armazenados no computador como valores numéricos
 
-    -   Python não tem um tipo caractere, um caractere é representado como um
-        string de tamanho 1
+    - Os valores numéricos são mapeados para caracteres através de tabelas
 
-# Cadeia de caracteres
+        - ASCII (7 bits - 127 valores)
 
-### Cadeia de caracteres
+        - ISO 8859-1 (8 bits - 256 valores)
 
--   O tipo **cadeia de caractere** tem como valores sequências de caracteres
+        - Unicode (16 - não é suficiente, e 32 bits - suficiente para
+        representar todos os caracteres utilizados pelos humanos)
 
--   Questões de projeto
+    - Python não tem um tipo caractere, um caractere é representado como um
+      string de tamanho 1
 
-    -   As cadeias são simplesmente um tipo especial de arranjo de caractere ou
-        um tipo primitivo?
 
-    -   As cadeias tem um tamanho estático ou dinâmico?
 
-### Cadeia de caracteres
+Cadeia de caracteres
+====================
 
--   Operações comuns
+## Cadeia de caracteres
 
-    -   Atribuição
+- O tipo **cadeia de caractere** tem como valores sequências de caracteres
 
-    -   Concatenação
+- Questões de projeto
 
-    -   Referência a subcadeia
+    - As cadeias são simplesmente um tipo especial de arranjo de caractere ou
+      um tipo primitivo?
 
-    -   Comparação
+    - As cadeias tem um tamanho estático ou dinâmico?
 
-    -   Casamento de padrão
 
-### Cadeia de caracteres - exemplos
+## Cadeia de caracteres
 
--   C e C++
+- Operações comuns
 
-    -   Não é primitivo
+    - Atribuição
 
-    -   Uso de arranjo de caracteres
+    - Concatenação
 
-    -   A cadeia é terminada com um caractere especial null
+    - Referência a subcadeia
 
-    -   Biblioteca de funções (`strcpy`, `strcat`, `strcmp`, `strlen`)
+    - Comparação
 
-    -   Problemas de confiabilidade
+    - Casamento de padrão
 
-    -   O que acontece no exemplo a seguir se `src` tiver tamanho 30 e `dest`
-        tamanho 20?
 
-            strcpy(dest, src);
+## Cadeia de caracteres - exemplos
 
-    -   C++ oferece uma classe `string`, semelhante a classe `String` do Java,
-        que é mais confiável que as cadeias do C
+- C e C++
 
-### Cadeia de caracteres - exemplos
+    - Não é primitivo
 
--   Fortran
+    - Uso de arranjo de caracteres
 
-    -   Tipo primitivo com diversas operações
+    - A cadeia é terminada com um caractere especial null
 
--   Python
+    - Biblioteca de funções (`strcpy`, `strcat`, `strcmp`, `strlen`)
 
-    -   Tipo primitivo com diversas operações
+    - Problemas de confiabilidade
 
-    -   Imutável
+    - O que acontece no exemplo a seguir se `src` tiver tamanho 30 e `dest`
+      tamanho 20?
 
-    -   Algumas operações são como as de arranjos
+        ```c
+        strcpy(dest, src);
+        ```
 
--   Java
+    - C++ oferece uma classe `string`, semelhante a classe `String` do Java,
+      que é mais confiável que as cadeias do C
 
-    -   Classe `String` - imutável
 
-    -   Classe `StringBuilder` e `StringBuffer` - mutável
+## Cadeia de caracteres - exemplos
 
-    -   Os caracteres individuais são acessado com o método `charAt(index)`
+- Fortran
 
-    -   C\# é semelhante
+    - Tipo primitivo com diversas operações
 
--   Perl, JavaScript, Ruby e PHP
+- Python
 
-    -   Primitivo com diversas operações, inclusive de casamento de padrão
+    - Tipo primitivo com diversas operações
 
-### Cadeia de caracteres - opções de tamanho
+    - Imutável
 
--   Tamanho estático: \pause Java (classe `String`), Python \pause
+    - Algumas operações são como as de arranjos
 
-    -   Como é possível realizar um operação de concatenação (ou outra operação
-        destrutiva qualquer) em uma cadeia de tamanho estático e imutável? \pause
 
-    -   Criando uma nova cadeia que o resultado da operação
+## Cadeia de caracteres - exemplos
+
+- Java
+
+    - Classe `String` - imutável
+
+    - Classe `StringBuilder` e `StringBuffer` - mutável
+
+    - Os caracteres individuais são acessado com o método `charAt(index)`
+
+    - C\# é semelhante
+
+- Perl, JavaScript, Ruby e PHP
+
+    - Primitivo com diversas operações, inclusive de casamento de padrão
+
+
+## Cadeia de caracteres - opções de tamanho
+
+- Tamanho estático: \pause Java (classe `String`), Python \pause
+
+    - Como é possível realizar um operação de concatenação (ou outra operação
+      destrutiva qualquer) em uma cadeia de tamanho estático e imutável? \pause
+
+    - Criando uma nova cadeia que o resultado da operação
 
     \pause
 
--   Tamanho dinâmico limitado: C \pause
+- Tamanho dinâmico limitado: C \pause
 
--   Tamanho dinâmico: C++, Perl \pause
+- Tamanho dinâmico: C++, Perl \pause
 
--   Ada suporta os três tipos \pause
+- Ada suporta os três tipos \pause
 
--   Como estes tipos de cadeias podem ser implementados?
+- Como estes tipos de cadeias podem ser implementados?
 
-### Cadeia de caracteres
 
--   Avaliação \pause
+## Cadeia de caracteres
 
-    -   Ajuda na facilidade de escrita
+- Avaliação \pause
 
-    -   Trabalhar com tipos primitivos é em geral mais conveniente do que com
-        arranjos de caracteres
+    - Ajuda na facilidade de escrita
 
-    -   Operações como concatenação e busca são essenciais e devem ser
-        fornecidas
+    - Trabalhar com tipos primitivos é em geral mais conveniente do que com
+      arranjos de caracteres
 
-    -   Cadeias com tamanho dinâmicos são interessantes, mas o custo de
-        implementação deve ser levado em consideração
+    - Operações como concatenação e busca são essenciais e devem ser fornecidas
 
-# Tipo ordinal definido pelo usuário
+    - Cadeias com tamanho dinâmicos são interessantes, mas o custo de
+      implementação deve ser levado em consideração
 
-### Tipo ordinal definido pelo usuário
 
--   Um **tipo ordinal** é aquele em que o intervalo de valores pode facilmente
-    ser associado com o conjunto dos inteiros positivos
+Tipo ordinal definido pelo usuário
+==================================
 
--   Exemplos de tipos primitivos ordinal do Java
+## Tipo ordinal definido pelo usuário
 
-    -   `boolean`
+- Um **tipo ordinal** é aquele em que o intervalo de valores pode facilmente
+  ser associado com o conjunto dos inteiros positivos
 
-    -   `char`
+- Exemplos de tipos primitivos ordinal do Java
 
-    -   `int`
+    - `boolean`
 
--   Definidos pelo usuário
+    - `char`
 
-    -   Tipos enumerados
+    - `int`
 
-    -   Tipos subintervalo
+- Definidos pelo usuário
 
-### Tipo ordinal definido pelo usuário - tipos enumerados
+    - Tipos enumerados
 
--   Um **tipo enumerado** é aquele que todos os possíveis valores, que são
-    constantes nomeadas, são enumerados na definição
+    - Tipos subintervalo
 
--   Exemplo em C\#
+
+## Tipo ordinal definido pelo usuário - tipos enumerados
+
+- Um **tipo enumerado** é aquele que todos os possíveis valores, que são
+  constantes nomeadas, são enumerados na definição
+
+- Exemplo em C\#
 
     ```cs
     enum Days {Mon, Tue, Wed, Thu, Fri, Sat, Sun};
     ```
 
--   Em geral, os valores 0, 1, 2, ... são atribuídos implicitamente as
-    constantes enumeradas, mas outros valores podem ser explicitamente
-    atribuídos
+- Em geral, os valores 0, 1, 2, ... são atribuídos implicitamente as constantes
+  enumeradas, mas outros valores podem ser explicitamente atribuídos
 
-### Tipo ordinal definido pelo usuário - tipos enumerados
 
--   Questões de projeto
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
-    -   Uma constante enumerada pode aparecer em mais de uma definição de tipo,
-        e se pode, como o tipo de uma ocorrência da constante é verificada?
+- Questões de projeto
 
-    -   Os valores enumerados podem ser convertidos para inteiros?
+    - Uma constante enumerada pode aparecer em mais de uma definição de tipo,
+      e se pode, como o tipo de uma ocorrência da constante é verificada?
 
-    -   Algum outro tipo pode ser convertido para um tipo enumerado?
+    - Os valores enumerados podem ser convertidos para inteiros?
 
-### Tipo ordinal definido pelo usuário - tipos enumerados
+    - Algum outro tipo pode ser convertido para um tipo enumerado?
 
--   Linguagens sem suporte a tipos enumerados
 
-    -   `int red = 0, blue = 1;`
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
-    -   Problemas?
+- Linguagens sem suporte a tipos enumerados
+
+    - `int red = 0, blue = 1;`
+
+    - Problemas?
 
     \pause
 
--   C / C++
+- C / C++
 
-    -   As constantes enumeradas só podem aparecer em um tipo
+    - As constantes enumeradas só podem aparecer em um tipo
 
         ```cpp
         enum colors {red, blue, green, yellow, black};
@@ -321,64 +341,68 @@ title: Tipos de dados
         myColor = 4;     // ilegal em C++, legal em C
         ```
 
-### Tipo ordinal definido pelo usuário - tipos enumerados
 
--   Ada
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
-    -   As constantes enumeradas podem aparecer em mais do que um declaração de
-        tipo
+- Ada
 
-    -   O contexto é utilizado para distinguir entre constantes com o mesmo nome
+    - As constantes enumeradas podem aparecer em mais do que um declaração de
+      tipo
 
-    -   As vezes o usuário tem que indicar o tipo
+    - O contexto é utilizado para distinguir entre constantes com o mesmo nome
 
-    -   As constantes enumeradas não podem ser convertidas para inteiros
+    - As vezes o usuário tem que indicar o tipo
 
-    -   Outros tipos não podem ser convertidos para tipos enumerados
+    - As constantes enumeradas não podem ser convertidas para inteiros
 
-### Tipo ordinal definido pelo usuário - tipos enumerados
+    - Outros tipos não podem ser convertidos para tipos enumerados
 
--   Java
 
-    -   Adicionado ao Java 5.0 em 2004
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
-    -   Todos os tipos enumerados são subclasses da classe `Enum`
+- Java
 
-    -   Métodos herdados de `Enum` (`ordinal`, `name`, etc)
+    - Adicionado ao Java 5.0 em 2004
 
-    -   É possível adicionar métodos e atributos
+    - Todos os tipos enumerados são subclasses da classe `Enum`
 
-    -   Sem conversões automáticas
+    - Métodos herdados de `Enum` (`ordinal`, `name`, etc)
 
-    -   É possível utilizar o mesmo nome da constante enumerada em diferentes
-        tipos
+    - É possível adicionar métodos e atributos
+
+    - Sem conversões automáticas
+
+    - É possível utilizar o mesmo nome da constante enumerada em diferentes
+      tipos
 
     \pause
 
--   Outras linguagens
+- Outras linguagens
 
-    -   Interessantemente, nenhum linguagem de script recente suporta tipos
-        enumerados. Por quê?
+    - Interessantemente, nenhum linguagem de script recente suporta tipos
+      enumerados. Por quê?
 
-### Tipo ordinal definido pelo usuário - tipos enumerados
 
--   Avaliação \pause
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
-    -   Ajuda na legibilidade
+- Avaliação \pause
 
-    -   Confiabilidade (o compilador pode detectar erros)
+    - Ajuda na legibilidade
 
-    -   Java e Ada oferecem mais confiabilidade do que C++, e C++ mais do C
+    - Confiabilidade (o compilador pode detectar erros)
 
-    -   Java tem um melhor encapsulamento (como adicionar um atributo a um tipo
-        enumerado em C/C++ ou Ada?)
+    - Java e Ada oferecem mais confiabilidade do que C++, e C++ mais do C
 
-### Tipo ordinal definido pelo usuário - tipos subintervalo
+    - Java tem um melhor encapsulamento (como adicionar um atributo a um tipo
+      enumerado em C/C++ ou Ada?)
 
--   Um **tipo subintervalo** é uma subsequência contínua de um tipo ordinal. Em
-    geral, são utilizados para índices de arranjos \pause
 
--   Exemplo em Ada
+## Tipo ordinal definido pelo usuário - tipos subintervalo
+
+- Um **tipo subintervalo** é uma subsequência contínua de um tipo ordinal. Em
+  geral, são utilizados para índices de arranjos \pause
+
+- Exemplo em Ada
 
     ```ada
     type Days is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);
@@ -392,158 +416,173 @@ title: Tipos de dados
 
     \pause
 
--   A atribuição `Day2 := Day1` é verificada em tempo de execução e só será
-    válida se `Day1` estiver no intervalo `Mon..Fri`.
+- A atribuição `Day2 := Day1` é verificada em tempo de execução e só será
+  válida se `Day1` estiver no intervalo `Mon..Fri`.
 
-### Tipo ordinal definido pelo usuário - tipos subintervalo
 
--   Avaliação \pause
+## Tipo ordinal definido pelo usuário - tipos subintervalo
 
-    -   Ajuda na legibilidade e confiabilidade
+- Avaliação \pause
 
-    -   Segundo Sebesta, é estranho que nenhum outra linguagem contemporânea
-        além do Ada 95 suporte subintervalos
+    - Ajuda na legibilidade e confiabilidade
 
-    -   Uso restrito (e se os valores permitidos não formam um intervalo
-        contínuo?)
+    - Segundo Sebesta, é estranho que nenhum outra linguagem contemporânea além
+      do Ada 95 suporte subintervalos
 
-# Arranjos
+    - Uso restrito (e se os valores permitidos não formam um intervalo
+      contínuo?)
 
-### Arranjos
 
--   Um **arranjo** é um agregado homogêneo de elementos, onde cada elemento é
-    identificado pela sua posição relativa ao primeiro elemento do agregado
-    \pause
+Arranjos e registros
+====================
 
--   Questões de projeto
+## Arranjos
 
-    -   Quais são os tipos permitidos para os índices?
+- Um **arranjo** é um agregado homogêneo de elementos, onde cada elemento é
+  identificado pela sua posição relativa ao primeiro elemento do agregado
 
-    -   Os índices são checados?
 
-    -   Quando o intervalo de índice é vinculado?
+## Arranjos
 
-    -   Quando a alocação acontece?
+- Questões de projeto
 
-    -   Os arranjos podem ser inicializados quando a sua memória é alocada?
+    - Quais são os tipos permitidos para os índices?
 
-    -   Arranjos multidimensionais irregulares ou regulares são permitidos?
+    - Os índices são checados?
 
-    -   Quais os tipos de fatias (slices) são permitidos?
+    - Quando o intervalo de índice é vinculado?
 
-### Arranjos
+    - Quando a alocação acontece?
 
--   Índices
+    - Os arranjos podem ser inicializados quando a sua memória é alocada?
 
-    -   Em um operação de seleção, é especificado o nome do arranjo e o(s)
-        índice(s), e o elemento correspondente é obtido
+    - Arranjos multidimensionais irregulares ou regulares são permitidos?
 
-            array_name(indices) -> element
+    - Quais os tipos de fatias (slices) são permitidos?
 
-    -   Sintaxe da seleção
 
-        -   Fortran e Ada: `Sum := Sum + B(I)`
+## Arranjos
 
-        -   Maioria das linguagens: `Sum := Sum + B[I]`
+- Índices
 
-    -   Tipos dos índices
+    - Em um operação de seleção, é especificado o nome do arranjo e o(s)
+      índice(s), e o elemento correspondente é obtido
 
-        -   Maioria da linguagens: inteiros
+        ```
+        array_name(indices) -> element
+        ```
 
-        -   Ada: qualquer tipo ordinal
+    - Sintaxe da seleção
+
+        - Fortran e Ada: `Sum := Sum + B(I)`
+
+        - Maioria das linguagens: `Sum := Sum + B[I]`
+
+
+## Arranjos
+
+- Índices
+
+    - Tipos dos índices
+
+        - Maioria da linguagens: inteiros
+
+        - Ada: qualquer tipo ordinal
 
             ```ada
             type Week_Day_Type is (Monday, Tuesday, Wednesday,
-                                   Thursday, Friday);
+                       Thursday, Friday);
             type Sales is array (Week_Day_Type) of Float;
             ```
 
-    -   Verificação do intervalo do índice
 
-        -   Java, C\#, ML, Python: sim
+## Arranjos
 
-        -   C, C++, Perl, Fortran: não
+- Índices
 
-        -   Ada: por padrão sim, mas o programador pode optar por não
+    - Verificação do intervalo do índice
 
-    -   Índices negativos: Perl, Python, Ruby, Lua
+        - Java, C\#, ML, Python: sim
 
-### Arranjos
+        - C, C++, Perl, Fortran: não
 
--   Categorização segundo a vinculação do intervalo de índices, da vinculação da
-    memória e de onde a memória é alocada
+        - Ada: por padrão sim, mas o programador pode optar por não
 
-    -   Estático
+    - Índices negativos: Perl, Python, Ruby, Lua
 
-        -   Intervalo de índices e memória vinculados estaticamente
 
-        \pause
+## Arranjos
 
-    -   Dinâmico fixo na pilha
+Categorização segundo a vinculação do intervalo de índices, da vinculação da
+memória e de onde a memória é alocada
 
-        -   Intervalo de índices vinculado estaticamente, mas a alocação é feita
-            em tempo de execução (na elaboração da variável)
+- Estático
 
-        \pause
+    - Intervalo de índices e memória vinculados estaticamente \pause
 
-    -   Dinâmico na pilha
+- Dinâmico fixo na pilha
 
-        -   Intervalo de índices e memória são vinculados em tempo de execução
+    - Intervalo de índices vinculado estaticamente, mas a alocação é feita
+    em tempo de execução (na elaboração da variável)
 
-        -   O intervalo de índices não pode ser alterado depois de vinculado
 
-        \pause
+## Arranjos
 
-    -   Dinâmico fixo no heap
+- Dinâmico na pilha
 
-        -   Semelhante ao dinâmico fixo na pilha
+    - Intervalo de índices e memória são vinculados em tempo de execução
 
-        -   Intervalo de índices é vinculado em tempo de execução, mas não pode
-            ser alterado
+    - O intervalo de índices não pode ser alterado depois de vinculado \pause
 
-        \pause
+- Dinâmico fixo no heap
 
-    -   Dinâmico no heap
+    - Semelhante ao dinâmico fixo na pilha
 
-        -   Intervalo de índices e memória são vinculados dinamicamente
+    - Intervalo de índices é vinculado em tempo de execução, mas não pode
+    ser alterado \pause
 
-        -   Podem ser alterados a qualquer momento
+- Dinâmico no heap
 
-### Arranjos
+    - Intervalo de índices e memória são vinculados dinamicamente
 
--   Exemplos
+    - Podem ser alterados a qualquer momento
 
-    -   C++ suporta os 5 tipos
 
-        ```cpp
-        void f(int n) {
-            static int a[10];
-            int b[10];
-            int c[n];
-            int *d = new int[n];
-            vector<int> e;
-            e.push_back(52); // aumenta o tamanho em 1
-            delete[] d;
-        }
-        ```
+## Arranjos - Exemplos
 
-        \pause
+- C++ suporta os 5 tipos
 
-    -   Java e C\#
+    ```cpp
+    void f(int n) {
+        static int a[10];
+        int b[10];
+        int c[n];
+        int *d = new int[n];
+        vector<int> e;
+        e.push_back(52); // aumenta o tamanho em 1
+        delete[] d;
+    }
+    ```
 
-        -   Todos os arranjos (primitivos) são dinâmicos fixo no heap
 
-        -   A classe `ArrayList` fornecem suporte a arranjos dinâmicos no heap
+## Arranjos - Exemplos
 
-        \pause
+- Java e C\#
 
-    -   Perl, Javascript, Ruby, Lua, Python: dinâmicos no heap
+    - Todos os arranjos (primitivos) são dinâmicos fixo no heap
 
-### Arranjos
+    - A classe `ArrayList` fornecem suporte a arranjos dinâmicos no heap
 
--   Inicialização
+    \pause
 
-    -   Fortran
+- Perl, Javascript, Ruby, Lua, Python: dinâmicos no heap
+
+
+## Arranjos
+
+- Inicialização
+
+    - Fortran
 
         ```fortran
         Integer, Dimension (3) :: List = (/0, 5, 5/)
@@ -551,7 +590,7 @@ title: Tipos de dados
 
         \pause
 
-    -   C, C++, Java, C\#
+    - C, C++, Java, C\#
 
         ```cpp
         int list[] = {4, 5, 7, 83};
@@ -559,7 +598,7 @@ title: Tipos de dados
 
         \pause
 
-    -   Strings em C
+    - Strings em C
 
         ```c
         char name[] = "freddie";
@@ -568,72 +607,70 @@ title: Tipos de dados
 
         \pause
 
-    -   Ada
+    - Ada
 
         ```ada
         List : array (1..5) of Integer := (1, 3, 5, 7, 9);
         Bunch : array (1..5) of Integer :=
-                          (1 => 17, 3 => 34, others => 0);
+                (1 => 17, 3 => 34, others => 0);
         ```
 
-### Arranjos
+## Arranjos
 
--   Operações
+- Operações
 
-    -   Atribuição
+    - Atribuição
 
-    -   Comparação de igualdade
+    - Comparação de igualdade
 
-    -   Fatias
+    - Fatias \pause
 
-    \pause
+- Exemplos
 
--   Exemplos
+    - APL fornece o mais poderoso conjunto de operações com arranjos
 
-    -   APL fornece o mais poderoso conjunto de operações com arranjos
+    - Ada: atribuição, comparação de igualdade e desigualdade, concatenação
+      (`&`)
 
-    -   Ada: atribuição, comparação de igualdade e desigualdade, concatenação
-        (`&`)
+    - Python: atribuição (referência), igualdade, pertinência (`in`),
+      concatenação (`+`)
 
-    -   Python: atribuição (referência), igualdade, pertinência (`in`),
-        concatenação (`+`)
+    - Fortran 95: atribuição, operações aritméticas, relacionais e lógicas
 
-    -   Fortran 95: atribuição, operações aritméticas, relacionais e lógicas
+    - Linguagens baseadas no C: através de funções de biblioteca
 
-    -   Linguagens baseadas no C: através de funções de biblioteca
 
-### Arranjos
+## Arranjos
 
--   Um **arranjo regular** é um arranjo multidimensional onde todas as linhas
-    tem o mesmo número de elementos, todas as colunas tem o mesmo números de
-    elementos...
+- Um **arranjo regular** é um arranjo multidimensional onde todas as linhas tem
+  o mesmo número de elementos, todas as colunas tem o mesmo números de
+  elementos...
 
--   Um **arranjo irregular** tem linhas (colunas, etc), com um número variado de
-    elementos
+- Um **arranjo irregular** tem linhas (colunas, etc), com um número variado de
+  elementos
 
-    -   Em geral quando arranjos multidimensionais são arranjos de arranjos
+    - Em geral quando arranjos multidimensionais são arranjos de arranjos \pause
 
-    \pause
+- Exemplos
 
--   Exemplos
+    - Arranjo irregular (C, C++, Java)
 
-    -   Arranjo irregular (C, C++, Java)
+        myArray[3][7]
 
-            MyArray[3][7]
+    - Arranjo regular (Fortran, Ada, C\#)
 
-    -   Arranjo regular (Fortran, Ada, C\#)
+        myArray[3, 7]
 
-            MyArray[3, 7]
 
-### Arranjos
+## Arranjos
 
--   Uma **fatia** de um arranjo é uma subestrutura deste arranjo
+- Uma **fatia** de um arranjo é uma subestrutura deste arranjo
 
--   Algumas linguagens oferecem maneiras de se referir a fatias \pause
+- Algumas linguagens oferecem maneiras de se referir a fatias \pause
 
--   Exemplos
+- Exemplos
 
-    -   Python
+    - Python
 
         ```python
         vector = [2, 4, 6, 8, 10, 12, 14, 16]
@@ -643,55 +680,60 @@ title: Tipos de dados
         vector[0:7:2] # [2, 6, 10, 14]
         ```
 
-    -   Fortran 95: mais elaborado, se `mat` é uma matrix, a coluna 2 pode ser
+    - Fortran 95: mais elaborado, se `mat` é uma matrix, a coluna 2 pode ser
         referenciada por `mat(:,2)`
 
-### Arranjos
 
--   Avaliação \pause
+## Arranjos
 
-    -   Praticamente todas as linguagens fornecem suporte a arranjos
+- Avaliação \pause
 
-    -   Avanços em relação ao Fortran 1
+    - Praticamente todas as linguagens fornecem suporte a arranjos
 
-        -   Possibilidade de usar tipos ordinais como índices
+    - Avanços em relação ao Fortran 1
 
-        -   Fatias
+        - Possibilidade de usar tipos ordinais como índices
 
-        -   Arranjos dinâmicos
+        - Fatias
 
-        -   Arranjos associativos
+        - Arranjos dinâmicos
 
-### Arranjos
+        - Arranjos associativos
 
--   Implementação
 
-    -   A função de acesso mapeia os índices para um endereço do arranjo \pause
+## Arranjos
 
-    -   Arranjos unidimensionais
+- Implementação
 
-        -   `address(list[k]) = address (list[lower_bound]) + ((k - lower_bound) * element_size)`
+    - A função de acesso mapeia os índices para um endereço do arranjo \pause
 
-        -   Se o limite inferior for 0,
-            `address(list[k]) = address(list[0]) + k * element_size`
+    - Arranjos unidimensionais
+
+        - `address(list[k]) = address (list[lower_bound]) + ((k - lower_bound) * element_size)`
+
+        - Se o limite inferior for 0,
+        `address(list[k]) = address(list[0]) + k * element_size`
 
         \pause
 
-    -   Arranjos multidimensionais regulares
+    - Arranjos multidimensionais regulares
 
-        -   Ordenados por linhas
+        - Ordenados por linhas
 
-        -   Ordenados por colunas \pause
+        - Ordenados por colunas \pause
 
-        -   O tipo da implementação tem alguma influência na execução do
-            programa?
+        - O tipo da implementação tem alguma influência na execução do
+        programa?
 
-### Arranjos associativos
 
--   Um **arranjo associativo** é um agregado de elementos indexados através de
-    uma chave. Normalmente conhecido como tipo hash \pause
+## Arranjos associativos
 
--   Exemplo Perl
+- Um **arranjo associativo** é um agregado de elementos indexados através de
+  uma chave. Normalmente conhecido como tipo hash \pause
+
+- Exemplo Perl
+
+    \scriptsize
 
     ```perl
     %salarios = ("Gary" => 75000, "Perry" => 57000
@@ -701,68 +743,76 @@ title: Tipos de dados
     %salaries = ();
     ```
 
-    \pause
-
--   Outras linguagens que possuem arrays associativos
-
-    -   PHP, Lua, Python, Javascript (primitivo)
-
-    -   C\# e C++ (bibliotecas)
+    \normalsize
 
     \pause
 
--   Como os arranjos associativos podem ser implementados?
+- Outras linguagens que possuem arranjos associativos
 
-# Registros
+    - PHP, Lua, Python, Javascript (primitivo)
 
-### Registros
+    - C\# e C++ (bibliotecas)
 
--   Um **registro** é um agregado (heterogêneo) de elementos identificados pelo
-    nome e acessados pelo deslocamento em relação ao início do registro \pause
+    \pause
 
--   Questões de projeto
+- Como os arranjos associativos podem ser implementados?
 
-    -   Qual é sintaxe para referenciar os campos?
 
-    -   Referências elípticas são permitidas?
 
-### Registros
+## Registros
 
--   Definição de registros
+- Um **registro** é um agregado (heterogêneo) de elementos identificados pelo
+  nome e acessados pelo deslocamento em relação ao início do registro \pause
 
-    -   Cobol utiliza números para mostrar o nível de registros aninhados
+- Questões de projeto
+
+    - Qual é sintaxe para referenciar os campos?
+
+    - Referências elípticas são permitidas?
+
+
+## Registros
+
+- Definição de registros
+
+    - Cobol utiliza números para mostrar o nível de registros aninhados
 
         ```cobol
         01 EMPLOYEE-RECORD.
-          02 EMPLOYEE-NAME.
-            05 FIRST  PICTURE IS X(20).
-            05 MIDDLE PICTURE IS X(10).
-            05 LAST   PICTURE IS x(20).
-          02 HOURLY-RATE PICURE IS 99V99.
+        02 EMPLOYEE-NAME.
+        05 FIRST  PICTURE IS X(20).
+        05 MIDDLE PICTURE IS X(10).
+        05 LAST PICTURE IS x(20).
+        02 HOURLY-RATE PICURE IS 99V99.
         ```
 
-### Registros
 
--   Definição de registros
+## Registros
 
-    -   Ada, os registros são definidos de uma forma mais ortogonal
+- Definição de registros
+
+    - Ada, os registros são definidos de uma forma mais ortogonal
+
+        \scriptsize
 
         ```ada
         type Employee_Name_Type is record
-          First: String(1..20);
-          Middle: String(1..10);
-          Last: String(1..20);
+        First: String(1..20);
+        Middle: String(1..10);
+        Last: String(1..20);
         end record;
 
         type Employee_Record_Type is record
-          Employee_Name: Employe_Name_Type;
-          Hourly_Rate: Float;
+        Employee_Name: Employe_Name_Type;
+        Hourly_Rate: Float;
         end record;
         ```
 
         \pause
 
-    -   Em Lua, os registros podem ser simulados com o tipo table
+    - Em Lua, os registros podem ser simulados com o tipo table
+
+        \scriptsize
 
         ```lua
         employee = {}
@@ -770,165 +820,175 @@ title: Tipos de dados
         employee.hourlyRate = 13.20
         ```
 
-### Registros
 
--   Referência aos campos
+## Registros
 
-    -   Cobol: `nome_do_campo of nome_do_registro_1 ... nome_do_registro_n`
+- Referência aos campos
 
-    -   Demais linguagens: `registro.campo` (Fortran usa %)
+    - Cobol: `nome_do_campo of nome_do_registro_1 ... nome_do_registro_n`
 
-    -   Referência totalmente especificada: inclui todos os nomes dos registros
+    - Demais linguagens: `registro.campo` (Fortran usa %)
 
-    -   Referências elípticas: nem todos os nomes dos registros precisam ser
-        especificados, deste que não haja ambiguidade
+    - Referência totalmente especificada: inclui todos os nomes dos registros
 
-        -   Cobol: FIRST, FIRST of EMPLOYEE-NAME, FIRST of EMPLOYEE-RECORD
+    - Referências elípticas: nem todos os nomes dos registros precisam ser
+      especificados, deste que não haja ambiguidade
 
-### Registros
+        - Cobol: FIRST, FIRST of EMPLOYEE-NAME, FIRST of EMPLOYEE-RECORD
 
--   Operações
 
-    -   Atribuição (cópia) - C/C++, Ada
+## Registros
 
-    -   Comparação por igualdade - Ada
+- Operações
 
-### Registros
+    - Atribuição (cópia) - C/C++, Ada
 
--   Avaliação
+    - Comparação por igualdade - Ada
 
-    -   As referências elípticas do Cobol são ruins para a legibilidade
 
-    -   Usado quando uma coleção de valores heterogêneos são necessários
+## Registros
 
-    -   Acesso a um elemento de um registro é rápido, pois o deslocamento do
-        início do registro é estático
+- Avaliação
 
-### Registros
+    - As referências elípticas do Cobol são ruins para a legibilidade
 
--   Implementação
+    - Usado quando uma coleção de valores heterogêneos são necessários
 
-    -   Os campos do registro são armazenados em células adjacentes de memória
+    - Acesso a um elemento de um registro é rápido, pois o deslocamento do
+      início do registro é estático
 
-    -   A cada campo é associado o deslocamento relativo ao início do registro
 
-    ![](imagens/copl-6-7.png)
+## Registros
 
-# Tuplas
+- Implementação
 
-### Tuplas
+    - Os campos do registro são armazenados em células adjacentes de memória
 
--   Um tupla é semelhante a um registro, mas os elementos não são nomeados
+    - A cada campo é associado o deslocamento relativo ao início do registro
 
--   Em geral usados para retornar múltiplos valores \pause
+    ![](imagens/copl-6-7.png){width=6cm}
 
--   Exemplos
 
-    -   Python
+
+Tuplas e listas
+===============
+
+## Tuplas
+
+- Um tupla é semelhante a um registro, mas os elementos não são nomeados
+
+- Em geral usados para retornar múltiplos valores
+
+
+## Tuplas / Exemplos
+
+- Python
+
+    ```python
+    > x = (1, 3.4, 'casa')
+    > x[0]
+    1
+    > x[2]
+    'casa'
+    > a, b, c = x
+    ```
+
+- ML
+
+    ```ocaml
+    val myTuple = (3, 5.8, 'apple');
+    #1(myTuple); (* primeiro elemento *)
+    type intReal = int * real;
+    ```
+
+
+
+## Listas
+
+- Suportado primeiramente em Lisp
+
+- Comum nas linguagens imperativas atuais
+
+
+## Listas - Exemplos
+
+- Lisp (imutável)
+
+    - Elementos podem ser de tipos diferentes
+
+    - Literal: `’(1 2 5 8)`, vazio `null`
+
+    - Construção: `(cons 0 ’(1 2))` resulta em `’(0 1 2)`
+
+    - Cabeça: `(car ’(1 2 3))` resulta em `1`
+
+    - Cauda: `(cdr ’(1 2 3))` resulta em `’(2 3)`
+
+- ML (imutável)
+
+    - Elementos precisam ser do mesmo tipo
+
+    - Literal: `[1, 2, 5, 8]`, vazio `[]`
+
+    - Construção: `0 :: [1, 2]` resulta em `[0, 1, 2]`
+
+    - Cabeça: `hd [1, 2, 3]` resulta em `5`
+
+    - Cauda: `tl [1, 2, 3]` resulta em `[2, 3]`
+
+
+## Listas
+
+- Python (mutável)
+
+    - Arranjo dinâmico
+
+    - *List comprehensions*, usado para criar listas usando uma notação
+    semelhante a de conjuntos
 
         ```python
-        > x = (1, 3.4, 'casa')
-        > x[0]
-        1
-        > x[2]
-        'casa'
-        > a, b, c = x
+        > a = [4, 10, -6]
+        > a[0]
+        4
+        > [x ** 2 for x in range(12) if x % 3 == 0]
+        [0, 9, 36, 81]
         ```
 
-    -   ML
 
-        ```ocaml
-        val myTuple = (3, 5.8, 'apple');
-        #1(myTuple); (* primeiro elemento *)
-        type intReal = int * real;
-        ```
 
-# Listas
+Uniões
+======
 
-### Listas
+## Uniões
 
--   Suportado primeiramente em Lisp
+- **União** é um tipo cujo as variáveis podem armazena valores com diferentes
+  tipos durante a execução do programa
 
--   Comum nas linguagens imperativas atuais \pause
+- Aplicações
 
--   Exemplos
+    - Programação de sistemas: o mesmo conjunto de bytes pode ser interpretado
+      de maneiras diferentes em momentos diferentes
 
-    -   Lisp (imutável)
+    - Representar conjuntos alternativos de campos em um registro \pause
 
-        -   Elementos podem ser de tipos diferentes
+- Questões de projeto
 
-        -   Literal: `’(1 2 5 8)`, vazio `null`
+    - Deve haver checagem de tipo?
 
-        -   Construção: `(cons 0 ’(1 2))` resulta em `’(0 1 2)`
+    - As uniões devem ficar dentro de registros?
 
-        -   Cabeça: `(car ’(1 2 3))` resulta em `1`
 
-        -   Cauda: `(cdr ’(1 2 3))` resulta em `’(2 3)`
+## Uniões
 
-    -   ML (imutável)
+- Uniões livres não fornecem suporte a checagem de tipo. Exemplos: Fortran, C,
+  C++
 
-        -   Elementos precisam ser do mesmo tipo
-
-        -   Literal: `[1, 2, 5, 8]`, vazio `[]`
-
-        -   Construção: `0 :: [1, 2]` resulta em `[0, 1, 2]`
-
-        -   Cabeça: `hd [1, 2, 3]` resulta em `5`
-
-        -   Cauda: `tl [1, 2, 3]` resulta em `[2, 3]`
-
-### Listas
-
--   Exemplos
-
-    -   Python (mutável)
-
-        -   Arranjo dinâmico
-
-        -   *List comprehensions*, usado para criar listas usando uma notação
-            semelhante a de conjuntos
-
-            ```python
-            > a = [4, 10, -6]
-            > a[0]
-            4
-            > [x ** 2 for x in range(12) if x % 3 == 0]
-            [0, 9, 36, 81]
-            ```
-
-# Uniões
-
-### Uniões
-
--   **União** é um tipo cujo as variáveis podem armazena valores com diferentes
-    tipos durante a execução do programa
-
--   Aplicações
-
-    -   Programação de sistemas: o mesmo conjunto de bytes pode ser interpretado
-        de maneiras diferentes em momentos diferentes
-
-    -   Representar conjuntos alternativos de campos em um registro
-
-    \pause
-
--   Questões de projeto
-
-    -   Deve haver checagem de tipo?
-
-    -   As uniões devem ficar dentro de registros?
-
-### Uniões
-
--   Uniões livres não fornecem suporte a checagem de tipo. Exemplos: Fortran, C,
-    C++
-
--   Exemplo C
+- Exemplo C
 
     ```c
     union flexType {
-      int a;
-      float b;
+        int a;
+        float b;
     };
     union flexType x;
     float y;
@@ -937,52 +997,52 @@ title: Tipos de dados
     y = x.b;
     ```
 
-### Uniões
+## Uniões
 
--   Uniões discriminadas fornecem suporte a checagem de tipo. Exemplos: Algol
-    68, Pascal, Ada
+- Uniões discriminadas fornecem suporte a checagem de tipo. Exemplos: Algol 68,
+  Pascal, Ada
 
--   Exemplo Ada
+- Exemplo Ada
 
-<!-- FIXME: mesmo slide !-->
-
-###
+<div class="columns">
+<div class="column" width="50%">
+\tiny
 
 ```ada
 type is (Circle, Triangle, Rectangle);
 type Colors is (Red, Green, Blue);
 type Figure (Form : Shape) is record
-  Filled : Boolean;
-  Color : Colors;
-  case Form is
+    Filled : Boolean;
+    Color : Colors;
+    case Form is
     when Circle =>
-      Diameter : Float;
+        Diameter : Float;
     when Triangle =>
-      Left_Side : Integer;
-      Right_Side : Integer;
-      Angle : Float;
+        Left_Side : Integer;
+        Right_Side : Integer;
+    Angle : Float;
     when Rectangle =>
-      Side_1 : Integer;
-      Side_2 : Integer;
-  end case;
+        Side_1 : Integer;
+        Side_2 : Integer;
+    end case;
 end record;
 ```
-
-###
+</div>
+<div class="column" width="50%">
+\tiny
 
 ```ada
 // pode assumir qualquer forma
 Figure_1 : Figure;
 
 // só pode ser um Triangle
-Figure_2 : Figure(Form =>
-                  Triangle);
+Figure_2 : Figure(Form => Triangle);
 ...
 Figure_1 := (Filled => True,
-             Color => Blue,
-             Form => Rectangle,
-             Side_1 => 12,
-             Side_2 => 3);
+         Color => Blue,
+         Form => Rectangle,
+         Side_1 => 12,
+         Side_2 => 3);
 
 ...
 // checado em tempo de execução
@@ -990,27 +1050,33 @@ Figure_1 := (Filled => True,
 // for Circle, um erro é gerado
 if (Figure_1.Diameter > 3.0) ...
 ```
+</div>
+</div>
 
-### Uniões
+
+## Uniões
 
 ![](imagens/copl-6-8.png)
 
-### Uniões
 
--   F\# (semelhante a Haskell e ML)
+## Uniões
+
+- F\# (semelhante a Haskell e ML)
+
+    \footnotesize
 
     ```fsharp
     type intReal =
-       | IntValue of int
-       | RealValue of float;;
+     | IntValue of int
+     | RealValue of float;;
 
     let ir1 = IntValue 17;;
     let ir2 = RealValue 3.4;;
 
     let printType value =
         match value with
-            | IntValue value -> printfn "It is an integer"
-            | RealValue value -> printfn "It is a float";;
+        | IntValue value -> printfn "It is an integer"
+        | RealValue value -> printfn "It is a float";;
 
     printType ir1;;
     It is an integer
@@ -1018,136 +1084,138 @@ if (Figure_1.Diameter > 3.0) ...
     It is a float
     ```
 
-### Uniões
 
--   Avaliação
+## Uniões
 
-    -   Uniões livres não são seguras, mas são necessárias para programação de
-        sistemas
+- Avaliação
 
-    -   Uniões discriminadas (como o do Ada) são mais seguras
+    - Uniões livres não são seguras, mas são necessárias para programação de
+      sistemas
 
-    -   Linguagens funcionais como Haskell, ML e F\# são completamente seguras
+    - Uniões discriminadas (como o do Ada) são mais seguras
 
-    -   Java e C\# não oferecem suporte a uniões
+    - Linguagens funcionais como Haskell, ML e F\# são completamente seguras
 
-    -   Em linguagens com suporte a programação orientada a objetos, a herança
-        com polimorfismo é uma alternativa (para conjuntos de campos
-        alternativos)
+    - Java e C\# não oferecem suporte a uniões
 
-# Ponteiros e referências
+    - Em linguagens com suporte a programação orientada a objetos, a herança
+      com polimorfismo é uma alternativa (para conjuntos de campos
+      alternativos)
 
-### Ponteiros e referências
 
--   Um **ponteiro** é um tipo cuja as variáveis podem armazenar valores de
-    memória ou um valor especial nil \pause
 
--   Usos
+Ponteiros e referências
+=======================
 
-    -   Endereçamento indireto
+## Ponteiros e referências
 
-    -   Alocação dinâmica de memória
+- Um **ponteiro** é um tipo cuja as variáveis podem armazenar valores de
+  memória ou um valor especial nil \pause
 
-    \pause
+- Usos
 
--   Categorias de variáveis
+    - Endereçamento indireto
 
-    -   Tipos referência
+    - Alocação dinâmica de memória \pause
 
-    -   Tipos valor
+- Categorias de variáveis
 
-### Ponteiros e referências
+    - Tipos referência
 
--   Questões de projeto
+    - Tipos valor
 
-    -   Qual é o escopo e o tempo de vida de um ponteiro?
 
-    -   Qual é o tempo de vida das variável dinâmicas no heap?
+## Ponteiros e referências
 
-    -   Os ponteiros são restritos ao tipo de valores que eles podem apontar?
+- Questões de projeto
 
-    -   Os ponteiros são usados para alocação dinâmica, endereçamento indireto
-        ou ambos?
+    - Qual é o escopo e o tempo de vida de um ponteiro?
 
-    -   A linguagem deve suportar tipos ponteiros, tipos referências, os ambos?
+    - Qual é o tempo de vida das variável dinâmicas no heap?
 
-### Ponteiros e referências
+    - Os ponteiros são restritos ao tipo de valores que eles podem apontar?
 
--   Operações
+    - Os ponteiros são usados para alocação dinâmica, endereçamento indireto ou
+      ambos?
 
-    -   Atribuição: define um valor de endereço útil
+    - A linguagem deve suportar tipos ponteiros, tipos referências, os ambos?
 
-    -   Desreferenciamento
 
-        -   Retorna o valor armazenado no local indicado pelo valor do ponteiro
+## Ponteiros e referências
 
-        -   Implícito
+- Operações
 
-        -   Explícito
+    - Atribuição: define um valor de endereço útil
 
-    -   Aritmética (C/C++)
+    - Desreferenciamento
 
-### Ponteiros e referências
+        - Retorna o valor armazenado no local indicado pelo valor do ponteiro
 
--   Problemas com ponteiros
+        - Implícito
 
-    \pause
+        - Explícito
 
-    -   Ponteiro pendente: \pause O valor do ponteiro aponta para uma variável
-        dinâmica no heap que foi desalocada
+    - Aritmética (C/C++)
 
-        -   Como criar um ponteiro pendente?
 
-        \pause
+## Ponteiros e referências
 
-    -   Vazamento de memória: \pause Uma variável dinâmica na pilha não é mais
-        acessível no programa (lixo)
+- Problemas com ponteiros \pause
 
-        -   Como criar lixo?
+    - Ponteiro pendente: \pause O valor do ponteiro aponta para uma variável
+      dinâmica no heap que foi desalocada
 
-### Ponteiros e referências
+        - Como criar um ponteiro pendente? \pause
 
--   Exemplo de C/C++
+    - Vazamento de memória: \pause Uma variável dinâmica na pilha não é mais
+      acessível no programa (lixo)
 
-    -   Bastante flexível
+        - Como criar lixo?
 
-    -   Usando para endereçamento indireto e para gerenciamento de memória
 
-    -   Ponteiros podem apontar para qualquer variável, independente de quando
-        ou de onde ela foi alocada
+## Ponteiros e referências
 
-    -   Desreferenciamento explícito (operador \*)
+- Exemplo de C/C++
 
-    -   Ponteiros “sem tipo” (`void *`)
+    - Bastante flexível, usando para endereçamento indireto e para
+      gerenciamento de memória
+
+    - Ponteiros podem apontar para qualquer variável, independente de quando ou
+      de onde ela foi alocada
+
+    - Desreferenciamento explícito (operador \*)
+
+    - Ponteiros “sem tipo” (`void *`)
+
+        \scriptsize
 
         ```c
         int a = 10
-        int *p = &a;             // aponta para variável
-                                 // alocada na pilha
-        p = malloc(sizeof(int)); // aponta para varíavel
-                                 // dinâmica na pilha
+        int *p = &a; // aponta para variável alocada na pilha
+        p = malloc(sizeof(int)); // aponta para varíavel dinâmica na pilha
         ...
         int list[10];
         p = list;         // equivalente a &list[0]
         int x = *(p + 3); // equivalente a p[3] e list[3]
         ```
 
-### Ponteiros e referências
 
--   Uma **referência** é um tipo cuja as variáveis referem-se a objetos e
-    valores
+## Ponteiros e referências
 
--   Diferença em relação a ponteiros: como ponteiros armazenam endereços de
-    memória, é possível fazer operações aritméticas
+- Uma **referência** é um tipo cuja as variáveis referem-se a objetos e valores
 
-### Ponteiros e referências
+- Diferença em relação a ponteiros: como ponteiros armazenam endereços de
+  memória, é possível fazer operações aritméticas
 
--   Referências em C++
 
-    -   Uma referência em C++ é um ponteiro constante que é desreferenciado
-        implicitamente
+## Ponteiros e referências
 
-    -   Usado principalmente na passagem de parâmetros
+- Referências em C++
+
+    - Uma referência em C++ é um ponteiro constante que é desreferenciado
+      implicitamente
+
+    - Usado principalmente na passagem de parâmetros
 
         ```cpp
         int x = 0;
@@ -1155,170 +1223,175 @@ if (Figure_1.Diameter > 3.0) ...
         ref = 10; // altera o valor de x
         ```
 
-    \pause
 
--   Referências em Java
+## Ponteiros e referências
 
-    -   Versão estendida das referências em C++
+- Referências em Java
 
-    -   Substitui o uso de ponteiros
+    - Versão estendida das referências em C++
 
-    -   Todas as instâncias de classe em Java são referenciados por variáveis do
-        tipo referência
+    - Substitui o uso de ponteiros
 
-    -   Gerência automática de memória
+    - Todas as instâncias de classe em Java são referenciados por variáveis do
+      tipo referência
 
-    \pause
+    - Gerência automática de memória \pause
 
--   Referências em C\#
+- Referências em C\#
 
-    -   Inclui as referências do Java e os ponteiros do C++
+    - Inclui as referências do Java e os ponteiros do C++
 
-    \pause
 
--   Smalltalk, Ruby, Lua
+## Ponteiros e referências
 
-    -   Todos os valores são acessados através de referências
+- Smalltalk, Ruby, Lua
 
-    -   Não é possível acessar o valor diretamente
+    - Todos os valores são acessados através de referências
 
-### Ponteiros e referências
+    - Não é possível acessar o valor diretamente
 
--   Implementação
 
-    -   Soluções para o problema de ponteiro pendente
+## Ponteiros e referências
 
-        -   Tombstones (lápides)
+- Implementação
 
-        -   Travas e chaves
+    - Soluções para o problema de ponteiro pendente
 
-        -   Não permitir desalocação explícita
+        - Tombstones (lápides)
 
-    -   Soluções para o problema de vazamento de memória
+        - Travas e chaves
 
-        -   Contagem de referências
+        - Não permitir desalocação explícita
 
-        -   Coletor de lixo (marcação e varredura - mark-swep)
+    - Soluções para o problema de vazamento de memória
 
-### Ponteiros e referências
+        - Contagem de referências
 
--   Avaliação
+        - Coletor de lixo (marcação e varredura - mark-swep)
 
-    -   Ponteiros pendentes e vazamento de memória são problemas
 
-    -   O gerenciamento do heap é difícil
+## Ponteiros e referências
 
-    -   Ponteiros e referências são necessários para estrutura de dados
-        dinâmicas
+- Avaliação
 
-    -   As referências de Java e C\# oferecem algumas das capacidades dos
-        ponteiros, mas sem os problemas
+    - Ponteiros pendentes e vazamento de memória são problemas
 
-# Verificação de tipos, tipificação forte e equivalência de tipos
+    - O gerenciamento do heap é difícil
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
+    - Ponteiros e referências são necessários para estrutura de dados dinâmicas
 
--   Vamos generalizar o conceito de operadores e operandos para incluir
-    atribuição e subprogramas
+    - As referências de Java e C\# oferecem algumas das capacidades dos
+      ponteiros, mas sem os problemas
 
--   **Verificação de tipo** é a atividade de garantir que os operandos de um
-    operador são de tipos compatíveis
 
--   Um **tipo compatível** ou é um tipo legal para o operador, ou pode ser
-    convertido implicitamente pelas regras da linguagem, para o tipo legal
+Verificação de tipos, tipificação forte e equivalência de tipos
+===============================================================
 
-    -   Conversão automática é chamada de coerção
+## Verificação de tipos, tipificação forte e equivalência de tipos
 
--   Um **erro de tipo** é a aplicação de um operador a operandos de tipos
-    inapropriados
+- Vamos generalizar o conceito de operadores e operandos para incluir
+  atribuição e subprogramas
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
+- **Verificação de tipo** é a atividade de garantir que os operandos de um
+  operador são de tipos compatíveis
 
--   Uma linguagem é **fortemente tipada** se os erros de tipos são sempre
-    detectados
+- Um **tipo compatível** ou é um tipo legal para o operador, ou pode ser
+  convertido implicitamente pelas regras da linguagem, para o tipo legal
 
-    -   Se a vinculação do tipo é estática, quase todas as verificações de tipo
-        podem ser estáticas
+    - Conversão automática é chamada de coerção
 
-    -   Se a vinculação de tipo é dinâmica, a verificação de tipo deve ser feita
-        em tempo de execução
+- Um **erro de tipo** é a aplicação de um operador a operandos de tipos
+  inapropriados
 
--   Vantagens da verificação de tipos
 
-    -   Permite a detecção do uso incorreto de variáveis que resultaria em erro
-        de tipo
+## Verificação de tipos, tipificação forte e equivalência de tipos
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
+- Uma linguagem é **fortemente tipada** se os erros de tipos são sempre
+  detectados
 
--   Exemplos
+    - Se a vinculação do tipo é estática, quase todas as verificações de tipo
+      podem ser estáticas
 
-    -   Fortran 95 menos fortemente tipada: parâmetros, `equivalence`
+    - Se a vinculação de tipo é dinâmica, a verificação de tipo deve ser feita
+      em tempo de execução
 
-    -   C/C++ menos fortemente tipada: uniões
+- Vantagens da verificação de tipos
 
-    -   Ada é quase fortemente tipada
+    - Permite a detecção do uso incorreto de variáveis que resultaria em erro
+      de tipo
 
-    -   Java e C\# são semelhantes a Ada
 
-    -   ML Haskell são fortemente tipadas
+## Verificação de tipos, tipificação forte e equivalência de tipos
 
--   As regras de coerção afetam o valor da verificação de tipos
+- Exemplos
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
+    - Fortran 95 menos fortemente tipada: parâmetros, `equivalence`
 
--   Equivalência de tipos
+    - C/C++ menos fortemente tipada: uniões
 
-    -   Dois tipos são equivalentes se um operando de tipo em uma expressão
-        puder ser substituído por um de outro tipo, sem coerção
+    - Ada é quase fortemente tipada
 
-    -   Por nome
+    - Java e C\# são semelhantes a Ada
 
-    -   Por estrutura
+    - ML Haskell são fortemente tipadas
 
-    -   Linguagens orientadas a objetos serão discutidas em outro momento
+- As regras de coerção afetam o valor da verificação de tipos
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
 
--   Por nome
+## Verificação de tipos, tipificação forte e equivalência de tipos
 
-    -   Duas variáveis tem tipos equivalentes se elas foram declaradas na mesma
-        sentença ou em declarações que usam o mesmo nome do tipo
+- Equivalência de tipos
 
-    -   Fácil de implementar, mas oferece restrições
+    - Dois tipos são equivalentes se um operando de tipo em uma expressão puder
+      ser substituído por um de outro tipo, sem coerção
 
-        -   Subintervalos de inteiros não são equivalentes a inteiros
+    - Por nome
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
+    - Por estrutura
 
--   Por estrutura
+    - Linguagens orientadas a objetos serão discutidas em outro momento
 
-    -   Duas variáveis tem tipos equivalentes se os seus tipos tem a mesma
-        estrutura
 
-    -   Mais flexível, mas difícil de implementar
+## Verificação de tipos, tipificação forte e equivalência de tipos
 
-    -   Questões
+- Por nome
 
-        -   Dois registros com a mesma estrutura mas com nomes dos campos
-            diferentes, são equivalentes?
+    - Duas variáveis tem tipos equivalentes se elas foram declaradas na mesma
+      sentença ou em declarações que usam o mesmo nome do tipo
 
-        -   Arranjos com o mesmo tamanho, mas faixa de índice diferentes são
-            equivalentes?
+    - Fácil de implementar, mas oferece restrições
 
-    -   Não permite a diferenciação entre tipos com a mesma estrutura mas nomes
-        diferentes
+        - Subintervalos de inteiros não são equivalentes a inteiros
 
-### Verificação de tipos, tipificação forte e equivalência de tipos
 
--   Muitas linguagens usam uma combinação dos dois
+## Verificação de tipos, tipificação forte e equivalência de tipos
 
--   Linguagens de script: duck type
+- Por estrutura
 
-# Referências
+    - Duas variáveis tem tipos equivalentes se os seus tipos tem a mesma
+      estrutura
 
-### Referências
+    - Mais flexível, mas difícil de implementar
 
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 6.
+    - Questões
 
+        - Dois registros com a mesma estrutura mas com nomes dos campos
+        diferentes, são equivalentes?
 
-<!-- vim: set spell spelllang=pt_br: -->
+        - Arranjos com o mesmo tamanho, mas faixa de índice diferentes são
+        equivalentes?
+
+    - Não permite a diferenciação entre tipos com a mesma estrutura mas nomes
+      diferentes
+
+
+## Verificação de tipos, tipificação forte e equivalência de tipos
+
+- Muitas linguagens usam uma combinação dos dois
+
+- Linguagens de script: duck type
+
+
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 6.
