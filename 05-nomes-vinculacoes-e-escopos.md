@@ -519,6 +519,8 @@ end;
 
 ## Escopo dinâmico - Exemplo
 
+<!-- TODO: atualizar para JavaScript -->
+
 <div class="columns">
 <div class="column" width="50%">
 \small
@@ -557,16 +559,15 @@ end;
 
 - Avaliação \pause
 
-    - Vantagem sutil na passagem de parâmetros (exemplo?)
-
     - Quando um subprograma está em execução, suas variáveis são visíveis para
-        todos os subprogramas chamados por ele
+      todos os subprogramas chamados por ele
 
     - Dificuldade de leitura
 
     - Custo de acesso
 
     - Impossível fazer checagem do tipo das variáveis
+
 
 
 Escopo e tempo de vida
@@ -584,6 +585,7 @@ Escopo e tempo de vida
 
 - Qual é o tempo de vida e o escopo de um variável local static em C/C++?
 
+
 ## Escopo e tempo de vida
 
 - No exemplo a seguir, qual é o tempo de vida e o escopo da variável soma?
@@ -600,12 +602,13 @@ Escopo e tempo de vida
     ```
 
 
+
 Ambientes de referenciamento
 ============================
 
 ## Ambientes de referenciamento
 
-- É o conjunto de variáveis visíveis em uma determinada expressão
+- É o conjunto de variáveis visíveis em uma determinada sentença
 
 - Nas linguagens com escopo estático, são as variáveis locais mais todas as
   variáveis visíveis de todos os escopos externos
