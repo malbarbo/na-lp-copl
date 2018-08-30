@@ -1,4 +1,5 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Nomes, vinculações e escopos
 ---
 
@@ -253,7 +254,7 @@ semântica de uma linguagem de programação
 
         ```python
         def max(x, y):
-        return x if x >= y else y
+            return x if x >= y else y
         ```
 
     \pause
@@ -317,8 +318,8 @@ semântica de uma linguagem de programação
 
     - Vantagens: eficiência, sensibilidade a história
 
-    - Desvantagens: flexibilidade (não suporta recursão), a mesma memória não
-      pode ser compartilhada por variáveis diferentes
+    - Desvantagens: a mesma memória não pode ser compartilhada por variáveis
+      diferentes, redução da flexibilidade
 
 
 ## Vinculação de memória e tempo de vida
@@ -708,6 +709,3 @@ Constantes nomeadas
 ## Referências
 
 - Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 5.
-
-
-<!-- vim: set spell spelllang=pt_br: -->
