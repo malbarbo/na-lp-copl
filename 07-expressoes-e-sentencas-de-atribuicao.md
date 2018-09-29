@@ -1,160 +1,175 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Expressões e sentença de atribuição
 ---
 
 # Introdução
 
-### Introdução
 
--   Expressões
+## Introdução
 
-    -   É a maneira fundamental de especificar computações em linguagens de
-        programação
+- Expressões
 
-    -   É essencial que o programador entenda a sintaxe e a semântica das
-        expressões
+  - É a maneira fundamental de especificar computações em linguagens de
+    programação
 
-    -   Entender a semântica requer conhecer a ordem de avaliação dos operadores
-        e operandos, regras de conversão de tipos, etc
+  - É essencial que o programador entenda a sintaxe e a semântica das
+    expressões
 
--   Atribuição
+  - Entender a semântica requer conhecer a ordem de avaliação dos operadores
+    e operandos, regras de conversão de tipos, etc
 
-    -   O propósito da atribuição é alterar o valor de uma variável
 
-    -   Tem papel dominante nas linguagens de programação imperativas
+## Introdução
+
+- Atribuição
+
+  - O propósito da atribuição é alterar o valor de uma variável
+
+  - Tem papel dominante nas linguagens de programação imperativas
+
+
 
 # Expressões aritméticas
 
-### Expressões aritméticas
 
--   A maioria das características das expressões aritméticas em linguagens de
-    programação são baseadas em convenções da matemática
+## Expressões aritméticas
 
--   Uma expressão aritmética consiste em operadores, operandos, parênteses e
-    chamadas de funções
+- A maioria das características das expressões aritméticas em linguagens de
+  programação são baseadas em convenções da matemática
 
--   Um operador pode ser unário (1 operando), binário (2 operandos) ou ternário
-    (3 operandos), etc
+- Uma expressão aritmética consiste em operadores, operandos, parênteses e
+  chamadas de funções
 
--   Existem 3 maneiras comuns de especificar a aplicação de um operador:
-    pré-fixa, infixa e pós-fixa
+- Um operador pode ser unário (1 operando), binário (2 operandos) ou ternário
+  (3 operandos), etc
 
-### Questões de projeto
+- Existem 3 maneiras comuns de especificar a aplicação de um operador:
+  pré-fixa, infixa e pós-fixa
 
--   Quais são as regras de precedência dos operadores?
 
--   Quais são as regras de associatividade dos operadores?
+## Questões de projeto
 
--   Qual é a ordem de avaliação dos operandos?
+- Quais são as regras de precedência dos operadores?
 
--   Existem restrições no efeito colateral da avaliação de um operando?
+- Quais são as regras de associatividade dos operadores?
 
--   A linguagem permite sobrecarga de operador definida pela programador?
+- Qual é a ordem de avaliação dos operandos?
 
--   Que mistura de tipo é permitida nas expressões?
+- Existem restrições no efeito colateral da avaliação de um operando?
 
-### Ordem de avaliação dos operadores
+- A linguagem permite sobrecarga de operador definida pela programador?
 
--   A ordem de avaliação dos operadores depende das
+- Que mistura de tipo é permitida nas expressões?
 
-    -   Regras de precedência
 
-    -   Regras de associatividade
+## Ordem de avaliação dos operadores
 
-### Precedência
+- A ordem de avaliação dos operadores depende das
 
--   Qual o resultado da avaliação da expressão $3 + 4 * 5$? \pause Depende das
-    regras de precedência \pause
+  - Regras de precedência
 
--   As regras de **precedência de operadores** para avaliação de expressões
-    definem a ordem que os operadores com diferentes níveis de precedência devem
-    ser avaliados \pause
+  - Regras de associatividade
 
--   Tabela com a precedência dos operadores aritméticos de algumas linguagens:
+
+## Precedência
+
+- Qual o resultado da avaliação da expressão $3 + 4 * 5$? \pause Depende das
+  regras de precedência \pause
+
+- As regras de **precedência de operadores** para avaliação de expressões
+  definem a ordem que os operadores com diferentes níveis de precedência devem
+  ser avaliados
+
+
+## Precedência
+
+             Ruby               Linguagens baseadas em C
+------------ ------------------ -------------------------------
+Mais alta    `**`               `++` e `--` posfixados
+             `+` e `-` unários  `++` e `--` prefixados e `+` e `-` unários
+             `*`, `/`, `%`      `*`, `/`, `%`
+Mais baixa   `+` e `-` binários `+` e `-` binários
+
+
+## Associatividade
+
+- Considere a expressão $a - b + c - d$. Se a adição e subtração tiverem a
+  mesma precedência, qual operação será realizada primeiro? A ordem de
+  execução das operações pode alterar o resultado da expressão?
+
+  \pause
+
+  - Depende das regras de associatividade \pause
+
+  - Sim! Podem haver problemas com números reais e com inteiros muito
+    grandes
+
+
+## Associatividade
+
+- As regras de **associatividade de operadores** para avaliação de expressões
+  definem a ordem que os operadores adjacentes com o mesmo nível de
+  precedência devem ser avaliados
+
+- Comumente a associatividade é da esquerda para direita, exceto a
+  exponenciação que é da direita para esquerda
+
+
+## Associatividade
+
+- Em APL todos os operadores tem a mesma precedência e a associatividade é da
+  direita para esquerda \pause
+
+- Tabela com as regras de associatividade de algumas linguagens:
 
 \scriptsize
 
-  &nbsp;       Ruby           Linguagens baseadas em C        Ada
-  ------------ -------------- ------------------------------- -----------------
-  Mais alta    \*\*           pós-fixo ++, – –                \*\*, abs
-  &nbsp;       unário +, –    pré-fixo ++, – –, unário +, –   \*, /, mod, rem
-  &nbsp;       \*, /, %       \*, /, %                        unário +, –
-  Mais baixa   binário +, –   binário +, –                    binário +, –
+Linguagem                Associatividade
+------------------------ ------------------------------------------
+Ruby                     Esquerda: `*`, `/`, `+`, `-`
+                         Direita: `**`
+Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
+                         Direita: `++`, `--`, `+` e `-` unários
+
+## Parênteses
+
+- O programador pode alterar as regras de precedência e associatividade usando
+  parênteses
 
 
-### Associatividade
+## Expressões em Ruby
 
--   Considere a expressão $a - b + c - d$. Se a adição e subtração tiverem a
-    mesma precedência, qual operação será realizada primeiro? A ordem de
-    execução das operações pode alterar o resultado da expressão?
+- Ruby é uma linguagem orientada a objetos pura
 
-    \pause
+- Todos os dados são objetos, inclusive os literais
 
-    -   Depende das regras de associatividade \pause
+- Quase todos os operadores são chamadas de métodos
 
-    -   Sim! Podem haver problemas com números reais e com inteiros muito
-        grandes
+- Por exemplo, a expressão `a + b` especifica a chamada do método `+` do
+  objeto referenciado por `a`
 
-    \pause
+- Estes operadores podem ser sobrescritos como qualquer outro método
 
--   As regras de **associatividade de operadores** para avaliação de expressões
-    definem a ordem que os operadores adjacentes com o mesmo nível de
-    precedência devem ser avaliados
 
--   Comumente a associatividade é da esquerda para direita, exceto a
-    exponenciação que é da direita para esquerda
+## Expressões condicionais
 
-### Associatividade
+- Em algumas linguagens, o `if` é uma expressão, o que permite (entre outras
+  coisas) atribuir o resultado da execução de um `if` a uma variável
 
--   Em APL todos os operadores tem a mesma precedência e a associatividade é da
-    direita para esquerda \pause
+    ```pascal
+    x = if cond then exp_a else exp_b
+    // que é equivalente (e mais conveniente) que
+    if cond then
+        x = exp_a
+    else
+        x = exp_b
+    ```
 
--   Tabela com as regras de associatividade de algumas linguagens:
 
-\scriptsize
+## Expressões condicionais
 
-  Linguagem                Associatividade
-  ------------------------ ------------------------------------------
-  Ruby                     Esquerda: \*, /, +, –
-  &nbsp;                   Direita: \*\*
-  Linguagens baseadas em C Esquerda: \*, /, %, binário +, binário –
-  &nbsp;                   Direita: ++, – –, unário –, unário +
-  Ada                      Esquerda: todos exceto \*\*
-  &nbsp;                   Não associativo: \*\*
-
-\normalsize
-
--   O programador pode alterar as regras de precedência e associatividade usando
-    parênteses
-
-### Expressões em Ruby
-
--   Ruby é uma linguagem orientada a objetos pura
-
--   Todos os dados são objetos, inclusive os literais
-
--   Quase todos os operadores são chamadas de métodos
-
--   Por exemplo, a expressão `a + b` especifica a chamada do método `+` do
-    objeto referenciado por `a`
-
--   Estes operadores podem ser sobrescritos como qualquer outro método
-
-### Expressões condicionais
-
--   Em algumas linguagens, o `if` é uma expressão, o que permite (entre outras
-    coisas) atribuir o resultado da execução de um `if` a uma variável
-
-          x = if cond then exp_a else exp_b
-          // que é equivalente (e mais conveniente) que
-          if cond then
-            x = exp_a
-          else
-            x = exp_b
-
-    \pause
-
--   As linguagens baseadas em C têm o operador ternário `?:`
+- As linguagens baseadas em C têm o operador ternário `?:`
 
     ```c
     x = cond? exp_a : exp_b
@@ -162,87 +177,92 @@ title: Expressões e sentença de atribuição
 
     \pause
 
--   Python oferece um variação do `if`
+- Python oferece um variação do `if`
 
     ```python
     x = exp_a if cond else exp_b
     ```
 
-### Ordem de avaliação dos operandos
 
--   Questão relacionada ao efeito colateral da avaliação dos operandos
+## Ordem de avaliação dos operandos
 
--   Forma de avaliação dos operandos
+- Forma de avaliação dos operandos
 
-    -   Variável: o valor é buscado da memória
+  - Variável: o valor é buscado da memória
 
-    -   Constante: o valor é buscado da memória ou faz parte da instrução da
-        máquina
+  - Constante: o valor é buscado da memória ou faz parte da instrução da
+    máquina
 
-    -   Expressão parentizada: todos os operandos e operadores devem ser
-        avaliados
+  - Expressão parentizada: todos os operandos e operadores devem ser
+    avaliados
 
-    -   Função: deve ser executada (interessante para a questão)
+  - Função: deve ser executada (interessante para a questão)
 
--   Um **efeito colateral** de uma função, ocorre quando a função altera um de
-    seus parâmetros ou uma variável global
 
--   Expressões em linguagens puramente funcionais e na matemática não produzem
-    efeitos colaterais
+## Ordem de avaliação dos operandos
 
-### Ordem de avaliação dos operandos
+- Um **efeito colateral** de uma função ocorre quando a função altera um de
+  seus parâmetros ou uma variável global
 
--   Qual é o valor de `a` após a execução da função `main`?
+- Expressões em linguagens puramente funcionais e na matemática não produzem
+  efeitos colaterais
+
+
+## Ordem de avaliação dos operandos
+
+- Qual é o valor de `a` após a execução da função `main`?
 
     ```c
     int a = 5;
     int fun() {
-      a = 17;
-      return 3;
+        a = 17;
+        return 3;
     }
     void main() {
-      a = a + fun();
+        a = a + fun();
     }
     ```
 
+  \pause
+
+- Depende da ordem da avaliação dos operandos `a` e `fun()`, pois o operando
+  `fun()` gera o efeito colateral de alterar o valor de `a`
+
+
+## Ordem de avaliação dos operandos
+
+- Como resolver o problema da ordem de avaliação de operadores e efeitos
+  colaterais?
+
+    - Não permitir efeitos colaterais
+
+        - Vantagens: permite algumas otimizações pelo compilador
+
+        - Desvantagens: difícil implementação, limitações para o programador
+
     \pause
 
--   Depende da ordem da avaliação dos operandos `a` e `fun()`, pois o operando
-    `fun()` gera o efeito colateral de alterar o valor de `a`
+    - Definir uma ordem de avaliação dos operandos (Java)
 
-### Ordem de avaliação dos operandos
+        - Vantagens: não limita o programador
 
--   Como resolver o problema da ordem de avaliação de operadores e efeitos
-    colaterais?
+        - Desvantagens: limita algumas otimizações pelo compilador
 
-    -   Não permitir efeitos colaterais
 
-        -   Vantagens: permite algumas otimizações pelo compilador
+## Ordem de avaliação dos operandos
 
-        -   Desvantagens: difícil implementação, limitações para o programador
+- Um programa tem a propriedade de **transparência referencial** se quaisquer
+  duas expressões no programa que tenham o mesmo valor puderem ser substituídas
+  uma pela outra em qualquer lugar do programa, sem afetar as ações do programa
 
-        \pause
+- Transparência referencial de função: o valor de uma função depende apenas dos
+  seus parâmetros
 
-    -   Definir uma ordem de avaliação dos operandos (Java)
 
-        -   Vantagens: não limita o programador
+## Ordem de avaliação dos operandos
 
-        -   Desvantagens: limita algumas otimizações pelo compilador
-
-### Ordem de avaliação dos operandos
-
--   Um programa tem a propriedade de **transparência referencial** se quaisquer
-    duas expressões no programa que tenham o mesmo valor puderem ser
-    substituídas uma pela outra em qualquer lugar do programa, sem afetar as
-    ações do programa
-
--   Transparência referencial de função: o valor de uma função depende apenas
-    dos seus parâmetros
-
-### Ordem de avaliação dos operandos
-
--   O conceito de transparência referencial está relacionado com o efeitos
-    colaterais de funções. Exemplo
+- O conceito de transparência referencial está relacionado com o efeitos
+  colaterais de funções. Exemplo
 
     ```c
     result1 = (fun(a) + b) / (fun(a) - c);
@@ -250,243 +270,271 @@ title: Expressões e sentença de atribuição
     result2 = (temp + b) / (temp - c)
     ```
 
--   Os valores `result1` e `result2` devem ser iguais se a função `fun` não tem
-    efeito colateral \pause
+- Os valores `result1` e `result2` devem ser iguais se a função `fun` não tem
+  efeito colateral \pause
 
--   Quais as vantagens da transparência referencial?
+- Quais as vantagens da transparência referencial?
+
+
 
 # Sobrecarga de operadores
 
-### Sobrecarga de operadores
 
--   **Sobrecarga de operador** é a utilização de um operador para mais que um
-    propósito
+## Sobrecarga de operadores
 
--   Geralmente aceitável, deste que não comprometa a leitura e a confiabilidade
+- **Sobrecarga de operador** é a utilização de um operador para mais que um
+  propósito
 
-    -   Aceitável: `+`, usado para somar inteiros e floats
+- Geralmente aceitável, deste que não comprometa a leitura e a confiabilidade
 
-    -   Nem tanto (segundo o Sebesta): `&`, usado para endereço e e-bit-a-bit
+    - Aceitável: `+`, usado para somar inteiros e floats
 
-    -   A utilização do `-` como operador binário e unário é adequada?
+    - Nem tanto (segundo o Sebesta): `&`, usado para endereço e e-bit-a-bit
 
--   Ajuda na legibilidade quando usado de forma coerente
+    - A utilização do `-` como operador binário e unário é adequada?
 
-    -   `A * B + C * D`, vs
+- Ajuda na legibilidade quando usado de forma coerente
 
-    -   `MatrixAdd(MatrixMul(A, B), MatrixMul(C,D))`
+    - `A * B + C * D`, vs
 
--   Algumas linguagens permitem sobrecarregar os operadores padrão (C++, C\#,
-    Ruby, Python, etc).
+    - `MatrixAdd(MatrixMul(A, B), MatrixMul(C,D))`
+
+
+## Sobrecarga de operadores
+
+- Algumas linguagens permitem sobrecarregar os operadores padrão (C++, C\#,
+  Ruby, Python, etc).
+
+
 
 # Conversões de tipos
 
-### Conversões de tipos
 
--   As conversões podem ser
+## Conversões de tipos
 
-    -   De **estreitamento**, quando um objeto é convertido para um tipo que não
-        pode incluir todos os valores do tipo original. Ex: `float` para `int`
+- As conversões podem ser
 
-    -   De **ampliação**, quando um objeto é convertido para um tipo que contém
-        pelo menos aproximações para os valores do tipo original. Ex: `int` para
-        `float`
+    - De **estreitamento**, quando um objeto é convertido para um tipo que não
+      pode incluir todos os valores do tipo original. Ex: `float` para `int`
 
-    -   Em geral, as conversões de ampliação são seguras
+    - De **ampliação**, quando um objeto é convertido para um tipo que contém
+      pelo menos aproximações para os valores do tipo original. Ex: `int` para
+      `float`
 
--   Uma **expressão em modo misto** é aquela que tem operandos de tipos
-    diferentes
+    - Em geral, as conversões de ampliação são seguras
 
-### Conversões de tipos
+- Uma **expressão em modo misto** é aquela que tem operandos de tipos
+  diferentes
 
--   Coerções em expressões
 
-    -   Conversão implícita
+## Conversões de tipos
 
-    -   Utilizado nas expressões em modo misto
+- Coerções em expressões
 
-    -   Na maioria das linguagens, os tipos numéricos podem sofrer conversões
-        implícitas de ampliação
+    - Conversão implícita
 
-    -   Em Ada, não existem coerções
+    - Utilizado nas expressões em modo misto
 
-    -   Vantagem: aumenta a flexibilidade
+    - Na maioria das linguagens, os tipos numéricos podem sofrer conversões
+      implícitas de ampliação
 
-    -   Desvantagem: diminui a utilidade da checagem de tipo
+    - Em Ada, não existem coerções
 
-    \pause
+    - Vantagem: aumenta a flexibilidade
 
--   Casts
+    - Desvantagem: diminui a utilidade da checagem de tipo
 
-    -   Conversão explícita
 
-    -   O compilador pode gerar um alerta sobre conversões de estreitamento
+## Conversões de tipos
 
-    -   C: `(float) angle`
+- Casts
 
-    -   Ada: `Float(angle)`
+    - Conversão explícita
+
+    - O compilador pode gerar um alerta sobre conversões de estreitamento
+
+    - C: `(float) angle`
+
+    - Ada: `Float(angle)`
+
+
 
 # Expressões relacionais e booleanas
 
-### Expressões relacionais e booleanas
 
--   Um **operador relacional** é um operador que compara os valores de dois
-    operandos
+## Expressões relacionais e booleanas
 
--   Uma **expressão relacional** tem dois operandos e um operador relacional
+- Um **operador relacional** é um operador que compara os valores de dois
+  operandos
 
--   Exemplos de operadores relacionais
+- Uma **expressão relacional** tem dois operandos e um operador relacional
 
-    -   igualdade: `=`, `==`, `===`
+- Exemplos de operadores relacionais
 
-    -   desigualdade: `!=`, `<>`, `/=`, `~=`
+    - igualdade: `=`, `==`, `===`
 
--   Os operadores relacionais em geral têm prioridade menor que os operadores
-    aritméticos
+    - desigualdade: `!=`, `<>`, `/=`, `~=`
 
-    -   `a + 1 > 2 * b`
+- Os operadores relacionais em geral têm prioridade menor que os operadores
+  aritméticos
 
-### Expressões relacionais e booleanas
+    - `a + 1 > 2 * b`
 
--   Uma **expressão booleana** consiste de variáveis ou constantes booleanas,
-    expressões relacionais e operadores booleanos
 
--   Os operadores booleanos comuns são: `and`, `or` e `not`
+## Expressões relacionais e booleanas
 
--   Na maioria das linguagens o `and` tem prioridade sobre o `or`
+- Uma **expressão booleana** consiste de variáveis ou constantes booleanas,
+  expressões relacionais e operadores booleanos
 
--   Em Ada os operadores `and` e `or` tem a mesma prioridade e não são
-    associativos
+- Os operadores booleanos comuns são: `and`, `or` e `not`
 
--   Os operadores booleanos em geral têm prioridade menor que os operadores
-    relacionais
+- Na maioria das linguagens o `and` tem prioridade sobre o `or`
 
-    -   `x > y and x != 4`
+- Em Ada os operadores `and` e `or` tem a mesma prioridade e não são
+  associativos
 
-### Expressões relacionais e booleanas
+- Os operadores booleanos em geral têm prioridade menor que os operadores
+  relacionais
 
--   C/C++
+    - `x > y and x != 4`
 
-    -   Qual o significado da expressão `x > y > z`?
+
+## Expressões relacionais e booleanas
+
+- C/C++
+
+    - Qual o significado da expressão `x > y > z`?
 
     \pause
 
--   Python
+- Python
 
-    -   A expressão `x > y > z` tem o significado esperado, isto é
-        `x > y and y > z`
+    - A expressão `x > y > z` tem o significado esperado, isto é `x > y and
+      y > z`
+
+
 
 # Avaliação em curto-circuito
 
-### Avaliação em curto-circuito
 
--   Uma **avaliação em curto-circuito** de um expressão é aquela que o resultado
-    é determinado sem avaliar todos os operandos e/ou operadores
+## Avaliação em curto-circuito
 
--   Por exemplo, na expressão `(13 * a) * (b / 13 - 1)`, se `a = 0` não é
-    necessário avaliar `(b / 13 - 1)` para determinar o resultado da expressão,
-    que é zero
+- Uma **avaliação em curto-circuito** de um expressão é aquela que o resultado
+  é determinado sem avaliar todos os operandos e/ou operadores
 
-### Avaliação em curto-circuito
+- Por exemplo, na expressão `(13 * a) * (b / 13 - 1)`, se `a = 0` não é
+  necessário avaliar `(b / 13 - 1)` para determinar o resultado da expressão,
+  que é zero
 
--   Em geral, a avaliação em curto circuito é utilizada em expressões booleanas
 
-    -   Possibilidade de construções do tipo
+## Avaliação em curto-circuito
 
-        -   `while ((index < listlen) && (list[index] != key)) index++;`
+- Em geral, a avaliação em curto circuito é utilizada em expressões booleanas
 
-        \pause
+    - Possibilidade de construções do tipo
 
-    -   Problemas com efeitos colaterais
+        - `while ((index < listlen) && (list[index] != key)) index++;`
 
-        -   `(a > b) || ((b++) / 3)`
+    \pause
 
-        \pause
+    - Problemas com efeitos colaterais
 
-    -   C/C++, Java usam os operadores em curto circuito `&&` e `||`, e
-        operadores que não são curto circuito `&` e `|` \pause
+        - `(a > b) || ((b++) / 3)`
 
-    -   Ada usa `and then` e `or else` para especificar que a expressão deve ser
-        avaliada em curto circuito
+    \pause
+
+    - C/C++, Java usam os operadores em curto circuito `&&` e `||`,
+      e operadores que não são curto circuito `&` e `|` \pause
+
+    - Ada usa `and then` e `or else` para especificar que a expressão deve ser
+      avaliada em curto circuito
+
+
 
 # Sentenças de atribuição
 
-### Sentenças de atribuição
 
--   A forma geral para atribuição pé
+## Sentenças de atribuição
 
-    -   `alvo símbolo-de-atribuição expressão`
+- A forma geral para atribuição pé
 
--   O símbolo de atribuição
+    - `alvo símbolo-de-atribuição expressão`
 
-    -   `=` Fortan e as linguagens baseadas em C
+- O símbolo de atribuição
 
-    -   `:=` Algol, Pascal e Ada
+    - `=` Fortan e as linguagens baseadas em C
 
-### Sentenças de atribuição
+    - `:=` Algol, Pascal e Ada
 
--   Alvos condicionais
 
-    -   Perl
+## Sentenças de atribuição
 
-        ```perl
-        $(flag ? $count1 : $count2) = 0;
-        // é equivalente a
-        if ($flag) {
-          $count1 = 0;
-        } else {
-          $count2 = 0;
-        }
-        ```
+- Alvos condicionais (Perl)
 
--   Atribuição composta
+    ```perl
+    $(flag ? $count1 : $count2) = 0;
+    // é equivalente a
+    if ($flag) {
+        $count1 = 0;
+    } else {
+        $count2 = 0;
+    }
+    ```
 
-    -   `a += 1`, que é equivalente a `a = a + 1`
 
--   Atribuição unária
+## Sentenças de atribuição
 
-    -   `count++`
+- Atribuição composta
 
-### Sentenças de atribuição
+    - `a += 1`, que é equivalente a `a = a + 1`
 
--   Atribuição como expressão
+- Atribuição unária
 
-    -   Em C/C++, Java, uma atribuição gera um valor que pode ser usado como
-        operando
+    - `count++`
+
+
+## Sentenças de atribuição
+
+- Atribuição como expressão
+
+    - Em C/C++, Java, uma atribuição gera um valor que pode ser usado como
+      operando
 
         ```c
-        while ((ch = getchar())!= EOF) {
-          ...
+        while ((ch = getchar()) != EOF) {
+            ...
         }
         ```
 
--   Listas de atribuições
+## Sentenças de atribuição
 
-    -   Suportada por Perl, Ruby, Python
+- Listas de atribuições
 
-    -   Python
+    - Suportada por Perl, Ruby, Python
+
+    - Python
 
         ```python
         x, y = 1, 6
         p = [7, 8]
-        a, b = p     # extrai os valores da lista p
+        a, b = p   # extrai os valores da lista p
         a, b = b, a  # trocas os valores
         ```
 
+
+
 # Atribuição em modo misto
 
-### Atribuição em modo misto
+## Atribuição em modo misto
 
--   Os tipos das expressões tem que ser o mesmo da variável sendo atribuída ou
-    uma coerção pode ser feita?
+- Os tipos das expressões tem que ser o mesmo da variável sendo atribuída ou
+  uma coerção pode ser feita?
 
--   Diferente de C++, Java e C\# permiti apenas casos de coerções de ampliação
+- Diferente de C++, Java e C\# permiti apenas casos de coerções de ampliação
+
 
 # Referências
 
-### Referências
+## Referências
 
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 7.
-
-
-<!-- vim: set spell spelllang=pt_br: -->
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 7.
