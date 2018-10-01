@@ -12,13 +12,18 @@ Introdução
   nestes valores
 
 - É importante que uma linguagem de programação forneça uma coleção apropriada
-  de tipos de dados \pause
+  de tipos de dados
+
+
+## Introdução
 
 - Utilidade \pause
 
-    - Detecção de erros
+    - Legibilidade e facilidade de escrita
 
-    - Modularização
+    - Modularização e abstração
+
+    - Detecção de erros
 
     - Documentação
 
@@ -55,6 +60,9 @@ Tipos primitivos
   primitivos
 
 - Usados com construções de tipo para fornecer os tipos estruturados
+
+
+## Tipos primitivos
 
 - Os mais comuns são
 
