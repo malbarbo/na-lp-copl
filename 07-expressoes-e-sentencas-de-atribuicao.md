@@ -293,17 +293,19 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
     - A utilização do `-` como operador binário e unário é adequada?
 
-- Ajuda na legibilidade quando usado de forma coerente
-
-    - `A * B + C * D`, vs
-
-    - `MatrixAdd(MatrixMul(A, B), MatrixMul(C,D))`
-
 
 ## Sobrecarga de operadores
 
 - Algumas linguagens permitem sobrecarregar os operadores padrão (C++, C\#,
   Ruby, Python, etc).
+
+- Ajuda na legibilidade quando usado de forma coerente
+
+    ```
+    A * B + C * D
+    vs
+    MatrixAdd(MatrixMul(A, B), MatrixMul(C,D))
+    ```
 
 
 
@@ -353,9 +355,11 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
     - O compilador pode gerar um alerta sobre conversões de estreitamento
 
-    - C: `(float) angle`
+    - Exemplos
 
-    - Ada: `Float(angle)`
+        - C: `(float) angle`
+
+        - Ada: `Float(angle)`
 
 
 
@@ -378,7 +382,9 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 - Os operadores relacionais em geral têm prioridade menor que os operadores
   aritméticos
 
-    - `a + 1 > 2 * b`
+    ```c
+    a + 1 > 2 * b
+    ```
 
 
 ## Expressões relacionais e booleanas
@@ -396,7 +402,9 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 - Os operadores booleanos em geral têm prioridade menor que os operadores
   relacionais
 
-    - `x > y and x != 4`
+    ```python
+    x > y and x != 4
+    ```
 
 
 ## Expressões relacionais e booleanas
@@ -433,13 +441,18 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
     - Possibilidade de construções do tipo
 
-        - `while ((index < listlen) && (list[index] != key)) index++;`
+        ```c
+        while ((index < listlen) && (list[index] != key))
+            index++;
+        ```
 
     \pause
 
     - Problemas com efeitos colaterais
 
-        - `(a > b) || ((b++) / 3)`
+        ```c
+        (a > b) || ((b++) / 3)
+        ```
 
     \pause
 
@@ -486,11 +499,21 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 - Atribuição composta
 
-    - `a += 1`, que é equivalente a `a = a + 1`
+    ```
+    a += 1
+    ```
+
+    que é equivalente a
+
+    ```
+    a = a + 1
+    ```
 
 - Atribuição unária
 
-    - `count++`
+    ```
+    count++
+    ```
 
 
 ## Sentenças de atribuição
