@@ -1,234 +1,268 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Estruturas de controle no nível de sentença
 ---
 
-# Introdução
+Introdução
+==========
 
-### Introdução
+## Introdução
 
--   O controle do fluxo em um programa ocorre em diversos níveis
+- O controle do fluxo em um programa ocorre em diversos níveis
 
-    -   Dentro das expressões (capítulo 7)
+    - Dentro das expressões (capítulo 7)
 
-    -   Entre as unidades de programas (capítulo 9)
+    - Entre as unidades de programas (capítulo 9)
 
-    -   Entre as sentenças (capítulo 8 - o qual vamos estudar agora)
+    - Entre as sentenças (capítulo 8 - o qual vamos estudar agora)
 
-### Introdução
 
--   No passado, as instruções de controle das linguagens eram feitas baseadas
-    nas instruções dos processadores
+## Introdução
 
--   Muita pesquisa e discussão entre meados de 1960 e meados 1970
+- No passado, as instruções de controle das linguagens eram feitas baseadas nas
+  instruções dos processadores
 
-    -   Apenas um instrução de controle é necessária, o `goto`, mas esta
-        instrução tem diversos problemas
+- Muita pesquisa e discussão entre meados de 1960 e meados 1970
 
-    -   O `goto` pode ser substituído por duas instruções de controle: seleção e
-        repetição
+    - Apenas um instrução de controle é necessária, o `goto`, mas esta
+      instrução tem diversos problemas
 
-    -   Na prática, o aspecto importante não é a quantidade de instruções de
-        controle, mas a facilidade de leitura e escrita
+    - O `goto` pode ser substituído por duas instruções de controle: seleção
+      e repetição
 
-### Introdução
+    - Na prática, o aspecto importante não é a quantidade de instruções de
+      controle, mas a facilidade de leitura e escrita
 
--   Uma **estrutura de controle** é uma instrução de controle e a coleção de
-    instruções cuja a execução está sobre seu controle
 
--   Questão de projeto relativa a todas as estruturas de controle
+## Introdução
 
-    -   A estrutura de controle tem múltiplas entradas?
+- Uma **estrutura de controle** é uma instrução de controle e a coleção de
+  instruções cuja a execução está sobre seu controle
 
-# Estruturas de seleção
+- Questão de projeto relativa a todas as estruturas de controle
 
-### Estruturas de seleção
+    - A estrutura de controle tem múltiplas entradas?
 
--   Uma **instrução de seleção** prove meios de escolher entre dois ou mais
-    caminhos de execução no programa
 
--   As instruções de seleção são divididas em duas categorias
 
-    -   Duas vias
+Estruturas de seleção
+=====================
 
-    -   Múltiplas vias
+## Estruturas de seleção
 
-### Instruções de seleção de duas vias
+- Uma **instrução de seleção** prove meios de escolher entre dois ou mais
+  caminhos de execução no programa
 
--   Apesar das diferenças no projeto, as instruções de seleção de duas vias das
-    linguagens contemporâneas são bastante semelhantes. A forma geral é:
+- As instruções de seleção são divididas em duas categorias
 
-        if control_expression
-          then-clause
-          else-clause
+    - Duas vias
 
+    - Múltiplas vias
+
+
+
+## Instruções de seleção de duas vias
+
+- Apesar das diferenças no projeto, as instruções de seleção de duas vias das
+  linguagens contemporâneas são bastante semelhantes. A forma geral é:
+
+    ```
+    if control_expression
+    then-clause
+    else-clause
+    ```
 
     \pause
 
--   Questões de projeto
+- Questões de projeto
 
-    -   Qual é a forma e o tipo da expressão que controla a seleção?
+    - Qual é a forma e o tipo da expressão que controla a seleção?
 
-    -   Como as cláusulas `then` e `else` são especificadas?
+    - Como as cláusulas `then` e `else` são especificadas?
 
-    -   Como o significado dos seletores aninhados devem ser especificados?
+    - Como o significado dos seletores aninhados devem ser especificados?
 
-### Instruções de seleção de duas vias
 
--   A expressão de controle
+## Instruções de seleção de duas vias
 
-    -   A expressão de controle é especificada entre parênteses se a palavra
-        reservada then (ou outro marca sintática) não é usada
+- A expressão de controle
 
-    -   Algumas linguagens permitem expressões aritméticas (C/C++, Python),
-        outras permitem apenas expressões booleanas (Ada, Java, Ruby, C\#)
+    - A expressão de controle é especificada entre parênteses se a palavra
+      reservada then (ou outro marca sintática) não é usada
 
-### Instruções de seleção de duas vias
+    - Algumas linguagens permitem expressões aritméticas (C/C++, Python),
+      outras permitem apenas expressões booleanas (Ada, Java, Ruby, C\#)
 
--   Forma da cláusula
 
-    -   Em Perl, todas as cláusulas precisam ser instruções compostas
+## Instruções de seleção de duas vias
 
-    -   A maioria das linguagens permitem instruções simples e instruções
-        compostas
+- Forma da cláusula
 
-    -   As linguagens baseadas em C utilizam chaves para formar instruções
-        compostas
+    - Em Perl, todas as cláusulas precisam ser instruções compostas
 
-    -   Em Fortran 95, Ada e Ruby as cláusulas then e else são sequências de
-        instruções. A seleção completa acaba com uma palavra reservada
+    - A maioria das linguagens permitem instruções simples e instruções
+      compostas
 
-    -   Python usa indentação para especificar instruções compostas
+    - As linguagens baseadas em C utilizam chaves para formar instruções
+      compostas
+
+    - Em Fortran 95, Ada e Ruby as cláusulas then e else são sequências de
+      instruções. A seleção completa acaba com uma palavra reservada
+
+    - Python usa indentação para especificar instruções compostas
 
         ```python
         if x > y:
-          x = y
-          print "case 1"
+            x = y
+            print "case 1"
         ```
 
 
-### Seletores aninhados
+## Seletores aninhados
 
--   Quando uma construção de seleção é aninhada com a cláusula then de outra
-    construção de seleção, não fica claro com qual if a cláusula then deve ser
-    associada
+- Quando uma construção de seleção é aninhada com a cláusula then de outra
+  construção de seleção, não fica claro com qual if a cláusula then deve ser
+  associada
 
-### Seletores aninhados
+
+## Seletores aninhados
 
 - Exemplo:
 
     ```c
     if (sum == 0)
-      if (count == 0)
-        result = 0;
+        if (count == 0)
+            result = 0;
     else
         result = 1;
     ```
 
     \pause
 
--   Esta construção pode ser interpretada de duas formas:
+- Esta construção pode ser interpretada de duas formas:
 
-    ```c
-    if (sum == 0) {
-      if (count == 0)
+<div class="columns">
+<div class="column" width="10%">
+</div>
+<div class="column" width="45%">
+```c
+if (sum == 0) {
+    if (count == 0)
         result = 0;
-    } else
-        result = 1;
-    ```
-
-    ou
-
-    ```c
-    if (sum == 0) {
-      if (count == 0)
+} else
+    result = 1;
+```
+</div>
+<div class="column" width="45%">
+```c
+if (sum == 0) {
+    if (count == 0)
         result = 0;
     else
         result = 1;
-    }
-    ```
+}
+```
+</div>
+</div>
 
-### Seletores aninhados
 
--   Em Perl, as cláusulas then e else têm que ser compostas \pause
+## Seletores aninhados
 
--   Em Java, a semântica estática especifica que a cláusula else faz par com o a
-    claúsula then sem par mais próxima \pause
+- Em Perl, as cláusulas then e else têm que ser compostas \pause
 
--   Uma alternativa sintática é o uso de uma palavra reservada para marcar o fim
-    do seletor (Fortran 95, Ada, Ruby, Lua)
+- Em Java, a semântica estática especifica que a cláusula else faz par com o a
+  cláusula then sem par mais próxima \pause
 
-### Seletores aninhados
+- Uma alternativa sintática é o uso de uma palavra reservada para marcar o fim
+  do seletor (Fortran 95, Ada, Ruby, Lua)
 
--   Exemplo em Ruby:
 
-    ```ruby
-    if sum == 0 then
-      if count == 0 then
-        result = 0
-      else
-        result = 1
-      end
-    end
-    ```
+## Seletores aninhados
 
-    ou
+- Exemplo em Ruby:
 
-    ```ruby
-    if sum == 0 then
-      if count == 0 then
-        result = 0
-      end
+<div class="columns">
+<div class="column" width="10%">
+</div>
+<div class="column" width="45%">
+```ruby
+if sum == 0 then
+    if count == 0 then
+         result = 0
     else
-      result = 1
+         result = 1
     end
-    ```
-
-### Seletores aninhados
-
--   Em linguagens que a indentação é significativa, este problema não existe
-
--   Exemplo em Python
-
-    ```python
-    if sum == 0:
-      if count == 0:
+end
+```
+</div>
+<div class="column" width="45%">
+```ruby
+if sum == 0 then
+    if count == 0 then
         result = 0
-      else:
-        result = 1
-    ```
+    end
+else
+    result = 1
+end
+```
+</div>
+</div>
 
-    ou
 
-    ```python
-    if sum == 0:
-      if count == 0:
+## Seletores aninhados
+
+- Em linguagens que a indentação é significativa, este problema não existe
+
+- Exemplo em Python
+
+<div class="columns">
+<div class="column" width="10%">
+</div>
+<div class="column" width="45%">
+```python
+if sum == 0:
+    if count == 0:
         result = 0
     else:
-      result = 1
-    ```
+        result = 1
+```
+</div>
+<div class="column" width="45%">
+```python
+if sum == 0:
+    if count == 0:
+        result = 0
+else:
+    result = 1
+```
+</div>
+</div>
 
 
-### Instruções de seleção múltipla
+## Instruções de seleção múltipla
 
--   Uma construção de **seleção múltipla** permite a seleção de uma entre várias
-    instruções (ou grupo de instruções)
+- Uma construção de **seleção múltipla** permite a seleção de uma entre várias
+  instruções (ou grupo de instruções)
 
--   Questões de projeto
+- Questões de projeto
 
-    -   Qual é a forma e o tipo da expressão que controla a seleção?
+    - Qual é a forma e o tipo da expressão que controla a seleção?
 
-    -   Como os segmentos selecionáveis são especificados?
+    - Como os segmentos selecionáveis são especificados?
 
-    -   O fluxo de execução através da estrutura é restrito a incluir apenas um
-        segmento selecionável?
+    - O fluxo de execução através da estrutura é restrito a incluir apenas um
+      segmento selecionável?
 
-    -   Como os valores dos casos são especificados?
+    - Como os valores dos casos são especificados?
 
-    -   Como os seletores de valores não apresentados deve ser tratados?
+    - Como os seletores de valores não apresentados deve ser tratados?
 
-### Instruções de seleção múltipla
 
--   Exemplo das linguagens baseadas em C
+## Instruções de seleção múltipla
+
+- Exemplo das linguagens baseadas em C
+
+    \small
 
     ```c
     switch (index) {
@@ -240,385 +274,466 @@ title: Estruturas de controle no nível de sentença
       case 4: even += 1;
               sumeven += index;
               break;
-      default: printf("Error in switch, index %d\n",
-                       index);
+      default: printf("Error in switch, index %d\n", index);
     }
     ```
 
--   As expressões podem ser do tipo inteiro, caractere ou enumerado
 
--   Mais que um segmento pode ser executado por vez
+## Instruções de seleção múltipla
 
--   Nem todos os casos precisam ser especificados
+- Exemplo das linguagens baseadas em C
 
-### Instruções de seleção múltipla
+    - As expressões podem ser do tipo inteiro, caractere ou enumerado
 
--   Exemplo em C\#
+    - Mais que um segmento pode ser executado por vez
+
+    - Nem todos os casos precisam ser especificados
+
+
+## Instruções de seleção múltipla
+
+- Exemplo em C\#
+
+    \small
 
     ```cs
     switch (value) {
-      case -1:
-        Negatives++;
-        break;
-      case 0:
-        Zeros++;
-        goto case 1;
-      case 1:
-        Positives++;
-        break;
-      default:
-        Console.Writeln("Error in switch\n");
-        break;
+        case -1:
+            Negatives++;
+            break;
+        case 0:
+            Zeros++;
+            goto case 1;
+        case 1:
+            Positives++;
+            break;
+        default:
+            Console.Writeln("Error in switch\n");
+            break;
     }
     ```
 
--   Não é permitido a execução implícita de mais de um segmento
 
--   As expressões também podem ser strings
+## Instruções de seleção múltipla
 
-### Instruções de seleção múltipla
+- Exemplo em C\#
 
--   Exemplo em Ada
+    - Não é permitido a execução implícita de mais de um segmento
+
+    - As expressões também podem ser strings
+
+
+## Instruções de seleção múltipla
+
+- Exemplo em Ada
 
     ```ada
     case expression is
-      when choice list => statement_sequence;
-      ...
-      when choice list => statement_sequence;
-      [when other => statement_sequence;]
+        when choice list => statement_sequence;
+        ...
+        when choice list => statement_sequence;
+        [when other => statement_sequence;]
     end case;
     ```
 
--   A expressão tem que ser do tipo ordinal
 
--   Apenas um segmento pode ser executado
+## Instruções de seleção múltipla
 
--   Lista de escolhas
+- Exemplo em Ada
 
-    -   Um das formas `7`, `10..15`, `10 | 15 | 20`
+    - A expressão tem que ser do tipo ordinal
 
-    -   Os valores precisam ser mutuamente exclusivos
+    - Apenas um segmento pode ser executado
 
-    -   Tem quer ser exaustiva
+    - Lista de escolhas
 
-### Instruções de seleção múltipla
+        - Um das formas `7`, `10..15`, `10 | 15 | 20`
 
--   Exemplo em Ruby (semelhante a ifs aninhados)
+        - Os valores precisam ser mutuamente exclusivos
+
+        - Exaustiva
+
+
+## Instruções de seleção múltipla
+
+- Exemplo em Ruby (semelhante a ifs aninhados)
 
     ```ruby
     leap = case
-           when year % 400 == 0 then true
-           when year % 100 == 0 then false
-           else year % 4 == 0
-           end
-    ```
-
-    \pause
-
--   Exemplo em Ruby (semelhante ao switch)
-
-    ```ruby
-    case int_val
-      when -1 then neg_count++
-      when 0 then zero_count++
-      when 1 then pos_count++
-      else puts "Error: int_val is out of range"
+        when year % 400 == 0 then true
+        when year % 100 == 0 then false
+        else year % 4 == 0
     end
     ```
 
-### Instruções de seleção múltipla
 
--   Seleção múltipla usando if
+## Instruções de seleção múltipla
 
--   Exemplo em Python
+- Exemplo em Ruby (semelhante ao switch)
+
+    ```ruby
+    case int_val
+        when -1 then neg_count++
+        when 0 then zero_count++
+        when 1 then pos_count++
+        else puts "Error: int_val is out of range"
+    end
+    ```
+
+
+## Instruções de seleção múltipla
+
+- Exemplo em Python (seleção múltipla usando `if`)
 
     ```python
     if count < 10:
-      bag1 = True
+        bag1 = True
     else:
-      if count < 100:
-        bag2 = True
-      else:
-        if count < 1000:
-          bag3 = True
-
-    if count < 10:
-      bag1 = True
-    elif count < 100:
-      bag2 = True
-    elif count < 1000:
-      bag3 = True
+        if count < 100:
+            bag2 = True
+        else:
+            if count < 1000:
+                bag3 = True
     ```
 
-# Estruturas iterativas
 
-### Estruturas iterativas
+## Instruções de seleção múltipla
 
--   Uma **instrução iterativa** é aquela que causa a execução de uma instrução
-    (ou coleção de instruções) zero, uma ou mais vezes
+- Exemplo em Python (seleção múltipla usando `if`)
 
--   Geralmente chamado de laço (loop)
+    ```python
+    if count < 10:
+        bag1 = True
+    elif count < 100:
+        bag2 = True
+    elif count < 1000:
+        bag3 = True
+    ```
 
--   Questões de projeto
 
-    -   Como a iteração é controlada?
 
-    -   Onde o mecanismo de controle deve aparecer na construção do laço?
+Estruturas iterativas
+=====================
 
--   O **corpo** de uma construção iterativa é a coleção de instruções cuja a
-    execução é controlada pela instrução iterativa
+## Estruturas iterativas
 
--   A instrução iterativa junto com o corpo é chamada de **construção
-    iterativa**
+- Uma **instrução iterativa** é aquela que causa a execução de uma instrução
+  (ou coleção de instruções) zero, uma ou mais vezes
 
-### Laços controlados por contador
+- Geralmente chamado de laço (loop)
 
--   Uma instrução iterativa de contagem tem uma variável, chamada **variável do
-    laço**, onde o valor da contagem é mantida
+- Questões de projeto
 
--   Existe uma maneira de especificar o valor inicial, o valor final e o passo
-    da variável do laço
+    - Como a iteração é controlada?
 
--   Questões de projeto
+    - Onde o mecanismo de controle deve aparecer na construção do laço?
 
-    -   Qual é o tipo e o escopo da variável do laço?
 
-    -   A variável do laço pode ser alterada? Isto altera o controle do laço?
+## Estruturas iterativas
 
-    -   Os parâmetros do laço devem ser avaliados uma única vez, ou em cada
-        iteração?
+- O **corpo** de uma construção iterativa é a coleção de instruções cuja a
+  execução é controlada pela instrução iterativa
 
-### Laços controlados por contador
+- A instrução iterativa junto com o corpo é chamada de **construção iterativa**
 
--   Exemplos em Fortran 95
+
+## Laços controlados por contador
+
+- Uma instrução iterativa de contagem tem uma variável, chamada **variável do
+  laço**, onde o valor da contagem é mantida
+
+- Existe uma maneira de especificar o valor inicial, o valor final e o passo da
+  variável do laço
+
+- Questões de projeto
+
+    - Qual é o tipo e o escopo da variável do laço?
+
+    - A variável do laço pode ser alterada? Isto altera o controle do laço?
+
+    - Os parâmetros do laço devem ser avaliados uma única vez, ou em cada
+      iteração?
+
+
+## Laços controlados por contador
+
+- Exemplos em Fortran 95
 
     ```fortran
-    Do label var  = initial, terminal [, stepsize]
+    Do label var = initial, terminal [, stepsize]
 
     Do var  = initial, terminal [, stepsize]
        ...
     End Do
     ```
 
-    -   A variável do laço deve ser do tipo inteiro
 
-    -   A variável do laço pode não ser alterada
+## Laços controlados por contador
 
-    -   O parâmetros são avaliados apenas uma vez e podem ser alterados
+- Exemplos em Fortran 95
 
-    -   Não é possível saltar para dentro do laço
+    - A variável do laço deve ser do tipo inteiro
 
-### Laços controlados por contador
+    - A variável do laço pode não ser alterada
 
--   Exemplo em Ada:
+    - O parâmetros são avaliados apenas uma vez e podem ser alterados
+
+    - Não é possível saltar para dentro do laço
+
+
+## Laços controlados por contador
+
+- Exemplo em Ada:
 
     ```ada
     for variable in [reverse] discrete_range loop
-      ...
+        ...
     end loop;
 
     Count : Float := 1.35;
     for Count in 1..10 loop
-      Sum := Sum + Count
+        Sum := Sum + Count
     end loop;
     ```
 
-    -   O tipo da variável do laço é definida pelo intervalo
 
-    -   A variável do laço só existe dentro do laço e não pode ser alterada pelo
-        programador
+## Laços controlados por contador
 
-    -   O intervalo pode ser alterado, mas não afeta a execução do laço
+- Exemplo em Ada:
 
-    -   Não é possível saltar para dentro do laço
+    - O tipo da variável do laço é definida pelo intervalo
 
-### Laços controlados por contador
+    - A variável do laço só existe dentro do laço e não pode ser alterada pelo
+      programador
 
--   Exemplo das linguagens baseadas em C:
+    - O intervalo pode ser alterado, mas não afeta a execução do laço
+
+    - Não é possível saltar para dentro do laço
+
+
+## Laços controlados por contador
+
+- Exemplo das linguagens baseadas em C:
 
     ```c
     for (exp1; exp2; exp3)
-      loop body
+        loop body
+    ```
+
+    ```c
     for (count = 1; count <= 10; count++) {
       ...
     }
-    //C99, C++, Java
+    ```
+
+    ```c
+    // C99, C++, Java
     for (int count = 1; count <= len; count++) {
       ...
     }
     ```
 
-    -   Não existe uma variável de laço específica
 
-    -   `exp1` é avaliada apenas uma vez antes da execução do laço
+## Laços controlados por contador
 
-    -   `exp2` e `exp3` são avaliadas a cada iteração
+- Exemplo das linguagens baseadas em C:
 
-    -   Qualquer expressão pode ser alterada
+    - Não existe uma variável de laço específica
 
-### Laços controlados logicamente
+    - `exp1` é avaliada apenas uma vez antes da execução do laço
 
--   O controle do laço é baseado em uma expressão booleana (não em um contador)
+    - `exp2` e `exp3` são avaliadas a cada iteração
 
--   Questões de projeto
+    - Qualquer expressão pode ser alterada
 
-    -   O controle deve ser pré-testado ou pós-testado?
 
-    -   O laço controlado logicamente deve ser uma forma especial de laço
-        controlado por contador ou uma instrução separada?
+## Laços controlados logicamente
 
-### Laços controlados logicamente
+- O controle do laço é baseado em uma expressão booleana (não em um contador)
 
--   Exemplo das linguagens baseadas em C
+- Questões de projeto
+
+    - O controle deve ser pré-testado ou pós-testado?
+
+    - O laço controlado logicamente deve ser uma forma especial de laço
+      controlado por contador ou uma instrução separada?
+
+
+## Laços controlados logicamente
+
+- Exemplo das linguagens baseadas em C
 
     ```c
     while (control_expression)
-      loop body
+        loop body
 
     do
-      loop body
+        loop body
     while (control_expression);
     ```
 
--   Fortran 95 não tem laço lógico
+- Fortran 95 não tem laço lógico
 
--   Ada tem apenas um laço pré-testado
+- Ada tem apenas um laço pré-testado
 
-### Laços com controles posicionados pelo usuário
 
--   Em algumas situações é conveniente para o programador escolher o local do
-    controle do laço
+## Laços com controles posicionados pelo usuário
 
--   Questões de projeto
+- Em algumas situações é conveniente para o programador escolher o local do
+  controle do laço
 
-    -   O mecanismo condicional deve ser parte integral da saída?
+- Questões de projeto
 
-    -   Apenas um corpo de laço pode ser terminado, ou laços externos também
-        podem ser terminados?
+    - O mecanismo condicional deve ser parte integral da saída?
 
-### Laços com controles posicionados pelo usuário
+    - Apenas um corpo de laço pode ser terminado, ou laços externos também
+      podem ser terminados?
 
-```java
-while (sum < 1000) {
-  getnext(value);
-  if (value < 0) continue;
-  sum += value;
-}
 
-while (sum < 1000) {
-  getnext(value);
-  if (value < 0) break;
-  sum += value;
-}
+## Laços com controles posicionados pelo usuário
 
-outerLoop:
-for (row = 0; row < numRows; row++) {
-  for (col = 0; col < numCols; col++) {
-    sum += mat[row][col];
-    if (sum > 1000.0) {
-      break outerLoop;
+- Exemplo em Java
+
+    ```java
+    while (sum < 1000) {
+        getnext(value);
+        if (value < 0) continue;
+        sum += value;
     }
-  }
-}
-```
 
-### Iteração baseada em estrutura de dados
+    while (sum < 1000) {
+        getnext(value);
+        if (value < 0) break;
+        sum += value;
+    }
+    ```
 
--   A iteração é controlada pelos elementos em uma estrutura de dados
+## Laços com controles posicionados pelo usuário
 
--   A função responsável por percorrer a estrutura de dados é chamada
-    **iterador**
+- Exemplo em Java
 
--   No início de cada iteração o iterador é chamado, a cada chamada um valor é
-    retornado (em uma ordem específica)
+    ```java
+    outerLoop:
+    for (row = 0; row < numRows; row++) {
+        for (col = 0; col < numCols; col++) {
+            sum += mat[row][col];
+            if (sum > 1000.0) {
+                break outerLoop;
+            }
+        }
+    }
+    ```
 
--   Exemplos
 
-    -   Devido a flexibilidade do for do C, ele pode ser usado para simular uma
-        iteração definida pelo usuário
+## Iteração baseada em estrutura de dados
 
-        ```c
-        for (ptr = root; ptr != null; ptr = traverse(ptr))
-          ...
-        ```
+- A iteração é controlada pelos elementos em uma estrutura de dados
 
-### Iteração baseada em estrutura de dados
+- A função responsável por percorrer a estrutura de dados é chamada
+  **iterador**
 
--   Exemplo em PHP
+- No início de cada iteração o iterador é chamado, a cada chamada um valor é
+  retornado (em uma ordem específica)
+
+
+## Iteração baseada em estrutura de dados
+
+- Devido a flexibilidade do `for` do C, ele pode ser usado para simular uma
+  iteração definida pelo usuário
+
+    ```c
+    for (ptr = root; ptr != null; ptr = traverse(ptr))
+        ...
+    ```
+
+
+## Iteração baseada em estrutura de dados
+
+- Exemplo em PHP
+
+    \small
 
     ```php
     reset $list;
     print ("First number: " + current($list) + "<br />");
     while ($current_value = next($list))
-      print ("Next number: " + $current_value + "<br />");
+        print ("Next number: " + $current_value + "<br />");
     ```
 
-    \pause
 
--   Exemplo em C\#
+## Iteração baseada em estrutura de dados
+
+- Exemplo em C\#
 
     ```cs
     String[] strList == {"Bob", "Carol", "Ted"};
     ...
     foreach (String name in strList)
-      Console.WriteLine("Name: {0}", name);
+        Console.WriteLine("Name: {0}", name);
     ```
 
-# Saltos
-
-### Saltos
-
--   Uma **instrução de salto incondicional** transfere o controle da execução
-    para um local específico no programa
-
--   Muito debatido no final da década de 1960
-
--   `goto` na maioria das linguagens
-
--   É a instrução mais poderosa de controle de fluxo
-
--   Linguagens sem `goto`: Java, Python, Ruby
-
-# Comandos guardados
-
-### Comandos guardados
-
--   Sugerido por Dijkstra em 1975
-
--   A ideia era dar suporte a uma metodologia que garantisse a corretude durante
-    o desenvolvimento
-
--   Outra motivação era o não determinismo, que as vezes é necessário em
-    programas concorrentes
-
-### Comandos guardados
-
--   Construção de seleção
-
-        if i = 0 -> sum := sum + i
-        [] i > j -> sum := sum + j
-        [] j > i -> sum := sum + i
-        fi
-
-        if x >= y -> max := x
-        [] y >= x -> max := y
-        fi
 
 
-    \pause
+Saltos
+======
 
--   Construção de laço
+## Saltos
 
-        do q1 > q2 -> temp := q1; q1 := q2; q2 := temp;
-        [] q2 > q3 -> temp := q2; q2 := q3; q3 := temp;
-        [] q3 > q4 -> temp := q3; q3 := q4; q4 := temp;
-        od
+- Uma **instrução de salto incondicional** transfere o controle da execução
+  para um local específico no programa
 
-# Referências
+- Muito debatido no final da década de 1960
 
-### Referências
+- `goto` na maioria das linguagens
 
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 8.
+- É a instrução mais poderosa de controle de fluxo
+
+- Linguagens sem `goto`: Java, Python, Ruby
 
 
-<!-- vim: set spell spelllang=pt_br: -->
+Comandos guardados
+==================
+
+## Comandos guardados
+
+- Sugerido por Dijkstra em 1975
+
+- A ideia era dar suporte a uma metodologia que garantisse a corretude durante
+  o desenvolvimento
+
+- Outra motivação era o não determinismo, que as vezes é necessário em
+  programas concorrentes
+
+
+## Comandos guardados
+
+- Construção de seleção
+
+    ```
+    if i = 0 -> sum := sum + i
+    [] i > j -> sum := sum + j
+    [] j > i -> sum := sum + i
+    fi
+
+    if x >= y -> max := x
+    [] y >= x -> max := y
+    fi
+    ```
+
+
+## Comandos guardados
+
+- Construção de laço
+
+    ```
+    do q1 > q2 -> temp := q1; q1 := q2; q2 := temp;
+    [] q2 > q3 -> temp := q2; q2 := q3; q3 := temp;
+    [] q3 > q4 -> temp := q3; q3 := q4; q4 := temp;
+    od
+    ```
+
+
+
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 8.
