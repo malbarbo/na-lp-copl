@@ -3,7 +3,8 @@
 title: Expressões e sentença de atribuição
 ---
 
-# Introdução
+Introdução
+==========
 
 
 ## Introdução
@@ -30,7 +31,8 @@ title: Expressões e sentença de atribuição
 
 
 
-# Expressões aritméticas
+Expressões aritméticas
+======================
 
 
 ## Expressões aritméticas
@@ -277,7 +279,8 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 
 
-# Sobrecarga de operadores
+Sobrecarga de operadores
+========================
 
 
 ## Sobrecarga de operadores
@@ -309,7 +312,8 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 
 
-# Conversões de tipos
+Conversões de tipos
+===================
 
 
 ## Conversões de tipos
@@ -363,7 +367,8 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 
 
-# Expressões relacionais e booleanas
+Expressões relacionais e booleanas
+==================================
 
 
 ## Expressões relacionais e booleanas
@@ -422,7 +427,8 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 
 
-# Avaliação em curto-circuito
+Avaliação em curto-circuito
+===========================
 
 
 ## Avaliação em curto-circuito
@@ -464,7 +470,8 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 
 
-# Sentenças de atribuição
+Sentenças de atribuição
+=======================
 
 
 ## Sentenças de atribuição
@@ -546,7 +553,9 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 
 
-# Atribuição em modo misto
+Atribuição em modo misto
+========================
+
 
 ## Atribuição em modo misto
 
@@ -556,7 +565,8 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 - Diferente de C++, Java e C\# permiti apenas casos de coerções de ampliação
 
 
-# Referências
+Referências
+===========
 
 ## Referências
 
