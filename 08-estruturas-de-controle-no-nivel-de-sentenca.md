@@ -19,25 +19,25 @@ Introdução
 
 ## Introdução
 
-- No passado, as instruções de controle das linguagens eram feitas baseadas nas
+- No passado, as sentenças de controle das linguagens eram feitas baseadas nas
   instruções dos processadores
 
 - Muita pesquisa e discussão entre meados de 1960 e meados 1970
 
-    - Apenas um instrução de controle é necessária, o `goto`, mas esta
-      instrução tem diversos problemas
+    - Apenas um sentença de controle é necessária, o `goto`, mas esta
+      sentença tem diversos problemas
 
-    - O `goto` pode ser substituído por duas instruções de controle: seleção
+    - O `goto` pode ser substituído por duas sentenças de controle: seleção
       e repetição
 
-    - Na prática, o aspecto importante não é a quantidade de instruções de
+    - Na prática, o aspecto importante não é a quantidade de sentenças de
       controle, mas a facilidade de leitura e escrita
 
 
 ## Introdução
 
-- Uma **estrutura de controle** é uma instrução de controle e a coleção de
-  instruções cuja a execução está sobre seu controle
+- Uma **estrutura de controle** é uma sentença de controle e a coleção de
+  sentenças cuja a execução está sobre seu controle
 
 - Questão de projeto relativa a todas as estruturas de controle
 
@@ -45,15 +45,15 @@ Introdução
 
 
 
-Estruturas de seleção
+Sentenças de seleção
 =====================
 
-## Estruturas de seleção
+## Sentenças de seleção
 
-- Uma **instrução de seleção** prove meios de escolher entre dois ou mais
+- Uma **sentença de seleção** prove meios de escolher entre dois ou mais
   caminhos de execução no programa
 
-- As instruções de seleção são divididas em duas categorias
+- As sentenças de seleção são divididas em duas categorias
 
     - Duas vias
 
@@ -61,9 +61,9 @@ Estruturas de seleção
 
 
 
-## Instruções de seleção de duas vias
+## Sentenças de seleção de duas vias
 
-- Apesar das diferenças no projeto, as instruções de seleção de duas vias das
+- Apesar das diferenças no projeto, as sentenças de seleção de duas vias das
   linguagens contemporâneas são bastante semelhantes. A forma geral é:
 
     ```
@@ -83,33 +83,33 @@ Estruturas de seleção
     - Como o significado dos seletores aninhados devem ser especificados?
 
 
-## Instruções de seleção de duas vias
+## Sentenças de seleção de duas vias
 
 - A expressão de controle
 
     - A expressão de controle é especificada entre parênteses se a palavra
-      reservada then (ou outro marca sintática) não é usada
+      reservada `then` (ou outro marca sintática) não é usada
 
     - Algumas linguagens permitem expressões aritméticas (C/C++, Python),
       outras permitem apenas expressões booleanas (Ada, Java, Ruby, C\#)
 
 
-## Instruções de seleção de duas vias
+## Sentenças de seleção de duas vias
 
-- Forma da cláusula
+- Forma da cláusulas `then` e `else`
 
-    - Em Perl, todas as cláusulas precisam ser instruções compostas
+    - Em Perl, todas as cláusulas precisam ser sentenças compostas
 
-    - A maioria das linguagens permitem instruções simples e instruções
+    - A maioria das linguagens permitem sentenças simples e sentenças
       compostas
 
-    - As linguagens baseadas em C utilizam chaves para formar instruções
-      compostas
+        - As linguagens baseadas em C utilizam chaves para formar sentenças
+          compostas
 
-    - Em Fortran 95, Ada e Ruby as cláusulas then e else são sequências de
-      instruções. A seleção completa acaba com uma palavra reservada
+    - Em Fortran 95, Ada e Ruby as cláusulas `then` e `else` são sequências de
+      sentenças. A seleção completa acaba com uma palavra reservada
 
-    - Python usa indentação para especificar instruções compostas
+    - Python usa indentação para especificar sentenças compostas
 
         ```python
         if x > y:
@@ -120,26 +120,26 @@ Estruturas de seleção
 
 ## Seletores aninhados
 
-- Quando uma construção de seleção é aninhada com a cláusula then de outra
-  construção de seleção, não fica claro com qual if a cláusula then deve ser
-  associada
+- Quando uma construção de seleção é aninhada com a cláusula `then` de outra
+  construção de seleção, não fica claro com qual `if` a cláusula `then` deve
+  ser associada
 
 
 ## Seletores aninhados
 
-- Exemplo:
+Exemplo
 
-    ```c
-    if (sum == 0)
-        if (count == 0)
-            result = 0;
-    else
-        result = 1;
-    ```
+```c
+if (sum == 0)
+    if (count == 0)
+        result = 0;
+else
+    result = 1;
+```
 
-    \pause
+\pause
 
-- Esta construção pode ser interpretada de duas formas:
+Esta construção pode ser interpretada de duas formas
 
 <div class="columns">
 <div class="column" width="10%">
@@ -168,10 +168,10 @@ if (sum == 0) {
 
 ## Seletores aninhados
 
-- Em Perl, as cláusulas then e else têm que ser compostas \pause
+- Em Perl, as cláusulas `then` e `else` têm que ser compostas \pause
 
-- Em Java, a semântica estática especifica que a cláusula else faz par com o a
-  cláusula then sem par mais próxima \pause
+- Em Java, a semântica estática especifica que a cláusula `else` faz par com o a
+  cláusula `then` sem par mais próxima \pause
 
 - Uma alternativa sintática é o uso de uma palavra reservada para marcar o fim
   do seletor (Fortran 95, Ada, Ruby, Lua)
@@ -179,7 +179,7 @@ if (sum == 0) {
 
 ## Seletores aninhados
 
-- Exemplo em Ruby:
+Exemplo em Ruby
 
 <div class="columns">
 <div class="column" width="10%">
@@ -211,9 +211,9 @@ end
 
 ## Seletores aninhados
 
-- Em linguagens que a indentação é significativa, este problema não existe
+Em linguagens que a indentação é significativa, este problema não existe
 
-- Exemplo em Python
+Exemplo em Python
 
 <div class="columns">
 <div class="column" width="10%">
@@ -239,10 +239,10 @@ else:
 </div>
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
 - Uma construção de **seleção múltipla** permite a seleção de uma entre várias
-  instruções (ou grupo de instruções)
+  sentenças (ou grupo de sentenças)
 
 - Questões de projeto
 
@@ -258,28 +258,28 @@ else:
     - Como os seletores de valores não apresentados deve ser tratados?
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
-- Exemplo das linguagens baseadas em C
+Exemplo das linguagens baseadas em C
 
-    \small
+\small
 
-    ```c
-    switch (index) {
-      case 1:
-      case 3: odd += 1
-              sumodd += index;
-              break;
-      case 2:
-      case 4: even += 1;
-              sumeven += index;
-              break;
-      default: printf("Error in switch, index %d\n", index);
-    }
-    ```
+```c
+switch (index) {
+  case 1:
+  case 3: odd += 1
+          sumodd += index;
+          break;
+  case 2:
+  case 4: even += 1;
+          sumeven += index;
+          break;
+  default: printf("Error in switch, index %d\n", index);
+}
+```
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
 - Exemplo das linguagens baseadas em C
 
@@ -290,31 +290,31 @@ else:
     - Nem todos os casos precisam ser especificados
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
-- Exemplo em C\#
+Exemplo em C\#
 
-    \small
+\small
 
-    ```cs
-    switch (value) {
-        case -1:
-            Negatives++;
-            break;
-        case 0:
-            Zeros++;
-            goto case 1;
-        case 1:
-            Positives++;
-            break;
-        default:
-            Console.Writeln("Error in switch\n");
-            break;
-    }
-    ```
+```cs
+switch (value) {
+    case -1:
+        Negatives++;
+        break;
+    case 0:
+        Zeros++;
+        goto case 1;
+    case 1:
+        Positives++;
+        break;
+    default:
+        Console.Writeln("Error in switch\n");
+        break;
+}
+```
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
 - Exemplo em C\#
 
@@ -323,21 +323,21 @@ else:
     - As expressões também podem ser strings
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
-- Exemplo em Ada
+Exemplo em Ada
 
-    ```ada
-    case expression is
-        when choice list => statement_sequence;
-        ...
-        when choice list => statement_sequence;
-        [when other => statement_sequence;]
-    end case;
-    ```
+```ada
+case expression is
+    when choice list => statement_sequence;
+    ...
+    when choice list => statement_sequence;
+    [when other => statement_sequence;]
+end case;
+```
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
 - Exemplo em Ada
 
@@ -354,73 +354,73 @@ else:
         - Exaustiva
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
-- Exemplo em Ruby (semelhante a ifs aninhados)
+Exemplo em Ruby (semelhante a ifs aninhados)
 
-    ```ruby
-    leap = case
-        when year % 400 == 0 then true
-        when year % 100 == 0 then false
-        else year % 4 == 0
-    end
-    ```
-
-
-## Instruções de seleção múltipla
-
-- Exemplo em Ruby (semelhante ao switch)
-
-    ```ruby
-    case int_val
-        when -1 then neg_count++
-        when 0 then zero_count++
-        when 1 then pos_count++
-        else puts "Error: int_val is out of range"
-    end
-    ```
+```ruby
+leap = case
+    when year % 400 == 0 then true
+    when year % 100 == 0 then false
+    else year % 4 == 0
+end
+```
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
-- Exemplo em Python (seleção múltipla usando `if`)
+Exemplo em Ruby (semelhante ao switch)
 
-    ```python
-    if count < 10:
-        bag1 = True
-    else:
-        if count < 100:
-            bag2 = True
-        else:
-            if count < 1000:
-                bag3 = True
-    ```
+```ruby
+case int_val
+    when -1 then neg_count++
+    when 0 then zero_count++
+    when 1 then pos_count++
+    else puts "Error: int_val is out of range"
+end
+```
 
 
-## Instruções de seleção múltipla
+## Sentenças de seleção múltipla
 
-- Exemplo em Python (seleção múltipla usando `if`)
+Exemplo em Python (seleção múltipla usando `if`)
 
-    ```python
-    if count < 10:
-        bag1 = True
-    elif count < 100:
+```python
+if count < 10:
+    bag1 = True
+else:
+    if count < 100:
         bag2 = True
-    elif count < 1000:
-        bag3 = True
-    ```
+    else:
+        if count < 1000:
+            bag3 = True
+```
+
+
+## Sentenças de seleção múltipla
+
+Exemplo em Python (seleção múltipla usando `if`)
+
+```python
+if count < 10:
+    bag1 = True
+elif count < 100:
+    bag2 = True
+elif count < 1000:
+    bag3 = True
+```
 
 
 
-Estruturas iterativas
+Sentenças de iteração
 =====================
 
-## Estruturas iterativas
+## Sentenças de iteração
 
-- Uma **instrução iterativa** é aquela que causa a execução de uma instrução
-  (ou coleção de instruções) zero, uma ou mais vezes
+- Uma **sentença de iteração** é aquela que causa a execução de uma sentença
+  (ou coleção de sentenças) zero, uma ou mais vezes
 
-- Geralmente chamado de laço (loop)
+- Também chamada de laço (loop)
 
 - Questões de projeto
 
@@ -429,17 +429,17 @@ Estruturas iterativas
     - Onde o mecanismo de controle deve aparecer na construção do laço?
 
 
-## Estruturas iterativas
+## Sentenças de iteração
 
-- O **corpo** de uma construção iterativa é a coleção de instruções cuja a
-  execução é controlada pela instrução iterativa
+- O **corpo** de uma construção iterativa é a coleção de sentenças cuja a
+  execução é controlada pela sentença de iteração
 
-- A instrução iterativa junto com o corpo é chamada de **construção iterativa**
+- A sentença de iteração junto com o corpo é chamada de **construção iterativa**
 
 
 ## Laços controlados por contador
 
-- Uma instrução iterativa de contagem tem uma variável, chamada **variável do
+- Uma sentença de iteração de contagem tem uma variável, chamada **variável do
   laço**, onde o valor da contagem é mantida
 
 - Existe uma maneira de especificar o valor inicial, o valor final e o passo da
@@ -521,6 +521,7 @@ Estruturas iterativas
     ```
 
     ```c
+    // C
     for (count = 1; count <= 10; count++) {
       ...
     }
@@ -556,7 +557,7 @@ Estruturas iterativas
     - O controle deve ser pré-testado ou pós-testado?
 
     - O laço controlado logicamente deve ser uma forma especial de laço
-      controlado por contador ou uma instrução separada?
+      controlado por contador ou uma sentença separada?
 
 
 ## Laços controlados logicamente
@@ -674,19 +675,19 @@ Estruturas iterativas
 
 
 
-Saltos
-======
+Desvio incondicional
+====================
 
-## Saltos
+## Desvio incondicional
 
-- Uma **instrução de salto incondicional** transfere o controle da execução
+- Uma **sentença de desvio incondicional** transfere o controle da execução
   para um local específico no programa
 
 - Muito debatido no final da década de 1960
 
 - `goto` na maioria das linguagens
 
-- É a instrução mais poderosa de controle de fluxo
+- É a sentença mais poderosa de controle de fluxo
 
 - Linguagens sem `goto`: Java, Python, Ruby
 
