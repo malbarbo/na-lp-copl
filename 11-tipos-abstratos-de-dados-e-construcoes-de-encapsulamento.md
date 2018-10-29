@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
-title: Tipos abstrados de dados e construções encapsuladas
+title: Tipos abstrados de dados e construções de encapsulamento
 ---
 
 O conceito de abstração
