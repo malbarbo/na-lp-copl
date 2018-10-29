@@ -1,65 +1,74 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Tipos abstrados de dados e construções encapsuladas
 ---
 
-# O conceito de abstração
+O conceito de abstração
+=======================
 
-### O conceito de abstração
+## O conceito de abstração
 
--   Uma **abstração** é uma visão ou representação de uma entidade que incluí
-    apenas os atributos mais significativos
+- Uma **abstração** é uma visão ou representação de uma entidade que incluí
+  apenas os atributos mais significativos
 
--   A abstração é uma ferramenta poderosa contra a complexidade, o seu propósito
-    é simplificar a programação \pause
+- A abstração é uma ferramenta poderosa contra a complexidade, o seu propósito
+  é simplificar a programação
 
--   Tipos de abstração
 
-    \pause
+## O conceito de abstração
 
-    -   Abstração de processos: mais comum na forma de subprogramas
-
-        -   `sortInt(list, listLen);`
+- Tipos de abstração
 
     \pause
 
-    -   Abstração de dados: umas das mais profundas ideias nos últimos 50 anos
+    - Abstração de processos: mais comum na forma de subprogramas
 
-# Introdução à abstração de dados
-
-### Introdução à abstração de dados
-
--   Um **tipo abstrato de dado** é um tipo de dado que satisfaz duas condições
+        - `sortInt(list, listLen);`
 
     \pause
 
-    -   A representação dos objetos do tipo é escondida da unidade de programa
-        que usa o tipo, portanto, as únicas operações diretas possíveis sobre os
-        objetos do tipo são aquelas fornecidas na definição do tipo
-        (encapsulamento / ocultação de informação) \pause
+    - Abstração de dados: umas das mais profundas ideias nos últimos 50 anos
 
-    -   A declaração do tipo e dos protocolos das operações sobre objetos do
-        tipo (interface do tipo) estão contidas em uma única unidade sintática
 
-\pause
 
--   Vantagens da primeira condição: confiabilidade, os clientes não podem mudar
-    a representação dos objetos diretamente. Evita colisões de nomes.
-    Possibilidade de alterar a representação e implementação sem afetar os
-    clientes \pause
+Introdução à abstração de dados
+===============================
 
--   Vantagens da segunda condição: compilação separada
 
-### Introdução à abstração de dados
+## Introdução à abstração de dados
 
--   Exemplos
+- Um **tipo abstrato de dado** é um tipo de dado que satisfaz duas condições
+
+    - A representação dos objetos do tipo é escondida da unidade de programa
+      que usa o tipo, portanto, as únicas operações diretas possíveis sobre os
+      objetos do tipo são aquelas fornecidas na definição do tipo
+      (encapsulamento / ocultação de informação) \pause
+
+    - A declaração do tipo e dos protocolos das operações sobre objetos do tipo
+      (interface do tipo) estão contidas em uma única unidade sintática
+
+
+## Introdução à abstração de dados
+
+- Vantagens da primeira condição: confiabilidade, os clientes não podem mudar
+  a representação dos objetos diretamente. Evita colisões de nomes.
+  Possibilidade de alterar a representação e implementação sem afetar os
+  clientes \pause
+
+- Vantagens da segunda condição: compilação separada
+
+
+## Introdução à abstração de dados
+
+- Exemplos
 
     \pause
 
-    -   Tipo float
+    - Tipo float
 
     \pause
 
-    -   Tipo pilha,
+    - Tipo pilha,
         `create(stack), destroy(stack), empty(stack), push(stack, element), pop(stack), top(stack)`
 
         ```c
@@ -72,76 +81,85 @@ title: Tipos abstrados de dados e construções encapsuladas
         ...
         ```
 
-# Questões de projeto
 
-### Questões de projeto
 
--   Requisitos da linguagem para TAD
+Questões de projeto
+===================
 
-    -   Uma unidade sintática que encapsula a definição do tipo e dos protótipos
-        das operações
+## Questões de projeto
 
-    -   Uma maneira de tornar o nomes de tipos visíveis para clientes do código
-        e ocultar a implementação
+- Requisitos da linguagem para TAD
 
-    -   Poucas operações padrões (se alguma) deve ser fornecida (além das
-        fornecidas na definição do tipo)
+    - Uma unidade sintática que encapsula a definição do tipo e dos protótipos
+      das operações
 
-    \pause
+    - Uma maneira de tornar o nomes de tipos visíveis para clientes do código
+      e ocultar a implementação
 
--   Qual é a forma do "recipiente" para a interface do tipo?
+    - Poucas operações padrões (se alguma) deve ser fornecida (além das
+      fornecidas na definição do tipo)
 
--   Os tipos abstratos podem ser parametrizados?
 
--   Quais mecanismos de controle de acesso são fornecidos e como eles são
-    especificados?
+## Questões de projeto
 
-# Exemplos de linguagens
+- Qual é a forma do "recipiente" para a interface do tipo?
 
-### Exemplos de linguagens: Ada
+- Os tipos abstratos podem ser parametrizados?
 
--   A construção de encapsulamento é chamada de pacote
+- Quais mecanismos de controle de acesso são fornecidos e como eles são
+  especificados?
 
-    -   pacote de especificação (define a interface do tipo)
 
-    -   pacote de corpo (implementação)
 
-    \pause
+Exemplos de linguagens
+======================
 
--   Ocultação de informação
+## Exemplos de linguagens: Ada
 
-    -   O pacote de especificação tem uma parte visível ao cliente e uma parte
-        oculta (private)
+- A construção de encapsulamento é chamada de pacote
 
-    -   Na parte visível ao cliente é feito a declaração do tipo abstrato, que
-        pode conter também a representação dos tipos não ocultos
+    - Pacote de especificação (define a interface do tipo)
 
-    -   Na parte privada é especificada a representação do tipo abstrato
-
-### Exemplos de linguagens: Ada
-
--   Motivos para ter uma parte privada no pacote de especificação
-
-    -   O compilador precisa saber a representação vendo apenas o pacote de
-        especificação
-
-    -   O clientes precisam enxergar o nome do tipo, mas não a representação
+    - Pacote de corpo (implementação)
 
     \pause
 
--   Ter parte dos detalhes da implementação (a representação) no pacote de
-    especificação não é bom \pause
+- Ocultação de informação
 
--   Um solução é fazer todos os TADs serem ponteiros. Mas esta solução tem
-    problemas
+    - O pacote de especificação tem uma parte visível ao cliente e uma parte
+      oculta (private)
 
-    -   Dificuldades com ponteiros
+    - Na parte visível ao cliente é feito a declaração do tipo abstrato, que
+      pode conter também a representação dos tipos não ocultos
 
-    -   Comparação de objetos
+    - Na parte privada é especificada a representação do tipo abstrato
 
-    -   O controle da alocação é perdido
 
-###
+## Exemplos de linguagens: Ada
+
+- Motivos para ter uma parte privada no pacote de especificação
+
+    - O compilador precisa saber a representação vendo apenas o pacote de
+      especificação
+
+    - O clientes precisam enxergar o nome do tipo, mas não a representação
+
+    \pause
+
+- Ter parte dos detalhes da implementação (a representação) no pacote de
+  especificação não é bom \pause
+
+- Um solução é fazer todos os TADs serem ponteiros. Mas esta solução tem
+  problemas
+
+    - Dificuldades com ponteiros
+
+    - Comparação de objetos
+
+    - O controle da alocação é perdido
+
+
+##
 
 ```ada
 package Stack_Pack is
@@ -163,7 +181,8 @@ package Stack_Pack is
 end Stack_Pack;
 ```
 
-###
+
+##
 
 ```ada
 with Ada.Text_IO; use Ada.Text_IO;
@@ -188,47 +207,49 @@ procedure Use_Stacks is
   end Use_Stacks;
 ```
 
-### Exemplos de linguagens: C++
 
--   C++ foi criado para adicionar orientação a objetos em C, portanto suporta
-    TADs \pause
+## Exemplos de linguagens: C++
 
--   Os mecanismos de encapsulamento são as classes e estruturas
+- C++ foi criado para adicionar orientação a objetos em C, portanto suporta
+  TADs \pause
 
-    -   Os dados são chamados de dados membros
+- Os mecanismos de encapsulamento são as classes e estruturas
 
-    -   As funções são chamadas de funções membros
+    - Os dados são chamados de dados membros
 
-    -   Os membros podem ser da classe ou ou da instância
+    - As funções são chamadas de funções membros
 
-    -   Todas as instâncias de uma classe compartilham um cópia das funções
-        membros
+    - Os membros podem ser da classe ou ou da instância
 
-    -   Cada instância da classe tem sua cópia dos dados membros
+    - Todas as instâncias de uma classe compartilham um cópia das funções
+      membros
 
-    -   As instâncias podem ser estáticas, dinâmica na pilha ou dinâmicas no
-        heap (new e delete)
+    - Cada instância da classe tem sua cópia dos dados membros
 
-    -   Uma função membro pode ser inline (cabeçalho e corpo juntos)
+    - As instâncias podem ser estáticas, dinâmica na pilha ou dinâmicas no heap
+      (new e delete)
 
-### Exemplos de linguagens: C++
+    - Uma função membro pode ser inline (cabeçalho e corpo juntos)
 
--   Ocultação de informação
 
-    -   private, para entidades ocultas
+## Exemplos de linguagens: C++
 
-    -   public, para as interfaces
+- Ocultação de informação
 
-    -   protected
+    - private, para entidades ocultas
+
+    - public, para as interfaces
+
+    - protected
 
     \pause
 
--   Construtores: utilizados para inicializar uma instância da classe \pause
+- Construtores: utilizados para inicializar uma instância da classe \pause
 
--   Destrutores: chamado implicitamente quando o tempo de vida da instância
-    acaba
+- Destrutores: chamado implicitamente quando o tempo de vida da instância acaba
 
-###
+
+##
 
 ```cpp
 class Stack {
@@ -252,8 +273,8 @@ class Stack {
 }
 ```
 
-###
 
+##
 
 ```cpp
 void main() {
@@ -267,8 +288,8 @@ void main() {
 }
 ```
 
-###
 
+##
 
 ```cpp
 // Stack.h - the header file for the Stack class
@@ -288,8 +309,8 @@ public:     //** These members are visible to clients
 }
 ```
 
-###
 
+##
 
 ```cpp
 // Stack.cpp - the implementation file for Stack class
@@ -309,33 +330,36 @@ void Stack::push(int number) {
 ...
 ```
 
-### Avaliação Ada e C++
 
--   Expressividade similar
+## Avaliação Ada e C++
 
--   Ambos fornecem mecanismos de encapsulamento e ocultação de informação
+- Expressividade similar
 
--   Classes são tipos, os pacotes em Ada são mecanismos mais gerais de
-    encapsulamento
+- Ambos fornecem mecanismos de encapsulamento e ocultação de informação
 
-### Exemplos de linguagens: Java
+- Classes são tipos, os pacotes em Ada são mecanismos mais gerais de
+  encapsulamento
 
--   Similar ao C++, exceto que
 
-    -   Todos os tipos definidos pelos usuários são classes
+## Exemplos de linguagens: Java
 
-    -   Todos os objetos são alocados no heap e acessados através de referência
+- Similar ao C++, exceto que
 
-    -   Os métodos precisam ser definidos na classe
+    - Todos os tipos definidos pelos usuários são classes
 
-    -   Os modificadores de acesso são especificados em entidades, não em
-        cláusulas
+    - Todos os objetos são alocados no heap e acessados através de referência
 
-    -   Não tem destrutor
+    - Os métodos precisam ser definidos na classe
 
-###
+    - Os modificadores de acesso são especificados em entidades, não em
+      cláusulas
 
-```cpp
+    - Não tem destrutor
+
+
+##
+
+```java
 class Stack {
     private int [] stackRef;
     private int maxLen;
@@ -352,9 +376,10 @@ class Stack {
 }
 ```
 
-###
 
-```cpp
+##
+
+```java
 class TestStack {
   public static void main(String[] args) {
     Stack myStack = new Stack();
@@ -367,23 +392,25 @@ class TestStack {
 }
 ```
 
-### Exemplos de linguagens: C\#
 
--   Baseado em C++ e Java
+## Exemplos de linguagens: C\#
 
--   Adiciona dois modificadores de acesso internal e protected internal
+- Baseado em C++ e Java
 
--   As instâncias de classe são dinâmicas no heap
+- Adiciona dois modificadores de acesso internal e protected internal
 
--   Destrutores são raramente usados
+- As instâncias de classe são dinâmicas no heap
 
--   Estruturas são semelhantes as classes, mas não podem ter herança, são
-    alocadas na pilha e acessadas como valores
+- Destrutores são raramente usados
 
--   Suporte a propriedades, que é uma maneira de implementar getters e setters
-    sem requerer a chamada de método explícita
+- Estruturas são semelhantes as classes, mas não podem ter herança, são
+  alocadas na pilha e acessadas como valores
 
-###
+- Suporte a propriedades, que é uma maneira de implementar getters e setters
+  sem requerer a chamada de método explícita
+
+
+##
 
 ```cs
 public class Weather {
@@ -408,28 +435,30 @@ w.DegreeDays = degreeDaysToday;
 oldDegreeDays = w.DegreeDays;
 ```
 
-### Exemplos de linguagens: Ruby
 
--   O mecanismo de encapsulamento são as classes
+## Exemplos de linguagens: Ruby
 
-    -   Capacidade semelhante as classes em C++ e Java
+- O mecanismo de encapsulamento são as classes
 
-    -   Os nomes das variáveis de instâncias começam com `@` e de classes com `@@`
+    - Capacidade semelhante as classes em C++ e Java
 
-    -   Os métodos são declarados com as mesma sintaxe que as funções
+    - Os nomes das variáveis de instâncias começam com `@` e de classes com `@@`
 
-    -   O construtor é o `initialize`, que é chamado quando o método `new` da classe
-        é chamado
+    - Os métodos são declarados com as mesma sintaxe que as funções
 
-    -   As classes são dinâmicas
+    - O construtor é o `initialize`, que é chamado quando o método `new` da
+      classe é chamado
+
+    - As classes são dinâmicas
 
     \pause
 
--   Ocultação de informação
+- Ocultação de informação
 
-    -   Os membros das classes podem ser públicos ou privados
+    - Os membros das classes podem ser públicos ou privados
 
-###
+
+##
 
 ```ruby
 class StackClass
@@ -454,7 +483,8 @@ class StackClass
 end
 ```
 
-###
+
+##
 
 ```ruby
 myStack = StackClass.new
@@ -466,21 +496,25 @@ puts "Top element is (should be 42): #{myStack.top}"
 myStack.pop
 ```
 
-# Tipos abstratos de dados parametrizados
 
-### Tipos abstratos de dados parametrizados
 
--   Permite a criação de tipos abstratos de dados que podem armazenar dados de
-    qualquer tipo
+Tipos abstratos de dados parametrizados
+=======================================
 
--   Não é uma questão relacionada as linguagens dinâmicas
+## Tipos abstratos de dados parametrizados
 
--   Algumas linguagens com suporte a TAD parametrizados: Ada, C++, Java 5, C\#
-    2005
+- Permite a criação de tipos abstratos de dados que podem armazenar dados de
+  qualquer tipo
 
-### Tipos abstratos de dados parametrizados em Ada
+- Não é uma questão relacionada as linguagens dinâmicas
 
--   Os pacotes podem ser parametrizados
+- Algumas linguagens com suporte a TAD parametrizados: Ada, C++, Java 5, C\#
+  2005
+
+
+## Tipos abstratos de dados parametrizados em Ada
+
+- Os pacotes podem ser parametrizados
 
     ```ada
     generic
@@ -497,9 +531,10 @@ myStack.pop
     Package Float_Stack is new Generic_Stack(100, Float);
     ```
 
-### Tipos abstratos de dados parametrizados em C++
 
--   As classes podem ser declaradas como templates
+## Tipos abstratos de dados parametrizados em C++
+
+- As classes podem ser declaradas como templates
 
     ```cpp
     template <class Type>
@@ -520,30 +555,32 @@ myStack.pop
     Stack<float> s2;
     ```
 
-### Tipos abstratos de dados parametrizados em Java 5
 
--   Antes da versão 5, as classes como `LinkedList` e `ArrayList` podiam armazenar
-    qualquer objeto \pause
+## Tipos abstratos de dados parametrizados em Java 5
 
--   Existem 3 problemas com coleção de objetos
+- Antes da versão 5, as classes como `LinkedList` e `ArrayList` podiam
+  armazenar qualquer objeto \pause
 
-    -   Todo objeto da coleção precisa da coerção quando é acessado
+- Existem 3 problemas com coleção de objetos
 
-    -   Não é possível fazer checagem de tipo quando os valores são adicionados
+    - Todo objeto da coleção precisa da coerção quando é acessado
 
-    -   Não é possível inserir tipos primitivos nas coleções
+    - Não é possível fazer checagem de tipo quando os valores são adicionados
+
+    - Não é possível inserir tipos primitivos nas coleções
 
     \pause
 
--   O Java 5 tentou resolver estes problemas, adicionado genéricos (e
+- O Java 5 tentou resolver estes problemas, adicionado genéricos (e
     autoboxing) a linguagem
 
-    -   As classes genéricas resolveram o primeiro e o segundo problema, mas não
+    - As classes genéricas resolveram o primeiro e o segundo problema, mas não
         o terceiro, porque os parâmetros genéricos tem quer classe
 
-    -   O autoboxing resolveu o terceiro problema
+    - O autoboxing resolveu o terceiro problema
 
-###
+
+##
 
 ```java
 class Stack<T> {
@@ -563,115 +600,126 @@ int y = s1.top();
 Stack<Float> s2 = new Stack<Float>();
 ```
 
-### Tipos abstratos de dados parametrizados em C\# 2005
 
--   Assim como Java, nas primeiras versão do C\# as coleção armazenavam objetos
+## Tipos abstratos de dados parametrizados em C\# 2005
 
--   Classes genéricas foram adicionadas ao C\# 2005.
+- Assim como Java, nas primeiras versão do C\# as coleção armazenavam objetos
 
--   Diferente do Java, os elementos de coleções genéricas podem ser acessados
-    através de índices
+- Classes genéricas foram adicionadas ao C\# 2005.
 
-# Construções de encapsulamento
+- Diferente do Java, os elementos de coleções genéricas podem ser acessados
+  através de índices
 
-### Construções de encapsulamento
 
--   Grandes softwares têm duas necessidades especiais
 
-    -   Alguma maneira de organização, além da simples divisão em subprogramas
+Construções de encapsulamento
+=============================
 
-    -   Alguma maneira de realizar compilação parcial
+
+## Construções de encapsulamento
+
+- Grandes softwares têm duas necessidades especiais
+
+    - Alguma maneira de organização, além da simples divisão em subprogramas
+
+    - Alguma maneira de realizar compilação parcial
 
     \pause
 
--   Solução: encapsulamento
+- Solução: encapsulamento
 
-    -   Agrupar os códigos e dados logicamente relacionados em uma unidade que
+    - Agrupar os códigos e dados logicamente relacionados em uma unidade que
         possa ser compilada separadamente
 
--   Existem várias formas de encapsulamento
+- Existem várias formas de encapsulamento
 
-### Construções de encapsulamento
 
--   Subprogramas aninhados \pause
+## Construções de encapsulamento
 
--   Encapsulamento em C
+- Subprogramas aninhados \pause
 
-    -   Um ou mais subprogramas e tipos são colocados em arquivos que podem ser
+- Encapsulamento em C
+
+    - Um ou mais subprogramas e tipos são colocados em arquivos que podem ser
         compilados independentemente
 
-    -   A interface é colocada em um arquivo de cabeçalho, e a implementação em
+    - A interface é colocada em um arquivo de cabeçalho, e a implementação em
         outro arquivo
 
-    -   \#include é utilizado para incluir o cabeçalho
+    - \#include é utilizado para incluir o cabeçalho
 
-    -   O ligador não checa os tipos entre o cabeçalho e a implementação
+    - O ligador não checa os tipos entre o cabeçalho e a implementação
 
-### Construções de encapsulamento
 
--   Encapsulamento em C++
+## Construções de encapsulamento
 
-    -   Permite definir arquivos de cabeçalho e implementação (semelhante ao C)
+- Encapsulamento em C++
 
-    -   Os arquivos de cabeçalho de templates em geral incluem a declaração e a
-        definição
+    - Permite definir arquivos de cabeçalho e implementação (semelhante ao C)
 
-    -   Friends fornecem um mecanismo para permitir acesso a membros privados
+    - Os arquivos de cabeçalho de templates em geral incluem a declaração
+      e a definição
 
-    \pause
-
--   Pacotes Ada
-
-    -   Podem incluir várias declarações de tipos e subprogramas
-
-    -   Podem ser compilados separadamente
-
-    -   Os pacotes de especificação e corpo podem ser compilados separadamente
-
-### Construções de encapsulamento
-
--   Assemblies em C\#
-
-    -   Uma coleção de arquivos que aparentam ser uma DLL ou executável
-
-    -   Cada arquivo define um módulo que pode ser compilado separadamente
-
-    -   Uma DLL é uma coleção de classes e subprogramas que são ligados
-        individualmente a um executável
-
-    -   Contém outras informações, como dependências e versão
-
-    -   Podem ser privados ou públicos
-
-    -   O modificador de acesso internal especifica que um membro é visível a
-        todos no mesmo assembly
-
-# Encapsulamento de nomes
-
-### Encapsulamento de nomes
-
--   Como desenvolvedores trabalhando independentemente podem criar nomes para
-    variáveis, classes, etc, sem acidentalmente usar um nome já em uso?
+    - Friends fornecem um mecanismo para permitir acesso a membros privados
 
     \pause
 
-    -   Usando um **encapsulamento de nome**, que cria um novo escopo de nomes
+- Pacotes Ada
+
+    - Podem incluir várias declarações de tipos e subprogramas
+
+    - Podem ser compilados separadamente
+
+    - Os pacotes de especificação e corpo podem ser compilados separadamente
+
+
+## Construções de encapsulamento
+
+- Assemblies em C\#
+
+    - Uma coleção de arquivos que aparentam ser uma DLL ou executável
+
+    - Cada arquivo define um módulo que pode ser compilado separadamente
+
+    - Uma DLL é uma coleção de classes e subprogramas que são ligados
+      individualmente a um executável
+
+    - Contém outras informações, como dependências e versão
+
+    - Podem ser privados ou públicos
+
+    - O modificador de acesso internal especifica que um membro é visível
+      a todos no mesmo assembly
+
+
+
+Encapsulamento de nomes
+=======================
+
+## Encapsulamento de nomes
+
+- Como desenvolvedores trabalhando independentemente podem criar nomes para
+  variáveis, classes, etc, sem acidentalmente usar um nome já em uso?
 
     \pause
 
--   Namespaces em C++
+    - Usando um **encapsulamento de nome**, que cria um novo escopo de nomes
 
--   Pacotes em Java
+    \pause
 
--   Pacotes em Ada
+- Namespaces em C++
 
--   Módulos em Ruby
+- Pacotes em Java
 
-# Referências
+- Pacotes em Ada
 
-### Referências
-
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 11.
+- Módulos em Ruby
 
 
-<!-- vim: set spell spelllang=pt_br: -->
+
+Referências
+===========
+
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 11.
