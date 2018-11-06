@@ -17,17 +17,17 @@ O conceito de abstração
 
 ## O conceito de abstração
 
-- Tipos de abstração
+- Abstração de processos
 
-    \pause
+    - Subprogramas
 
-    - Abstração de processos: mais comum na forma de subprogramas
+    - Por exemplo, em um procedimento de ordenação o algoritmo usado fica oculto
 
-        - `sortInt(list, listLen);`
+        ```
+        sortInt(list, listLen);
+        ```
 
-    \pause
-
-    - Abstração de dados: umas das mais profundas ideias nos últimos 50 anos
+- Abstração de dados
 
 
 
@@ -39,23 +39,31 @@ Introdução à abstração de dados
 
 - Um **tipo abstrato de dado** é um tipo de dado que satisfaz duas condições
 
-    - A representação dos objetos do tipo é escondida da unidade de programa
-      que usa o tipo, portanto, as únicas operações diretas possíveis sobre os
+    - A representação dos objetos do tipo é ocultada da unidade de programa que
+      usa o tipo, portanto, as únicas operações diretas possíveis sobre os
       objetos do tipo são aquelas fornecidas na definição do tipo
-      (encapsulamento / ocultação de informação) \pause
 
     - A declaração do tipo e dos protocolos das operações sobre objetos do tipo
-      (interface do tipo) estão contidas em uma única unidade sintática
+      (interface do tipo) estão contidas em uma única unidade sintática.
+      A interface do tipo não depende da representação do tipo nem da
+      implementação das operações
 
 
 ## Introdução à abstração de dados
 
-- Vantagens da primeira condição: confiabilidade, os clientes não podem mudar
-  a representação dos objetos diretamente. Evita colisões de nomes.
-  Possibilidade de alterar a representação e implementação sem afetar os
-  clientes \pause
+- Vantagens da primeira condição
 
-- Vantagens da segunda condição: compilação separada
+    - Confiabilidade, os clientes não podem mudar a representação dos objetos
+      diretamente, aumentando a integridade dos objetos
+
+    - Evita colisões de nomes
+
+    - Possibilidade de alterar a representação e implementação sem afetar os
+      clientes
+
+- Vantagens da segunda condição
+
+    - Compilação separada
 
 
 ## Introdução à abstração de dados
@@ -68,15 +76,16 @@ Introdução à abstração de dados
 
     \pause
 
-    - Tipo pilha,
-        `create(stack), destroy(stack), empty(stack), push(stack, element), pop(stack), top(stack)`
+    - Tipo pilha
 
         ```c
+        // create(stack), destroy(stack), empty(stack),
+        // push(stack, element), pop(stack), top(stack)
         ...
         create(stk1);
         push(stk1, color1);
         push(stk1, color2);
-        if (! empty(stk1))
+        if (!empty(stk1))
           temp = top(stk1);
         ...
         ```
@@ -99,10 +108,15 @@ Questões de projeto
     - Poucas operações padrões (se alguma) deve ser fornecida (além das
       fornecidas na definição do tipo)
 
+        - Atribuição
+
+        - Comparação
+
+
 
 ## Questões de projeto
 
-- Qual é a forma do "recipiente" para a interface do tipo?
+- Qual é a forma do "invólucro" para a interface do tipo?
 
 - Os tipos abstratos podem ser parametrizados?
 
@@ -122,7 +136,8 @@ Exemplos de linguagens
 
     - Pacote de corpo (implementação)
 
-    \pause
+
+## Exemplos de linguagens: Ada
 
 - Ocultação de informação
 
@@ -144,7 +159,8 @@ Exemplos de linguagens
 
     - O clientes precisam enxergar o nome do tipo, mas não a representação
 
-    \pause
+
+## Exemplos de linguagens: Ada
 
 - Ter parte dos detalhes da implementação (a representação) no pacote de
   especificação não é bom \pause
@@ -160,6 +176,8 @@ Exemplos de linguagens
 
 
 ##
+
+\small
 
 ```ada
 package Stack_Pack is
@@ -184,16 +202,24 @@ end Stack_Pack;
 
 ##
 
+\small
+
 ```ada
-with Ada.Text_IO; use Ada.Text_IO;
 package body Stack_Pack is
   function Empty(Stk : in Stack_Type) return Boolean is
     begin
-    return Stk,Topsub = 0;
+    return Stk.Topsub = 0;
     end Empty;
   ...
 end Stack_Pack;
+```
 
+
+##
+
+\small
+
+```ada
 with Stack_Pack;
 procedure Use_Stacks is
   Topone : Integer;
@@ -211,7 +237,10 @@ procedure Use_Stacks is
 ## Exemplos de linguagens: C++
 
 - C++ foi criado para adicionar orientação a objetos em C, portanto suporta
-  TADs \pause
+  TADs
+
+
+## Exemplos de linguagens: C++
 
 - Os mecanismos de encapsulamento são as classes e estruturas
 
@@ -219,7 +248,7 @@ procedure Use_Stacks is
 
     - As funções são chamadas de funções membros
 
-    - Os membros podem ser da classe ou ou da instância
+    - Os membros podem ser da classe ou da instância
 
     - Todas as instâncias de uma classe compartilham um cópia das funções
       membros
@@ -227,7 +256,7 @@ procedure Use_Stacks is
     - Cada instância da classe tem sua cópia dos dados membros
 
     - As instâncias podem ser estáticas, dinâmica na pilha ou dinâmicas no heap
-      (new e delete)
+      (`new` e `delete`)
 
     - Uma função membro pode ser inline (cabeçalho e corpo juntos)
 
@@ -236,20 +265,24 @@ procedure Use_Stacks is
 
 - Ocultação de informação
 
-    - private, para entidades ocultas
+    - `private`, para entidades ocultas
 
-    - public, para as interfaces
+    - `public`, para entidades públicas
 
-    - protected
+    - `protected`, para entidades visíveis apenas para as subclasses
 
-    \pause
+- Construtores
 
-- Construtores: utilizados para inicializar uma instância da classe \pause
+    - Utilizados para inicializar uma instância da classe \pause
 
-- Destrutores: chamado implicitamente quando o tempo de vida da instância acaba
+- Destrutores
+
+    - Chamado implicitamente quando o tempo de vida da instância acaba
 
 
 ##
+
+\small
 
 ```cpp
 class Stack {
@@ -276,6 +309,8 @@ class Stack {
 
 ##
 
+\small
+
 ```cpp
 void main() {
   int topOne;
@@ -289,19 +324,28 @@ void main() {
 ```
 
 
+## Exemplos de linguagens: C++
+
+- Separando a definição da implementação
+
+
 ##
 
+\small
+
 ```cpp
-// Stack.h - the header file for the Stack class
+// Stack.h - arquivo de cabeçalho para classe Stack
 class Stack {
-private:    //** These members are visible only to other
-            //** members and friends (see Section 11.6.4)
+// Membros visíveis apenas para outros
+// membros da classe
+private:
   int *stackPtr;
   int maxLen;
   int topPtr;
-public:     //** These members are visible to clients
-  Stack();  //** A constructor
-  ~Stack(); //** A destructor
+// Membros visíveis para os clientes
+public:
+  Stack();  // Construtor
+  ~Stack(); // Destrutor
   void push(int);
   void pop();
   int top();
@@ -312,8 +356,10 @@ public:     //** These members are visible to clients
 
 ##
 
+\small
+
 ```cpp
-// Stack.cpp - the implementation file for Stack class
+// Stack.cpp - implementação para a classe Stack
 #include <iostream>
 #include "Stack.h"
 using std::count;
@@ -359,6 +405,8 @@ void Stack::push(int number) {
 
 ##
 
+\small
+
 ```java
 class Stack {
     private int [] stackRef;
@@ -369,15 +417,17 @@ class Stack {
       maxLen = 99;
       topPtr = -1;
     };
-    public void push (int num) {...};
-    public void pop () {...};
-    public int top () {...};
-    public boolean empty () {...};
+    public void push(int num) {...};
+    public void pop() {...};
+    public int top() {...};
+    public boolean empty() {...};
 }
 ```
 
 
 ##
+
+\small
 
 ```java
 class TestStack {
@@ -392,12 +442,12 @@ class TestStack {
 }
 ```
 
+<!-- TODO: avaliação -->
+
 
 ## Exemplos de linguagens: C\#
 
 - Baseado em C++ e Java
-
-- Adiciona dois modificadores de acesso internal e protected internal
 
 - As instâncias de classe são dinâmicas no heap
 
@@ -411,6 +461,8 @@ class TestStack {
 
 
 ##
+
+\scriptsize
 
 ```cs
 public class Weather {
@@ -451,14 +503,14 @@ oldDegreeDays = w.DegreeDays;
 
     - As classes são dinâmicas
 
-    \pause
-
 - Ocultação de informação
 
     - Os membros das classes podem ser públicos ou privados
 
 
 ##
+
+\scriptsize
 
 ```ruby
 class StackClass
@@ -486,6 +538,8 @@ end
 
 ##
 
+\small
+
 ```ruby
 myStack = StackClass.new
 myStack.push(42)
@@ -495,6 +549,9 @@ myStack.pop
 puts "Top element is (should be 42): #{myStack.top}"
 myStack.pop
 ```
+
+
+<!-- TODO: avaliação -->
 
 
 
@@ -508,60 +565,61 @@ Tipos abstratos de dados parametrizados
 
 - Não é uma questão relacionada as linguagens dinâmicas
 
-- Algumas linguagens com suporte a TAD parametrizados: Ada, C++, Java 5, C\#
-  2005
+- Algumas linguagens com suporte a TAD parametrizados
+
+    - Ada, C++, Java 5, C\# 2005
 
 
 ## Tipos abstratos de dados parametrizados em Ada
 
-- Os pacotes podem ser parametrizados
+\small
 
-    ```ada
-    generic
-      Max_Size: Positive;
-      type Element_Type is private;
-    package Generic_Stack is
-      Type Stack_Type is limited private;
-      procedure Push(Stk : in out Stack_Type;
-                     Element : in Element_Type);
-      ...
-    end Generic_Stack;
+```ada
+generic
+  Max_Size: Positive;
+  type Element_Type is private;
+package Generic_Stack is
+  Type Stack_Type is limited private;
+  procedure Push(Stk : in out Stack_Type;
+                 Element : in Element_Type);
+  ...
+end Generic_Stack;
 
-    Package Integer_Stack is new Generic_Stack(100, Integer);
-    Package Float_Stack is new Generic_Stack(100, Float);
-    ```
+Package Integer_Stack is new Generic_Stack(100, Integer);
+Package Float_Stack is new Generic_Stack(100, Float);
+```
 
 
 ## Tipos abstratos de dados parametrizados em C++
 
-- As classes podem ser declaradas como templates
+\small
 
-    ```cpp
-    template <class Type>
-    class Stack {
-      private:
-        Type *stackPtr; int maxLen; int topPtr;
-      public:
-        Stack(int size) {
-          stackPtr = new Type[size];
-          maxLen = 99;
-          topPtr = -1;
-        };
-        void push (Type valye) {...};
-        ...
-    }
+```cpp
+template <class Type>
+class Stack {
+  private:
+    Type *stackPtr; int maxLen; int topPtr;
+  public:
+    Stack(int size) {
+      stackPtr = new Type[size];
+      maxLen = 99;
+      topPtr = -1;
+    };
+    void push(Type value) {...};
+    ...
+}
 
-    Stack<int> s1;
-    Stack<float> s2;
-    ```
+Stack<int> s1;
+Stack<float> s2;
+```
 
 
 ## Tipos abstratos de dados parametrizados em Java 5
 
 - Antes da versão 5, as classes como `LinkedList` e `ArrayList` podiam
-  armazenar qualquer objeto \pause
+  armazenar qualquer objeto
 
-- Existem 3 problemas com coleção de objetos
+- Problemas com coleção de objetos
 
     - Todo objeto da coleção precisa da coerção quando é acessado
 
@@ -569,18 +627,21 @@ Tipos abstratos de dados parametrizados
 
     - Não é possível inserir tipos primitivos nas coleções
 
-    \pause
 
-- O Java 5 tentou resolver estes problemas, adicionado genéricos (e
-    autoboxing) a linguagem
+## Tipos abstratos de dados parametrizados em Java 5
+
+- O Java 5 tentou resolver estes problemas, adicionado genéricos (e autoboxing)
+  a linguagem
 
     - As classes genéricas resolveram o primeiro e o segundo problema, mas não
-        o terceiro, porque os parâmetros genéricos tem quer classe
+      o terceiro, porque os parâmetros genéricos tem quer classe
 
     - O autoboxing resolveu o terceiro problema
 
 
 ##
+
+\small
 
 ```java
 class Stack<T> {
@@ -588,7 +649,7 @@ class Stack<T> {
     private int maxLen;
     private int topIndex;
     ...
-    public void push (T value) {...};
+    public void push(T value) {...};
     ...
 }
 
@@ -604,6 +665,7 @@ Stack<Float> s2 = new Stack<Float>();
 ## Tipos abstratos de dados parametrizados em C\# 2005
 
 - Assim como Java, nas primeiras versão do C\# as coleção armazenavam objetos
+  de qualquer classe
 
 - Classes genéricas foram adicionadas ao C\# 2005.
 
@@ -618,35 +680,32 @@ Construções de encapsulamento
 
 ## Construções de encapsulamento
 
-- Grandes softwares têm duas necessidades especiais
+- Programas maiores têm duas necessidades especiais
 
     - Alguma maneira de organização, além da simples divisão em subprogramas
+      e tipos abstratos de dados
 
     - Alguma maneira de realizar compilação parcial
 
-    \pause
-
-- Solução: encapsulamento
+- Solução: Encapsulamento
 
     - Agrupar os códigos e dados logicamente relacionados em uma unidade que
-        possa ser compilada separadamente
+      possa ser compilada separadamente
 
-- Existem várias formas de encapsulamento
+    - Existem várias formas de encapsulamento
 
 
 ## Construções de encapsulamento
 
-- Subprogramas aninhados \pause
-
 - Encapsulamento em C
 
     - Um ou mais subprogramas e tipos são colocados em arquivos que podem ser
-        compilados independentemente
+      compilados independentemente
 
     - A interface é colocada em um arquivo de cabeçalho, e a implementação em
-        outro arquivo
+      outro arquivo
 
-    - \#include é utilizado para incluir o cabeçalho
+    - `#include` é utilizado para incluir o cabeçalho
 
     - O ligador não checa os tipos entre o cabeçalho e a implementação
 
@@ -660,9 +719,10 @@ Construções de encapsulamento
     - Os arquivos de cabeçalho de templates em geral incluem a declaração
       e a definição
 
-    - Friends fornecem um mecanismo para permitir acesso a membros privados
+    - `friend` fornece um mecanismo para permitir acesso a membros privados
 
-    \pause
+
+## Construções de encapsulamento
 
 - Pacotes Ada
 
