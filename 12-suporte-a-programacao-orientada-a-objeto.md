@@ -1042,12 +1042,12 @@ Implementação de construções orientada a objeto
 
 ## Implementação de construções orientada a objeto
 
-![](imagens/copl-12-2.png)
+![](figs/12-2.pdf)
 
 
 ## Implementação de construções orientada a objeto
 
-![](imagens/copl-12-3.png)
+![](figs/12-3.pdf)
 
 
 ## Exemplo em C++
