@@ -1,382 +1,436 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Linguagens de programação lógicas
 ---
 
-# Introdução
+Introdução
+==========
 
-### Introdução
+## Introdução
 
--   Na programação lógica os programas são expressos em termos de lógica
-    simbólica e um processo de inferência lógica é usado para produzir os
-    resultados
+- Na programação lógica os programas são expressos em termos de lógica
+  simbólica e um processo de inferência lógica é usado para produzir os
+  resultados
 
--   A programação lógica é declarativa ao invés de procedural, apenas a
-    especificação do resultado é dada e não um processo detalhado de como obter
-    o resultado
+- A programação lógica é declarativa ao invés de procedural, apenas
+  a especificação do resultado é dada e não um processo detalhado de como obter
+  o resultado
 
--   Linguagens baseadas em lógica simbólica são chamada de **linguagens de
-    programação lógicas** ou **linguagens declarativas**
 
--   Antes de estudar linguagens de programação lógicas, precisamos estudar o seu
-    fundamento, que é lógica formal
+## Introdução
 
-# Uma breve introdução ao cálculo de predicados
+- Linguagens baseadas em lógica simbólica são chamada de **linguagens de
+  programação lógicas** ou **linguagens declarativas**
 
-### Uma breve introdução ao cálculo de predicados
+- Antes de estudar linguagens de programação lógicas, precisamos estudar o seu
+  fundamento, que é lógica formal
 
--   Uma **proposição** pode ser vista como um declaração lógica que pode ou não
-    ser verdadeira
 
--   Uma proposição consiste de objetos e nas relações destes objetos
+Uma breve introdução ao cálculo de predicados
+=============================================
 
-### Uma breve introdução ao cálculo de predicados
+## Uma breve introdução ao cálculo de predicados
 
--   A lógica simbólica pode ser usada para as três necessidades da lógica formal
+- Uma **proposição** pode ser vista como um declaração lógica que pode ou não
+  ser verdadeira
 
-    -   Expressar proposições
+- Uma proposição consiste de objetos e nas relações destes objetos
 
-    -   Expressar relações entre as proposições
 
-    -   Descrever como novas proposições podem ser inferidas a partir de outras
-        proposições que são verdadeiras
+## Uma breve introdução ao cálculo de predicados
 
--   A forma particular de lógica simbólica que é usada em programação lógica é
-    chamada de **cálculo de predicados (de primeira ordem)**
+- A lógica simbólica pode ser usada para as três necessidades da lógica formal
 
-### Uma breve introdução ao cálculo de predicados
+    - Expressar proposições
 
--   Objetos em proposições são representados por termos simples: constantes ou
-    variáveis
+    - Expressar relações entre as proposições
 
-    -   Uma **constante** é um símbolo que representa um objeto
+    - Descrever como novas proposições podem ser inferidas a partir de outras
+      proposições que são verdadeiras
 
-    -   Uma **variável** é um símbolo que representa diferentes objetos em
-        diferentes momentos
+- A forma particular de lógica simbólica que é usada em programação lógica
+  é chamada de **cálculo de predicados (de primeira ordem)**
 
--   A proposição mais simples é chamada de **proposição atômica**, que consiste
-    em um termo composto
 
--   Um **termo composto** é um elemento de uma relação matemática, escrita em
-    uma forma com a aparência de notação de função matemática
+## Uma breve introdução ao cálculo de predicados
 
--   Um termo composto é formado por duas partes
+- Objetos em proposições são representados por termos simples: constantes ou
+  variáveis
 
-    -   Um **functor**, o símbolo de função que nomeia a relação
+    - Uma **constante** é um símbolo que representa um objeto
 
-    -   Uma lista ordenada de parâmetros
+    - Uma **variável** é um símbolo que representa diferentes objetos em
+      diferentes momentos
 
--   Exemplos: man(jake), like(bob, steak)
+- A proposição mais simples é chamada de **proposição atômica**, que consiste
+  em um termo composto
 
-### Uma breve introdução ao cálculo de predicados
 
--   Uma proposição pode ser declarada de dois modos
+## Uma breve introdução ao cálculo de predicados
 
-    -   **Fato**: a proposição é definida como verdadeira
+- Um **termo composto** é um elemento de uma relação matemática, escrita em uma
+  forma com a aparência de notação de função matemática
 
-    -   **Consulta**: a verdade da proposição precisa ser determinada
+- Um termo composto é formado por duas partes
 
--   As **proposições compostas** tem duas ou mais proposições atômicas ligadas
-    por operadores
+    - Um **functor**, o símbolo de função que nomeia a relação
 
--   Os operadores lógicos do cálculo de predicados são
+    - Uma lista ordenada de parâmetros
 
-    \small
+- Exemplos: `man(jake)`, `bike(bob, steak)`
 
-      Nome             Símbolo       Exemplo     Significado
-      -------------- ----------- --------------- -------------------------
-      negação          $\neg$       $\neg a$     não $a$
-      conjunção        $\cap$      $a \cap b$    $a$ e $b$
-      disjunção        $\cup$      $a \cup b$    $a$ ou $b$
-      equivalência    $\equiv$    $a \equiv b$   $a$ é equivalente a $b$
-      implicação      $\supset$   $a \supset b$  $a$ implica $b$
-                      $\subset$   $a \subset b$  $b$ implica $a$
 
-### Uma breve introdução ao cálculo de predicados
+## Uma breve introdução ao cálculo de predicados
 
--   Exemplos de proposições compostas
+- Uma proposição pode ser declarada de dois modos
 
-    -   $a \cap b \supset c$
+    - **Fato**: a proposição é definida como verdadeira
 
-    -   $a \cap \neg b \supset d$
+    - **Consulta**: a verdade da proposição precisa ser determinada
 
-    -   O operador $\neg$ tem a maior precedência
+- As **proposições compostas** tem duas ou mais proposições atômicas ligadas
+  por operadores
 
-    -   Os operadores $\cap$, $\cup$ e $\equiv$ tem maior precedência que
-        $\supset$ e $\subset$
 
-    -   $(a \cap (\neg b)) \supset d$
+## Uma breve introdução ao cálculo de predicados
 
--   Variáveis podem aparecer nas proposições usando símbolos especiais chamados
-    de quantificadores
+- Os operadores lógicos do cálculo de predicados são
 
-    \small
+    Nome             Símbolo       Exemplo     Significado
+    -------------- ----------- --------------- -------------------------
+    negação          $\neg$       $\neg a$     não $a$
+    conjunção        $\cap$      $a \cap b$    $a$ e $b$
+    disjunção        $\cup$      $a \cup b$    $a$ ou $b$
+    equivalência    $\equiv$    $a \equiv b$   $a$ é equivalente a $b$
+    implicação      $\supset$   $a \supset b$  $a$ implica $b$
+                    $\subset$   $a \subset b$  $b$ implica $a$
 
-      Nome               Exemplo      Significado
-      ------------- ----------------- ----------------------------------------------
-      universal      $\forall X . P$  Para todo $X$, $P$ é verdadeiro
-      existencial    $\exists X . P$  Existe um valor $X$ tal que $P$ é verdadeiro
+## Uma breve introdução ao cálculo de predicados
 
--   Exemplos
+- Exemplos de proposições compostas
 
-    -   $\forall X$ . (woman($X$) $\supset$ human($X$))
+    - $a \cap b \supset c$
 
-    -   $\exists X$ . (mother(mary,$X$) $\cap$ male($X$))
+    - $a \cap \neg b \supset d$
 
-### Uma breve introdução ao cálculo de predicados
+    - O operador $\neg$ tem a maior precedência
 
--   No cálculo de predicados existem muitas formas de expressar a mesma coisa, o
-    que é ruim para implementação \pause
+    - Os operadores $\cap$, $\cup$ e $\equiv$ tem maior precedência que
+      $\supset$ e $\subset$
 
--   Uma forma padrão simples de proposição e a **forma clausal**
+    - $(a \cap (\neg b)) \supset d$
 
-    -   $B_1 \cup B_2 \cup \dots \cup B_n \subset A_1 \cap A_2 \cap \dots \cap A_m$
 
-    -   Onde os $A$’s e $B$’s são termos \pause
+## Uma breve introdução ao cálculo de predicados
 
-    -   Significa que, se todos os $A$’s forem verdadeiros, pelo menos um $B$ é
-        verdadeiro
+- Variáveis podem aparecer nas proposições usando símbolos especiais chamados
+  de quantificadores
 
-    -   O lado direito é chamado de **antecedente**
+    <!-- TODO: corrigir largura da tabela -->
 
-    -   O lado esquerdo é chamado de **consequente**
+    Nome               Exemplo      Significado
+    ------------- ----------------- ---------------------------------
+    universal      $\forall X . P$  Para todo $X$, $P$ é verdadeiro
+    existencial    $\exists X . P$  Existe um valor $X$ tal que $P$ é verdadeiro
 
-    -   O quantificador existencial não é necessário
+- Exemplos
 
-    -   O quantificador universal está implícito no uso de variáveis
+    - $\forall X$ . (woman($X$) $\supset$ human($X$))
 
-    -   Apenas os operadores de conjunção e disjunção são requeridos
+    - $\exists X$ . (mother(mary,$X$) $\cap$ male($X$))
 
-    -   Todas as proposições do cálculo de predicados podem ser convertidas por
-        um algoritmo para a forma clausal
 
-### Uma breve introdução ao cálculo de predicados
+## Uma breve introdução ao cálculo de predicados
 
--   Exemplos de proposições na forma clausal
+- No cálculo de predicados existem muitas formas de expressar a mesma coisa,
+  o que é ruim para implementação
 
-    -   likes(bob, trout) $\subset$ likes(bob, fish) $\cap$ fish(trout)
 
-    -   father(louis, al) $\cup$ father(louis, violet) $\subset$ father(al, bob)
+## Uma breve introdução ao cálculo de predicados
+
+- Uma forma padrão simples de proposição e a **forma clausal**
+
+    - $B_1 \cup B_2 \cup \dots \cup B_n \subset A_1 \cap A_2 \cap \dots \cap A_m$
+
+    - Onde os $A$’s e $B$’s são termos \pause
+
+    - Significa que, se todos os $A$’s forem verdadeiros, pelo menos um $B$ é
+      verdadeiro
+
+    - O lado direito é chamado de **antecedente**
+
+    - O lado esquerdo é chamado de **consequente**
+
+    - O quantificador existencial não é necessário
+
+    - O quantificador universal está implícito no uso de variáveis
+
+    - Apenas os operadores de conjunção e disjunção são requeridos
+
+    - Todas as proposições do cálculo de predicados podem ser convertidas por
+      um algoritmo para a forma clausal
+
+
+## Uma breve introdução ao cálculo de predicados
+
+- Exemplos de proposições na forma clausal
+
+    - likes(bob, trout) $\subset$ likes(bob, fish) $\cap$ fish(trout)
+
+    - father(louis, al) $\cup$ father(louis, violet) $\subset$ father(al, bob)
         $\cap$ mother(violet, bob) $\cap$ grandfather(louis, bob)
 
--   Como estas proposições podem ser lidas em português?
+- Como estas proposições podem ser lidas em português?
 
-# Cálculo de predicados e demostração de teoremas
 
-### Cálculo de predicados e demostração de teoremas
 
--   Um uso para uma coleção de proposições é determinar se algum fato
-    interessante pode ser inferido a partir dela \pause
+Cálculo de predicados e demostração de teoremas
+===============================================
 
--   **Resolução** é uma regra de inferência que permite computar proposições
-    inferidas a partir de proposições dadas
+## Cálculo de predicados e demostração de teoremas
 
--   Ideia geral da resolução
+- Um uso para uma coleção de proposições é determinar se algum fato
+  interessante pode ser inferido a partir dela \pause
 
-    -   Dado duas proposições
+- **Resolução** é uma regra de inferência que permite computar proposições
+  inferidas a partir de proposições dadas
 
-        -   $P_1 \subset P_2$
 
-        -   $Q_1 \subset Q_2$
+## Cálculo de predicados e demostração de teoremas
+
+- Ideia geral da resolução
+
+    - Dado duas proposições
+
+        - $P_1 \subset P_2$
+
+        - $Q_1 \subset Q_2$
 
         \pause
 
-    -   Se $P_1$ é idêntico a $Q_2$, então podemos chamá-los de $T$ e reescrever
+    - Se $P_1$ é idêntico a $Q_2$, então podemos chamá-los de $T$ e reescrever
         as proposições como
 
-        -   $T \subset P_2$
+        - $T \subset P_2$
 
-        -   $Q_1 \subset T$
+        - $Q_1 \subset T$
 
         \pause
 
-    -   Logo $Q_1 \subset P_2$
+    - Logo $Q_1 \subset P_2$
 
-### Cálculo de predicados e demostração de teoremas
 
--   Exemplo
+## Cálculo de predicados e demostração de teoremas
 
-    -   older(joanne, jake) $\subset$ mother(joanne, jake)
+- Exemplo
 
-    -   wiser(joanne, jake) $\subset$ older(joanne, jake)
+    - older(joanne, jake) $\subset$ mother(joanne, jake)
 
-    -   A partir destas proposições, a seguinte proposição pode ser construída
-        usando resolução
+    - wiser(joanne, jake) $\subset$ older(joanne, jake)
 
-    -   wiser(joanne, jake) $\subset$ mother(joanne, jake)
+    - A partir destas proposições, a seguinte proposição pode ser construída
+      usando resolução
 
-### Cálculo de predicados e demostração de teoremas
+    - wiser(joanne, jake) $\subset$ mother(joanne, jake)
 
--   Mecânica da resolução
 
-    -   Os termos do lado esquerdo das duas proposições são juntados para formar
-        o lado esquerdo da nova proposição
+## Cálculo de predicados e demostração de teoremas
 
-    -   Os termos do lado direito são juntados da mesma forma
+- Mecânica da resolução
 
-    -   Qualquer termo que apareça dos dois lados é removido
+    - Os termos do lado esquerdo das duas proposições são juntados para formar
+      o lado esquerdo da nova proposição
 
--   Exemplo
+    - Os termos do lado direito são juntados da mesma forma
 
-    -   father(bob, jake) $\cup$ mother(bob, jake) $\subset$ parent(bob, jake)
+    - Qualquer termo que apareça dos dois lados é removido
 
-    -   grandfather(bob, fred) $\subset$ father(bob, jake) $\cap$ father(jake,
+
+## Cálculo de predicados e demostração de teoremas
+
+- Exemplo
+
+    - father(bob, jake) $\cup$ mother(bob, jake) $\subset$ parent(bob, jake)
+
+    - grandfather(bob, fred) $\subset$ father(bob, jake) $\cap$ father(jake,
         fred)
 
-    -   A resolução diz que
+    - A resolução diz que
 
-    -   mother(bob, jake) $\cup$ grandfather(bob, fred) $\subset$ parent(bob,
+    - mother(bob, jake) $\cup$ grandfather(bob, fred) $\subset$ parent(bob,
         jake) $\cap$ father(jake, fred)
 
-### Cálculo de predicados e demostração de teoremas
 
--   O processo de resolução é mais complexo do que os exemplos apresentados
+## Cálculo de predicados e demostração de teoremas
 
--   A presença de variáveis nas proposições implica que a resolução deve
-    encontrar valores para as variáveis que permitam o casamento
+- O processo de resolução é mais complexo do que os exemplos apresentados
 
--   O processo de determinar valores que permitam o casamento é chamado de
-    **unificação**
+- A presença de variáveis nas proposições implica que a resolução deve
+  encontrar valores para as variáveis que permitam o casamento
 
--   A atribuição temporária de valores as variáveis para permitir a unificação é
-    chamada **instanciação**
 
--   Depois da instanciação de uma variável com um valor, se o casamento falhar,
-    pode ser necessário retroceder (backtrack) e fazer a instanciação com outro
-    valor
+## Cálculo de predicados e demostração de teoremas
 
-### Cálculo de predicados e demostração de teoremas
+- O processo de determinar valores que permitam o casamento é chamado de
+  **unificação**
 
--   Uma propriedade importante da resolução é a habilidade de detectar
-    inconsistências em um conjunto de proposições
+- A atribuição temporária de valores as variáveis para permitir a unificação
+  é chamada **instanciação**
 
--   Esta propriedade pode ser usada para demonstrar teoremas (prova por
-    contradição)
+- Depois da instanciação de uma variável com um valor, se o casamento falhar,
+  pode ser necessário retroceder (backtrack) e fazer a instanciação com outro
+  valor
 
-    -   As proposições iniciais são chamadas de **hipóteses**
 
-    -   A negação do teorema é chamado de **meta**
+## Cálculo de predicados e demostração de teoremas
 
-    -   O teorema é demonstrado encontrando-se uma inconsistência
+- Uma propriedade importante da resolução é a habilidade de detectar
+  inconsistências em um conjunto de proposições
 
--   A demostração de teoremas é a base para a programação lógica
+- Esta propriedade pode ser usada para demonstrar teoremas (prova por
+  contradição)
 
-### Cálculo de predicados e demostração de teoremas
+    - As proposições iniciais são chamadas de **hipóteses**
 
--   Para simplificar a resolução, as proposições devem estar em uma forma
-    clausal restrita, chamada de **cláusulas de Horn**
+    - A negação do teorema é chamado de **meta**
 
-    -   Tem no máximo uma proposição atômica do lado esquerdo
+    - O teorema é demonstrado encontrando-se uma inconsistência
 
-    -   Uma cláusula de Horn sem lado esquerdo é chamada de **fato**
+- A demostração de teoremas é a base para a programação lógica
 
-    -   O lado esquerdo é chamada de **cabeça**
 
-    -   O lado direito é chamada de **cauda**
+## Cálculo de predicados e demostração de teoremas
 
-    -   A maioria, mas não todas, as proposições podem ser escritas como
-        cláusulas de Horn
+- Para simplificar a resolução, as proposições devem estar em uma forma clausal
+  restrita, chamada de **cláusulas de Horn**
 
-# Uma visão geral da programação lógica
+    - Tem no máximo uma proposição atômica do lado esquerdo
 
-### Uma visão geral da programação lógica
+    - Uma cláusula de Horn sem lado esquerdo é chamada de **fato**
 
--   Semântica declarativa
+    - O lado esquerdo é chamada de **cabeça**
 
-    -   Existe uma maneira simples de determinar o significado de cada
-        declaração
+    - O lado direito é chamada de **cauda**
 
-    -   Semântica mais simples que linguagens imperativas
+    - A maioria, mas não todas, as proposições podem ser escritas como
+      cláusulas de Horn
 
--   Programação não procedural
 
-    -   Os programas não dizem como os resultados são computados, mas a forma
-        dos resultados
+Uma visão geral da programação lógica
+=====================================
 
-    -   Para isto, é necessário uma maneira concisa de fornecer as informações
-        relevantes para o computador e um método de inferência para computar os
-        resultados desejados
+## Uma visão geral da programação lógica
 
-    -   Cálculo de predicados e resolução
+- Semântica declarativa
 
--   Exemplo: ordenar uma lista com índices $1 .. n$
+    - Existe uma maneira simples de determinar o significado de cada declaração
 
-    -   sort(old\_list, new\_list) $\subset$ permute(old\_list, new\_list)
+    - Semântica mais simples que linguagens imperativas
+
+
+## Uma visão geral da programação lógica
+
+- Programação não procedural
+
+    - Os programas não dizem como os resultados são computados, mas a forma dos
+      resultados
+
+    - Para isto, é necessário uma maneira concisa de fornecer as informações
+      relevantes para o computador e um método de inferência para computar os
+      resultados desejados
+
+    - Cálculo de predicados e resolução
+
+
+## Uma visão geral da programação lógica
+
+- Exemplo: ordenar uma lista com índices $1 .. n$
+
+    - sort(old\_list, new\_list) $\subset$ permute(old\_list, new\_list)
         $\cap$ sorted (new\_list)
 
-    -   sorted(list) $\subset$ $\forall j$ tal que $1 \le j < n$, list($j$)
+    - sorted(list) $\subset$ $\forall j$ tal que $1 \le j < n$, list($j$)
         $\le$ list($j+1$)
 
-# As origens da linguagem Prolog
 
-### As origens da linguagem Prolog
+As origens da linguagem Prolog
+==============================
 
--   Universidade de Aix-Marseille
+## As origens da linguagem Prolog
 
-    -   Alain Colmerauer e Phillippe Roussel
+- Universidade de Aix-Marseille
 
-    -   Processamento de linguagem natural
+    - Alain Colmerauer e Phillippe Roussel
 
--   Universidade de Edinburgh
+    - Processamento de linguagem natural
 
-    -   Robert Kowalski
+- Universidade de Edinburgh
 
-    -   Demostração automática de teoremas
+    - Robert Kowalski
 
--   A parceria terminou em meados da década de 70
+    - Demostração automática de teoremas
 
--   1982-1992 FGCS (Fifth Generation Computins Systems) - projeto Japonês
+- A parceria terminou em meados da década de 70
 
-    -   Um dos objetivos era desenvolver máquinas inteligentes (usando Prolog)
+- 1982-1992 FGCS (Fifth Generation Computins Systems) - projeto Japonês
 
-# Os elementos básicos da linguagem Prolog
+    - Um dos objetivos era desenvolver máquinas inteligentes (usando Prolog)
 
-### Os elementos básicos da linguagem Prolog
 
--   Prolog tem vários dialetos, o livro apresenta a sintaxe de Edinburgh
 
--   Todas as sentenças em Prolog são construídas com termos
+Os elementos básicos da linguagem Prolog
+========================================
 
--   Termos
+## Os elementos básicos da linguagem Prolog
 
-    -   Constante
+- Prolog tem vários dialetos, o livro apresenta a sintaxe de Edinburgh
 
-        -   Átomo (símbolo)
+- Todas as sentenças em Prolog são construídas com termos
 
-        -   Inteiro
+- Termos
 
-    -   Variável
+    - Constante
 
-    -   Estrutura
+        - Átomo (símbolo)
 
-### Os elementos básicos da linguagem Prolog
+        - Inteiro
 
--   Um átomo consiste de
+    - Variável
 
-    -   Uma string de letras, dígitos e underscores, começando com uma letra
-        minúscula
+    - Estrutura
 
-    -   Uma string de caracteres ascii imprimíveis delimitada por apóstrofos
 
--   Variável, qualquer string de letras, dígitos e underscores, começando com
-    uma letra maiúscula
+## Os elementos básicos da linguagem Prolog
 
--   Estrutura, representa uma proposição atômica do cálculo de predicados:
-    functor(lista de parâmetros)
+- Um átomo consiste de
 
-### Os elementos básicos da linguagem Prolog
+    - Uma string de letras, dígitos e underscores, começando com uma letra
+      minúscula
 
--   Declaração de fatos
+    - Uma string de caracteres ascii imprimíveis delimitada por apóstrofos
 
-    -   Cláusulas de Horn sem cabeça
+- Variável, qualquer string de letras, dígitos e underscores, começando com uma
+  letra maiúscula
 
-    -   Usada para definir as hipóteses, ou base de dados de informações
+- Estrutura, representa uma proposição atômica do cálculo de predicados:
+  functor(lista de parâmetros)
 
-    -   As cláusula de Horn sem cabeça em Prolog são chamadas de fatos,
-        proposições que são (assumidas) verdadeiras
 
-    \pause
+## Os elementos básicos da linguagem Prolog
 
--   Exemplo
+- Declaração de fatos
+
+    - Cláusulas de Horn sem cabeça
+
+    - Usada para definir as hipóteses, ou base de dados de informações
+
+    - As cláusula de Horn sem cabeça em Prolog são chamadas de fatos,
+      proposições que são (assumidas) verdadeiras
+
+
+## Os elementos básicos da linguagem Prolog
+
+- Exemplo
 
     ```prolog
     mulher(maria).
@@ -390,174 +444,196 @@ title: Linguagens de programação lógicas
     ```
 
 
-### Os elementos básicos da linguagem Prolog
+## Os elementos básicos da linguagem Prolog
 
--   Declaração de regras
+- Declaração de regras
 
-    -   Cláusulas de Horn com cabeça
+    - Cláusulas de Horn com cabeça
 
-    -   Usada para definir as hipóteses
+    - Usada para definir as hipóteses
 
-    -   O lado direito é o antecedente ou parte **se**
+    - O lado direito é o antecedente ou parte **se**
 
-    -   O lado esquerdo é o consequente ou parte **então**
+    - O lado esquerdo é o consequente ou parte **então**
 
-    -   Se o antecedente for verdadeiro, então o consequente também precisa ser
-        verdadeiro
+    - Se o antecedente for verdadeiro, então o consequente também precisa ser
+      verdadeiro
 
-    -   A forma geral é: `consequente :- antecedentes`
+    - A forma geral é: `consequente :- antecedentes`
 
-    -   As cláusulas de Horn com cabeça em Prolog são chamadas de regras, porque
-        elas definem as regras de implicação entre as proposições
+    - As cláusulas de Horn com cabeça em Prolog são chamadas de regras, porque
+      elas definem as regras de implicação entre as proposições
 
-    \pause
 
--   Exemplo
+## Os elementos básicos da linguagem Prolog
+
+- Exemplo
 
     ```prolog
     ancestral(paula, maria) :- mae(paula, maria).
     pais(X, Y) :- mae(X, Y).
     pais(X, Y) :- pai(X, Y).
-    irmaos(X, Y) :- mae(M, X), mae(M, Y), pai(P, X), pai(P, Y).
+    irmaos(X, Y) :- mae(M, X),
+                    mae(M, Y),
+                    pai(P, X),
+                    pai(P, Y).
     ```
 
     \pause
 
--   Para todo $X$ e $Y$, $X$ é irmão de $Y$ se existem $M$ e $P$ tal que $M$ é
-    mãe de $X$ e $Y$ e P é pai de $X$ e $Y$.
+- Para todo $X$ e $Y$, $X$ é irmão de $Y$ se existem $M$ e $P$ tal que $M$
+  é mãe de $X$ e $Y$ e P é pai de $X$ e $Y$.
 
-### Os elementos básicos da linguagem Prolog
 
--   Declaração de metas
+## Os elementos básicos da linguagem Prolog
 
-    -   Os fatos e as regras são a base para a demostração de teoremas
+- Declaração de metas
 
-    -   Um teorema está na forma de uma proposição que o sistema deve provar ser
-        verdadeiro ou falso
+    - Os fatos e as regras são a base para a demostração de teoremas
 
-    -   Estas proposições em Prolog são chamadas de metas ou consultas
+    - Um teorema está na forma de uma proposição que o sistema deve provar ser
+      verdadeiro ou falso
 
-    -   A forma da declaração de meta é idêntica a da declaração de fatos\
-        `homem(pedro).`
+    - Estas proposições em Prolog são chamadas de metas ou consultas
 
-    -   Proposições conjuntivas e proposições com variáveis também são metas
-        válidas
+    - A forma da declaração de meta é idêntica a da declaração de fatos\
+      `homem(pedro).`
+
+    - Proposições conjuntivas e proposições com variáveis também são metas
+      válidas
 
         ```prolog
         pai(X, paulo).
         ```
 
-### O processo de inferência do Prolog
 
--   O uso eficiente do Prolog requer que o programador saiba precisamente o que
-    o sistema faz com o seu programa
+## O processo de inferência do Prolog
 
--   Para provar que uma meta é verdadeira, é necessário encontrar uma cadeia de
-    fatos e regras de inferência que conectam a meta com um ou mais fatos na
-    base de dados
+- O uso eficiente do Prolog requer que o programador saiba precisamente o que
+  o sistema faz com o seu programa
 
--   Se a meta é $Q$, então $Q$ precisa ser encontrado como um fato na base de
-    dados ou o processo de inferência precisa encontrar um fato $P_1$ e uma
-    sequência de proposições $P_2$, $P_3$, …, $P_n$ tal que\
-    $P_2 :- P_1$\
-    $P_3 :- P_2$\
-    $\dots$\
-    $Q :- P_n$\
+- Para provar que uma meta é verdadeira, é necessário encontrar uma cadeia de
+  fatos e regras de inferência que conectam a meta com um ou mais fatos na base
+  de dados
 
--   O processo é um pouco mais complicado para regras com o lado direito
-    composto e para regras com variáveis
 
-### O processo de inferência do Prolog
+## O processo de inferência do Prolog
 
--   Quando uma meta é uma proposição composta, cada uma das estruturas são
-    chamadas de **submetas**
+- Se a meta é $Q$, então $Q$ precisa ser encontrado como um fato na base de
+  dados ou o processo de inferência precisa encontrar um fato $P_1$ e uma
+  sequência de proposições $P_2$, $P_3$, …, $P_n$ tal que\
+  $P_2 :- P_1$\
+  $P_3 :- P_2$\
+  $\dots$\
+  $Q :- P_n$\
 
--   O processo de prova de uma submeta é feita através do **casamento** com uma
-    proposição
+- O processo é um pouco mais complicado para regras com o lado direito composto
+  e para regras com variáveis
 
--   Exemplo
 
-    -   Meta: `homem(bob).`
+## O processo de inferência do Prolog
 
-    -   Se a base de dados contém o fato `homem(bob)` a prova é trivial
+- Quando uma meta é uma proposição composta, cada uma das estruturas são
+  chamadas de **submetas**
 
-    -   Se a base de dados contém
+- O processo de prova de uma submeta é feita através do **casamento** com uma
+  proposição
+
+
+## O processo de inferência do Prolog
+
+- Exemplo
+
+    - Meta: `homem(bob).`
+
+    - Se a base de dados contém o fato `homem(bob)` a prova é trivial
+
+    - Se a base de dados contém
 
         ```prolog
         pai(bob).
         homem(X) :- pai(X).
         ```
 
-    -   o Prolog deve usar estas duas declarações para inferir que a meta é
-        verdadeira
+    - o Prolog deve usar estas duas declarações para inferir que a meta
+      é verdadeira
 
-### O processo de inferência do Prolog
 
--   Existem duas abordagens para tentar casar uma meta com um fato na base de
-    dados \pause
+## O processo de inferência do Prolog
 
--   Resolução de baixo para cima (bottom-up), encadeamento para frente
+- Existem duas abordagens para tentar casar uma meta com um fato na base de
+  dados
 
-    -   Inicia com os fatos e regras da base de dados e tenta encontrar a
-        sequência que leva a meta
 
-    -   Funciona bem com um conjunto grande de possíveis repostas corretas
+## O processo de inferência do Prolog
+
+- Resolução de baixo para cima (bottom-up), encadeamento para frente
+
+    - Inicia com os fatos e regras da base de dados e tenta encontrar
+      a sequência que leva a meta
+
+    - Funciona bem com um conjunto grande de possíveis repostas corretas
+
+
+## O processo de inferência do Prolog
+
+- Resolução de cima para baixo (top-down), encadeamento para trás
+
+    - Inicia com a meta e tenta encontrar uma sequência que leva a um conjunto
+      de fatos na base de dados
+
+    - Funciona bem para um conjunto pequeno de possíveis repostas corretas
+
+- As implementações do Prolog usam o encadeamento para trás
+
+
+## O processo de inferência do Prolog
+
+- Quando uma meta tem mais que uma submeta, a busca pode ser
+
+    - Primeiro em profundidade: encontra-se uma prova completa da primeira
+      submeta antes de trabalhar com as outras
+
+    - Primeiro em largura: trabalha-se em todas as submetas em paralelo
 
     \pause
 
--   Resolução de cima para baixo (top-down), encadeamento para trás
+- Prolog usa busca primeiro em profundidade, pode ser feito com menos recursos
+  computacionais
 
-    -   Inicia com a meta e tenta encontrar uma sequência que leva a um conjunto
-        de fatos na base de dados
 
-    -   Funciona bem para um conjunto pequeno de possíveis repostas corretas
+## O processo de inferência do Prolog
 
-    \pause
+- Com uma meta composta, se a prova de uma submeta falha, é necessário
+  considerar as submetas anteriores para encontrar uma solução alternativa
 
--   As implementações do Prolog usam o encadeamento para trás
+- Este processo é chamado de **retroceder** (backtrack)
 
-### O processo de inferência do Prolog
+- A busca continua onde a busca anterior parou
 
--   Quando uma meta tem mais que uma submeta, a busca pode ser
+- Pode levar muito tempo e ocupar muito espaço pois todas as possível provas
+  para cada submeta podem ter que ser pesquisadas
 
-    -   Primeiro em profundidade: encontra-se uma prova completa da primeira
-        submeta antes de trabalhar com as outras
 
-    -   Primeiro em largura: trabalha-se em todas as submetas em paralelo
+## O processo de inferência do Prolog
 
-    \pause
+- O Prolog tem a estrutura pré-definida `trace` que exibe as instanciações
+  a cada passo
 
--   Prolog usa busca primeiro em profundidade, pode ser feito com menos recursos
-    computacionais
+- Existem 4 eventos de rastreamento
 
-### O processo de inferência do Prolog
+    - **call** início da tentativa de satisfazer uma meta
 
--   Com uma meta composta, se a prova de uma submeta falha, é necessário
-    considerar as submetas anteriores para encontrar uma solução alternativa
+    - **exit** quando uma meta foi satisfeita
 
--   Este processo é chamado de **retroceder** (backtrack)
+    - **redo** quando ocorre retrocesso
 
--   A busca continua onde a busca anterior parou
+    - **fail** quando uma meta falha
 
--   Pode levar muito tempo e ocupar muito espaço pois todas as possível provas
-    para cada submeta podem ter que ser pesquisadas
 
-### O processo de inferência do Prolog
+## O processo de inferência do Prolog
 
--   O Prolog tem a estrutura pré-definida `trace` que exibe as instanciações a
-    cada passo
-
--   Existem 4 eventos de rastreamento
-
-    -   **call** início da tentativa de satisfazer uma meta
-
-    -   **exit** quando uma meta foi satisfeita
-
-    -   **redo** quando ocorre retrocesso
-
-    -   **fail** quando uma meta falha
-
-### O processo de inferência do Prolog
+\small
 
 ```prolog
 likes(jake, chocolate).
@@ -566,33 +642,42 @@ likes(darcie, licorice).
 likes(darcie, apricots).
 ```
 
-    likes(jake, X), likes(darcie, X).
-       Call: (7) likes(jake, _G367) ?
-       Exit: (7) likes(jake, chocolate) ?
-       Call: (7) likes(darcie, chocolate) ?
-       Fail: (7) likes(darcie, chocolate) ?
-       Redo: (7) likes(jake, _G367) ?
-       Exit: (7) likes(jake, apricots) ?
-       Call: (7) likes(darcie, apricots) ?
-       Exit: (7) likes(darcie, apricots) ?
-    X = apricots.
+```
+likes(jake, X), likes(darcie, X).
+   Call: (7) likes(jake, _G367) ?
+   Exit: (7) likes(jake, chocolate) ?
+   Call: (7) likes(darcie, chocolate) ?
+   Fail: (7) likes(darcie, chocolate) ?
+   Redo: (7) likes(jake, _G367) ?
+   Exit: (7) likes(jake, apricots) ?
+   Call: (7) likes(darcie, apricots) ?
+   Exit: (7) likes(darcie, apricots) ?
+X = apricots.
+```
 
-### O processo de inferência do Prolog
+
+## O processo de inferência do Prolog
+
+<!-- TODO: usar imagem pdf -->
 
 ![](imagens/copl-16-1.png)
 
-### Aritmética
 
--   Prolog suporta variáveis e aritmética inteira e real
+## Aritmética
 
--   Operador `is`: uma expressão aritmética como operando do lado direito e uma
-    variável do lado esquerdo
+- Prolog suporta variáveis e aritmética inteira e real
 
--   `A is B / 17 + C`
+- Operador `is`: uma expressão aritmética como operando do lado direito e uma
+  variável do lado esquerdo
 
--   Não é a mesma coisa que atribuição!
+- `A is B / 17 + C`
 
-### Aritmética
+- Não é a mesma coisa que atribuição!
+
+
+## Aritmética
+
+\scriptsize
 
 ```prolog
 speed(ford, 100).
@@ -603,30 +688,34 @@ time(ford, 20).
 time(chevy, 21).
 time(dodge, 24).
 time(volvo, 24).
-distance(X, Y) :- speed(X, Speed),
-                 time(X, Time),
-                 Y is Speed * Time.
+distance(X, Y) :- speed(X, Speed), time(X, Time), Y is Speed * Time.
 ```
 
-    distance(chevy, D).
-       Call: (6) distance(chevy, _G367) ?
-       Call: (7) speed(chevy, _G437) ?
-       Exit: (7) speed(chevy, 105) ?
-       Call: (7) time(chevy, _G437) ?
-       Exit: (7) time(chevy, 21) ?
-    ^  Call: (7) _G367 is 105*21 ?
-    ^  Exit: (7) 2205 is 105*21 ?
-       Exit: (6) distance(chevy, 2205) ?
-    D = 2205.
+```
+distance(chevy, D).
+   Call: (6) distance(chevy, _G367) ?
+   Call: (7) speed(chevy, _G437) ?
+   Exit: (7) speed(chevy, 105) ?
+   Call: (7) time(chevy, _G437) ?
+   Exit: (7) time(chevy, 21) ?
+^  Call: (7) _G367 is 105*21 ?
+^  Exit: (7) 2205 is 105*21 ?
+   Exit: (6) distance(chevy, 2205) ?
+D = 2205.
+```
 
-### Listas
 
--   Além de proposições atômicas, Prolog oferece outra estrutura básica, a lista
+## Listas
 
--   Listas são sequências de elementos
+- Além de proposições atômicas, Prolog oferece outra estrutura básica, a lista
 
--   Os elementos podem ser átomos, proposições atômicas, ou qualquer outro
-    termo, incluindo outras listas
+- Listas são sequências de elementos
+
+
+## Listas
+
+- Os elementos podem ser átomos, proposições atômicas, ou qualquer outro termo,
+  incluindo outras listas
 
     ```prolog
     [maça, laranja, amora, pera]
@@ -638,9 +727,12 @@ distance(X, Y) :- speed(X, Speed),
                % listas
     ```
 
--   Segue alguns exemplos de operações com listas
+- Segue alguns exemplos de operações com listas
 
-### Listas
+
+## Listas
+
+\scriptsize
 
 ```prolog
 member(Element, [Element | _]).
@@ -648,26 +740,31 @@ member(Element, [_ | Tail]) :-
     member(Element, Tail).
 ```
 
-    member(a, [b, c, d]).
-       Call: (6) member(a, [b, c, d]) ?
-       Call: (7) member(a, [c, d]) ?
-       Call: (8) member(a, [d]) ?
-       Call: (9) member(a, []) ?
-       Fail: (9) member(a, []) ?
-       Fail: (8) member(a, [d]) ?
-       Fail: (7) member(a, [c, d]) ?
-       Fail: (6) member(a, [b, c, d]) ?
-    false.
+```
+member(a, [b, c, d]).
+   Call: (6) member(a, [b, c, d]) ?
+   Call: (7) member(a, [c, d]) ?
+   Call: (8) member(a, [d]) ?
+   Call: (9) member(a, []) ?
+   Fail: (9) member(a, []) ?
+   Fail: (8) member(a, [d]) ?
+   Fail: (7) member(a, [c, d]) ?
+   Fail: (6) member(a, [b, c, d]) ?
+false.
 
-    [trace]  ?- member(b, [a, b, c]).
-       Call: (6) member(b, [a, b, c]) ?
-       Call: (7) member(b, [b, c]) ?
-       Exit: (7) member(b, [b, c]) ?
-       Exit: (6) member(b, [a, b, c]) ?
-    true ;
-       ...
+[trace]  ?- member(b, [a, b, c]).
+   Call: (6) member(b, [a, b, c]) ?
+   Call: (7) member(b, [b, c]) ?
+   Exit: (7) member(b, [b, c]) ?
+   Exit: (6) member(b, [a, b, c]) ?
+true ;
+   ...
+```
 
-### Listas
+
+## Listas
+
+\scriptsize
 
 ```prolog
 append([], List, List).
@@ -675,16 +772,21 @@ append([Head | Tail1], List2, [Head | Tail3]) :-
     append(Tail0, List2, Tail3).
 ```
 
-    append([bob, jo], [jake, darcie], Family).
-       Call: (6) append([bob, jo], [jake, darcie], _G380) ?
-       Call: (7) append([jo], [jake, darcie], _G459) ?
-       Call: (8) append([], [jake, darcie], _G462) ?
-       Exit: (8) append([], [jake, darcie], [jake, darcie]) ?
-       Exit: (7) append([jo], [jake, darcie], [jo, jake, darcie]) ?
-       Exit: (6) append([bob, jo], [jake, darcie], [bob, jo, jake, darcie])
-    Family = [bob, jo, jake, darcie].
+```
+append([bob, jo], [jake, darcie], Family).
+   Call: (6) append([bob, jo], [jake, darcie], _G380) ?
+   Call: (7) append([jo], [jake, darcie], _G459) ?
+   Call: (8) append([], [jake, darcie], _G462) ?
+   Exit: (8) append([], [jake, darcie], [jake, darcie]) ?
+   Exit: (7) append([jo], [jake, darcie], [jo, jake, darcie]) ?
+   Exit: (6) append([bob, jo], [jake, darcie], [bob, jo, jake, darcie])
+Family = [bob, jo, jake, darcie].
+```
 
-###
+
+##
+
+\small
 
 ```prolog
 reverse([], []).
@@ -693,107 +795,121 @@ reverse([Head | Tail], List) :-
     append(Result, [Head], List).
 ```
 
-###
 
-    reverse([a, b, c], Q).
-       Call: (6) reverse([a, b, c], _G376) ?
-       Call: (7) reverse([b, c], _G455) ?
-       Call: (8) reverse([c], _G455) ?
-       Call: (9) reverse([], _G455) ?
-       Exit: (9) reverse([], []) ?
-       Call: (9) append([], [c], _G459) ?
-       Exit: (9) append([], [c], [c]) ?
-       Exit: (8) reverse([c], [c]) ?
-       Call: (8) append([c], [b], _G462) ?
-       Call: (9) append([], [b], _G457) ?
-       Exit: (9) append([], [b], [b]) ?
-       Exit: (8) append([c], [b], [c, b]) ?
-       Exit: (7) reverse([b, c], [c, b]) ?
-       Call: (7) append([c, b], [a], _G376) ?
-       Call: (8) append([b], [a], _G463) ?
-       Call: (9) append([], [a], _G466) ?
-       Exit: (9) append([], [a], [a]) ?
-       Exit: (8) append([b], [a], [b, a]) ?
-       Exit: (7) append([c, b], [a], [c, b, a]) ?
-       Exit: (6) reverse([a, b, c], [c, b, a]) ?
-    Q = [c, b, a].
+##
 
-# Deficiências do Prolog
+\scriptsize
 
-### Deficiências do Prolog
+```
+reverse([a, b, c], Q).
+   Call: (6) reverse([a, b, c], _G376) ?
+   Call: (7) reverse([b, c], _G455) ?
+   Call: (8) reverse([c], _G455) ?
+   Call: (9) reverse([], _G455) ?
+   Exit: (9) reverse([], []) ?
+   Call: (9) append([], [c], _G459) ?
+   Exit: (9) append([], [c], [c]) ?
+   Exit: (8) reverse([c], [c]) ?
+   Call: (8) append([c], [b], _G462) ?
+   Call: (9) append([], [b], _G457) ?
+   Exit: (9) append([], [b], [b]) ?
+   Exit: (8) append([c], [b], [c, b]) ?
+   Exit: (7) reverse([b, c], [c, b]) ?
+   Call: (7) append([c, b], [a], _G376) ?
+   Call: (8) append([b], [a], _G463) ?
+   Call: (9) append([], [a], _G466) ?
+   Exit: (9) append([], [a], [a]) ?
+   Exit: (8) append([b], [a], [b, a]) ?
+   Exit: (7) append([c, b], [a], [c, b, a]) ?
+   Exit: (6) reverse([a, b, c], [c, b, a]) ?
+Q = [c, b, a].
+```
 
--   Controle da ordem de resolução
 
-    -   O Prolog sempre faz o casamento (na resolução) na mesma ordem, o que
-        implica que o programador pode (deve) controlar a ordem da resolução
-        alterando a ordem das proposições e das submetas
 
-    -   Exemplo: regra que causa laço infinito na resolução
+Deficiências do Prolog
+======================
+
+## Deficiências do Prolog
+
+- Controle da ordem de resolução
+
+    - O Prolog sempre faz o casamento (na resolução) na mesma ordem, o que
+      implica que o programador pode (deve) controlar a ordem da resolução
+      alterando a ordem das proposições e das submetas
+
+    - Exemplo: regra que causa laço infinito na resolução
 
         ```prolog
         f(X, Y) :- f(Z, Y), g(X, Z).
         ```
 
-    -   O Prolog permite o controle explícito do retrocesso com o operador de
-        corte $!$, que as vezes é usado para criar controle de fluxo (no estilo
-        imperativo)
 
-    -   O Prolog oferece estas possibilidades principalmente para permitir a
-        construção de programas mais eficientes, mas elas contrariam a principal
-        característica das linguagens lógicas, que é a construção de programas
-        de forma declarativa, sem a preocupação com o processo de resolução
+## Deficiências do Prolog
 
-### Deficiências do Prolog
+- Controle da ordem de resolução
 
--   Mundo fechado assumido
+    - O Prolog permite o controle explícito do retrocesso com o operador de
+      corte $!$, que as vezes é usado para criar controle de fluxo (no estilo
+      imperativo)
 
-    -   Não tem conhecimento do mundo além daquele que está em sua base de dados
-
-    -   O Prolog pode provar que uma determinada meta é verdadeira, mas não pode
-        provar que é falsa
-
-    -   O Prolog é um sistema verdadeiro/falha e não um sistema verdeiro/falso
-
-    \pause
-
--   O problema da negação
-
-    -   O Prolog tem um operador `not`, mas este operador não é equivalente ao
-        not lógico
-
-    -   A razão fundamental para isto é que, em uma proposição $A :- B_1 \cap
-            B_2 \cap \dots \cap B_n$, se algum $B$ é falso, não se pode concluir
-        que $A$ é falso
-
-    -   A partir de lógica positiva, só se pode concluir lógica positiva
-
-### Deficiências do Prolog
-
--   Limitações intrínsecas
-
-    -   Não é possível (ainda) resolver determinados problemas de forma
-        eficiente apenas com a descrição da solução
-
-    -   Um exemplo é a ordenação
-
-    -   Apenas com a descrição do que é uma lista ordenada não é suficiente para
-        uma solução eficiente
-
-# Aplicações da programação lógica
-
-### Aplicações da programação lógica
-
--   Sistema de gerenciamento de banco de dados relacional
-
--   Sistemas especialistas
-
--   Processamento de linguagem natural
-
-# Referências
-
-### Referências
-
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 16.
+    - O Prolog oferece estas possibilidades principalmente para permitir a
+      construção de programas mais eficientes, mas elas contrariam a principal
+      característica das linguagens lógicas, que é a construção de programas de
+      forma declarativa, sem a preocupação com o processo de resolução
 
 
-<!-- vim: set spell spelllang=pt_br: -->
+## Deficiências do Prolog
+
+- Mundo fechado assumido
+
+    - Não tem conhecimento do mundo além daquele que está em sua base de dados
+
+    - O Prolog pode provar que uma determinada meta é verdadeira, mas não pode
+      provar que é falsa
+
+    - O Prolog é um sistema verdadeiro/falha e não um sistema verdeiro/falso
+
+
+## Deficiências do Prolog
+
+- O problema da negação
+
+    - O Prolog tem um operador `not`, mas este operador não é equivalente ao
+      not lógico
+
+    - A razão fundamental para isto é que, em uma proposição $A :- B_1 \cap B_2
+      \cap \dots \cap B_n$, se algum $B$ é falso, não se pode concluir que $A$
+      é falso
+
+    - A partir de lógica positiva, só se pode concluir lógica positiva
+
+
+## Deficiências do Prolog
+
+- Limitações intrínsecas
+
+    - Não é possível (ainda) resolver determinados problemas de forma eficiente
+      apenas com a descrição da solução
+
+    - Um exemplo é a ordenação
+
+    - Apenas com a descrição do que é uma lista ordenada não é suficiente para
+      uma solução eficiente
+
+
+Aplicações da programação lógica
+================================
+
+## Aplicações da programação lógica
+
+- Sistema de gerenciamento de banco de dados relacional
+
+- Sistemas especialistas
+
+- Processamento de linguagem natural
+
+
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 16.
