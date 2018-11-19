@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
-title: Suporte a programação orientada a objeto
+title: Suporte a programação orientada a objetos
 ---
 
 Introdução
