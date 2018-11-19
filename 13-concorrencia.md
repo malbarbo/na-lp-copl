@@ -1,443 +1,507 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Concorrência
 ---
 
-# Introdução
+Introdução
+==========
 
-### Introdução
+## Introdução
 
--   Concorrência pode acontecer em quatro níveis \pause
+- Concorrência pode acontecer em quatro níveis \pause
 
-    -   Instrução de máquina
+    - Instrução de máquina
 
-    -   Instrução de linguagem
+    - Instrução de linguagem
 
-    -   Unidade (subprograma)
+    - Unidade (subprograma)
 
-    -   Programa
+    - Programa
 
     \pause
 
--   Como não existe questões de linguagens em concorrência no nível de instrução
+- Como não existe questões de linguagens em concorrência no nível de instrução
     de máquina e programa, estes não serão discutidos
 
-### Introdução
 
--   Arquiteturas multiprocessadores
+## Introdução
 
-    -   Final da década de 50, um processador de propósito geral e um ou mais
-        processadores para operações de entrada e saída
+- Arquiteturas multiprocessadores
 
-    -   Início da década de 60, múltiplos processadores completos, usados para
-        concorrência no nível de programas
+    - Final da década de 50, um processador de propósito geral e um ou mais
+      processadores para operações de entrada e saída
 
-    -   Metade da década de 60, múltiplos processadores parciais, usado para
-        concorrência no nível de instrução de máquina
+    - Início da década de 60, múltiplos processadores completos, usados para
+      concorrência no nível de programas
 
-    -   Single-Instruction Multiple-Dada (SIMD)
+    - Metade da década de 60, múltiplos processadores parciais, usado para
+      concorrência no nível de instrução de máquina
 
-    -   Multiple-Instruction Multiple-Dada (MIMD) - processadores independentes
-        que podem ser sincronizados (concorrência no nível de unidade)
+    - Single-Instruction Multiple-Dada (SIMD)
 
-### Introdução
+    - Multiple-Instruction Multiple-Dada (MIMD) - processadores independentes
+      que podem ser sincronizados (concorrência no nível de unidade)
 
--   Uma **linha de controle** (thread of control) em um programa é a sequência
-    de pontos do programa atingidos a medida que o controle flui por ele
 
--   Um programa projetado para ter mais que uma linha de controle é chamado de
-    **multithreaded**
+## Introdução
 
--   Categorias de concorrência
+- Uma **linha de controle** (thread of control) em um programa é a sequência de
+  pontos do programa atingidos a medida que o controle flui por ele
 
-    -   Concorrência física, múltiplos processadores independentes (múltiplas
-        linhas de controle)
+- Um programa projetado para ter mais que uma linha de controle é chamado de
+  **multithreaded**
 
-    -   Concorrência lógica, a aparência de concorrência física está presente
-        pelo compartilhamento por tempo de um processador
 
--   Co-rotinas (quasi-concorrente) tem apenas uma linha de controle
+## Introdução
 
-### Introdução
+- Categorias de concorrência
 
--   Motivação para o uso de concorrência
+    - Concorrência física, múltiplos processadores independentes (múltiplas
+      linhas de controle)
 
-    -   Aumentar a velocidade de execução
+    - Concorrência lógica, a aparência de concorrência física está presente
+      pelo compartilhamento por tempo de um processador
 
-    -   Uma maneira conceitual diferente de projetar soluções, muitas situações
-        do mundo real envolvem concorrência
+- Co-rotinas (quasi-concorrente) tem apenas uma linha de controle
 
-    -   Computadores com múltiplos processadores são amplamente usados
 
--   Um dos objetivos do software concorrente é ser escalável
+## Introdução
 
--   Um software é **escalável** se a velocidade de execução aumenta quando mais
-    processadores estão disponíveis
+- Motivação para o uso de concorrência
 
-# Concorrência no nível de subprograma
+    - Aumentar a velocidade de execução
 
-### Concorrência no nível de subprograma
+    - Uma maneira conceitual diferente de projetar soluções, muitas situações
+      do mundo real envolvem concorrência
 
--   Uma **tarefa** ou **processo** é uma unidade de programa que pode estar em
-    execução concorrente com outras unidades do programa
+    - Computadores com múltiplos processadores são amplamente usados
 
--   Um tarefa difere de um subprograma comum
 
-    -   Uma tarefa pode ser iniciada implicitamente
+## Introdução
 
-    -   Quando um unidade de programa inicia a execução de uma tarefa, ela não é
-        necessariamente suspensa
+- Um dos objetivos do software concorrente é ser escalável
 
-    -   Quando a execução de uma tarefa é completada, o controle pode não
-        retornar ao chamador
+- Um software é **escalável** se a velocidade de execução aumenta quando mais
+  processadores estão disponíveis
 
--   Tarefas **pesadas** (heavyweight) executam em seu próprio espaço de
-    endereçamento
 
--   Tarefas **leves** (lightweight) executam no mesmo espaço de endereçamento
-    (mais eficiente)
 
-### Concorrência no nível de subprograma
+Concorrência no nível de subprograma
+====================================
 
--   As tarefas geralmente trabalham juntas
+## Concorrência no nível de subprograma
 
--   Uma tarefa é **disjunta** se ela não se comunica ou não afeta a execução de
-    outras tarefas
+- Uma **tarefa** ou **processo** é uma unidade de programa que pode estar em
+  execução concorrente com outras unidades do programa
 
--   Sincronização de tarefas
+- Um tarefa difere de um subprograma comum
 
-    -   Um mecanismo que controla a ordem que as tarefas são executadas
+    - Uma tarefa pode ser iniciada implicitamente
 
-    -   Dois tipos de sincronização
+    - Quando um unidade de programa inicia a execução de uma tarefa, ela não
+      é necessariamente suspensa
 
-        -   Sincronização de cooperação
+    - Quando a execução de uma tarefa é completada, o controle pode não
+      retornar ao chamador
 
-        -   Sincronização de competição
 
-    -   A comunicação é necessária para a sincronização
+## Concorrência no nível de subprograma
 
-        -   Variáveis não locais compartilhadas
+- Tarefas **pesadas** (heavyweight) executam em seu próprio espaço de
+  endereçamento
 
-        -   Parâmetros
+- Tarefas **leves** (lightweight) executam no mesmo espaço de endereçamento
+  (mais eficiente)
 
-        -   Troca de mensagem
 
-### Concorrência no nível de subprograma
+## Concorrência no nível de subprograma
 
--   Cooperação: Uma tarefa A precisa esperar uma tarefa B completar alguma
-    atividade antes que ela continue a execução (Ex: o problema do
-    produtor-consumidor)
+- As tarefas geralmente trabalham juntas
 
--   Competição: Duas ou mais tarefas precisam de algum recurso que não pode ser
-    usado simultaneamente (ex: um contador compartilhado)
+- Uma tarefa é **disjunta** se ela não se comunica ou não afeta a execução de
+  outras tarefas
 
-    -   Competição é geralmente resolvida por acesso mutualmente exclusivo
 
-### Concorrência no nível de subprograma
+## Concorrência no nível de subprograma
 
--   Fornecer sincronização requer um mecanismo para adiar a execução da tarefa
+- Sincronização de tarefas
 
--   O controle de execução das tarefas são mantidas pelo **escalonador**, que
-    mapeia a execução das tarefas para os processadores disponíveis
+    - Um mecanismo que controla a ordem que as tarefas são executadas
 
--   Estados das tarefas
+    - Dois tipos de sincronização
 
-    -   Nova - criada mas ainda não iniciada
+        - Sincronização de cooperação
 
-    -   Pronta - pronta para executar mas não está executando
+        - Sincronização de competição
 
-    -   Executando
+    - A comunicação é necessária para a sincronização
 
-    -   Bloqueada - esteve rodando, mas não pode continuar (geralmente esperando
-        um evento acontecer)
+        - Variáveis não locais compartilhadas
 
-    -   Morta - Não está mais ativa
+        - Parâmetros
 
-### Concorrência no nível de subprograma
+        - Troca de mensagem
 
--   **Vivência** significa que se algum evento (ex: término do programa) deve
-    ocorrer, ele vai ocorrer
 
--   Em um ambiente de concorrência, uma tarefa pode facilmente perder a vivência
+## Concorrência no nível de subprograma
 
--   Quando todas as tarefas em um ambiente de concorrência perdem a vivência,
-    ocorre um **deadlock**
+- Cooperação: Uma tarefa A precisa esperar uma tarefa B completar alguma
+  atividade antes que ela continue a execução (Ex: o problema do
+  produtor-consumidor)
 
-### Concorrência no nível de subprograma
+- Competição: Duas ou mais tarefas precisam de algum recurso que não pode ser
+  usado simultaneamente (Ex: um contador compartilhado)
 
--   Questões de projeto
+    - Competição é geralmente resolvida por acesso mutualmente exclusivo
 
-    -   Sincronização de cooperação e de competição
 
-    -   Controle do escalonamento das tarefas
+## Concorrência no nível de subprograma
 
-    -   Como e quando as tarefas são criadas
+- Fornecer sincronização requer um mecanismo para adiar a execução da tarefa
 
-    -   Quando e como as tarefas iniciam e terminam a execução
+- O controle de execução das tarefas são mantidas pelo **escalonador**, que
+  mapeia a execução das tarefas para os processadores disponíveis
 
-# Mecanismos de controle de concorrência
+
+## Concorrência no nível de subprograma
+
+- Estados das tarefas
+
+    - Nova - criada mas ainda não iniciada
+
+    - Pronta - pronta para executar mas não está executando
+
+    - Executando
+
+    - Bloqueada - esteve rodando, mas não pode continuar (geralmente esperando
+      um evento acontecer)
+
+    - Morta - Não está mais ativa
+
+
+## Concorrência no nível de subprograma
+
+- **Vivência** significa que se algum evento (ex: término do programa) deve
+  ocorrer, ele vai ocorrer
+
+- Em um ambiente de concorrência, uma tarefa pode facilmente perder a vivência
+
+- Quando todas as tarefas em um ambiente de concorrência perdem a vivência,
+  ocorre um **deadlock**
+
+
+## Concorrência no nível de subprograma
+
+- Questões de projeto
+
+    - Sincronização de cooperação e de competição
+
+    - Controle do escalonamento das tarefas
+
+    - Como e quando as tarefas são criadas
+
+    - Quando e como as tarefas iniciam e terminam a execução
+
+
+
+Semáforos
+=========
 
 ## Semáforos
 
-### Semáforos
+- Dijkstra - 1965
 
--   Dijkstra - 1965
+- Um **semáforo** é uma estrutura de dados que consiste de um contador e uma
+  fila de tarefas
 
--   Um **semáforo** é uma estrutura de dados que consiste de um contador e uma
-    fila de tarefas
+- Podem ser usados para implementar travas no código que acessa dados
+  compartilhados
 
--   Podem ser usados para implementar travas no código que acessa dados
-    compartilhados
+- Têm apenas duas operações, esperar (wait) e liberar (release), chamados de
+  P e V por Dijkstra
 
--   Têm apenas duas operações, esperar (wait) e liberar (release), chamados de P
-    e V por Dijkstra
+- Podem ser usados para fornecer sincronização de cooperação e competição
 
--   Podem ser usados para fornecer sincronização de cooperação e competição
 
-### Semáforos
+## Semáforos
 
--   Exemplo: um buffer compartilhado
+- Exemplo: um buffer compartilhado
 
--   O buffer é implementado como um TAD com as operações `deposit` e `fetch`
+- O buffer é implementado como um TAD com as operações `deposit` e `fetch`
 
--   Dois semáforos são usado para a cooperação: `emptyspots` e `fullspots`
+- Dois semáforos são usado para a cooperação: `emptyspots` e `fullspots`
 
--   Os semáforos são usados para armazenar o número de lugares vazios e ocupados
-    no buffer
+- Os semáforos são usados para armazenar o número de lugares vazios e ocupados
+  no buffer
 
-### Semáforos
 
--   `deposit` precisa checar `emptyspots` para ver se têm espaço no buffer \pause
+## Semáforos
 
-    -   Se têm espaço, o contador de `emptyspots` é decrementado e o valor é
-        inserido
+- `deposit` precisa checar `emptyspots` para ver se têm espaço no buffer \pause
 
-    -   Se não têm espaço, o chamador é colocado na fila de `emptyspots`
+    - Se têm espaço, o contador de `emptyspots` é decrementado e o valor
+      é inserido
 
-    -   Quando `deposit` termina, ele precisa incrementar o contador de
-        `fullspots`
+    - Se não têm espaço, o chamador é colocado na fila de `emptyspots`
 
-    \pause
+    - Quando `deposit` termina, ele precisa incrementar o contador de
+      `fullspots`
 
--   `fetch` precisa checar `fullspots` para ver se tem um valor \pause
 
-    -   Se tem um lugar preenchido, o contador de `fullspots` é decrementado e o
+## Semáforos
+
+- `fetch` precisa checar `fullspots` para ver se tem um valor \pause
+
+    - Se tem um lugar preenchido, o contador de `fullspots` é decrementado e o
         valor é removido
 
-    -   Se não tem nenhum valor no buffer, o chamador é colocado na fila de
+    - Se não tem nenhum valor no buffer, o chamador é colocado na fila de
         `fullspots`
 
-    -   Quando `fetch` termina, ele incrementa o valor do contador de
+    - Quando `fetch` termina, ele incrementa o valor do contador de
         `emptyspots`
 
-### Semáforos
 
-    wait(aSemaphore)
-    if aSemaphore’s counter > 0 then
-       decrement aSemaphore’s counter
-    else
-       put the caller in aSemaphore’s queue
-       attempt to transfer control to a ready task
-         -- if the task ready queue is empty,
-         -- deadlock occurs
-    end
+## Semáforos
 
-### Semáforos
+```
+wait(aSemaphore)
+if aSemaphore’s counter > 0 then
+   decrement aSemaphore’s counter
+else
+   put the caller in aSemaphore’s queue
+   attempt to transfer control to a ready task
+     -- if the task ready queue is empty,
+     -- deadlock occurs
+end
+```
 
-    release(aSemaphore)
-    if aSemaphore’s queue is empty then
-       increment aSemaphore’s counter
-    else
-       put the calling task in the task ready queue
-       transfer control to a task from aSemaphore’s queue
-    end
 
-### Semáforos
+## Semáforos
 
-    semaphore fullspots, emptyspots;
-    fullstops.count = 0;
-    emptyspots.count = BUFLEN;
+```
+release(aSemaphore)
+if aSemaphore’s queue is empty then
+   increment aSemaphore’s counter
+else
+   put the calling task in the task ready queue
+   transfer control to a task from aSemaphore’s queue
+end
+```
 
-    task producer;
-      loop
-        // produce value
-        wait(emptyspots);    // wait for space
-        deposit(value);
-        release(fullspots);  // increase filled
-      end loop;
-    end producer;
 
-    task consumer;
-      loop
-        wait(fullspots);     // wait till not empty
-        fetch(value);
-        release(emptyspots); // increase empty
-        // consume value
-      end loop;
-    end consumer;
+##
 
-### Semáforos
+\scriptsize
 
--   Um terceiro semáforo, chamado `access`, é usado para o controle de accesso
-    (sincronização de competição)
+```
+semaphore fullspots, emptyspots;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
 
--   O contador de `access` terá apenas os valores 0 e 1
+task producer;
+  loop
+    // produce value
+    wait(emptyspots);    // wait for space
+    deposit(value);
+    release(fullspots);  // increase filled
+  end loop;
+end producer;
 
--   Tal semáforo é chamado de semáforo binário
+task consumer;
+  loop
+    wait(fullspots);     // wait till not empty
+    fetch(value);
+    release(emptyspots); // increase empty
+    // consume value
+  end loop;
+end consumer;
+```
 
--   As operações `wait` e `release` precisam ser atômicas
 
-###
+## Semáforos
 
-    semaphore fullspots, emptyspots, access;
-    access.count = 1;
-    fullstops.count = 0;
-    emptyspots.count = BUFLEN;
-    task producer;
-      loop
-        // produce value
-        wait(emptyspots);
-        wait(access);
-        deposit(value);
-        release(access);
-        release(fullspots);
-      end loop;
-    end producer;
-    task consumer;
-      loop
-        wait (fullspots);
-        wait(access);
-        fetch(value);
-        release(access);
-        release(emptyspots);
-        // consume value
-      end loop;
-    end consumer;
+- Um terceiro semáforo, chamado `access`, é usado para o controle de acesso
+  (sincronização de competição)
 
-### Semáforos
+- O contador de `access` terá apenas os valores 0 e 1
 
--   Avaliação
+- Tal semáforo é chamado de semáforo binário
 
-    -   Uso incorreto de semáforos pode causar falha na sincronização de
-        cooperação, ex: ocorrerá overflow do buffer se a chamada `wait` em
-        `fullspots` for esquecida
+- As operações `wait` e `release` precisam ser atômicas
 
-    -   Uso incorreto de semáforos pode causar falha na sincronização de
-        competição, ex: o programa entrará em deadlock se a chamada `release` de
-        `access` for esquecida
+
+##
+
+\scriptsize
+
+```
+semaphore fullspots, emptyspots, access;
+access.count = 1;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+  loop
+    // produce value
+    wait(emptyspots);
+    wait(access);
+    deposit(value);
+    release(access);
+    release(fullspots);
+  end loop;
+end producer;
+task consumer;
+  loop
+    wait (fullspots);
+    wait(access);
+    fetch(value);
+    release(access);
+    release(emptyspots);
+    // consume value
+  end loop;
+end consumer;
+```
+
+
+## Semáforos
+
+- Avaliação
+
+    - Uso incorreto de semáforos pode causar falha na sincronização de
+      cooperação, ex: ocorrerá overflow do buffer se a chamada `wait` em
+      `fullspots` for esquecida
+
+    - Uso incorreto de semáforos pode causar falha na sincronização de
+      competição, ex: o programa entrará em deadlock se a chamada `release` de
+      `access` for esquecida
+
+
+
+Monitores
+=========
 
 ## Monitores
 
-### Monitores
+- Encapsular os dados compartilhados e as operações em um tipo abstrato de
+  dados
 
--   Encapsular os dados compartilhados e as operações em um tipo abstrato de
-    dados
+- Transferir a responsabilidade de sincronização para o ambiente de execução
 
--   Transferir a responsabilidade de sincronização para o ambiente de execução
+- Exemplos de linguagens
 
--   Exemplos de linguagens
+    - Ada
 
-    -   Ada
+    - Java
 
-    -   Java
+    - C\#
 
-    -   C\#
 
-### Monitores
+## Monitores
 
--   Sincronização de competição
+- Sincronização de competição
 
-    -   Os dados residem no monitor
+    - Os dados residem no monitor
 
-    -   A implementação do monitor garante a sincronização permitindo apenas um
-        acesso por vez
+    - A implementação do monitor garante a sincronização permitindo apenas um
+      acesso por vez
 
-    -   As chamadas a procedimentos dos monitores são enfileiradas
-        implicitamente quando o monitor está ocupado
+    - As chamadas a procedimentos dos monitores são enfileiradas implicitamente
+      quando o monitor está ocupado
 
     \pause
 
--   Sincronização de cooperação
+- Sincronização de cooperação
 
-    -   É responsabilidade do programador
+    - É responsabilidade do programador
 
-    -   O programador precisa garantir que o buffer compartilhado não vai sofrer
-        overflow ou underflow
+    - O programador precisa garantir que o buffer compartilhado não vai sofrer
+      overflow ou underflow
 
-### Monitores
 
--   Avaliação
+## Monitores
 
-    -   Oferece um maneira mais fácil de realizar sincronização de competição do
-        que os semáforos
+- Avaliação
 
-    -   Mesmo poder de expressão de controle de concorrência dos semáforos
+    - Oferece um maneira mais fácil de realizar sincronização de competição do
+      que os semáforos
 
-        -   Monitores podem ser usados para implementar semáforos
+    - Mesmo poder de expressão de controle de concorrência dos semáforos
 
-        -   Semáforos podem ser usados para implementar monitores
+        - Monitores podem ser usados para implementar semáforos
 
-    -   Suporte a sincronização de cooperação é similar a dos semáforos,
-        portanto, tem os mesmos problemas
+        - Semáforos podem ser usados para implementar monitores
+
+    - Suporte a sincronização de cooperação é similar a dos semáforos,
+      portanto, tem os mesmos problemas
+
+
+
+Troca de Mensagens
+==================
+
 
 ## Troca de Mensagens
 
-### Troca de Mensagens
+- É um modelo geral para concorrência
 
--   É um modelo geral para concorrência
+    - Pode ser usado para implementar monitores e semáforos
 
-    -   Pode ser usado para implementar monitores e semáforos
+    - Pode ser usado para sincronização de cooperação
 
-    -   Pode ser usado para sincronização de cooperação
+- A ideia e realizar a comunicação entre duas tarefas, quando as duas estiverem
+  prontas para se comunicar
 
--   A ideia e realizar a comunicação entre duas tarefas, quando as duas
-    estiverem prontas para se comunicar
 
-### Troca de Mensagens
+## Troca de Mensagens
 
--   Para suportar tarefas concorrentes com troca de mensagens, uma linguagem
-    precisa
+- Para suportar tarefas concorrentes com troca de mensagens, uma linguagem
+  precisa
 
-    -   Um mecanismo que permita uma tarefa indicar quando ela quer receber uma
-        mensagem
+    - Um mecanismo que permita uma tarefa indicar quando ela quer receber uma
+      mensagem
 
-    -   Uma maneira de lembrar quais tarefas estão esperando sua mensagem ser
-        recebida
+    - Uma maneira de lembrar quais tarefas estão esperando sua mensagem ser
+      recebida
 
-    -   Uma maneira justa de escolher a próxima mensagem
+    - Uma maneira justa de escolher a próxima mensagem
 
--   Quando uma mensagem enviada por uma tarefa é aceita, a transmissão da
-    mensagem é chamada de **rendezvous**
+- Quando uma mensagem enviada por uma tarefa é aceita, a transmissão da
+  mensagem é chamada de **rendezvous**
 
-# Exemplos de linguagens
+
+
+Suporte a concorrência em Ada
+=============================
+
 
 ## Suporte a concorrência em Ada
 
-### Suporte a concorrência em Ada
+- O controle de concorrência das tarefas é baseado em troca de mensagens
 
--   O controle de concorrência das tarefas é baseado em troca de mensagens
+- O modelo de tarefas é complexo (esta apresentação é limitada)
 
--   O modelo de tarefas é complexo (esta apresentação é limitada)
+- As tarefas em Ada são mais ativas que os monitores
 
--   As tarefas em Ada são mais ativas que os monitores
+- Existem vários mecanismos para a escolha entre os pedidos para acessar seus
+  recursos
 
--   Existem vários mecanismos para a escolha entre os pedidos para acessar seus
-    recursos
 
-### Suporte a concorrência em Ada
+## Suporte a concorrência em Ada
 
--   Definição de uma tarefa
+- Definição de uma tarefa
 
-    -   Uma tarefa tem uma especificação e um corpo (como os pacotes)
+    - Uma tarefa tem uma especificação e um corpo (como os pacotes)
 
-    -   A especificação define a interface, que é uma coleção de pontos de
-        entrada
+    - A especificação define a interface, que é uma coleção de pontos de
+      entrada
 
-    -   O corpo descreve as ações que são executadas quando um rendezvous ocorre
+    - O corpo descreve as ações que são executadas quando um rendezvous ocorre
 
-    -   Pontos de entrada na especificação são definidos com a cláusula `access`
-        no corpo
+    - Pontos de entrada na especificação são definidos com a cláusula `access`
+      no corpo
 
-### Suporte a concorrência em Ada
+
+## Suporte a concorrência em Ada
 
 ```ada
 task Task_Example is
@@ -454,23 +518,24 @@ task body Task_Example is
   end Task_Example;
 ```
 
-### Suporte a concorrência em Ada
 
--   Semântica da troca de mensagens
+## Suporte a concorrência em Ada
 
-    -   Uma tarefa executa até o início de uma cláusula `accept` e espera por
-        uma mensagem
+- Semântica da troca de mensagens
 
-    -   O emissor de uma mensagem é suspenso esperando a mensagem ser aceita e
-        durante o rendezvous (execução da cláusula `accept`)
+    - Uma tarefa executa até o início de uma cláusula `accept` e espera por uma
+      mensagem
 
-    -   Cada cláusula `accept` tem uma fila para armazenar as mensagens que
-        estão esperando
+    - O emissor de uma mensagem é suspenso esperando a mensagem ser aceita
+      e durante o rendezvous (execução da cláusula `accept`)
 
-    -   Os parâmetros de `accept` pode transmitir informação em ambas as
-        direções
+    - Cada cláusula `accept` tem uma fila para armazenar as mensagens que estão
+      esperando
 
-### Linha do tempo de um troca de mensagem
+    - Os parâmetros de `accept` pode transmitir informação em ambas as direções
+
+
+## Linha do tempo de um troca de mensagem
 
 - Imagem 13-3 do livro
 
@@ -478,34 +543,39 @@ task body Task_Example is
 ![](imagens/copl-13-3.png)
 !-->
 
-### Suporte a concorrência em Ada
 
--   Tipos de tarefas
+## Suporte a concorrência em Ada
 
-    -   Uma tarefa que tem apenas cláusulas `accept`, é chamada de **tarefa
-        servidor**
+- Tipos de tarefas
 
-    -   Uma tarefa sem cláusula `accept` é chamada de **tarefa ator**
+    - Uma tarefa que tem apenas cláusulas `accept`, é chamada de **tarefa
+      servidor**
 
-    -   Uma tarefa ator pode enviar mensagens para outras tarefas
+    - Uma tarefa sem cláusula `accept` é chamada de **tarefa ator**
 
-    -   Uma emissor precisa saber o nome da entrada do receptor, mas não o
-        contrário
+    - Uma tarefa ator pode enviar mensagens para outras tarefas
 
-### Suporte a concorrência em Ada
+    - Uma emissor precisa saber o nome da entrada do receptor, mas não
+      o contrário
 
--   Múltiplas entradas
 
-    -   Uma tarefa pode ter mais que uma entrada
+## Suporte a concorrência em Ada
 
-    -   Cada entrada é listada na especificação
+- Múltiplas entradas
 
-    -   No corpo deve existir uma cláusula `accept` para cada entrada
+    - Uma tarefa pode ter mais que uma entrada
 
-    -   As cláusulas `accept` podem vir uma após a outra, o que define a ordem
-        que as mensagens serão recebidos, ou colocadas em uma cláusula `select`
+    - Cada entrada é listada na especificação
 
-### Suporte a concorrência em Ada
+    - No corpo deve existir uma cláusula `accept` para cada entrada
+
+    - As cláusulas `accept` podem vir uma após a outra, o que define a ordem
+      que as mensagens serão recebidos, ou colocadas em uma cláusula `select`
+
+
+## Suporte a concorrência em Ada
+
+\small
 
 ```ada
 task body Teller is
@@ -525,80 +595,85 @@ task body Teller is
 end Teller;
 ```
 
-### Suporte a concorrência em Ada
 
--   Semântica das tarefas com `select`
+## Suporte a concorrência em Ada
 
-    -   Se exatamente uma fila de entrada não está vazia, uma mensagem é
-        escolhida desta fila
+- Semântica das tarefas com `select`
 
-    -   Se mais de uma fila de entrada não está vazia, escolhe uma não
-        deterministicamente, e aceite uma mensagem desta fila
+    - Se exatamente uma fila de entrada não está vazia, uma mensagem
+      é escolhida desta fila
 
-    -   Se todas as filas estão vazias, espere
+    - Se mais de uma fila de entrada não está vazia, escolhe uma não
+      deterministicamente, e aceite uma mensagem desta fila
 
--   Esta construção é chamada de **espera seletiva**
+    - Se todas as filas estão vazias, espere
 
--   O código que segue a cláusula `accept` (antes de outra cláusula ) é
-    executada concorrentemente com o emissor
+- Esta construção é chamada de **espera seletiva**
 
-### Suporte a concorrência em Ada
+- O código que segue a cláusula `accept` (antes de outra cláusula) é executada
+  concorrentemente com o emissor
 
--   Sincronização de cooperação
 
-    -   Obtida com cláusulas `accept` guardadas (por uma condição)
+## Suporte a concorrência em Ada
 
-    -   Uma cláusula guardada pode estar **aberta** ou **fechada**
+- Sincronização de cooperação
 
-    -   Uma cláusula que a guarda é verdadeira está aberta
+    - Obtida com cláusulas `accept` guardadas (por uma condição)
 
-    -   Uma cláusula que a guarda é false está fechada
+    - Uma cláusula guardada pode estar **aberta** ou **fechada**
 
-    -   Uma cláusula sem guarda está sempre aberta
+    - Uma cláusula que a guarda é verdadeira está aberta
+
+    - Uma cláusula que a guarda é false está fechada
+
+    - Uma cláusula sem guarda está sempre aberta
+
+        \pause
+
+        ```ada
+        when not Full(Buffer) =>
+          accept Deposit (New_Value) do
+            ...
+          end
+        ```
+
+
+## Suporte a concorrência em Ada
+
+- Semântica das tarefas com `select` com cláusulas `accept` guardadas
+
+    - `select` verifica as guardas de todas as cláusulas
+
+    - Se exatamente um cláusula está aberta, a sua fila é checada por mensagens
+
+    - Se mais de uma cláusula está aberta, uma delas é escolhida não
+      deterministicamente
+
+    - Se todas cláusulas estão fechadas, é um erro de execução
+
+    - A cláusula `select` pode ter uma cláusula `else`, que está sempre aberta
+
+    - A cláusula `select` pode ter uma cláusula `terminate`, que só
+      é selecionada quando estiver aberta e todas as outras cláusulas fechadas
+
+
+## Suporte a concorrência em Ada
+
+- Sincronização de competição
+
+    - Encapsular os dados compartilhados em uma tarefa
+
+    - A sincronização está implícita na semântica das cláusulas `accept`,
+      apenas uma pode estar ativa
 
     \pause
 
-    ```ada
-    when not Full(Buffer) =>
-      accept Deposit (New_Value) do
-        ...
-      end
-    ```
+- Exemplo: problema do produtor consumidor
 
 
-### Suporte a concorrência em Ada
+##
 
--   Semântica das tarefas com `select` com cláusulas `accept` guardadas
-
-    -   `select` verifica as guardas de todas as cláusulas
-
-    -   Se exatamente um cláusula está aberta, a sua fila é checada por
-        mensagens
-
-    -   Se mais de uma cláusula está aberta, uma delas é escolhida não
-        deterministicamente
-
-    -   Se todas cláusulas estão fechadas, é um erro de execução
-
-    -   A cláusula `select` pode ter uma cláusula `else`, que está sempre aberta
-
-    -   A cláusula `select` pode ter uma cláusula `terminate`, que só é
-        selecionada quando estiver aberta e todas as outras cláusulas fechadas
-
-### Suporte a concorrência em Ada
-
--   Sincronização de competição
-
-    -   Encapsular os dados compartilhados em uma tarefa
-
-    -   A sincronização está implícita na semântica das cláusulas `accept`,
-        apenas uma pode estar ativa
-
-    \pause
-
--   Exemplo: problema do produtor consumidor
-
-###
+\scriptsize
 
 ```ada
 task body Buf_Task is
@@ -627,7 +702,10 @@ begin
 end Buf_Task;
 ```
 
-###
+
+##
+
+\scriptsize
 
 ```ada
 task Producer;
@@ -653,80 +731,87 @@ begin
 end Consumer;
 ```
 
-### Suporte a concorrência em Ada
 
--   Término de tarefas
+## Suporte a concorrência em Ada
 
-    -   A execução de uma tarefa está **completa** se o controle chegou no final
-        do código
+- Término de tarefas
 
-    -   Se uma tarefa não criou tarefas dependentes e ela está completa, então
-        ela está **terminada**
+    - A execução de uma tarefa está **completa** se o controle chegou no final
+      do código
 
-    \pause
-
--   Prioridade das tarefas
-
-    -   A prioridade de uma tarefa pode ser definida com a instrução:
+    - Se uma tarefa não criou tarefas dependentes e ela está completa, então
+      ela está **terminada**
 
 
-            pragma Priority (expression);
+## Suporte a concorrência em Ada
+
+- Prioridade das tarefas
+
+    - A prioridade de uma tarefa pode ser definida com a instrução:
 
 
-    -   A prioridade de uma tarefa só vale quando a tarefa está na fila de
-        tarefas prontas
-
-    -   As tarefas com maior prioridade são executadas primeiro
-
-### Suporte a concorrência em Ada
-
--   Sincronização de competição quando os dados não estão encapsulados em uma
-    tarefa
-
-    -   Semáforo binário
-
-    \pause
-
-    ```ada
-    task Binary_Semaphore is
-      entry Wait;
-      entry Release;
-    end Binary_Semaphore;
-
-    task body Binary_Semaphore is
-      begin
-      loop
-        accept Wait;
-        accept Release;
-      end loop;
-    end Binary_Semaphore;
-    ```
+        ```ada
+        pragma Priority (expression);
+        ```
 
 
-### Suporte a concorrência em Ada
+    - A prioridade de uma tarefa só vale quando a tarefa está na fila de
+      tarefas prontas
 
--   Concorrência em Ada 95
+    - As tarefas com maior prioridade são executadas primeiro
 
-    -   Objetos protegidos: uma maneira mais eficiente de implementar acesso a
-        dados compartilhados (sem rendezvous)
 
-    -   Comunicação assíncrona
+## Suporte a concorrência em Ada
 
-### Suporte a concorrência em Ada
+- Sincronização de competição quando os dados não estão encapsulados em uma
+  tarefa
 
--   Objetos protegidos
+    - Semáforo binário
 
-    -   Um objeto protegido é semelhante a um monitor
+        ```ada
+        task Binary_Semaphore is
+          entry Wait;
+          entry Release;
+        end Binary_Semaphore;
 
-    -   Acesso a um objeto protegido é feito através de mensagem (como em uma
-        tarefa), ou através de subprogramas protegidos
+        task body Binary_Semaphore is
+          begin
+          loop
+            accept Wait;
+            accept Release;
+          end loop;
+        end Binary_Semaphore;
+        ```
 
-    -   Um procedimento protegido fornece acesso mutualmente exclusivo de
-        leitura-escrita
 
-    -   Um função protegida fornece acesso concorrente apenas de leitura
+## Suporte a concorrência em Ada
 
-###
+- Concorrência em Ada 95
+
+    - Objetos protegidos: uma maneira mais eficiente de implementar acesso
+      a dados compartilhados (sem rendezvous)
+
+    - Comunicação assíncrona
+
+
+## Suporte a concorrência em Ada
+
+- Objetos protegidos
+
+    - Um objeto protegido é semelhante a um monitor
+
+    - Acesso a um objeto protegido é feito através de mensagem (como em uma
+      tarefa), ou através de subprogramas protegidos
+
+    - Um procedimento protegido fornece acesso mutualmente exclusivo de
+      leitura-escrita
+
+    - Um função protegida fornece acesso concorrente apenas de leitura
+
+
+##
+
+\scriptsize
 
 ```ada
 protected Buffer is
@@ -755,107 +840,119 @@ protected body Buffer is
 end Buffer;
 ```
 
-### Suporte a concorrência em Ada
 
--   Avaliação
+## Suporte a concorrência em Ada
 
-    -   A troca de mensagens é um modelo de concorrência poderoso e geral
+- Avaliação
 
-    -   Objetos protegidos são uma maneira melhor para sincronismo em dados
-        compartilhados
+    - A troca de mensagens é um modelo de concorrência poderoso e geral
 
-    -   Sobre sincronização de competição, na falta de processadores
-        distribuídos, a escolha entre monitores e tarefas com troca de mensagens
-        é uma questão de preferência
+    - Objetos protegidos são uma maneira melhor para sincronismo em dados
+      compartilhados
 
-    -   Para sistemas distribuídos, troca de mensagens é um modelo de
-        concorrência melhor
+    - Sobre sincronização de competição, na falta de processadores
+      distribuídos, a escolha entre monitores e tarefas com troca de mensagens
+      é uma questão de preferência
+
+    - Para sistemas distribuídos, troca de mensagens é um modelo de
+      concorrência melhor
+
+
+
+Threads em Java
+===============
+
 
 ## Threads em Java
 
-### Threads em Java
+- As unidades concorrentes em java são métodos nomeados `run`
 
--   As unidades concorrentes em java são métodos nomeados `run`
+- As tarefas que executam os métodos `run`, são chamadas de threads
 
--   As tarefas que executam os métodos `run`, são chamadas de threads
+- As threads são tarefas leves
 
--   As threads são tarefas leves
+- Existem duas maneiras de criar um método run
 
--   Existem duas maneiras de criar um método run
+    - Criar uma subclasse da classe `Thread` e sobrescrever o método `run`
 
-    -   Criar uma subclasse da classe `Thread` e sobrescrever o método `run`
+    - Implementar a interface `Runnable`, que declara o método `run`
 
-    -   Implementar a interface `Runnable`, que declara o método `run`
+- As threads em Java são um assunto complexo, esta apresentação fornece apenas
+  uma introdução ao assunto
 
--   As threads em Java são um assunto complexo, esta apresentação fornece apenas
-    uma introdução ao assunto
 
-### Threads em Java
+## Threads em Java
 
--   Métodos da classe `Thread`
+- Métodos da classe `Thread`
 
-    -   `start` inicia a execução concorrente do método `run`
+    - `start` inicia a execução concorrente do método `run`
 
-    -   `yield` faz um pedido para a thread ser retirada do processador
+    - `yield` faz um pedido para a thread ser retirada do processador
 
-    -   `sleep` bloqueia a thread
+    - `sleep` bloqueia a thread
 
-    -   `join` faz uma thread esperar que a execução de outra thread termine
+    - `join` faz uma thread esperar que a execução de outra thread termine
         `run`
 
-    -   `stop`, `suspend`, `resume`, depreciados por problema de proteção
+    - `stop`, `suspend`, `resume`, depreciados por problema de proteção
 
-### Threads em Java
 
--   Término de uma thread
+## Threads em Java
 
-    -   A maneira comum e o método `run` chegar no final do código
+- Término de uma thread
 
-    -   O método `interrupt` é usado para comunicar a uma thread que ela deve
-        parar a execução
+    - A maneira comum e o método `run` chegar no final do código
 
-    -   O método `interrupt` marca uma flag na thread que deve ser verificada
-        constantemente
+    - O método `interrupt` é usado para comunicar a uma thread que ela deve
+      parar a execução
 
-    -   Se a thread estiver dormindo ou esperando, a exceção
-        `InterruptedException` é lançada
+    - O método `interrupt` marca uma flag na thread que deve ser verificada
+      constantemente
 
-### Threads em Java
+    - Se a thread estiver dormindo ou esperando, a exceção
+      `InterruptedException` é lançada
 
--   Prioridades
 
-    -   A prioridade padrão de uma thread é a mesma prioridade da thread que a
-        criou
+## Threads em Java
 
-    -   Existem três constantes para prioridade `MIN_PRIORITY`, `NORM_PRIORITY`,
-        `MAX_PRIORITY`
+- Prioridades
 
-    -   A prioridade de uma thread pode ser alterada com o método `setPriority`
+    - A prioridade padrão de uma thread é a mesma prioridade da thread que
+      a criou
 
-### Threads em Java
+    - Existem três constantes para prioridade `MIN_PRIORITY`, `NORM_PRIORITY`,
+      `MAX_PRIORITY`
 
--   Sincronização de competição
+    - A prioridade de uma thread pode ser alterada com o método `setPriority`
 
-    -   Um método marcado com o modificador `synchronized` precisa terminar sua
-        execução antes que qualquer outro método sincronizado possa acessar o
-        objeto
 
-    -   A sincronização de competição é feita marcado cada método que acessa
-        dados compartilhados como sincronizado
+## Threads em Java
+
+- Sincronização de competição
+
+    - Um método marcado com o modificador `synchronized` precisa terminar sua
+      execução antes que qualquer outro método sincronizado possa acessar
+      o objeto
+
+    - A sincronização de competição é feita marcado cada método que acessa
+      dados compartilhados como sincronizado
 
         ```java
-        ...
         public synchronized void deposit(int item) { ... }
         public synchronized int fetch() { ... }
-        ...
         ```
 
 
-    -   Os dois métodos acima são sincronizados, o que previne que a execução de
-        cada um interfira o outro
+    - Os dois métodos acima são sincronizados, o que previne que a execução de
+      cada um interfira o outro
 
-    -   Se apenas uma parte do método lida com dados compartilhados, a instrução
-        `synchronized` pode ser usada
+
+## Threads em Java
+
+- Sincronização de competição
+
+    - Se apenas uma parte do método lida com dados compartilhados, a instrução
+      `synchronized` pode ser usada
 
         ```java
         synchronized (expression) {
@@ -864,75 +961,80 @@ end Buffer;
         ```
 
 
-### Threads em Java
+## Threads em Java
 
--   Sincronização de cooperação
+- Sincronização de cooperação
 
-    -   É feita através dos métodos `wait`, `notify`, `notifyAll` da classe
-        `Object`
+    - É feita através dos métodos `wait`, `notify`, `notifyAll` da classe
+      `Object`
 
-    -   Todo objeto tem uma lista de threads que chamaram o método `wait` no
-        objeto
+    - Todo objeto tem uma lista de threads que chamaram o método `wait` no
+      objeto
 
-    -   O método `notify` é chamado para informar para uma thread que o evento
-        que ela estava esperando aconteceu
+    - O método `notify` é chamado para informar para uma thread que o evento
+      que ela estava esperando aconteceu
 
-    -   As vezes, as threads estão esperando com condições distintas, neste caso
-        o método `notifyAll` é usado para despertar todas as threads na lista de
-        espera do objeto. Neste caso, o método `wait` é chamado em um laço
+    - As vezes, as threads estão esperando com condições distintas, neste caso
+      o método `notifyAll` é usado para despertar todas as threads na lista de
+      espera do objeto. Neste caso, o método `wait` é chamado em um laço
 
-    -   Os métodos `wait`, `notify`, `notifyAll` só podem ser chamados em uma
-        seção sincronizada
+    - Os métodos `wait`, `notify`, `notifyAll` só podem ser chamados em uma
+      seção sincronizada
 
-### Threads em Java
 
--   Arquivo `ProducerConsumer.java`
+## Threads em Java
 
-### Threads em Java
+- Arquivo `ProducerConsumer.java`
 
--   Avaliação
 
-    -   O suporte a concorrência em Java é relativamente simples mas efetivo
+## Threads em Java
 
-    -   Não é tão poderoso quando as tarefas em Ada
+- Avaliação
 
--   Java 5 melhorou o suporte a concorrência com o pacote `java.util.concurrent`
+    - O suporte a concorrência em Java é relativamente simples mas efetivo
 
--   Java 7 framework fork/join
+    - Não é tão poderoso quando as tarefas em Ada
+
+- Java 5 melhorou o suporte a concorrência com o pacote `java.util.concurrent`
+
+- Java 7 framework fork/join
+
+
+Threads em C\#
+==============
 
 ## Threads em C\#
 
-### Threads em C\#
+- Vagamente baseado em Java, com diferenças significativas
 
--   Vagamente baseado em Java, com diferenças significativas
+    - Qualquer método pode ser executado em sua própria thread
 
-    -   Qualquer método pode ser executado em sua própria thread
+    - Uma thread é criado pela classe `Thread`
 
-    -   Uma thread é criado pela classe `Thread`
+    - Criar uma thread não inicia a sua execução concorrente; isto precisa ser
+      feito com o método `Start`
 
-    -   Criar uma thread não inicia a sua execução concorrente; isto precisa ser
-        feito com o método `Start`
+    - Uma thread pode esperar pelo término de outra chamando o método `Join`
 
-    -   Uma thread pode esperar pelo término de outra chamando o método `Join`
+    - Uma thread pode ser suspensa com `Sleep`
 
-    -   Uma thread pode ser suspensa com `Sleep`
+    - Uma thread pode ser terminada com `Abort`
 
-    -   Uma thread pode ser terminada com `Abort`
 
-### Threads em C\#
+## Threads em C\#
 
--   Três forma de sincronismo de threads \pause
+- Três forma de sincronismo de threads \pause
 
--   A classe `Interlocked`
+- A classe `Interlocked`
 
-    -   Usado quando a única operação que precisa ser sincronizada é o
-        incremento e decremento de um inteiro
+    - Usado quando a única operação que precisa ser sincronizada é o incremento
+      e decremento de um inteiro
 
     \pause
 
--   A instrução `lock`
+- A instrução `lock`
 
-    -   Usado para marcar regiões críticas
+    - Usado para marcar regiões críticas
 
         ```cs
         lock(expression) { ... }
@@ -940,89 +1042,103 @@ end Buffer;
 
     \pause
 
--   A classe `Monitor`
+- A classe `Monitor`
 
-    -   Sincronização mais sofisticada (métodos
-        `Enter, Wait, Pulse, PulseAll, Exit`)
+    - Sincronização mais sofisticada (métodos `Enter`, `Wait`, `Pulse`,
+      `PulseAll`, `Exit`)
 
-### Threads em C\#
 
--   Avaliação
+## Threads em C\#
 
-    -   Uma melhora pequena em relação ao Java, qualquer método pode executar em
-        sua própria thread
+- Avaliação
 
-    -   O término de execução de uma thread é mais claro que em Java
+    - Uma melhora pequena em relação ao Java, qualquer método pode executar em
+      sua própria thread
 
-    -   Como as thread são tarefas leves, elas não são tão versáteis quanto as
-        tarefas em Ada
+    - O término de execução de uma thread é mais claro que em Java
 
-# Concorrência no nível de instrução
+    - Como as thread são tarefas leves, elas não são tão versáteis quanto as
+      tarefas em Ada
 
-### Concorrência no nível de instrução
 
--   Fornecer um mecanismo que o programador possa usar para informar o
-    compilador a maneira que o programa pode ser mapeado para um arquitetura
-    multiprocessador
 
--   Minimizar a comunicação entre os processadores e as memórias de outros
-    processadores
+Concorrência no nível de instrução
+==================================
 
-### HPF - High Performace Fortran
+## Concorrência no nível de instrução
 
--   Uma coleção de extensões que permitem o programador fornecer informações
-    para o compilador que o ajudam a otimizar o código para computadores
-    multiprocessados
+- Fornecer um mecanismo que o programador possa usar para informar o compilador
+  a maneira que o programa pode ser mapeado para um arquitetura
+  multiprocessador
 
--   Especifica o número de processadores, a distribuição dos dados para as
-    memórias dos processadores e o alinhamento dos dados
+- Minimizar a comunicação entre os processadores e as memórias de outros
+  processadores
 
-### HPF - High Performace Fortran
 
--   Número de processadores
+## HPF - High Performace Fortran
 
-        !HPF$ PROCESSORS procs (n)
+- Uma coleção de extensões que permitem o programador fornecer informações para
+  o compilador que o ajudam a otimizar o código para computadores
+  multiprocessados
 
-    \pause
+- Especifica o número de processadores, a distribuição dos dados para as
+  memórias dos processadores e o alinhamento dos dados
 
--   Distribuição dos dados
 
-        !HPF$ DISTRIBUTE (kind) ONTO procs :: identifier_list
+## HPF - High Performace Fortran
 
-    -   `kind` pode ser `BLOCK` ou `CYCLIC`
+- Número de processadores
 
-    \pause
-
--   Relacionar a distribuição de um array com outro
-
-        ALIGN array1_element WITH array2_element
+    ```fortran
+    !HPF$ PROCESSORS procs (n)
+    ```
 
     \pause
 
--   Exemplo
+- Distribuição dos dados
 
-        REAL list_1(1000), list_2(1000)
-        INTEGER list_3(500), list_4(501)
-        !HPF$ PROCESSORS proc (10)
-        !HPF$ DISTRIBUTE (BLOCK) ONTO procs :: list_1, list_2
-        !HPF$ ALIGN list_1(index) WITH list_4 (index+1)
+    ```fortran
+    !HPF$ DISTRIBUTE (kind) ONTO procs :: identifier_list
+    ```
 
+    - Onde `kind` pode ser `BLOCK` ou `CYCLIC`
+
+    \pause
+
+- Relacionar a distribuição de um array com outro
+
+    ```
+    ALIGN array1_element WITH array2_element
+    ```
+
+
+## HPF - High Performace Fortran
+
+- Exemplo
+
+    ```fortran
+    REAL list_1(1000), list_2(1000)
+    INTEGER list_3(500), list_4(501)
+    !HPF$ PROCESSORS proc (10)
+    !HPF$ DISTRIBUTE (BLOCK) ONTO procs :: list_1, list_2
+    !HPF$ ALIGN list_1(index) WITH list_4 (index+1)
+
+    list_1(index) = list_2(index)
+    list_3(index) = list_4(index + 1)
+    ```
+
+
+## HPF - High Performace Fortran
+
+- A instrução `FORALL` é usada para especificar uma lista de instruções que
+  podem ser executadas concorrentemente
+
+    ```fortran
+    FORALL (index = 1:1000)
         list_1(index) = list_2(index)
-        list_3(index) = list_4(index + 1)
-
-### HPF - High Performace Fortran
-
--   A instrução `FORALL` é usada para especificar uma lista de instruções que
-    podem ser executadas concorrentemente
-
-        FORALL (index = 1:1000)
-            list_1(index) = list_2(index)
-
-# Referências
-
-### Referências
-
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 13.
+    ```
 
 
-<!-- vim: set spell spelllang=pt_br: -->
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 13.
