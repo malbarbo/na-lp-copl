@@ -21,7 +21,8 @@ PANDOC_CMD=$(PANDOC) \
 		--toc \
 		--standalone \
 		-V author:"Marco A L Barbosa\\\\\\href{http://malbarbo.pro.br}{malbarbo.pro.br}" \
-		-V institute:"\\href{http://din.uem.br}{Departamento de Informática}\\\\\\href{http://www.uem.br}{Universidade Estadual de Maringá}{}" \
+		-V institute:"\\href{http://din.uem.br}{Departamento de Informática}\\\\\\href{http://www.uem.br}{Universidade Estadual de Maringá}" \
+		-V lang:pt-BR \
 		-V theme:metropolis \
 		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
 		-V header-includes:"\captionsetup[figure]{labelformat=empty}" \
@@ -50,7 +51,7 @@ $(DEST_PDF)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makef
 $(DEST_PDF_HANDOUT)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_PDF_HANDOUT)
 	@echo $@
-	@$(PANDOC_CMD) -V classoption:handout -o $@ $<
+	@$(PANDOC_CMD) --pdf-engine=./bin/xelatex -V classoption:handout -o $@ $<
 
 $(DEST_TEX)/%.tex: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_TEX)
