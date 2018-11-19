@@ -582,7 +582,7 @@ Shape* s = new Rectangle();
 s->name();
 ...
 s = new Square();
-s->draw();
+s->name();
 ```
 
 \pause
@@ -1042,8 +1042,50 @@ Implementação de construções orientada a objeto
 
 ## Implementação de construções orientada a objeto
 
+\small
+
+```java
+public class A {
+    public int a, b;
+    public void draw() { . . . }
+    public void area() { . . . }
+}
+
+public class B extends A {
+    public int c, d;
+    public void draw() { . . . }
+    public void sift() { . . . }
+}
+```
+
+
+## Implementação de construções orientada a objeto
+
 ![](figs/12-2.pdf)
 
+
+## Implementação de construções orientada a objeto
+
+\small
+
+```c++
+class A {
+    public: int a;
+    virtual void fun() { . . . }
+    virtual void init() { . . . }
+}
+
+class B {
+    public: int b;
+    virtual void sun() { . . . }
+}
+
+class C: public A, public B {
+    public: int c;
+    void fun() { . . . }
+    virtual void dud() { . . . }
+}
+```
 
 ## Implementação de construções orientada a objeto
 
