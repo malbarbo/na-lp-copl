@@ -537,11 +537,7 @@ task body Task_Example is
 
 ## Linha do tempo de um troca de mensagem
 
-- Imagem 13-3 do livro
-
-<!-- FIXME: esta imagem não tem no arquivo disponível para dowload
-![](imagens/copl-13-3.png)
-!-->
+![](figs/13-3.pdf)
 
 
 ## Suporte a concorrência em Ada

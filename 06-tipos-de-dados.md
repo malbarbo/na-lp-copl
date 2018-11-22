@@ -874,7 +874,7 @@ memória e de onde a memória é alocada
 
     - A cada campo é associado o deslocamento relativo ao início do registro
 
-    ![](imagens/copl-6-7.png){width=6cm}
+    ![](figs/6-7.pdf){width=6cm}
 
 
 
@@ -931,6 +931,9 @@ Tuplas e listas
     - Cabeça: `(car ’(1 2 3))` resulta em `1`
 
     - Cauda: `(cdr ’(1 2 3))` resulta em `’(2 3)`
+
+
+## Listas - Exemplos
 
 - ML (imutável)
 
@@ -1064,7 +1067,7 @@ if (Figure_1.Diameter > 3.0) ...
 
 ## Uniões
 
-![](imagens/copl-6-8.png)
+![](figs/6-8.pdf)
 
 
 ## Uniões

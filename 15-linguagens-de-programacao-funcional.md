@@ -202,9 +202,7 @@ A primeira linguagem de programação funcional: Lisp
 
 ## A primeira linguagem de programação funcional: Lisp
 
-<!-- TODO: usar imagem pdf -->
-
-![](imagens/copl-15-1.png)
+![](figs/15-1.pdf)
 
 
 ## A primeira linguagem de programação funcional: Lisp

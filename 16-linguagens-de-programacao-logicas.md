@@ -658,9 +658,7 @@ X = apricots.
 
 ## O processo de inferência do Prolog
 
-<!-- TODO: usar imagem pdf -->
-
-![](imagens/copl-16-1.png)
+![](figs/16-1.pdf)
 
 
 ## Aritmética

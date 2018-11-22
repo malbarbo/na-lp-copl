@@ -1,9 +1,8 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
 title: Manipulação de excecões e manipulação de eventos
+# TODO: usar o termo tratamento ao invés de manipulação
 ---
-
-<!-- TODO: usar o termo tratamento ao invés de manipulação -->
 
 Introdução a manipulação de exceções
 ====================================
@@ -122,9 +121,8 @@ Introdução a manipulação de exceções
 
 ## Introdução a manipulação de exceções
 
-<!-- TODO: usar imagem pdf -->
+![](figs/14-1.pdf)
 
-![](imagens/copl-14-1.png)
 
 
 Manipulação de exceções em Ada
