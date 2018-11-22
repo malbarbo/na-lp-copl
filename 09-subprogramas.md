@@ -472,9 +472,7 @@ Métodos de passagens de parâmetros
 
 ## Métodos de passagens de parâmetros
 
-<!-- TODO: imagem pdf -->
-
-![](imagens/copl-9-2.png)
+![](figs/9-2.pdf)
 
 
 ## Métodos de passagens de parâmetros
