@@ -680,6 +680,8 @@ void main() {
 
         - Veja o livro para mais detalhes
 
+        <!-- TODO: completar os tópicos de escopo dinâmico -->
+
 
 ## Implementando escopo dinâmico
 
