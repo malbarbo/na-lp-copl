@@ -1,172 +1,195 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Implementando subprogramas
 ---
 
-# A semântica geral das chamadas e retornos
+A semântica geral das chamadas e retornos
+=========================================
 
-### A semântica geral das chamadas e retornos
+## A semântica geral das chamadas e retornos
 
--   As operações de chamada e retorno de subprogramas são denominadas
-    conjuntamente de **ligação de subprograma** (subprogram linkage) \pause
+- As operações de chamada e retorno de subprogramas são denominadas
+  conjuntamente de **ligação de subprograma**
 
--   A implementação de subprogramas deve ser baseada na semântica da ligação de
-    subprogramas
+- A implementação de subprogramas deve ser baseada na semântica da ligação de
+  subprogramas
 
-### A semântica geral das chamadas e retornos
 
--   Ações associadas com as chamadas de subprogramas
+## A semântica geral das chamadas e retornos
 
-    -   Passagem de parâmetros
+- Ações associadas com as chamadas de subprogramas
 
-    -   Alocação e vinculação das variáveis locais dinâmicas na pilha
+    - Passagem de parâmetros
 
-    -   Salvar o estado de execução do subprograma chamador
+    - Alocação e vinculação das variáveis locais dinâmicas na pilha
 
-    -   Transferência do controle para o subprograma chamado
+    - Salvar o estado de execução do subprograma chamador
 
-    -   Mecanismos de acesso a variáveis não locais (no caso de subprogramas
-        aninhados)
+    - Transferência do controle para o subprograma chamado
 
-    \pause
+    - Mecanismos de acesso a variáveis não locais (no caso de subprogramas
+      aninhados)
 
--   Ações associadas com os retornos de subprogramas
 
-    -   Retorno dos parâmetros out e inout
+## A semântica geral das chamadas e retornos
 
-    -   Desalocação das variáveis locais
+- Ações associadas com os retornos de subprogramas
 
-    -   Restauração do estado da execução
+    - Retorno dos parâmetros out e inout
 
-    -   Retorno do controle ao subprograma chamador
+    - Desalocação das variáveis locais
 
-# Implementando subprogramas simples
+    - Restauração do estado da execução
 
-### Implementando subprogramas simples
+    - Retorno do controle ao subprograma chamador
 
--   Subprogramas simples
 
-    -   Subprogramas não podem ser aninhados
 
-    -   Todas as variáveis locais são estáticas
+Implementando subprogramas simples
+==================================
 
-    \pause
+## Implementando subprogramas simples
 
--   Semântica da chamada requer as ações
+- Subprogramas simples
 
-    1.  Salvar o estado da unidade de programa corrente
+    - Subprogramas não podem ser aninhados
 
-    2.  Computar e passar os parâmetros
+    - Todas as variáveis locais são estáticas
 
-    3.  Passar o endereço de retorno ao subprograma chamado
 
-    4.  Transferir o controle ao subprograma chamado
+## Implementando subprogramas simples
 
-    \pause
+- Semântica da chamada requer as ações
 
--   Semântica do retorno requer as ações
+    1. Salvar o estado da unidade de programa corrente
 
-    1.  Copiar os valores dos parâmetros formais inout (passagem por cópia) e
-        out para os parâmetros reais
+    2. Computar e passar os parâmetros
 
-    2.  Copiar o valor de retorno (no caso de função)
+    3. Passar o endereço de retorno ao subprograma chamado
 
-    3.  Restaurar o estado de execução do chamador
+    4. Transferir o controle ao subprograma chamado
 
-    4.  Transferir o controle de volta ao chamador
 
-    \pause
+## Implementando subprogramas simples
 
--   Como estas ações são distribuídas entre o chamador e o chamado?
+- Semântica do retorno requer as ações
 
-### Implementando subprogramas simples
+    1. Copiar os valores dos parâmetros formais inout (passagem por cópia)
+       e out para os parâmetros reais
 
--   Memória requerida para a chamada e retorno
+    2. Copiar o valor de retorno (no caso de função)
 
-    -   Estado do chamador
+    3. Restaurar o estado de execução do chamador
 
-    -   Parâmetros
+    4. Transferir o controle de volta ao chamador
 
-    -   Endereço de retorno
 
-    -   Valor de retorno para funções
+## Implementando subprogramas simples
 
-    -   Valores temporários utilizados no código do subprograma
+- Como estas ações são distribuídas entre o chamador e o chamado?
 
--   As ações do subprograma chamado podem ocorrer
 
-    -   No início da execução (**prólogo**)
+## Implementando subprogramas simples
 
-    -   No final da execução (**epílogo**)
+- Memória requerida para a chamada e retorno
 
-### Implementando subprogramas simples
+    - Estado do chamador
 
--   Um subprograma simples consiste de duas partes de tamanhos fixos
+    - Parâmetros
 
-    -   Código do subprograma
+    - Endereço de retorno
 
-    -   As variáveis locais e os dados (não código, listados anteriormente)
+    - Valor de retorno para funções
 
--   O formato (layout) da parte não código do subprograma é chamado de
-    **registro de ativação**
+    - Valores temporários utilizados no código do subprograma
 
--   Uma **instância do registro de ativação** é um exemplo concreto do registro
-    de ativação
 
--   Como as linguagens com subprogramas simples não suportam recursão só pode
-    haver uma instância do registro de ativação de cada subprograma
+## Implementando subprogramas simples
 
--   Como o registro de ativação tem tamanho fixo, pode ser alocado estaticamente
+- As ações do subprograma chamado podem ocorrer
 
-### Implementando subprogramas simples
+    - No início da execução (**prólogo**)
 
-Exemplos de registros de ativação (omitindo o estado de execução salvo do chamador)
+    - No final da execução (**epílogo**)
+
+
+## Implementando subprogramas simples
+
+- Um subprograma simples consiste de duas partes de tamanhos fixos
+
+    - Código do subprograma
+
+    - As variáveis locais e os dados (não código, listados anteriormente)
+
+
+## Implementando subprogramas simples
+
+- O formato (layout) da parte não código do subprograma é chamado de **registro
+  de ativação**
+
+- Uma **instância do registro de ativação** é um exemplo concreto do registro
+  de ativação
+
+- Como as linguagens com subprogramas simples não suportam recursão só pode
+  haver uma instância do registro de ativação de cada subprograma
+
+- Como o registro de ativação tem tamanho fixo, pode ser alocado estaticamente
+
+
+## Implementando subprogramas simples
 
 ![](imagens/copl-10-1.png)
 
-###
+## Implementando subprogramas simples
 
 ![](imagens/copl-10-2.png)
 
-# Implementando subprogramas com variáveis locais dinâmicas na pilha
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
+Implementando subprogramas com variáveis locais dinâmicas na pilha
+==================================================================
 
--   Registros de ativação mais complexos \pause
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
-    -   O compilador precisa gerar código para alocação e desalocação das
-        variáveis locais
+- Registros de ativação mais complexos \pause
 
-    -   Suporte a recursão (mais de uma instância de registro de ativação para
-        um subprograma)
+    - O compilador precisa gerar código para alocação e desalocação das
+      variáveis locais
 
-    \pause
+    - Suporte a recursão (mais de uma instância de registro de ativação para um
+      subprograma)
 
--   O formato de registro de ativação é conhecido em tempo de compilação (na
-    maioria das linguagens)
 
--   O tamanho do registro de ativação pode variar (se existirem arranjos
-    dinâmicos na pilha, por exemplo)
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
--   Os registros de ativação precisam ser criados dinamicamente
+- O formato de registro de ativação é conhecido em tempo de compilação (na
+  maioria das linguagens)
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
+- O tamanho do registro de ativação pode variar (se existirem arranjos
+  dinâmicos na pilha, por exemplo)
+
+- Os registros de ativação precisam ser criados dinamicamente
+
+
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
 ![](imagens/copl-10-3.png)
 
-\pause
 
--   O endereço de retorno geralmente consiste em um ponteiro para a instrução
-    que segue a chamada do subprograma
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
--   O **vínculo dinâmico** aponta para a base da instância do registro de
-    ativação do chamador
+- O endereço de retorno geralmente consiste em um ponteiro para a instrução que
+  segue a chamada do subprograma
 
--   Os parâmetros são valores ou endereços dados pelo chamador
+- O **vínculo dinâmico** aponta para a base da instância do registro de
+  ativação do chamador
 
--   As variáveis locais são alocadas (e possivelmente inicializadas) no
-    subprograma chamado
+- Os parâmetros são valores ou endereços dados pelo chamador
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
+- As variáveis locais são alocadas (e possivelmente inicializadas) no
+  subprograma chamado
+
+
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
 ```c
 void sub(float total, int part){
@@ -178,78 +201,84 @@ void sub(float total, int part){
 
 <!-- FIXME: mesmo slide !-->
 
-###
+##
 
 ![](imagens/copl-10-4.png)
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
 
--   Ativar um subprograma requer a criação dinâmica de um registro de ativação
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
--   O registro de ativação é criado na **pilha de execução** (run-time stack)
+- Ativar um subprograma requer a criação dinâmica de um registro de ativação
 
--   O **ponteiro de ambiente** (EP - Enviromnet Pointer) aponta para a base do
-    registro de ativação da unidade de programa que está executando
+- O registro de ativação é criado na **pilha de execução** (run-time stack)
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
+- O **ponteiro de ambiente** (EP - Enviromnet Pointer) aponta para a base do
+  registro de ativação da unidade de programa que está executando
 
--   O EP é mantido pelo sistema \pause
 
-    -   O EP é salvo como vínculo dinâmico do novo registro de ativação quando
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
+
+- O EP é mantido pelo sistema \pause
+
+    - O EP é salvo como vínculo dinâmico do novo registro de ativação quando
         um subprograma é chamado
 
-    -   O EP é alterado para apontar para a base do novo registro de ativação
+    - O EP é alterado para apontar para a base do novo registro de ativação
 
-    -   No retorno, o topo da pilha é alterado para EP - 1, e o EP é alterado
-        para o vínculo dinâmico do registro de ativação do subprograma que está
-        terminado
-
-    \pause
-
--   O EP é usado como base do endereçamento por deslocamento dos dados na
-    instância do registro de ativação
-
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
-
--   Ações do chamador
-
-    1.  Criar um registro de ativação
-
-    2.  Salvar o estado da unidade de programa corrente
-
-    3.  Computar e passar os parâmetros
-
-    4.  Passar o endereço de retorno ao subprograma chamado
-
-    5.  Transferir o controle ao subprograma chamado
-
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
-
--   Ações no prólogo do chamado
-
-    1.  Salvar o antigo EP com vínculo dinâmico, e atualizar o seu valor
-
-    2.  Alocar as variáveis locais
+    - No retorno, o topo da pilha é alterado para EP - 1, e o EP é alterado
+      para o vínculo dinâmico do registro de ativação do subprograma que está
+      terminado
 
     \pause
 
--   Ações do chamado
+- O EP é usado como base do endereçamento por deslocamento dos dados na
+  instância do registro de ativação
 
-    1.  Copiar os valores dos parâmetros formais inout (passagem por cópia) e
-        out para os parâmetros reais
 
-    2.  Copiar o valor de retorno (no caso de função)
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
-    3.  Atualizar o topo da pilha e restaurar o EP para o valor do antigo
-        vinculo dinâmico
+- Ações do chamador
 
-    4.  Restaurar o estado de execução do chamador
+    1. Criar um registro de ativação
 
-    5.  Transferir o controle de volta ao chamador
+    2. Salvar o estado da unidade de programa corrente
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
+    3. Computar e passar os parâmetros
 
-Exemplo sem recursão
+    4. Passar o endereço de retorno ao subprograma chamado
+
+    5. Transferir o controle ao subprograma chamado
+
+
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
+
+- Ações no prólogo do chamado
+
+    1. Salvar o antigo EP com vínculo dinâmico, e atualizar o seu valor
+
+    2. Alocar as variáveis locais
+
+
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
+
+- Ações do chamado
+
+    1. Copiar os valores dos parâmetros formais inout (passagem por cópia)
+       e out para os parâmetros reais
+
+    2. Copiar o valor de retorno (no caso de função)
+
+    3. Atualizar o topo da pilha e restaurar o EP para o valor do antigo
+       vinculo dinâmico
+
+    4. Restaurar o estado de execução do chamador
+
+    5. Transferir o controle de volta ao chamador
+
+
+## Exemplo sem recursão
+
+\scriptsize
 
 ```c
 void fun1(float r) {
@@ -272,29 +301,26 @@ void main() {
 }
 ```
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
 
-Exemplo `main` chama `fun1`, que chama `fun2`, que chama `fun3`
-
-<!-- FIXME: mesmo slide !-->
-
-###
+##
 
 ![](imagens/copl-10-5.png)
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
 
--   A coleção de vínculos dinâmicos na pilha em um determinado momento é chamado
-    de **cadeia dinâmica** ou **cadeia de chamada**
+## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
--   Referência as variáveis locais podem ser representadas por deslocamentos a
-    partir do início do registro de ativação (**local\_offset**)
+- A coleção de vínculos dinâmicos na pilha em um determinado momento é chamado
+  de **cadeia dinâmica** ou **cadeia de chamada**
 
--   O local\_offset pode ser determinado em tempo de compilação
+- Referência as variáveis locais podem ser representadas por deslocamentos
+  a partir do início do registro de ativação (**local\_offset**)
 
-### Implementando subprogramas com variáveis locais dinâmicas na pilha
+- O local\_offset pode ser determinado em tempo de compilação
 
-Exemplo com recursão
+
+## Exemplo com recursão
+
+\scriptsize
 
 ```c
 int fatorial(int n) {
@@ -306,7 +332,6 @@ int fatorial(int n) {
   }
        //<---------- 2
 }
-
 void main() {
   int value;
   value = factorial(3);
@@ -314,66 +339,75 @@ void main() {
 }
 ```
 
-###
+##
 
 ![](imagens/copl-10-6.png)
 
-###
+##
 
 ![](imagens/copl-10-7.png)
 
-###
+##
 
 ![](imagens/copl-10-8.png)
 
-# Implementando subprogramas aninhados
 
-### Implementando subprogramas aninhados
+Implementando subprogramas aninhados
+====================================
 
--   Algumas linguagens com escopo estático permitem subprogramas aninhados
-    (Fortran 95, Ada, Python, Javascript, Ruby, Lua)
+## Implementando subprogramas aninhados
 
--   Todas as variáveis não locais que podem ser acessadas estão em algum
-    registro de ativação na pilha
+- Algumas linguagens com escopo estático permitem subprogramas aninhados
+  (Fortran 95, Ada, Python, Javascript, Ruby, Lua)
 
--   Processo para encontrar um referência não local
+- Todas as variáveis não locais que podem ser acessadas estão em algum registro
+  de ativação na pilha
 
-    -   Encontrar o registro de ativação correto
+- Processo para encontrar um referência não local
 
-    -   Determinar o deslocamento dentro do registro de ativação
+    - Encontrar o registro de ativação correto
 
--   A forma mais comum de implementação é o encadeamento estático
+    - Determinar o deslocamento dentro do registro de ativação
 
-### Implementando subprogramas aninhados
+- A forma mais comum de implementação é o encadeamento estático
 
--   Um **vínculo estático** aponta para a base de uma instância do registro de
-    ativação de uma ativação do pai estático
 
--   Uma **cadeia estática** é uma cadeia de vínculos estáticos que conecta
-    certas instâncias de registros de ativação
+## Implementando subprogramas aninhados
 
--   A cadeia estática conecta todos os ancestrais estáticos de um subprograma em
-    execução
+- Um **vínculo estático** aponta para a base de uma instância do registro de
+  ativação de uma ativação do pai estático
 
--   A cadeia estática é usado para implementar acesso as variáveis não locais
+- Uma **cadeia estática** é uma cadeia de vínculos estáticos que conecta certas
+  instâncias de registros de ativação
 
-### Implementando subprogramas aninhados
+- A cadeia estática conecta todos os ancestrais estáticos de um subprograma em
+  execução
 
--   Encontrar a instância do registro de ativação correta é direto, basta seguir
-    os vínculos. \pause Mas pode ser ainda mais simples
+- A cadeia estática é usado para implementar acesso as variáveis não locais
 
-    -   **static\_depth** é um inteiro associado com o escopo estático cujo
+
+## Implementando subprogramas aninhados
+
+- Encontrar a instância do registro de ativação correta é direto, basta seguir
+  os vínculos. \pause Mas pode ser ainda mais simples
+
+    - **static\_depth** é um inteiro associado com o escopo estático cujo
         valor é a profundidade de aninhamento deste escopo
 
-    -   O **chain\_offset** ou **nesting\_depth** de uma referência não local é
-        a diferença entre o static\_depth do subprograma que faz a referência e
-        do subprograma onde a variável referenciada foi declarada
+    - O **chain\_offset** ou **nesting\_depth** de uma referência não local
+      é a diferença entre o static\_depth do subprograma que faz a referência
+      e do subprograma onde a variável referenciada foi declarada
 
-    -   Um referência a uma variável pode ser representada por um par
-        (chain\_offset, local\_offset), sendo local\_offset o deslocamento no
-        registro de ativação da variável referenciada
+    - Um referência a uma variável pode ser representada por um par
+      (chain\_offset, local\_offset), sendo local\_offset o deslocamento no
+      registro de ativação da variável referenciada
 
-### Implementando subprogramas aninhados
+
+## Exemplo
+
+<div class="columns">
+<div class="column" width="50%">
+\tiny
 
 ```ada
 procedure Main is
@@ -385,13 +419,6 @@ procedure Main is
       begin -- of Sub1
         A := B + C;     <------- 1
       end;  -- of Sub1
-```
-
-<!-- FIXME: mesmo slide !-->
-###
-
-```ada
-  -- continuação
     procedure Sub2(X : Integer) is
       B, E : Integer;
       procedure Sub3 is
@@ -412,51 +439,63 @@ procedure Main is
   end; -- of Main
 ```
 
+</div>
+<div class="column" width="50%">
 Considerando a sequência de chamadas `Main`, `Bigsub`, `Sub2`, `Sub3`, `Sub1`.
 Qual é o valor (chain\_offset, local\_offset) da referência a variável `A` nos
 pontos 1, 2 e 3?
+</div>
+</div>
 
-###
+##
 
 ![](imagens/copl-10-9.png)
 
-### Implementando subprogramas aninhados
 
--   Como a cadeia estática é mantida? \pause
+## Implementando subprogramas aninhados
 
--   A cadeia estática precisa ser modificada a cada chamada ou retorno de
-    subprograma \pause
+- Como a cadeia estática é mantida? \pause
 
--   O retorno é trivial \pause
+- A cadeia estática precisa ser modificada a cada chamada ou retorno de
+  subprograma \pause
 
--   A chamada é mais complexa \pause
+- O retorno é trivial \pause
 
--   Embora o escopo do pai seja facilmente determinado em tempo de compilação, a
-    mais recente instância do registro de ativação do pai precisa ser encontrada
-    a cada chamada \pause
+- A chamada é mais complexa
 
--   Este processo pode ser feito com dois métodos
 
-    -   Buscar pela cadeia dinâmica \pause
+## Implementando subprogramas aninhados
 
-    -   Tratar as declarações e referências de subprogramas como as de variáveis
+- Embora o escopo do pai seja facilmente determinado em tempo de compilação,
+  a mais recente instância do registro de ativação do pai precisa ser
+  encontrada a cada chamada \pause
 
-### Implementando subprogramas aninhados
+- Este processo pode ser feito com dois métodos
 
--   Críticas ao método de encadeamento estático
+    - Buscar pela cadeia dinâmica \pause
 
-    -   Acesso a uma referência não local pode ser lento se a profundidade do
-        aninhamento for grande
+    - Tratar as declarações e referências de subprogramas como as de variáveis
 
-    -   Em sistemas de tempo crítico, é difícil determinar o custo de acesso a
-        variáveis não locais
 
-# Blocos
+## Implementando subprogramas aninhados
 
-### Blocos
+- Críticas ao método de encadeamento estático
 
--   Algumas linguagens (incluindo C), permitem a criação de escopos definidos
-    pelos usuários, chamados blocos
+    - Acesso a uma referência não local pode ser lento se a profundidade do
+      aninhamento for grande
+
+    - Em sistemas de tempo crítico, é difícil determinar o custo de acesso
+      a variáveis não locais
+
+
+
+Blocos
+======
+
+## Blocos
+
+- Algumas linguagens (incluindo C), permitem a criação de escopos definidos
+  pelos usuários, chamados blocos
 
     ```c
     {
@@ -467,18 +506,24 @@ pontos 1, 2 e 3?
     }
     ```
 
-    \pause
 
--   Blocos podem ser implementados de duas maneiras
+## Blocos
 
-    -   Usando encadeamento estáticos (blocos são tratados como subprogramas sem
-        parâmetros)
+- Blocos podem ser implementados de duas maneiras
 
-    -   Como o valor máximo de memória requerido pelas variáveis de bloco podem
-        ser determinados em tempo de compilação, esta memória poder ser alocada
-        na pilha e as variáveis de bloco são tratadas como variáveis locais
+    - Usando encadeamento estáticos (blocos são tratados como subprogramas sem
+      parâmetros)
 
-### Blocos
+    - Como o valor máximo de memória requerido pelas variáveis de bloco podem
+      ser determinados em tempo de compilação, esta memória poder ser alocada
+      na pilha e as variáveis de bloco são tratadas como variáveis locais
+
+
+## Blocos
+
+<div class="columns">
+<div class="column" width="30%">
+\footnotesize
 
 ```c
 void main() {
@@ -498,30 +543,37 @@ void main() {
   ...
 }
 ```
-
-<!-- FIXME: mesmo slide !-->
-
-###
-
+</div>
+<div class="column" width="70%">
+\pause
 ![](imagens/copl-10-10.png)
+</div>
+</div>
 
-# Implementando escopo dinâmico
 
-### Implementando escopo dinâmico
+Implementando escopo dinâmico
+=============================
 
--   Existem duas maneiras para implementar acesso a variáveis não locais em
-    linguagens com escopo dinâmico \pause
+## Implementando escopo dinâmico
 
--   Acesso profundo
+- Existem duas maneiras para implementar acesso a variáveis não locais em
+  linguagens com escopo dinâmico \pause
 
-    -   As referências não locais são encontradas seguindo os registros de
-        ativação na cadeia dinâmica
+- Acesso profundo
 
-    -   O tamanho da cadeia não pode ser estaticamente determinada
+    - As referências não locais são encontradas seguindo os registros de
+      ativação na cadeia dinâmica
 
-    -   Os nomes das variáveis devem ser armazenadas nos registros de ativação
+    - O tamanho da cadeia não pode ser estaticamente determinada
 
-### Implementando escopo dinâmico
+    - Os nomes das variáveis devem ser armazenadas nos registros de ativação
+
+
+## Implementando escopo dinâmico
+
+<div class="columns">
+<div class="column" width="30%">
+\footnotesize
 
 ```c
 void sub3() {
@@ -542,34 +594,38 @@ void main() {
   ...
 }
 ```
-
-Camadas `main`, `sub1`, `sub1`, `sub2`, `sub3`
-
-<!-- FIXME: mesmo slide !-->
-
-###
-
+</div>
+<div class="column" width="70%">
+\pause
 ![](imagens/copl-10-11.png)
+</div>
+</div>
 
-### Implementando escopo dinâmico
 
--   Acesso raso
+## Implementando escopo dinâmico
 
-    -   As variáveis locais ficam em um lugar central (não ficam no registro de
-        ativação) \pause
+- Acesso raso
 
-    -   Uma pilha para cada nome de variável \pause
+    - As variáveis locais ficam em um lugar central (não ficam no registro de
+      ativação) \pause
 
-    -   Tabela com uma entrada para cada nome de variável
+    - Uma pilha para cada nome de variável \pause
 
-        -   Cada entrada tem um bit indicando se a variável está vinculada com
-            alguma memória
+    - Tabela com uma entrada para cada nome de variável
 
-        -   O acesso é direto com um deslocamento estático
+        - Cada entrada tem um bit indicando se a variável está vinculada com
+          alguma memória
 
-        -   Veja o livro para mais detalhes
+        - O acesso é direto com um deslocamento estático
 
-### Implementando escopo dinâmico
+        - Veja o livro para mais detalhes
+
+
+## Implementando escopo dinâmico
+
+<div class="columns">
+<div class="column" width="30%">
+\footnotesize
 
 ```c
 void sub3() {
@@ -590,20 +646,14 @@ void main() {
   ...
 }
 ```
-
-Camadas `main`, `sub1`, `sub1`, `sub2`, `sub3`
-
-<!-- FIXME: mesmo slide !-->
-
-###
-
+</div>
+<div class="column" width="70%">
+\pause
 ![](imagens/copl-10-12.png)
-
-# Referências
-
-### Referências
-
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 10.
+</div>
+</div>
 
 
-<!-- vim: set spell spelllang=pt_br: -->
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 10.
