@@ -138,11 +138,12 @@ Implementando subprogramas simples
 
 ## Implementando subprogramas simples
 
-![](imagens/copl-10-1.png)
+![](figs/10-1.pdf)
+
 
 ## Implementando subprogramas simples
 
-![](imagens/copl-10-2.png)
+![](figs/10-2.pdf)
 
 
 Implementando subprogramas com variáveis locais dinâmicas na pilha
@@ -172,7 +173,7 @@ Implementando subprogramas com variáveis locais dinâmicas na pilha
 
 ## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
-![](imagens/copl-10-3.png)
+![](figs/10-3.pdf)
 
 
 ## Implementando subprogramas com variáveis locais dinâmicas na pilha
@@ -191,6 +192,10 @@ Implementando subprogramas com variáveis locais dinâmicas na pilha
 
 ## Implementando subprogramas com variáveis locais dinâmicas na pilha
 
+<div class="columns">
+<div class="column" width="30%">
+\footnotesize
+
 ```c
 void sub(float total, int part){
   int list[5];
@@ -198,12 +203,11 @@ void sub(float total, int part){
   ...
 }
 ```
-
-<!-- FIXME: mesmo slide !-->
-
-##
-
-![](imagens/copl-10-4.png)
+</div>
+<div class="column" width="70%">
+![](figs/10-4.pdf)
+</div>
+</div>
 
 
 ## Implementando subprogramas com variáveis locais dinâmicas na pilha
@@ -278,21 +282,23 @@ void sub(float total, int part){
 
 ## Exemplo sem recursão
 
+<div class="columns">
+<div class="column" width="25%">
 \scriptsize
 
 ```c
 void fun1(float r) {
   int s, t;
-  ...         //<---------- 1
+  ...       // <- 1
   fun2(s);
 }
 void fun2(int x) {
   int y;
-  ...         //<---------- 2
+  ...       // <- 2
   fun3(y);
 }
 void fun3(int q) {
-  ...         //<---------- 3
+  ...       // <- 3
 }
 void main() {
   float p;
@@ -300,11 +306,11 @@ void main() {
   fun1(p);
 }
 ```
-
-
-##
-
-![](imagens/copl-10-5.png)
+</div>
+<div class="column" width="75%">
+![](figs/10-5.pdf)
+</div>
+</div>
 
 
 ## Implementando subprogramas com variáveis locais dinâmicas na pilha
@@ -320,36 +326,90 @@ void main() {
 
 ## Exemplo com recursão
 
+<div class="columns">
+<div class="column" width="25%">
 \scriptsize
 
 ```c
-int fatorial(int n) {
-       //<---------- 1
+int fat(int n) {
+  // <- 1
   if (n <= 1) {
     return 1;
   } else {
-    return n * factorial(n - 1);
+    return n * fat(n - 1);
   }
-       //<---------- 2
+  // <- 2
 }
 void main() {
   int value;
-  value = factorial(3);
-       //<---------- 3
+  value = fat(3);
+  // <- 3
 }
 ```
+</div>
+<div class="column" width="75%">
+![](figs/10-6.pdf)
+</div>
+</div>
 
-##
 
-![](imagens/copl-10-6.png)
+## Exemplo com recursão
 
-##
+<div class="columns">
+<div class="column" width="25%">
+\scriptsize
 
-![](imagens/copl-10-7.png)
+```c
+int fat(int n) {
+  // <- 1
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * fat(n - 1);
+  }
+  // <- 2
+}
+void main() {
+  int value;
+  value = fat(3);
+  // <- 3
+}
+```
+</div>
+<div class="column" width="75%">
+![](figs/10-7.pdf)
+</div>
+</div>
 
-##
 
-![](imagens/copl-10-8.png)
+## Exemplo com recursão
+
+<div class="columns">
+<div class="column" width="25%">
+\scriptsize
+
+```c
+int fat(int n) {
+  // <- 1
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * fat(n - 1);
+  }
+  // <- 2
+}
+void main() {
+  int value;
+  value = fat(3);
+  // <- 3
+}
+```
+</div>
+<div class="column" width="75%">
+![](figs/10-8.pdf)
+</div>
+</div>
+
 
 
 Implementando subprogramas aninhados
@@ -449,7 +509,7 @@ pontos 1, 2 e 3?
 
 ##
 
-![](imagens/copl-10-9.png)
+![](figs/10-9.pdf)
 
 
 ## Implementando subprogramas aninhados
@@ -546,7 +606,7 @@ void main() {
 </div>
 <div class="column" width="70%">
 \pause
-![](imagens/copl-10-10.png)
+![](figs/10-10.pdf)
 </div>
 </div>
 
@@ -597,7 +657,7 @@ void main() {
 </div>
 <div class="column" width="70%">
 \pause
-![](imagens/copl-10-11.png)
+![](figs/10-11.pdf)
 </div>
 </div>
 
@@ -649,7 +709,7 @@ void main() {
 </div>
 <div class="column" width="70%">
 \pause
-![](imagens/copl-10-12.png)
+![](figs/10-12.pdf)
 </div>
 </div>
 
