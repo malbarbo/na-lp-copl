@@ -606,8 +606,8 @@ Métodos de passagens de parâmetros
 <!-- TODO: exemplos de passagem de parâmetros -->
 
 
-Parâmetros que são subprogramas
-===============================
+Parâmetros que são subprogramas e fechamentos
+=============================================
 
 ## Parâmetros que são subprogramas
 
@@ -645,7 +645,16 @@ Parâmetros que são subprogramas
     - Java 8 permite parâmetros que são subprogramas e faz a checagem de tipo
 
 
-## Parâmetros que são subprogramas
+## Fechamentos
+
+- Um **fechamento** (*closure* em inglês) é um subprograma e o ambiente de
+  referenciamento onde ele foi definido
+
+- O ambiente de referenciamento é necessário pois o subprograma pode ser
+  chamado em qualquer local
+
+
+## Fechamentos
 
 - Qual é o ambiente de referenciamento usado na execução do subprograma
   passado como parâmetro?
@@ -659,7 +668,8 @@ Parâmetros que são subprogramas
     - **Vinculação ad hoc**: o ambiente da instrução de chamada que passou
       o subprograma como parâmetro real
 
-## Parâmetros que são subprogramas
+
+## Fechamentos
 
 <div class="columns">
 <div class="column" width="50%">
@@ -700,6 +710,30 @@ Qual será o valor impresso na função `sub2` quando ela for chamada em `sub4`?
 </div>
 
 
+## Fechamentos
+
+\small
+
+```python
+def somador(x):
+    def soma(n):
+      return x + n
+    return soma
+
+>>> soma1 = somador(1)
+>>> soma1(5)
+6
+>>> soma5 = somador(5)
+>>> soma5(3)
+8
+>>> soma1.func_closure[0].cell_contents
+1
+>>> soma5.func_closure[0].cell_contents
+5
+```
+
+
+
 Subprogramas sobrecarregados
 ============================
 
@@ -711,7 +745,7 @@ Subprogramas sobrecarregados
     - Cada versão precisa ter um único protocolo
 
     - O significado de uma chamada é determinado pela lista de parâmetros reais
-      (ou/e pelo tipo de retorno, no caso de funções) \pause
+      (ou/e pelo tipo de retorno, no caso de funções)
 
 
 ## Subprogramas sobrecarregados
@@ -1107,43 +1141,6 @@ Operadores sobrecarregados definidos pelo usuário
       return sum;
     }
     ```
-
-
-
-Fechamentos
-===========
-
-## Fechamentos
-
-- Um **fechamento** (*closure* em inglês) é um subprograma e o ambiente de
-  referenciamento onde ele foi definido
-
-- O ambiente de referenciamento é necessário pois o subprograma pode ser
-  chamado em qualquer local
-
-
-## Fechamentos
-
-\small
-
-```python
-def somador(x):
-    def soma(n):
-      return x + n
-    return soma
-
->>> soma1 = somador(1)
->>> soma1(5)
-6
->>> soma5 = somador(5)
->>> soma5(3)
-8
->>> soma1.func_closure[0].cell_contents
-1
->>> soma5.func_closure[0].cell_contents
-5
-```
-
 
 
 ## Referências
