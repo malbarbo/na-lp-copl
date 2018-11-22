@@ -1,140 +1,151 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: Subprogramas
 ---
 
-# Introdução
+Introdução
+==========
 
-### Introdução
+## Introdução
 
--   Abstração de processo
+- Abstração de processo
 
-    -   São os subprogramas
+    - Subprogramas
 
-    -   Economia de memória e tempo de programação
+    - Elementos fundamentais dos programas
 
-    -   Aumento da legibilidade
 
--   Abstração de dados
+- Abstração de dados
 
-    -   Capítulos 11 e 12
+    - Capítulos 11 e 12
 
-# Fundamentos
 
-### Fundamentos
 
--   Características gerais dos subprogramas
+Fundamentos
+===========
 
-    -   Cada subprograma tem um único ponto de entrada
+## Fundamentos
 
-    -   Toda unidade de programa chamadora é suspensa durante a execução do
-        subprograma chamado
+- Características gerais dos subprogramas
 
-    -   O controle sempre retorna para o chamador quando a execução do
-        subprograma chamado termina
+    - Cada subprograma tem um único ponto de entrada
 
-### Fundamentos
+    - Toda unidade de programa chamadora é suspensa durante a execução do
+      subprograma chamado
 
--   Definições básicas
+    - O controle sempre retorna para o chamador quando a execução do
+      subprograma chamado termina
 
-    -   Uma **definição de subprograma** descreve a interface e as ações do
-        subprograma
 
-    -   Uma **chamada de subprograma** é a solicitação explícita para executar o
-        subprograma
+## Fundamentos
 
-    -   Um subprograma está **ativo** se depois de chamado, ele iniciou a sua
-        execução, mas ainda não a concluiu
+- Definições básicas
 
-### Fundamentos
+    - Uma **definição de subprograma** descreve a interface e as ações do
+      subprograma
 
--   Definições básicas
+    - Uma **chamada de subprograma** é a solicitação explícita para executar o
+      subprograma
 
-    -   O **cabeçalho do subprograma** é a primeira parte da definição
+    - Um subprograma está **ativo** se depois de chamado, ele iniciou a sua
+      execução, mas ainda não a concluiu
 
-        -   Especifica o tipo (função, procedimento, etc)
 
-        -   Especifica o nome
+## Fundamentos
 
-        -   Pode especificar a lista de parâmetros
+- Definições básicas
 
-        \pause
+    - O **cabeçalho do subprograma** é a primeira parte da definição
 
-    -   Exemplos
+        - Especifica o tipo (função, procedimento, etc)
 
-    -   Fortran: `Subrotine Adder(parameters)`
+        - Especifica o nome
 
-    -   Ada: `procedure Adder(parameters)`
+        - Pode especificar a lista de parâmetros
 
-    -   Python: `def adder(parameters):`
 
-    -   C: `void adder(parameters)`
+## Fundamentos
 
-    -   Lua (funções são entidades de primeira classe)
+- Exemplos de cabeçalhos
 
-        -   `function cube(x) return x * x * x end`
+    - Fortran: `Subrotine Adder(parameters)`
 
-        -   `cube = function (x) return x * x * x end`
+    - Ada: `procedure Adder(parameters)`
 
-### Fundamentos
+    - Python: `def adder(parameters):`
 
--   Definições básicas
+    - C: `void adder(parameters)`
 
-    -   O **perfil dos parâmetros** é o número, a ordem e o tipo dos parâmetros
-        formais
+    - Lua (funções são entidades de primeira classe)
 
-    -   O **protocolo** é o perfil dos parâmetros mais o tipo de retorno (em
-        caso de funções)
+        - `function cube(x) return x * x * x end`
 
-    -   Declarações
+        - `cube = function (x) return x * x * x end`
 
-        -   A declaração especifica o protocolo do subprograma, mas não as ações
 
-        -   Necessário em linguagens que não permitem referenciar subprogramas
-            definido após o uso
+## Fundamentos
 
-        -   Em C/C++ uma declaração é chamada de protótipo
+- Definições básicas
 
-### Parâmetros
+    - O **perfil dos parâmetros** é o número, a ordem e o tipo dos parâmetros
+      formais
 
--   Existem duas maneiras de um subprograma acessar os dados para processar
+    - O **protocolo** é o perfil dos parâmetros mais o tipo de retorno (em
+      caso de funções)
+
+    - Declarações
+
+        - A declaração especifica o protocolo do subprograma, mas não as ações
+
+        - Necessário em linguagens que não permitem referencias diretas
+          a subprogramas
+
+        - Em C/C++ uma declaração é chamada de protótipo
+
+
+## Parâmetros
+
+- Existem duas maneiras de um subprograma acessar os dados para processar
 
     \pause
 
-    -   Acesso direto as variáveis não locais
+    - Acesso direto as variáveis não locais
 
-        -   O acesso extensivo a variáveis não locais podem criar diversos
-            problemas
+        - O acesso extensivo a variáveis não locais pode reduzir
+          a confiabilidade
 
         \pause
 
-    -   Passagem de parâmetros
+    - Passagem de parâmetros
 
-        -   Dados passados por parâmetro são acessados por nomes que são locais
-            ao subprograma
+        - Dados passados por parâmetro são acessados por nomes que são locais
+          ao subprograma
 
-### Parâmetros
 
--   Os parâmetros no cabeçalho do subprograma são chamados de **parâmetros
-    formais**
+## Parâmetros
 
--   Os parâmetros passados em uma chamada de subprograma são chamados de
-    **parâmetros reais**
+- Os parâmetros no cabeçalho do subprograma são chamados de **parâmetros
+  formais**
 
--   Vinculação entre os parâmetros reais e os parâmetros formais
+- Os parâmetros passados em uma chamada de subprograma são chamados de
+  **parâmetros reais**
 
-    -   A maioria das linguagens faz a vinculação através da posição
-        (**parâmetros posicionais**): o primeiro parâmetro real é vinculado com
-        o primeiro parâmetro formal, e assim por diante
+- Vinculação entre os parâmetros reais e os parâmetros formais
 
-        -   Funciona bem quando o número de parâmetros é pequeno
+    - A maioria das linguagens faz a vinculação através da posição
+      (**parâmetros posicionais**): o primeiro parâmetro real é vinculado com
+      o primeiro parâmetro formal, e assim por diante
 
-    -   Existem outras formas?
+        - Funciona bem quando o número de parâmetros é pequeno
 
-### Parâmetros
+    - Existem outras formas?
 
--   Parâmetros de palavras-chave (Ada, Fortran 95, Python)
 
-    -   Exemplo em Python
+## Parâmetros
+
+- Parâmetros de palavras-chave (Ada, Fortran 95, Python)
+
+    - Exemplo em Python
 
         ```python
         def soma(lista, inicio, fim):
@@ -143,11 +154,12 @@ title: Subprogramas
         soma([4, 5, 6], fim = 1, inicio = 2)
         ```
 
-    \pause
 
--   Parâmetros com valor padrão (Python, Ruby, C++, Fortran 95, Ada)
+## Parâmetros
 
-    -   Exemplo em Python
+- Parâmetros com valor padrão (Python, Ruby, C++, Fortran 95, Ada)
+
+    - Exemplo em Python
 
         ```python
         def compute_pay(income, exemptions = 1, tax_rate):
@@ -155,7 +167,7 @@ title: Subprogramas
         pay = compute_pay(20000.0, tax_rate = 0.15)
         ```
 
-    -   Exemplo em C++
+    - Exemplo em C++
 
         ```cpp
         float compute_pay(float income,
@@ -164,12 +176,12 @@ title: Subprogramas
         pay = compute_pay(20000.0, 0.15);
         ```
 
-### Parâmetros
 
--   Número variável de parâmetros (C/C++/C\#, Python, Java, Javascript, Lua,
-    etc)
+## Parâmetros
 
-    -   Exemplo em C\#
+- Número variável de parâmetros (C/C++/C\#, Python, Java, Javascript, Lua, etc)
+
+    - Exemplo em C\#
 
         ```cs
         public void DisplayList(params int[] list) {
@@ -182,9 +194,12 @@ title: Subprogramas
         DisplayList(2, 4, 3 * x - 1, 17);
         ```
 
-        \pause
 
-    -   Exemplo em Python
+## Parâmetros
+
+- Número variável de parâmetros (C/C++/C\#, Python, Java, Javascript, Lua, etc)
+
+    - Exemplo em Python
 
         ```python
         def fun1(p1, p2, *p3, **p4):
@@ -196,271 +211,298 @@ title: Subprogramas
         p4 = {'wed': 77, 'mon': 68, 'tue': 72}
         ```
 
-### Procedimentos e funções
 
--   Existem duas categorias de subprogramas
+## Procedimentos e funções
 
-    -   **Procedimentos** são coleções de instruções que definem uma computação
-        parametrizada
+- Existem duas categorias de subprogramas
 
-        -   Produzem resultados para a unidade chamadora de duas formas: através
-            das variáveis não locais e alterando os parâmetros
+    - **Procedimentos** são coleções de instruções que definem uma computação
+      parametrizada
 
-        -   São usados para criar novas instruções (sentenças)
+        - Produzem resultados para a unidade chamadora de duas formas: através
+          das variáveis não locais e alterando os parâmetros
 
-    -   **Funções** são baseadas no conceito matemático de função
+        - São usados para criar novas instruções (sentenças)
 
-        -   Retorna um valor, que ó o efeito desejado
+    - **Funções** são baseadas no conceito matemático de função
 
-        -   São usadas para criar novos operadores
+        - Produz um valor, que ó o efeito desejado
 
-        -   Uma função sem efeito colateral é chamada de **função pura**
+        - São usadas para criar novos operadores
 
-# Questões de projeto referentes aos subprogramas
+        - Uma função sem efeito colateral é chamada de **função pura**
 
-### Questões de projeto referentes aos subprogramas
 
--   As variáveis locais são alocadas estaticamente ou dinamicamente?
 
--   As definições de subprogramas podem aparecer em outra definição de
-    subprograma?
+Questões de projeto
+===================
 
--   Quais métodos de passagem de parâmetros são usados?
+## Questões de projeto
 
--   Os tipos dos parâmetros reais são checados em relação ao tipo dos parâmetros
-    formais?
+- As variáveis locais são alocadas estaticamente ou dinamicamente?
 
--   Se subprogramas podem ser passados como parâmetros e os subprogramas podem
-    ser aninhados, qual é o ambiente de e referenciamento do subprograma
-    passado?
+- Definições de subprogramas podem aparecer em outra definição de subprograma?
 
--   Os subprogramas podem ser sobrecarregados?
+- Quais métodos de passagem de parâmetros são usados?
 
--   Os subprogramas podem ser genéricos?
 
-# Ambientes de referência local
+## Questões de projeto
 
-### Ambientes de referência local
+- Os tipos dos parâmetros reais são checados em relação ao tipo dos parâmetros
+  formais?
 
--   Variáveis locais
+- Se subprogramas podem ser passados como parâmetros e podem ser aninhados,
+  qual é o ambiente de e referenciamento de um subprograma passado?
 
-    -   São definidas dentro de subprogramas
+- Os subprogramas podem ser sobrecarregados?
 
-    -   Podem ser estáticas ou dinâmicas na pilha
+- Os subprogramas podem ser genéricos?
 
-        -   Vantagens e desvantagens (cap 5 e seção 9.4.1)
 
-        \pause
+Ambientes de referência local
+=============================
 
-    -   Poucas linguagens utilizam apenas vinculação estática \pause
+## Ambientes de referência local
 
-    -   Ada, Java e C\# permitem apenas variáveis locais dinâmicas na pilha
-        \pause
+- Variáveis locais
 
-    -   A linguagem C, permite o programado escolher
+    - São definidas dentro de subprogramas
 
-        ```c
-        int adder(int list[], int listlen) {
-          static in sum = 0;
-          int count;
-          for (count = 0; count < listlen; count++)
-              sum += list[count]; return sum;
-        }
-        ```
+    - Podem ser estáticas ou dinâmicas na pilha
 
-    \pause
+        - Vantagens e desvantagens (cap 5 e seção 9.4.1)
 
--   Subprogramas aninhados
+    - Poucas linguagens utilizam apenas vinculação estática
 
-# Métodos de passagens de parâmetros
+    - A linguagem C, permite o programado escolher (`static int x` vs `int x`)
 
-### Métodos de passagens de parâmetros
 
--   Um **método de passagem de parâmetro** é a maneira como os parâmetros são
-    transmitidos para (ou/e do) subprograma chamado
+## Ambientes de referência local
 
--   Os parâmetros formais são caracterizados por um de três modelos semânticos
+- Subprogramas aninhados
 
-    -   Eles podem receber dados dos parâmetros reais (in mode)
+    - Permite que um subprograma esteja visível apenas no subprograma que ele
+      é utilizado
 
-    -   Eles podem transmitir dados para os parâmetros reais (out mode)
+    - Por algum tempo estava presente em linguagens descendentes de Algol
 
-    -   Eles podem fazer ambos (inout mode)
+    - Comum em linguagens funcionais e em linguagens mais recentes
 
-### Métodos de passagens de parâmetros
 
--   Existem dois modelos conceituais sobre como os dados são transferidos na
-    passagem de parâmetros
+Métodos de passagens de parâmetros
+==================================
 
-    -   O valor real é copiado
+## Métodos de passagens de parâmetros
 
-    -   Um caminho de acesso é transmitido
+- Um **método de passagem de parâmetro** é a maneira como os parâmetros são
+  transmitidos para (ou/e do) subprograma chamado
 
-    \pause ![](imagens/copl-9-1.png)
+- Os parâmetros formais são caracterizados por um de três modelos semânticos
 
-### Métodos de passagens de parâmetros
+    - Podem receber dados dos parâmetros reais (in mode)
 
--   Modelos de implementação
+    - Podem transmitir dados para os parâmetros reais (out mode)
 
-    -   Passagem por valor
+    - Podem fazer ambos (inout mode)
 
-        -   Quando um parâmetro ó passado por valor, o valor do parâmetro real é
-            utilizado para inicializar o parâmetro formal correspondente (in
-            mode)
 
-        -   A passagem por valor geralmente é implementada por cópia, mas pode
-            ser implementada transmitindo-se o caminho de acesso \pause
+## Métodos de passagens de parâmetros
 
-        -   Vantagem: rápido para valores escalares \pause
+- Existem dois modelos conceituais sobre como os dados são transferidos na
+  passagem de parâmetros
 
-        -   Desvantagem: memória extra e tempo de cópia (para parâmetros que
+    - O valor real é copiado
+
+    - Um caminho de acesso é transmitido
+
+
+## Métodos de passagens de parâmetros
+
+![](figs/9-1.pdf)
+
+
+## Métodos de passagens de parâmetros
+
+- Modelos de implementação
+
+    - Passagem por valor
+
+        - Quando um parâmetro ó passado por valor, o valor do parâmetro real
+          é utilizado para inicializar o parâmetro formal correspondente (in
+          mode)
+
+        - A passagem por valor geralmente é implementada por cópia, mas pode
+          ser implementada transmitindo-se o caminho de acesso \pause
+
+        - Vantagem: rápido para valores escalares \pause
+
+        - Desvantagem: memória extra e tempo de cópia (para parâmetros que
             ocupam bastante memória)
 
-### Métodos de passagens de parâmetros
 
--   Modelos de implementação
+## Métodos de passagens de parâmetros
 
-    -   Passagem por resultado
+- Modelos de implementação
 
-        -   É uma implementação do modelo out mode
+    - Passagem por resultado
 
-        -   Quando um parâmetro é passado por resultado, nenhum valor é
-            transmitido para o subprograma
+        - É uma implementação do modelo out mode
 
-        -   O parâmetro formal funciona como uma variável local
+        - Quando um parâmetro é passado por resultado, nenhum valor
+          é transmitido para o subprograma
 
-        -   Antes do retorno do subprograma, o valor é transmitido de volta para
-            o parâmetro real
+        - O parâmetro formal funciona como uma variável local
 
-### Métodos de passagens de parâmetros
+        - Antes do retorno do subprograma, o valor é transmitido de volta para
+          o parâmetro real
 
--   Modelos de implementação
 
-    -   Passagem por resultado
+## Métodos de passagens de parâmetros
 
-        -   Mesmas vantagens e desvantagens da passagem por valor
+- Modelos de implementação
 
-        -   Outras questões
+    - Passagem por resultado
 
-        -   Colisão de parâmetros reais
+        - Mesmas vantagens e desvantagens da passagem por valor
 
-        -   Momento da avaliação do endereço dos parâmetros reais \pause
+        - Colisão de parâmetros reais
 
-        -   Exemplo em C\#
+        - Momento da avaliação do endereço dos parâmetros reais
 
-            ```cs
-            void Fixer (out int x, out int y) {
-                x = 17; y = 35;
-            }
-            ...
-            Fixer(out a, out a);
-            ...
-            void DoIt(out int x, out int index) {
-               x = 17; index = 42;
-            }
-            ...
-            sub = 21;
-            DoIt(out list[sub], out sub);
-            ```
 
-### Métodos de passagens de parâmetros
+## Métodos de passagens de parâmetros
 
--   Modelos de implementação
+- Exemplo passagem por resultado em C\#
 
-    -   Passagem por valor-resultado (por cópia)
+    \small
 
-        -   É uma implementação do modelo inout mode
+    ```cs
+    void Fixer (out int x, out int y) {
+        x = 17; y = 35;
+    }
+    ...
+    Fixer(out a, out a);
+    ...
+    void DoIt(out int x, out int index) {
+       x = 17; index = 42;
+    }
+    ...
+    sub = 21;
+    DoIt(out list[sub], out sub);
+    ```
 
-        -   É uma combinação da passagem por valor e passagem por resultado
 
-        -   Compartilha os mesmos problemas da passagem por valor e passagem por
-            resultado
+## Métodos de passagens de parâmetros
 
-### Métodos de passagens de parâmetros
+- Modelos de implementação
 
--   Modelos de implementação
+    - Passagem por valor-resultado (por cópia)
 
-    -   Passagem por referência
+        - É uma implementação do modelo inout mode
 
-        -   É uma implementação do modelo inout mode
+        - É uma combinação da passagem por valor e passagem por resultado
 
-        -   Ao invés de copiar os dados, um caminho de acesso é transmitido
-            (geralmente um endereço) \pause
+        - Compartilha os mesmos problemas da passagem por valor e passagem por
+          resultado
 
-        -   Vantagens: eficiente em termos de espaço e tempo
 
-        -   Desvantagens: acesso mais lento devido a indireção, apelidos podem
-            ser criados \pause
+## Métodos de passagens de parâmetros
 
-        -   Exemplo em C++
+- Modelos de implementação
 
-            ```cpp
-            void fun (int &first, int &second){...}
-            ...
-            fun(total, total);
-            fun(list[i], list[j]);
-            fun1(list[i], list);
-            int *global;
-            void main() {
-               sub(global);
-            }
-            void sub(int *param) {...}
-            ```
+    - Passagem por referência
 
-### Métodos de passagens de parâmetros
+        - É uma implementação do modelo inout mode
 
--   Modelos de implementação
+        - Ao invés de copiar os dados, um caminho de acesso é transmitido
+          (geralmente um endereço) \pause
 
-    -   Passagem por nome
+        - Vantagens: eficiente em termos de espaço e tempo
 
-        -   É um método de passagem de parâmetro inout mode
+        - Desvantagens: acesso mais lento devido a indireção, apelidos podem
+          ser criados
 
-        -   Não corresponde a um único modelo de implementação
 
-        -   O parâmetro real substitui textualmente o parâmetro formal em todas
-            as ocorrências do subprograma
+## Métodos de passagens de parâmetros
 
-        -   Usando em meta programação
 
-### Métodos de passagens de parâmetros
+- Exemplo passagem por referência em C++
 
--   Implementação
+    \small
 
-    -   Na maioria das linguagens contemporâneas, a comunicação dos parâmetros
-        acontece através da pilha
+    ```cpp
+    void fun(int &first, int &second){...}
+    ...
+    fun(total, total);
+    fun(list[i], list[j]);
+    fun1(list[i], list);
+    int *global;
+    void main() {
+       sub(global);
+    }
+    void sub(int *param) {...}
+    ```
 
-    -   A pilha é inicializada e mantida pelo sistema
 
-    -   Exemplo
+## Métodos de passagens de parâmetros
 
-    ![](imagens/copl-9-2.png)
+- Modelos de implementação
 
-### Métodos de passagens de parâmetros
+    - Passagem por nome
 
--   Exemplos de algumas linguagens
+        - É um método de passagem de parâmetro inout mode
 
-    -   C usa passagem por valor
+        - Não corresponde a um único modelo de implementação
 
-    -   Passagem por referência pode ser obtida usando ponteiros
+        - O parâmetro real substitui textualmente o parâmetro formal em
+          todas as ocorrências do subprograma
 
-    -   Em C e C++, os parâmetro formais podem ter o tipo ponteiro para
-        constante
+        - Usando em meta programação
 
-    -   C++ incluí um tipo especial de ponteiro, chamado de tipo referência
+
+## Métodos de passagens de parâmetros
+
+- Implementação
+
+    - Na maioria das linguagens contemporâneas, a comunicação dos
+      parâmetros acontece através da pilha
+
+    - A pilha é inicializada e mantida pelo sistema de tempo de execução
+
+
+## Métodos de passagens de parâmetros
+
+<!-- TODO: imagem pdf -->
+
+![](imagens/copl-9-2.png)
+
+
+## Métodos de passagens de parâmetros
+
+- Exemplos de algumas linguagens
+
+    - C usa passagem por valor, passagem por referência pode ser obtida
+      usando ponteiros
+
+    - Em C e C++, os parâmetro formais podem ter o tipo ponteiro para
+      constante
+
+    - C++ incluí um tipo especial de ponteiro, chamado de tipo referência
 
         ```cpp
         void fun(const int &p1, int p2, int &p3) { ... }
         ```
 
-    -   Todos os parâmetro em Java são passados por valor. Como os objetos são
-        acessados por referência, os parâmetros dos tipos objetos são
-        efetivamente passados por referência
+    - Todos os parâmetro em Java são passados por valor. Como os objetos
+      são acessados por referência, os parâmetros dos tipos objetos são
+      efetivamente passados por referência
 
-### Métodos de passagens de parâmetros
 
--   Exemplos de algumas linguagens
+## Métodos de passagens de parâmetros
 
-    -   Ada implementa os três modelos semânticos
+- Exemplos de algumas linguagens
+
+    - Ada implementa os três modelos semânticos
 
         ```ada
         procedure Adder(A : in out Integer;
@@ -468,30 +510,43 @@ title: Subprogramas
                         C : out Float)
         ```
 
-    -   Parâmetros como out mode podem ser atribuídos mas não referenciados
 
-    -   Parâmetros como in mode podem ser referenciados mas não atribuídos
+    - Parâmetros como out mode podem ser atribuídos mas não referenciados
 
-    -   Parâmetros in out mode podem ser referenciados e atribuídos
+    - Parâmetros como in mode podem ser referenciados mas não atribuídos
 
-    -   Em Ada 95, todos os escalares são passados por cópia e todos os valores
-        de tipos estruturados são passados por referência
+    - Parâmetros in out mode podem ser referenciados e atribuídos
 
-    -   Fortran 95 é similar ao Ada
 
-    -   E as linguagens de scripts?
+## Métodos de passagens de parâmetros
 
-### Métodos de passagens de parâmetros
+- Exemplos de algumas linguagens
 
--   Checagem de tipos dos parâmetros
+    - Em Ada 95, todos os escalares são passados por cópia e todos os
+      valores de tipos estruturados são passados por referência
 
-    -   As primeiras linguagens de programação (como Fortran 77 e C) não
-        requeriam checagem dos tipos dos parâmetros
+    - Fortran 95 é similar ao Ada
 
-    -   A maioria das linguagens atuais fazem esta checagem (e as linguagens de
-        scripts?) \pause
+    - E as linguagens de scripts?
 
-    -   Em C89, o programador pode escolher
+
+## Métodos de passagens de parâmetros
+
+- Checagem de tipos dos parâmetros
+
+    - As primeiras linguagens de programação (como Fortran 77 e C) não
+      requeriam checagem dos tipos dos parâmetros
+
+    - A maioria das linguagens atuais fazem esta checagem
+
+    - E as linguagens de scripts?
+
+
+## Métodos de passagens de parâmetros
+
+- Checagem de tipos dos parâmetros
+
+    - Em C89, o programador pode escolher
 
         ```cpp
         double sin(x) // sem checagem
@@ -505,15 +560,16 @@ title: Subprogramas
         { ... }
         ```
 
-### Métodos de passagens de parâmetros
 
--   Arranjos multimensionais como parâmetros
+## Métodos de passagens de parâmetros
 
-    -   O compilador precisa saber o tamanho do arranjo multidimensional para
-        criar a função de mapeamento
+- Arranjos multimensionais como parâmetros
 
-    -   Em C/C++ o programador tem que declarar todos os tamanhos (menos do
-        primeiro subscrito)
+    - O compilador precisa saber o tamanho do arranjo multidimensional
+      para criar a função de mapeamento
+
+    - Em C/C++ o programador tem que declarar todos os tamanhos (menos do
+      primeiro subscrito)
 
         ```c
         void fun(int matrix[][10]) {...}
@@ -523,201 +579,229 @@ title: Subprogramas
         }
         ```
 
-    -   Ada, Java e C\# não tem este problema, o tamanho do arranjo a faz parte
-        do objeto
+    - Ada, Java e C\# não tem este problema, o tamanho do arranjo faz
+      parte do objeto
 
-### Métodos de passagens de parâmetros
 
--   Considerações de projeto
+## Métodos de passagens de parâmetros
 
-    -   Considerações importantes
+- Considerações de projeto
 
-        -   Eficiência
+    - Considerações importantes
 
-        -   Transferência de dados em uma ou duas direções
+        - Eficiência
 
-    -   Estas considerações estão em conflito
+        - Transferência de dados em uma ou duas direções
 
-        -   As boas práticas de programação sugerem limitar o acesso as
-            variáveis, o que implica em usar transferência em uma direção quando
-            possível
+    - Estas considerações estão em conflito
 
-        -   Mas passagem por referência é mais eficiente para estruturas com
-            tamanho significativo
+        - As boas práticas de programação sugerem limitar o acesso as
+          variáveis, o que implica em usar transferência em uma direção quando
+          possível
 
-# Parâmetros que são subprogramas
+        - Mas passagem por referência é mais eficiente para estruturas com
+          tamanho significativo
 
-### Parâmetros que são subprogramas
 
--   Existem muitas situações que é conveniente passar um nome de subprograma
-    como parâmetro para outros subprogramas
+<!-- TODO: exemplos de passagem de parâmetros -->
 
-    -   A ação que deve ser realiza quando um evento ocorre (ex: clique de
-        botão)
 
-    -   A função de comparação utilizada por um subprograma de ordenação
+Parâmetros que são subprogramas
+===============================
 
-    -   Etc
+## Parâmetros que são subprogramas
 
-    \pause
+- Existem muitas situações que é conveniente passar um nome de subprograma como
+  parâmetro para outros subprogramas. Exemplos
 
--   Simples se apenas o endereço da função fosse necessário, mas existem duas
-    questões que devem ser consideradas
+    - A ação que deve ser realiza quando um evento ocorre (ex: clique de botão)
 
-    -   Os parâmetros do subprograma passado como parâmetro são checados?
+    - A função de comparação utilizada por um subprograma de ordenação
 
-    -   Qual é o ambiente de referenciamento usado na execução do subprograma
-        passado como parâmetro?
 
-### Parâmetros que são subprogramas
+## Parâmetros que são subprogramas
 
--   Os parâmetros do subprograma passado como parâmetro são checados?
+- Simples se apenas o endereço da função fosse necessário, mas existem duas
+  questões que devem ser consideradas
 
-    -   Versão original do Pascal permitia a passagem de subprogramas como
-        parâmetro sem incluir informações dos tipos dos parâmetros
+    - Os parâmetros do subprograma passado como parâmetro são checados?
 
-    -   Fortran, C/C++ incluem informações dos tipos
+    - Qual é o ambiente de referenciamento usado na execução do subprograma
+      passado como parâmetro?
 
-    -   Ada não permite parâmetros que são subprogramas (uma forma alternativa é
-        fornecida através de construções genéricas)
 
-    -   Java não permite parâmetros que são métodos
+## Parâmetros que são subprogramas
 
-### Parâmetros que são subprogramas
+- Os parâmetros do subprograma passado como parâmetro são checados?
 
--   Qual é o ambiente de referenciamento usado na execução do subprograma
-    passado como parâmetro?
+    - Versão original do Pascal permitia a passagem de subprogramas como
+      parâmetro sem incluir informações dos tipos dos parâmetros
 
-    -   **Vinculação rasa**: o ambiente da instrução de chamada que ativa o
-        subprograma passado - natural para linguagens com escopo dinâmico
+    - Fortran, C/C++ incluem informações dos tipos
 
-    -   **Vinculação profunda**: o ambiente da definição do subprograma passado
-        - natural para linguagens com escopo estático
+    - Ada não permite parâmetros que são subprogramas (uma forma alternativa é
+      fornecida através de construções genéricas)
 
-    -   **vinculação ad hoc**: o ambiente da instrução de chamada que passou o
-        subprograma como parâmetro real
+    - Java 8 permite parâmetros que são subprogramas e faz a checagem de tipo
 
-### Parâmetros que são subprogramas
 
--   Exemplo usando a sintaxe de Javascript
+## Parâmetros que são subprogramas
 
-    ```javascript
-    function sub1() {
-      var x;
-      function sub2() {
-        print(x);
-      }
-      function sub3() {
-        var x = 3;
-        sub4(sub2);
-      }
-      function sub4(subx) {
-        var x = 4;
-        subx();
-      }
-      x = 1;
-      sub3();
-    }
-    ```
-<!-- FIXME: mesmo slide !-->
+- Qual é o ambiente de referenciamento usado na execução do subprograma
+  passado como parâmetro?
 
-###
+    - **Vinculação rasa**: o ambiente da instrução de chamada que ativa o
+      subprograma passado - natural para linguagens com escopo dinâmico
+
+    - **Vinculação profunda**: o ambiente da definição do subprograma passado
+      \- natural para linguagens com escopo estático
+
+    - **Vinculação ad hoc**: o ambiente da instrução de chamada que passou
+      o subprograma como parâmetro real
+
+## Parâmetros que são subprogramas
+
+<div class="columns">
+<div class="column" width="50%">
+\footnotesize
+
+Exemplo usando a sintaxe de Javascript
+
+```javascript
+function sub1() {
+  var x;
+  function sub2() {
+    print(x);
+  }
+  function sub3() {
+    var x = 3;
+    sub4(sub2);
+  }
+  function sub4(subx) {
+    var x = 4;
+    subx();
+  }
+  x = 1;
+  sub3();
+}
+```
+</div>
+<div class="column" width="50%">
+\pause
 
 Qual será o valor impresso na função `sub2` quando ela for chamada em `sub4`?
 
--   Vinculação rasa: \pause 4 (`x` de `sub4`) \pause
+- Vinculação rasa: \pause 4 (`x` de `sub4`) \pause
 
--   Vinculação profunda: \pause 1 (`x` de `sub1`) \pause
+- Vinculação profunda: \pause 1 (`x` de `sub1`) \pause
 
--   Vinculação ad hoc: \pause 3 (`x` de `sub3`)
+- Vinculação ad hoc: \pause 3 (`x` de `sub3`)
+</div>
+</div>
 
-# Subprogramas sobrecarregados
 
-### Subprogramas sobrecarregados
+Subprogramas sobrecarregados
+============================
 
--   Um **subprograma sobrecarregado** é um subprograma que tem o mesmo nome de
-    outro subprograma no mesmo ambiente de referenciamento
+## Subprogramas sobrecarregados
 
-    -   Cada versão precisa ter um único protocolo
+- Um **subprograma sobrecarregado** é um subprograma que tem o mesmo nome de
+  outro subprograma no mesmo ambiente de referenciamento
 
-    -   O significado de uma chamada é determinado pela lista de parâmetros
-        reais (ou/e pelo tipo de retorno, no caso de funções) \pause
+    - Cada versão precisa ter um único protocolo
 
-    -   Quando coercão de parâmetros são permitidas, o processo de distinção
-        fica complicado. Exemplo e C++
+    - O significado de uma chamada é determinado pela lista de parâmetros reais
+      (ou/e pelo tipo de retorno, no caso de funções) \pause
 
-        ```cpp
-        int f(float x) { ... }
-        int f(double x) { ... }
-        int a = f(2); // erro de compilação
-        ```
 
-        \pause
+## Subprogramas sobrecarregados
 
-    -   Subprogramas sobrecarregados com parâmetros padrões podem levar a uma
-        chamada ambígua. Exemplo em C++
+- Quando coerção de parâmetros são permitidas, o processo de distinção fica
+  complicado. Exemplo e C++
 
-        ```cpp
-        int f(double x = 1.0) { ... }
-        int f() { ... }
-        int a = f(); // erro de compilação
-        ```
+    ```cpp
+    int f(float x) { ... }
+    int f(double x) { ... }
+    int a = f(2); // erro de compilação
+    ```
 
-### Subprogramas sobrecarregados
+- Subprogramas sobrecarregados com parâmetros padrões podem levar a uma chamada
+  ambígua. Exemplo em C++
 
--   Exemplos
+    ```cpp
+    int f(double x = 1.0) { ... }
+    int f() { ... }
+    int a = f(); // erro de compilação
+    ```
 
-    -   C não permite subprograma sobrecarregados
 
-    -   Python, Lua e outras linguagens de scripts também não permitem
+## Subprogramas sobrecarregados
 
-    -   C++, Java, Ada e C\# permitem (e incluem) subprogramas sobrecarregados
+- Exemplos
 
-    -   Ada pode usar o tipo de retorno da função para fazer distinção entre
+    - C não permite subprograma sobrecarregados
+
+    - Python, Lua e outras linguagens de scripts também não permitem
+
+    - C++, Java, Ada e C\# permitem (e incluem) subprogramas sobrecarregados
+
+    - Ada pode usar o tipo de retorno da função para fazer distinção entre
         funções sobrecarregadas
 
-    \pause
 
--   Vantagem
+## Subprogramas sobrecarregados
 
-    -   Aumenta a legibilidade
+- Vantagem
 
-    \pause
+    - Aumenta a legibilidade
 
--   Desvantagem
+- Desvantagem
 
-    -   Dificulta a utilização de reflexão
+    - Dificulta a utilização de reflexão
 
-# Subprogramas genéricos
 
-### Subprogramas genéricos
 
--   Um **subprograma polimórfico** recebe diferente tipos de parâmetros em
-    diferentes ativações
+Subprogramas genéricos
+======================
 
--   Subprogramas sobrecarregados fornecem o chamado **polimorfismo ad hoc**
+## Subprogramas genéricos
 
--   Python e Ruby fornecem um tipo mais geral de polimorfismo (em tempo de
-    execução)
+- Um **subprograma polimórfico** recebe diferente tipos de parâmetros em
+  diferentes ativações
 
--   **Polimorfismo paramétrico** é fornecido por um subprograma que recebe
-    parâmetros genéricos que são usados em expressões de tipos que descrevem os
-    tipos dos parâmetros do subprograma
+- Subprogramas sobrecarregados fornecem o chamado **polimorfismo ad hoc**
 
--   Os subprogramas com polimorfismo paramétricos são chamados de **subprogramas
-    genéricos**
+- Linguagens que suportam programa OO oferecem o **polimorfismo de subtipo**,
+  quando um parâmetro de um tipo recebe uma valor de um subtipo
 
-### Subprogramas genéricos
+- Python e Ruby fornecem um tipo mais geral de polimorfismo (em tempo de
+  execução)
 
--   Ada
 
-    -   Um versão do subprograma genérico é criado pelo compilador quando
-        instanciado explicitamente em uma instrução de declaração
+## Subprogramas genéricos
 
-    -   Precedido pela cláusula `generic` que lista as variáveis genérias, que
-        podem ser tipos ou outros subprogramas
+- **Polimorfismo paramétrico** é fornecido por um subprograma que recebe
+  parâmetros genéricos que são usados em expressões de tipos que descrevem os
+  tipos dos parâmetros do subprograma
 
-### Subprogramas genéricos - Exemplo em Ada
+- Os subprogramas com polimorfismo paramétricos são chamados de **subprogramas
+  genéricos**
+
+
+## Subprogramas genéricos
+
+- Ada
+
+    - Um versão do subprograma genérico é criado pelo compilador quando
+      instanciado explicitamente em uma instrução de declaração
+
+    - Precedido pela cláusula `generic` que lista as variáveis genérias, que
+      podem ser tipos ou outros subprogramas
+
+
+## Subprogramas genéricos - Exemplo em Ada
+
+\scriptsize
 
 ```ada
 generic
@@ -741,35 +825,50 @@ generic
     end Generic_Sort;
 ```
 
-<!-- FIXME: mesmo slide !-->
 
-### Subprogramas genéricos - Exemplo em Ada
+## Subprogramas genéricos - Exemplo em Ada
 
+\footnotesize
 
 ```ada
-  type Int_Array is array(Integer range <>) of Integer;
-  procedure Integer_Sort is new Generic_Sort(
-  Index_Type => Integer, Element_Type => Integer, Vector => Int_Array);
+type Int_Array is array(Integer range <>) of Integer;
+procedure Integer_Sort is new Generic_Sort(
+    Index_Type => Integer,
+    Element_Type => Integer,
+    Vector => Int_Array);
 ```
 
-### Subprogramas genéricos
 
--   C++
+## Subprogramas genéricos
 
-    -   Versões do subprograma genérico são criados implicitamente quando o
-        subprograma é chamado ou utilizado com o operador &
+- C++
 
-    -   Precedido pela cláusula `template` que lista as variáveis genéricas, que
-        podem ser nomes de tipos, inteiros, etc
+    - Versões do subprograma genérico são criados implicitamente quando
+      o subprograma é chamado ou utilizado com o \text{operador~\texttt{\&}}
 
-### Subprogramas genéricos - Exemplo em C++
+    - Precedido pela cláusula `template` que lista as variáveis genéricas, que
+      podem ser nomes de tipos, inteiros, etc
+
+
+## Subprogramas genéricos - Exemplo em C++
+
+\footnotesize
 
 ```cpp
 template <class Type>
 Type max(Type first, Type second) {
   return first > second ? first : second;
 }
+```
+
+
+## Subprogramas genéricos - Exemplo em C++
+
+\footnotesize
+
+```cpp
 struct P {};
+
 void test_max() {
   int a, b, c;
   char d, e, f;
@@ -787,7 +886,10 @@ void test_max() {
 }
 ```
 
-### Subprogramas genéricos - Exemplo em C++
+
+## Subprogramas genéricos - Exemplo em C++
+
+\footnotesize
 
 ```cpp
 template <typename T>
@@ -802,7 +904,16 @@ void generic_sort(T list[], int n) {
     }
   }
 }
+```
+
+
+## Subprogramas genéricos - Exemplo em C++
+
+\footnotesize
+
+```cpp
 struct P {};
+
 void test_generic_sort() {
   int is[] = {10, 5, 6, 3};
   generic_sort(is, 4);
@@ -813,150 +924,161 @@ void test_generic_sort() {
 }
 ```
 
-### Subprogramas genéricos
 
--   Java
+## Subprogramas genéricos
 
-    -   Adicionado ao Java 5.0
+- Java
 
-    -   As variáveis genéricas são especificadas entre $<$ $>$ antes do tipo de
-        retorno do método
+    - Adicionado ao Java 5.0
 
-    -   Diferenças entre C++/Ada e Java
+    - As variáveis genéricas são especificadas entre `< >` antes do tipo de
+      retorno do método
 
-        -   Os parâmetros genéricos precisam ser classes
 
-        -   Apenas uma cópia do método genérico para todas as instaciações
+## Subprogramas genéricos
 
-        -   É possível especificar restrições sobre as classes que podem ser
-            utilizadas como parâmetros genéricos
+- Diferenças entre C++/Ada e Java
 
-        -   Parâmetro genéricos do tipo wildcard (curinga)
+    - Os parâmetros genéricos precisam ser classes
 
-    \pause
+    - Apenas uma cópia do método genérico para todas as instanciações
 
--   C\#
+    - É possível especificar restrições sobre as classes que podem ser
+      utilizadas como parâmetros genéricos
 
-    -   Adicionado ao C\# 2005
+    - Parâmetro genéricos do tipo wildcard (curinga)
 
-    -   Semelhante ao Java
 
-    -   Não tem suporte a tipo wildcard
+## Subprogramas genéricos
 
-    -   Uma versão para cada tipo primitivo
+- C\#
 
-# Questões de projeto referentes a funções
+    - Adicionado ao C\# 2005
 
-### Questões de projeto referentes a funções
+    - Semelhante ao Java
 
--   Efeitos colaterais são permitidos?
+    - Não tem suporte a tipo wildcard
 
-    \pause
+    - Uma versão para cada tipo primitivo
 
-    -   Funções em Ada podem ter apenas parâmetros in mode, o que diminui as
-        formas de efeitos colaterais
 
-    \pause
 
--   Qual tipo de valores podem ser retornados?
+Questões de projeto referentes a funções
+========================================
 
-    \pause
+## Questões de projeto referentes a funções
 
-    -   C/C++ não permite o retorno de arranjos e funções (ponteiros para
-        arranjos e função são permitidos)
-
-    -   Java, C\#, Ada, Python, Ruby, Lua permitem o retorno de qualquer tipo
-
-    -   Ada não permite o retorno de funções, por que função não tem tipo.
-        Ponteiros para funções tem tipo e podem ser retornados
-
-    -   Java e C\#: métodos não tem tipos
+- Efeitos colaterais são permitidos?
 
     \pause
 
--   Quantos valores podem ser retornados?
+    - Funções em Ada podem ter apenas parâmetros in mode, o que diminui as
+      formas de efeitos colaterais
+
+
+## Questões de projeto referentes a funções
+
+- Qual tipo de valores podem ser retornados?
 
     \pause
 
-    -   A maioria das linguagens permitem apenas um valor de retorno
+    - C/C++ não permite o retorno de arranjos e funções (ponteiros para
+      arranjos e função são permitidos)
 
-    -   Python, Ruby e Lua permitem o retorno de mais de um valor
+    - Ada, Python, Ruby, Lua permitem o retorno de qualquer tipo
 
-# Operadores sobrecarregados definidos pelo usuário
+    - Ada não permite o retorno de funções, por que função não tem tipo.
+      Ponteiros para funções tem tipo e podem ser retornados
 
-### Operadores sobrecarregados definidos pelo usuário
 
--   Operadores podem ser sobrecarregados pelo usuário em Ada, C++, Python e Ruby
+## Questões de projeto referentes a funções
+
+- Quantos valores podem ser retornados?
+
     \pause
 
--   Exemplos (produto escalar de dois arranjos)
+    - A maioria das linguagens permitem apenas um valor de retorno
 
-    -   Ada
+    - Python, Ruby e Lua permitem o retorno de mais de um valor
 
-        ```ada
-        function "*"(A, B : in Vector_Type)
-                    return Integer is
-          Sum : Integer := 0;
-          begin for Index in A’range loop
-            Sum := Sum + A(Index) * B(Index);
-          end loop;
-          return Sum;
-        end "*";
-        ```
 
-### Operadores sobrecarregados definidos pelo usuário
 
--   Exemplos (produto escalar de dois arranjos)
+Operadores sobrecarregados definidos pelo usuário
+=================================================
 
-    -   C++
+## Operadores sobrecarregados definidos pelo usuário
 
-        ```cpp
-        int operator *(vector<int> &A, vector<int> &B) {
-          int sum = 0;
-          for (int i = 0; i < A.size(); i++) {
-            sum += A[i] * B[i];
-          }
-          return sum;
-        }
-        ```
+- Operadores podem ser sobrecarregados pelo usuário em Ada, C++, Python, Ruby
+  entre outras
 
-# Fechamentos
 
-### Fechamentos
+## Operadores sobrecarregados definidos pelo usuário
 
--   Um **fechamento** (*closure* em inglês) é um subprograma e o ambiente de
-    referenciamento onde ele foi definido
+- Exemplo Ada (produto escalar de dois arranjos)
 
--   O ambiente de referenciamento é necessário pois o subprograma pode ser
-    chamado em qualquer local
-
-### Fechamentos
-
--   Exemplo python
-
-    ```python
-    def somador(x):
-        def soma(n):
-          return x + n
-        return soma
-
-    >>> soma1 = somador(1)
-    >>> soma1(5)
-    6
-    >>> soma5 = somador(5)
-    >>> soma5(3)
-    8
-    >>> soma1.func_closure[0].cell_contents
-    1
-    >>> soma5.func_closure[0].cell_contents
-    5
+    ```ada
+    function "*"(A, B : in Vector_Type) return Integer is
+      Sum : Integer := 0;
+      begin for Index in A’range loop
+        Sum := Sum + A(Index) * B(Index);
+      end loop;
+      return Sum;
+    end "*";
     ```
 
-# Referências
 
-### Referências
+## Operadores sobrecarregados definidos pelo usuário
 
--   Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 9.
+- Exemplo C++ (produto escalar de dois arranjos)
+
+    ```cpp
+    int operator *(vector<int> &A, vector<int> &B) {
+      int sum = 0;
+      for (int i = 0; i < A.size(); i++) {
+        sum += A[i] * B[i];
+      }
+      return sum;
+    }
+    ```
 
 
-<!-- vim: set spell spelllang=pt_br: -->
+
+Fechamentos
+===========
+
+## Fechamentos
+
+- Um **fechamento** (*closure* em inglês) é um subprograma e o ambiente de
+  referenciamento onde ele foi definido
+
+- O ambiente de referenciamento é necessário pois o subprograma pode ser
+  chamado em qualquer local
+
+
+## Fechamentos
+
+\small
+
+```python
+def somador(x):
+    def soma(n):
+      return x + n
+    return soma
+
+>>> soma1 = somador(1)
+>>> soma1(5)
+6
+>>> soma5 = somador(5)
+>>> soma5(3)
+8
+>>> soma1.func_closure[0].cell_contents
+1
+>>> soma5.func_closure[0].cell_contents
+5
+```
+
+
+
+## Referências
+
+- Robert Sebesta, Concepts of programming languages, 9ª edição. Capítulo 9.
