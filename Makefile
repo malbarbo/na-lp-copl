@@ -1,7 +1,7 @@
 .PHONY: default all pdf handout tex exemplos clean
 
 SHELL=/bin/bash
-IMAGENS_DIR=imagens
+FIGS_DIR=figs
 DEST=target
 DEST_PDF=$(DEST)/pdfs
 DEST_PDF_HANDOUT=$(DEST)/pdfs/handout
@@ -43,17 +43,17 @@ tex: $(TEX)
 
 exemplos: $(EX)
 
-$(DEST_PDF)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
+$(DEST_PDF)/%.pdf: %.md templates/default.latex $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@$(PANDOC_CMD) -o $@ $<
 
-$(DEST_PDF_HANDOUT)/%.pdf: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
+$(DEST_PDF_HANDOUT)/%.pdf: %.md templates/default.latex $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_PDF_HANDOUT)
 	@echo $@
 	@$(PANDOC_CMD) --pdf-engine=./bin/xelatex -V classoption:handout -o $@ $<
 
-$(DEST_TEX)/%.tex: %.md templates/default.latex $(IMAGENS_DIR)/* $(PANDOC) Makefile
+$(DEST_TEX)/%.tex: %.md templates/default.latex $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_TEX)
 	@echo $@
 	@$(PANDOC_CMD) -o $@ $<
