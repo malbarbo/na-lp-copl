@@ -935,6 +935,73 @@ void test_generic_sort() {
       retorno do método
 
 
+## Subprogramas genéricos - Exemplo em java
+
+\footnotesize
+
+```java
+public class Exemplo {
+  static<T extends Comparable<T>> T max(T a, T b) {
+    return a.compareTo(b) > 0 ? a : b;
+  }
+
+  public static void main(String[] args) {
+    System.out.println(max(3, 4));
+    System.out.println(max(4.0, 3.0));
+
+    // erro de compilação
+    System.out.println(max(4.0, 3));
+  }
+}
+```
+
+
+## Subprogramas genéricos - Exemplo em java
+
+\footnotesize
+
+```java
+public class Exemplo {
+  static<T extends Comparable<T>> void sort(T list[]) {
+    for (int top = 0; top < list.length - 2; top++) {
+       for (int bottom = top + 1; bottom < list.length - 1; bottom++) {
+          if (list[top].compareTo(list[bottom]) > 0) {
+             T temp = list[top];
+             list[top] = list[bottom];
+             list[bottom] = temp;
+          }
+       }
+    }
+  }
+
+  ...
+```
+
+
+## Subprogramas genéricos - Exemplo em java
+
+\footnotesize
+
+```java
+  ...
+
+  public static void main(String[] args) {
+    Integer[] valores = {3, 5, 2, 5};
+    sort(valores);
+    System.out.println(Arrays.toString(valores));
+
+    Double[] valores2 = {3.0, 5.0, 2.0, 5.0};
+    sort(valores2);
+    System.out.println(Arrays.toString(valores2));
+
+    // erro de compilacao, T não pode ser primitivo
+    int[] valores3 = {3, 5, 2, 5};
+    sort(valores3);
+    System.out.println(Arrays.toString(valores3));
+  }
+}
+```
+
 ## Subprogramas genéricos
 
 - Diferenças entre C++/Ada e Java
