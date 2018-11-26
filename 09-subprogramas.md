@@ -732,6 +732,46 @@ def somador(x):
 
 
 
+Questões de projeto referentes a funções
+========================================
+
+## Questões de projeto referentes a funções
+
+- Efeitos colaterais são permitidos?
+
+    \pause
+
+    - Funções em Ada podem ter apenas parâmetros in mode, o que diminui as
+      formas de efeitos colaterais
+
+
+## Questões de projeto referentes a funções
+
+- Qual tipo de valores podem ser retornados?
+
+    \pause
+
+    - C/C++ não permite o retorno de arranjos e funções (ponteiros para
+      arranjos e função são permitidos)
+
+    - Ada, Python, Ruby, Lua permitem o retorno de qualquer tipo
+
+    - Ada não permite o retorno de funções, por que função não tem tipo.
+      Ponteiros para funções tem tipo e podem ser retornados
+
+
+## Questões de projeto referentes a funções
+
+- Quantos valores podem ser retornados?
+
+    \pause
+
+    - A maioria das linguagens permitem apenas um valor de retorno
+
+    - Python, Ruby e Lua permitem o retorno de mais de um valor
+
+
+
 Subprogramas sobrecarregados
 ============================
 
@@ -1059,46 +1099,6 @@ public class Exemplo {
     - Não tem suporte a tipo wildcard
 
     - Uma versão para cada tipo primitivo
-
-
-
-Questões de projeto referentes a funções
-========================================
-
-## Questões de projeto referentes a funções
-
-- Efeitos colaterais são permitidos?
-
-    \pause
-
-    - Funções em Ada podem ter apenas parâmetros in mode, o que diminui as
-      formas de efeitos colaterais
-
-
-## Questões de projeto referentes a funções
-
-- Qual tipo de valores podem ser retornados?
-
-    \pause
-
-    - C/C++ não permite o retorno de arranjos e funções (ponteiros para
-      arranjos e função são permitidos)
-
-    - Ada, Python, Ruby, Lua permitem o retorno de qualquer tipo
-
-    - Ada não permite o retorno de funções, por que função não tem tipo.
-      Ponteiros para funções tem tipo e podem ser retornados
-
-
-## Questões de projeto referentes a funções
-
-- Quantos valores podem ser retornados?
-
-    \pause
-
-    - A maioria das linguagens permitem apenas um valor de retorno
-
-    - Python, Ruby e Lua permitem o retorno de mais de um valor
 
 
 
