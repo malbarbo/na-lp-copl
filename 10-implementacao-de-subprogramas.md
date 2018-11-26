@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
-title: Implementando subprogramas
+title: Implementação de subprogramas
 ---
 
 A semântica geral das chamadas e retornos
