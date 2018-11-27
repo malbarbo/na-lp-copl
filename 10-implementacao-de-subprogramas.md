@@ -45,10 +45,10 @@ A semântica geral das chamadas e retornos
 
 
 
-Implementando subprogramas simples
-==================================
+Implementação de subprogramas "simples"
+=======================================
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - Subprogramas simples
 
@@ -57,7 +57,7 @@ Implementando subprogramas simples
     - Todas as variáveis locais são estáticas
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - Semântica da chamada requer as ações
 
@@ -70,7 +70,7 @@ Implementando subprogramas simples
     4. Transferir o controle ao subprograma chamado
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - Semântica do retorno requer as ações
 
@@ -84,12 +84,13 @@ Implementando subprogramas simples
     4. Transferir o controle de volta ao chamador
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
-- Como estas ações são distribuídas entre o chamador e o chamado?
+- Como estas ações são distribuídas entre o subprograma chamador
+  e o subprograma chamado?
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - Memória requerida para a chamada e retorno
 
@@ -104,7 +105,7 @@ Implementando subprogramas simples
     - Valores temporários utilizados no código do subprograma
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - As ações do subprograma chamado podem ocorrer
 
@@ -113,7 +114,7 @@ Implementando subprogramas simples
     - No final da execução (**epílogo**)
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - Um subprograma simples consiste de duas partes de tamanhos fixos
 
@@ -122,7 +123,7 @@ Implementando subprogramas simples
     - As variáveis locais e os dados (não código, listados anteriormente)
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 - O formato (layout) da parte não código do subprograma é chamado de **registro
   de ativação**
@@ -136,20 +137,20 @@ Implementando subprogramas simples
 - Como o registro de ativação tem tamanho fixo, pode ser alocado estaticamente
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 ![](figs/10-1.pdf)
 
 
-## Implementando subprogramas simples
+## Implementação de subprogramas "simples"
 
 ![](figs/10-2.pdf)
 
 
-Implementando subprogramas com variáveis locais dinâmicas na pilha
-==================================================================
+Implementação de subprogramas com variáveis locais dinâmicas na pilha
+=====================================================================
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 - Registros de ativação mais complexos \pause
 
@@ -160,7 +161,7 @@ Implementando subprogramas com variáveis locais dinâmicas na pilha
       subprograma)
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 - O formato de registro de ativação é conhecido em tempo de compilação (na
   maioria das linguagens)
@@ -171,12 +172,12 @@ Implementando subprogramas com variáveis locais dinâmicas na pilha
 - Os registros de ativação precisam ser criados dinamicamente
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 ![](figs/10-3.pdf)
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 - O endereço de retorno geralmente consiste em um ponteiro para a instrução que
   segue a chamada do subprograma
@@ -190,7 +191,7 @@ Implementando subprogramas com variáveis locais dinâmicas na pilha
   subprograma chamado
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 <div class="columns">
 <div class="column" width="30%">
@@ -210,7 +211,7 @@ void sub(float total, int part){
 </div>
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 - Ativar um subprograma requer a criação dinâmica de um registro de ativação
 
@@ -220,7 +221,7 @@ void sub(float total, int part){
   registro de ativação da unidade de programa que está executando
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
 - O EP é mantido pelo sistema \pause
 
@@ -239,9 +240,9 @@ void sub(float total, int part){
   instância do registro de ativação
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
-- Ações do chamador
+- Ações do subprograma chamador
 
     1. Criar um registro de ativação
 
@@ -254,18 +255,18 @@ void sub(float total, int part){
     5. Transferir o controle ao subprograma chamado
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
-- Ações no prólogo do chamado
+- Ações no prólogo do subprograma chamado
 
     1. Salvar o antigo EP com vínculo dinâmico, e atualizar o seu valor
 
     2. Alocar as variáveis locais
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação de subprogramas com variáveis locais dinâmicas na pilha
 
-- Ações do chamado
+- Ações no epílogo do subprograma chamado
 
     1. Copiar os valores dos parâmetros formais inout (passagem por cópia)
        e out para os parâmetros reais
@@ -313,21 +314,23 @@ void main() {
 </div>
 
 
-## Implementando subprogramas com variáveis locais dinâmicas na pilha
+## Implementação subprogramas com variáveis locais dinâmicas na pilha
 
 - A coleção de vínculos dinâmicos na pilha em um determinado momento é chamado
-  de **cadeia dinâmica** ou **cadeia de chamada**
+  de **cadeia dinâmica** ou **cadeia de chamadas**
 
 - Referência as variáveis locais podem ser representadas por deslocamentos
-  a partir do início do registro de ativação (**local\_offset**)
+  a partir do início do registro de ativação, cujo endereço é armazenado em EP
 
-- O local\_offset pode ser determinado em tempo de compilação
+    - Este é o **deslocamento local** (`local_offset`)
+
+- O deslocamento local pode ser determinado em tempo de compilação
 
 
 ## Exemplo com recursão
 
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="30%">
 \scriptsize
 
 ```c
@@ -347,8 +350,8 @@ void main() {
 }
 ```
 </div>
-<div class="column" width="75%">
-![](figs/10-6.pdf)
+<div class="column" width="70%">
+![](figs/10-6.pdf){width=6cm}
 </div>
 </div>
 
@@ -356,7 +359,7 @@ void main() {
 ## Exemplo com recursão
 
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="30%">
 \scriptsize
 
 ```c
@@ -376,7 +379,7 @@ void main() {
 }
 ```
 </div>
-<div class="column" width="75%">
+<div class="column" width="70%">
 ![](figs/10-7.pdf)
 </div>
 </div>
@@ -385,7 +388,7 @@ void main() {
 ## Exemplo com recursão
 
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="30%">
 \scriptsize
 
 ```c
@@ -405,23 +408,26 @@ void main() {
 }
 ```
 </div>
-<div class="column" width="75%">
-![](figs/10-8.pdf)
+<div class="column" width="70%">
+![](figs/10-8.pdf){height=8cm}
 </div>
 </div>
 
 
 
-Implementando subprogramas aninhados
-====================================
+Subprogramas aninhados
+======================
 
-## Implementando subprogramas aninhados
+## Subprogramas aninhados
 
 - Algumas linguagens com escopo estático permitem subprogramas aninhados
   (Fortran 95, Ada, Python, Javascript, Ruby, Lua)
 
 - Todas as variáveis não locais que podem ser acessadas estão em algum registro
   de ativação na pilha
+
+
+## Subprogramas aninhados
 
 - Processo para encontrar um referência não local
 
@@ -432,7 +438,7 @@ Implementando subprogramas aninhados
 - A forma mais comum de implementação é o encadeamento estático
 
 
-## Implementando subprogramas aninhados
+## Subprogramas aninhados
 
 - Um **vínculo estático** aponta para a base de uma instância do registro de
   ativação de uma ativação do pai estático
@@ -446,20 +452,20 @@ Implementando subprogramas aninhados
 - A cadeia estática é usado para implementar acesso as variáveis não locais
 
 
-## Implementando subprogramas aninhados
+## Subprogramas aninhados
 
 - Encontrar a instância do registro de ativação correta é direto, basta seguir
   os vínculos. \pause Mas pode ser ainda mais simples
 
-    - **static\_depth** é um inteiro associado com o escopo estático cujo
-        valor é a profundidade de aninhamento deste escopo
+    - **`static_depth`** é um inteiro associado com o escopo estático cujo
+      valor é a profundidade de aninhamento deste escopo
 
-    - O **chain\_offset** ou **nesting\_depth** de uma referência não local
-      é a diferença entre o static\_depth do subprograma que faz a referência
+    - O **`chain_offset`** ou **`nesting_depth`** de uma referência não local
+      é a diferença entre o `static_depth` do subprograma que faz a referência
       e do subprograma onde a variável referenciada foi declarada
 
-    - Um referência a uma variável pode ser representada por um par
-      (chain\_offset, local\_offset), sendo local\_offset o deslocamento no
+    - Uma referência a uma variável pode ser representada por um par
+      `(chain_offset, local_offset)`, sendo `local_offset` o deslocamento no
       registro de ativação da variável referenciada
 
 
@@ -477,7 +483,7 @@ procedure Main is
     procedure Sub1 is
       A, D : Integer;
       begin -- of Sub1
-        A := B + C;     <------- 1
+        A := B + C;    -- <----- 1
       end;  -- of Sub1
     procedure Sub2(X : Integer) is
       B, E : Integer;
@@ -485,11 +491,11 @@ procedure Main is
         C, E : Integer;
         begin -- of Sub3
           Sub1;
-          E := B + A;   <------- 2
+          E := B + A;  -- <----- 2
         end; -- of Sub3
       begin -- of Sub2
         Sub3;
-        A := D + E;     <------- 3
+        A := D + E;    -- <----- 3
       end; -- of Sub2
     begin -- of Bigsub
       Sub2(7);
@@ -501,9 +507,21 @@ procedure Main is
 
 </div>
 <div class="column" width="50%">
-Considerando a sequência de chamadas `Main`, `Bigsub`, `Sub2`, `Sub3`, `Sub1`.
-Qual é o valor (chain\_offset, local\_offset) da referência a variável `A` nos
-pontos 1, 2 e 3?
+\small
+Qual é o valor (`chain_offset`, `local_offset`) da referência a variável `A`
+nos pontos 1, 2 e 3?
+
+\pause
+
+- Ponto 1
+    - Variável local
+    - `(0, 3)`
+- Ponto 2
+    - Variável não local (`bigsub`)
+    - `(2, 3)`
+- Ponto 3
+    - Variável não local (`bigsub`)
+    - `(1, 3)`
 </div>
 </div>
 
@@ -512,7 +530,7 @@ pontos 1, 2 e 3?
 ![](figs/10-9.pdf)
 
 
-## Implementando subprogramas aninhados
+## Subprogramas aninhados
 
 - Como a cadeia estática é mantida? \pause
 
@@ -524,7 +542,7 @@ pontos 1, 2 e 3?
 - A chamada é mais complexa
 
 
-## Implementando subprogramas aninhados
+## Subprogramas aninhados
 
 - Embora o escopo do pai seja facilmente determinado em tempo de compilação,
   a mais recente instância do registro de ativação do pai precisa ser
@@ -537,7 +555,7 @@ pontos 1, 2 e 3?
     - Tratar as declarações e referências de subprogramas como as de variáveis
 
 
-## Implementando subprogramas aninhados
+## Subprogramas aninhados
 
 - Críticas ao método de encadeamento estático
 
@@ -605,19 +623,25 @@ void main() {
 ```
 </div>
 <div class="column" width="70%">
-\pause
 ![](figs/10-10.pdf)
 </div>
 </div>
 
 
-Implementando escopo dinâmico
+Implementação escopo dinâmico
 =============================
 
-## Implementando escopo dinâmico
+## Implementação escopo dinâmico
 
 - Existem duas maneiras para implementar acesso a variáveis não locais em
-  linguagens com escopo dinâmico \pause
+  linguagens com escopo dinâmico
+
+    - Acesso profundo
+
+    - Acesso raso
+
+
+## Implementação escopo dinâmico
 
 - Acesso profundo
 
@@ -629,7 +653,7 @@ Implementando escopo dinâmico
     - Os nomes das variáveis devem ser armazenadas nos registros de ativação
 
 
-## Implementando escopo dinâmico
+## Implementação escopo dinâmico
 
 <div class="columns">
 <div class="column" width="30%">
@@ -656,34 +680,24 @@ void main() {
 ```
 </div>
 <div class="column" width="70%">
-\pause
 ![](figs/10-11.pdf)
 </div>
 </div>
 
 
-## Implementando escopo dinâmico
+## Implementação escopo dinâmico
 
 - Acesso raso
 
     - As variáveis locais ficam em um lugar central (não ficam no registro de
-      ativação) \pause
+      ativação)
 
-    - Uma pilha para cada nome de variável \pause
+    - Uma pilha para cada nome de variável
 
-    - Tabela com uma entrada para cada nome de variável
-
-        - Cada entrada tem um bit indicando se a variável está vinculada com
-          alguma memória
-
-        - O acesso é direto com um deslocamento estático
-
-        - Veja o livro para mais detalhes
-
-        <!-- TODO: completar os tópicos de escopo dinâmico -->
+    <!-- TODO: completar os tópicos de escopo dinâmico -->
 
 
-## Implementando escopo dinâmico
+## Implementação escopo dinâmico
 
 <div class="columns">
 <div class="column" width="30%">
@@ -710,7 +724,6 @@ void main() {
 ```
 </div>
 <div class="column" width="70%">
-\pause
 ![](figs/10-12.pdf)
 </div>
 </div>
