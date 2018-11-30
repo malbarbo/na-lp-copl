@@ -535,9 +535,9 @@ nos pontos 1, 2 e 3?
 - Como a cadeia estática é mantida? \pause
 
 - A cadeia estática precisa ser modificada a cada chamada ou retorno de
-  subprograma \pause
+  subprograma
 
-- O retorno é trivial \pause
+- O retorno é trivial
 
 - A chamada é mais complexa
 
@@ -724,6 +724,8 @@ void main() {
 ```
 </div>
 <div class="column" width="70%">
+\small
+Chamadas: `main`, `sub1`, `sub1`, `sub2`, `sub3`.
 ![](figs/10-12.pdf)
 </div>
 </div>

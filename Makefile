@@ -14,7 +14,7 @@ TEX=$(addprefix $(DEST_TEX)/, $(SOURCES:.md=.tex))
 EX_SOURCES=$(shell find exemplos/ -maxdepth 1 -mindepth 1 -type d)
 EX=$(EX_SOURCES:exemplos/%=$(DEST)/%-exemplos.zip)
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.4
+PANDOC_VERSION=2.5
 # TODO: mover para um arquivo
 PANDOC_CMD=$(PANDOC) \
 		--template templates/default.latex \

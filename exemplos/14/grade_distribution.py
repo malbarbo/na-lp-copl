@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 # Grade Distribution
@@ -7,39 +7,46 @@
 
 import sys
 
-def read_ints(min, max, message):
+
+def read_ints(min, max, stop, message):
     while True:
         try:
-            s = raw_input(message)
+            s = input(message)
             i = int(s)
             if min <= i <= max:
                 yield i
                 continue
-            elif i == -1:
+            elif i == stop:
                 return
+        except KeyboardInterrupt:
+            return
         except:
             pass
 
-        print "Invalid input:", s
+        print("Invalid input:", s)
+
 
 def distribute_grades(grades):
     frequency = [0] * 10
     for grade in grades:
-        index = grade / 10 if grade < 100 else 9
+        index = grade // 10 if grade < 100 else 9
         frequency[index] += 1
     return frequency
 
+
 def print_frequency(frequency):
-    print "%16s%8s" % ("Limits", "Freq")
+    print("%16s%8s" % ("Limits", "Freq"))
     for i in range(10):
         limit1 = 10 * i
         limit2 = limit1 + 9 if i < 9 else 100
-        print "%8d%8d%8d" % (limit1, limit2, frequency[i])
+        print("%8d%8d%8d" % (limit1, limit2, frequency[i]))
+
 
 def main():
-    grades = read_ints(0, 100, "Grade (0-100 or -1 to end): ")
+    grades = read_ints(0, 100, -1, "Grade (0-100 or -1 to end): ")
     frequency = distribute_grades(grades)
     print_frequency(frequency)
+
 
 if __name__ == "__main__":
     main()
