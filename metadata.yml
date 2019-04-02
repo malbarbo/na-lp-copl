@@ -1,0 +1,35 @@
+author:
+    - Marco A L Barbosa \newline \href{http://malbarbo.pro.br}{malbarbo.pro.br}
+institute:
+    - \href{http://din.uem.br}{Departamento de Informática} \newline \href{http://www.uem.br}{Universidade Estadual de Maringá}
+lang: pt-BR \
+toc-title: Conteúdo
+theme: metropolis
+themeoptions: numbering=fraction,sectionpage=simple,block=fill
+header-includes: |
+    \usepackage{caption}
+    \captionsetup[figure]{labelformat=empty}
+    \usepackage{ccicons}
+    \usetikzlibrary{positioning}
+    \makeatletter
+    \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+    \makeatother
+    \AtBeginDocument{
+      \letcs\oig{@orig\string\includegraphics}
+      \renewcommand<>\includegraphics[2][]{
+        \only#3{
+          {\centering\oig[{#1}]{#2}\par}
+        }
+      }
+    }
+license: |
+  \begin{tikzpicture}[overlay, remember picture]
+    \linespread{0.75}
+    \node[above =0.1cm of current page.south, align=center] {
+        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}\\
+        \vspace{-0.1cm}
+        \tiny Este trabalho está licenciado com uma Licença Creative Commons -
+        Atribuição-CompartilhaIgual 4.0 Internacional.\\
+        \tiny \url{http://github.com/malbarbo/na-lp-copl}
+    };
+  \end{tikzpicture}

@@ -14,19 +14,12 @@ TEX=$(addprefix $(DEST_TEX)/, $(SOURCES:.md=.tex))
 EX_SOURCES=$(shell find exemplos/ -maxdepth 1 -mindepth 1 -type d)
 EX=$(EX_SOURCES:exemplos/%=$(DEST)/%-exemplos.zip)
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.5
-# TODO: mover para um arquivo
+PANDOC_VERSION=2.7.1
 PANDOC_CMD=$(PANDOC) \
+		--metadata-file metadata.yml \
 		--template templates/default.latex \
 		--toc \
 		--standalone \
-		-V author:"Marco A L Barbosa\\\\\\href{http://malbarbo.pro.br}{malbarbo.pro.br}" \
-		-V institute:"\\href{http://din.uem.br}{Departamento de Informática}\\\\\\href{http://www.uem.br}{Universidade Estadual de Maringá}" \
-		-V lang:pt-BR \
-		-V theme:metropolis \
-		-V themeoptions:"numbering=fraction,subsectionpage=progressbar,block=fill" \
-		-V header-includes:"\captionsetup[figure]{labelformat=empty}" \
-		-V header-includes:"\usepackage{caption}" \
 		-t beamer
 
 default:
@@ -43,17 +36,17 @@ tex: $(TEX)
 
 exemplos: $(EX)
 
-$(DEST_PDF)/%.pdf: %.md templates/default.latex $(FIGS_DIR)/* $(PANDOC) Makefile
+$(DEST_PDF)/%.pdf: %.md templates/default.latex metadata.yml $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@$(PANDOC_CMD) -o $@ $<
 
-$(DEST_PDF_HANDOUT)/%.pdf: %.md templates/default.latex $(FIGS_DIR)/* $(PANDOC) Makefile
+$(DEST_PDF_HANDOUT)/%.pdf: %.md templates/default.latex metadata.yml $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_PDF_HANDOUT)
 	@echo $@
-	@$(PANDOC_CMD) --pdf-engine=./bin/xelatex -V classoption:handout -o $@ $<
+	@$(PANDOC_CMD) --pdf-engine=tectonic -V classoption:handout -o $@ $<
 
-$(DEST_TEX)/%.tex: %.md templates/default.latex $(FIGS_DIR)/* $(PANDOC) Makefile
+$(DEST_TEX)/%.tex: %.md templates/default.latex metadata.yml $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_TEX)
 	@echo $@
 	@$(PANDOC_CMD) -o $@ $<
