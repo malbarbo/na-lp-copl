@@ -6,7 +6,7 @@ int maximo(int lst[], size_t n)
 {
     assert(n > 0);
     int max = lst[0];
-    for (int i = 1; i < n; i++) {
+    for (size_t i = 1; i < n; i++) {
         if (lst[i] > max) {
             max = lst[i];
         }
@@ -14,7 +14,7 @@ int maximo(int lst[], size_t n)
     return max;
 }
 
-int main(int argc, char *argv[])
+int main()
 {
     assert(maximo((int[]){5, 4, 13, 0, 9}, 5) == 13);
     printf(".");

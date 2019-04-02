@@ -170,8 +170,11 @@ imperativo, funcional e lógico.
 ## Imperativo
 
 - Inicialize a variável `max` com o primeiro elemento da lista
+
 - Para cada elemento `x` da lista a partir do segundo elemento, faça:
+
     - Se `x` é maior do `max`, então atribua o valor `x` para `max`
+
 - A variável `max` contém o maior valor da lista
 
 
@@ -184,7 +187,7 @@ int maximo(int lst[], size_t n)
 {
     assert(n > 0);
     int max = lst[0];
-    for (int i = 1; i < n; i++) {
+    for (size_t i = 1; i < n; i++) {
         if (lst[i] > max) {
             max = lst[i];
         }
@@ -197,9 +200,12 @@ int maximo(int lst[], size_t n)
 ## Funcional
 
 - O valor `maximo(lst)` é definido como:
+
     - O primeiro elemento de `lst` se `lst` só tem um elemento
+
     - O primeiro elemento de `lst` se ele é maior do que o `maximo` do restante
       de `lst`
+
     - `maximo` do restante de `lst` se ele é maior ou igual ao primeiro
       elemento de `lst`
 
@@ -225,11 +231,14 @@ Código em Racket
 ## Lógico
 
 - A proposição `maximo(lst, x)` é verdadeira se:
+
   - `x` é o único elemento de `lst`; ou
-  - `x` é primeiro elemento de `lst` e `maximo(restante lst, m)` é verdadeiro e
-    `x` é maior do que `m`; ou
-  - `p` é o primeiro elemento de `lst` e `maximo(restante lst, x)` é verdadeiro
-    `x` é maior ou igual a `p`
+
+  - `x` é primeiro elemento de `lst` e existe um valor `m` tal que `m`
+    é o máximo do restante de `lst` e `x` é maior do que `m`; ou
+
+  - `x` é o máximo do restante de `lst` e existe um valor `p` que é o primeiro
+    elemento de `lst` e `x` é maior ou igual a `p`
 
 - Para computar o valor máximo de uma dada lista, busque por um valor `x` que
   permita provar que a proposição `maximo(lst, x)` é verdadeira.
@@ -262,7 +271,9 @@ Nível de abstração
 
 Linguagens de _scripting_
 
-- "Juntar" programas escritos em outras linguagens
+- "Automatizar" execução de tarefas que poderiam ser executadas manualmente
+
+- Também usado para referenciar linguagens dinâmicas de propósito geral
 
 
 
@@ -278,22 +289,53 @@ Métodos de implementação
 - Híbrido
 
 
-## Métodos de implementação
+## {.plain}
 
-![Interface em camadas de computadores virtuais, fornecida por um sistema de
-computação típico](figs/1-2.pdf){ width=6.5cm }
+<div class="columns">
+<div class="column" width="20%">
+\small Interface em camadas de computadores virtuais, fornecida por um sistema de computação típico
+</div>
+<div class="column" width="80%">
+![](figs/1-2.pdf)
+</div>
+</div>
 
-## Métodos de implementação - Compilação
 
-![](figs/1-3.pdf){ width=5cm }
+## {.plain}
 
-## Métodos de implementação - Interpretação
+<div class="columns">
+<div class="column" width="20%">
+Compilação
+</div>
+<div class="column" width="80%">
+![](figs/1-3.pdf)
+</div>
+</div>
 
-![](figs/1-4.pdf){ width=3cm }
 
-## Métodos de implementação - Híbrido
 
-![](figs/1-5.pdf){ width=3cm }
+## {.plain}
+
+<div class="columns">
+<div class="column" width="20%">
+Interpretação
+</div>
+<div class="column" width="80%">
+![](figs/1-4.pdf){width=3.5cm}
+</div>
+</div>
+
+
+## {.plain}
+
+<div class="columns">
+<div class="column" width="20%">
+Híbrido
+</div>
+<div class="column" width="80%">
+![](figs/1-5.pdf)
+</div>
+</div>
 
 
 
@@ -463,6 +505,7 @@ Expressividade
 
 - Maneira conveniente de expressar a computação
 
+
 ## Facilidade de escrita
 
 Algumas linguagens tem a sintaxe e/ou a semântica tão densas e bizarras que são
@@ -481,6 +524,7 @@ todas as condições
 - Apelidos (um ou mais nomes para acessar a mesma célula de memória)
 
 - Facilidade de leitura e escrita
+
 
 ## Confiabilidade
 
@@ -580,6 +624,7 @@ Os fatores que mais afetam os custos são
 
 - Confiabilidade
 
+
 ## Custo
 
 - Treinar programadores
@@ -654,7 +699,7 @@ Metodologias de Programação
 
 - Orientada a dados
 
-- Orientação a objetos
+- Orientada a objetos
 
 
 
