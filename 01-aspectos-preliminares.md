@@ -658,9 +658,7 @@ Os fatores que mais afetam os custos são
 - Manutenção
 
 
-## Outros
-
-Outros critérios
+## Outros critérios para avaliação de linguagens
 
 - Portabilidade
 
