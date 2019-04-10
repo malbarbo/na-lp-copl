@@ -119,7 +119,7 @@ Sistemas Web
 
     - Inicialmente
 
-        - PHP, Javascript
+        - PHP, JavaScript
 
 \pause
 

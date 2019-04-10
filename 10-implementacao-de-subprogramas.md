@@ -421,7 +421,7 @@ Subprogramas aninhados
 ## Subprogramas aninhados
 
 - Algumas linguagens com escopo estático permitem subprogramas aninhados
-  (Fortran 95, Ada, Python, Javascript, Ruby, Lua)
+  (Fortran 95, Ada, Python, JavaScript, Ruby, Lua)
 
 - Todas as variáveis não locais que podem ser acessadas estão em algum registro
   de ativação na pilha

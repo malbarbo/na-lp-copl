@@ -179,7 +179,7 @@ Fundamentos
 
 ## Parâmetros
 
-- Número variável de parâmetros (C/C++/C\#, Python, Java, Javascript, Lua, etc)
+- Número variável de parâmetros (C/C++/C\#, Python, Java, JavaScript, Lua, etc)
 
     - Exemplo em C\#
 
@@ -197,7 +197,7 @@ Fundamentos
 
 ## Parâmetros
 
-- Número variável de parâmetros (C/C++/C\#, Python, Java, Javascript, Lua, etc)
+- Número variável de parâmetros (C/C++/C\#, Python, Java, JavaScript, Lua, etc)
 
     - Exemplo em Python
 
@@ -673,7 +673,7 @@ Parâmetros que são subprogramas e fechamentos
 <div class="column" width="50%">
 \footnotesize
 
-Exemplo usando a sintaxe de Javascript
+Exemplo usando a sintaxe de JavaScript
 
 ```javascript
 function sub1() {

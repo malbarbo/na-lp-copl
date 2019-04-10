@@ -371,7 +371,7 @@ semântica de uma linguagem de programação
 - Dinâmica implícita no heap: é vinculada a memória do heap apenas quanto
   é atribuída
 
-    - Exemplos: Javascript, Python, etc \pause
+    - Exemplos: JavaScript, Python, etc \pause
 
     - Vantagens: flexibilidade
 
