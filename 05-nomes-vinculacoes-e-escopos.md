@@ -33,7 +33,7 @@ Nomes
 
 - Questões de projeto para os nomes
 
-    - Os nomes são sensíveis ao caso?
+    - Os nomes são sensíveis a diferenciação entre minúsculas e maiúsculas?
 
     - As palavras especiais são palavras reservadas ou palavras chave?
 
@@ -71,16 +71,22 @@ Nomes
 
 ## Nomes
 
-- Sensível ao caso
-
-    - Desvantagem: nomes que parecem iguais são diferentes
+- Sensível a diferenciação entre minúsculas e maiúsculas
 
     - Nomes nas linguagens baseadas em C são sensíveis ao caso
 
-    - Outras linguagens não são
+    - Algumas outras linguagens não são
 
     - Nomes pré-definidos (bibliotecas) em Java e C\# incluem maiúsculas
-      e minúsculas (bom ou ruim?)
+      e minúsculas
+
+    - Avaliação? \pause
+
+        - A diferenciação pode ser ruim pois nomes que parecem iguais são
+          diferentes
+        - A não diferenciação restringe o espaço de nomes
+          (Em Java é comum cosntruções do tipo `var pessoa = new Pessoa(...)`{.java})
+
 
 
 ## Nomes
@@ -89,22 +95,28 @@ Nomes
 
     - Ajudam na legibilidade, são usadas para separar cláusulas
 
-    - Uma **palavra chave** é uma palavra que tem um significado especial em
-      determinados contextos
 
-        - `Integer apple` ; significado especial, tipo da variável
+## Nomes
 
-        - `Integer = 4`
+- Uma **palavra chave** é uma palavra que tem um significado especial em
+  determinados contextos
 
-        - Dificulta a legibilidade
+    - `Integer apple` ; significado especial, tipo da variável
 
-    - Uma **palavra reservada** é uma palavra que não pode ser usada como um
-        nome
+    - `Integer = 4`
 
-        - Muitas palavras reservadas podem restringir as opções de nomes do
-        programador
+    - Dificulta a legibilidade
 
-        - Ex: Cobol tem 300 palavras reservadas
+
+## Nomes
+
+- Uma **palavra reservada** é uma palavra que não pode ser usada como um
+    nome
+
+    - Muitas palavras reservadas podem restringir as opções de nomes do
+    programador
+
+    - Ex: Cobol tem 300 palavras reservadas
 
 
 
@@ -115,15 +127,15 @@ Variáveis
 
 - Abstração de célula(s) de memória
 
-- Caracterizada como uma sextupla
+- Caracterizada como uma sêxtupla
 
     - Nome
 
     - Tipo
 
-    - Endereço (l-value)
+    - Endereço (*l-value*)
 
-    - Valor (r-value)
+    - Valor (*r-value*)
 
     - Tempo de vida
 
@@ -134,16 +146,18 @@ Variáveis
 
 - Nome
 
-    - Existem células de memória (variáveis) que não têm nome
+    - Maioria das variáveis são nomeadas
 
-- Endereço (l-value)
+    - Existem células de memória (variáveis) que não são nomeadas
 
-    - É o endereço da memória da máquina que a variável está associada
+- Endereço (*l-value*)
+
+    - É o endereço da memória que a variável esta associada
 
     - Uma variável pode ter diferente endereços ao longo da execução do
-        programa
+      programa
 
-    - Várias variável podem ter o mesmo endereço (apelidos)
+    - Diversas variáveis podem ter o mesmo endereço (apelidos)
 
 
 ## Variáveis
@@ -152,12 +166,14 @@ Variáveis
 
     - Determina o intervalo de valores e as operações
 
-- Valor (r-value)
+- Valor (*r-value*)
 
     - É o conteúdo da célula (abstrata) de memória associada com a variável
 
     - Célula física vs célula abstrata
 
+
+- Tempo de vida e escopo são discutidos posteriormente
 
 
 O conceito de vinculação
@@ -202,11 +218,11 @@ semântica de uma linguagem de programação
 
 - Vinculação estática
 
-    - ocorre antes da execução do programa e permanece inalterada
+    - Ocorre antes da execução do programa e permanece inalterada
 
 - Vinculação dinâmica
 
-    - ocorre ou é altera durante a execução do programa
+    - Ocorre ou é altera durante a execução do programa
 
 
 ## Vinculação estática de tipo
@@ -237,7 +253,9 @@ semântica de uma linguagem de programação
 - O tipo é vinculado quando um valor é atribuído a variável
 
     ```python
-    list = [10.2, 3.5] # esta não é uma boa prática
+    # mudar o tipo de uma variável em um mesmo contexto
+    # não é uma boa prática
+    list = [10.2, 3.5]
     list = 47
     ```
 
