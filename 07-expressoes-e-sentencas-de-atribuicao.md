@@ -43,11 +43,11 @@ Expressões aritméticas
 - Uma expressão aritmética consiste em operadores, operandos, parênteses e
   chamadas de funções
 
-- Um operador pode ser unário (1 operando), binário (2 operandos) ou ternário
+- Um operador pode ser unário (1 operando), binário (2 operandos), ternário
   (3 operandos), etc
 
 - Existem 3 maneiras comuns de especificar a aplicação de um operador:
-  pré-fixa, infixa e pós-fixa
+  prefixa, infixa e posfixa
 
 
 ## Questões de projeto
@@ -86,12 +86,26 @@ Expressões aritméticas
 
 ## Precedência
 
-             Ruby               Linguagens baseadas em C
------------- ------------------ -------------------------------
-Mais alta    `**`               `++` e `--` posfixados
-             `+` e `-` unários  `++` e `--` prefixados e `+` e `-` unários
-             `*`, `/`, `%`      `*`, `/`, `%`
-Mais baixa   `+` e `-` binários `+` e `-` binários
+             Linguagens baseadas em C
+------------ -------------------------------
+Mais alta    `++` e `--` posfixados
+             `++` e `--` prefixados e `+` e `-` unários
+             `*`, `/`, `%`
+Mais baixa   `+` e `-` binários
+
+
+## Precedência
+
+- Em Lisp, a questão de precedência não se aplica
+
+    - `(+ 3 (* 4 5))`
+    - `(* (+ 3 4) 5)`
+
+- Pyret não tem precedência
+
+    - `(3 + 4) * 5`
+    - `3 + (4 * 5)`
+    - `1 + 2 + 4`
 
 
 ## Associatividade
@@ -120,19 +134,17 @@ Mais baixa   `+` e `-` binários `+` e `-` binários
 
 ## Associatividade
 
-- Em APL todos os operadores tem a mesma precedência e a associatividade é da
-  direita para esquerda \pause
-
-- Tabela com as regras de associatividade de algumas linguagens:
-
-\scriptsize
-
 Linguagem                Associatividade
 ------------------------ ------------------------------------------
-Ruby                     Esquerda: `*`, `/`, `+`, `-`
-                         Direita: `**`
 Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
                          Direita: `++`, `--`, `+` e `-` unários
+
+
+## Associatividade
+
+- Em APL todos os operadores tem a mesma precedência e a associatividade é da
+  direita para esquerda
+
 
 ## Parênteses
 
@@ -179,7 +191,7 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
     \pause
 
-- Python oferece um variação do `if`
+- Python oferece um variação do `if`{.python}
 
     ```python
     x = exp_a if cond else exp_b
@@ -198,7 +210,7 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
   - Expressão parentizada: todos os operandos e operadores devem ser
     avaliados
 
-  - Função: deve ser executada (interessante para a questão)
+  - Função: deve ser executada
 
 
 ## Ordem de avaliação dos operandos
@@ -335,9 +347,9 @@ Conversões de tipos
 
 ## Conversões de tipos
 
-- Coerções em expressões
+- Conversão **implícita** (coerção)
 
-    - Conversão implícita
+    - Feita implicitamente pelo compilador / interpretador
 
     - Utilizado nas expressões em modo misto
 
@@ -353,9 +365,9 @@ Conversões de tipos
 
 ## Conversões de tipos
 
-- Casts
+- Conversão **explícita**
 
-    - Conversão explícita
+    - Feita explicitamente pelo programador
 
     - O compilador pode gerar um alerta sobre conversões de estreitamento
 
@@ -482,7 +494,7 @@ Sentenças de atribuição
 
 - O símbolo de atribuição
 
-    - `=` Fortan e as linguagens baseadas em C
+    - `=` Fortran e as linguagens baseadas em C
 
     - `:=` Algol, Pascal e Ada
 
@@ -493,7 +505,7 @@ Sentenças de atribuição
 
     ```perl
     $(flag ? $count1 : $count2) = 0;
-    // é equivalente a
+    # é equivalente a
     if ($flag) {
         $count1 = 0;
     } else {
