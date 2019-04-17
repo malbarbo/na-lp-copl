@@ -114,7 +114,7 @@ Sentenças de seleção
         ```python
         if x > y:
             x = y
-            print "case 1"
+            print("case 1")
         ```
 
 
