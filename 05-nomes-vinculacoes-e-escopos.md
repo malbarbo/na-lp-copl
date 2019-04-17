@@ -14,7 +14,7 @@ Introdução
 
     - Inteiros
 
-    - Array com 3 dimensões
+    - Arranjo com 3 dimensões
 
 - As variáveis tem um conjunto de propriedades: tipo, valor, memória, escopo,
   etc.
@@ -62,7 +62,7 @@ Nomes
     - PHP: nomes de variáveis precisam iniciar com `$`
 
     - Perl: inicia com um caractere especial que indica o tipo: `$` escalar, `@`
-        array e `%` hash
+      arranjo e `%` hash
 
     - Ruby: variáveis de instância iniciam com `@` e variáveis de classe com `@@`
 
@@ -84,6 +84,7 @@ Nomes
 
         - A diferenciação pode ser ruim pois nomes que parecem iguais são
           diferentes
+
         - A não diferenciação restringe o espaço de nomes
           (Em Java é comum cosntruções do tipo `var pessoa = new Pessoa(...)`{.java})
 
@@ -110,11 +111,10 @@ Nomes
 
 ## Nomes
 
-- Uma **palavra reservada** é uma palavra que não pode ser usada como um
-    nome
+- Uma **palavra reservada** é uma palavra que não pode ser usada como um nome
 
     - Muitas palavras reservadas podem restringir as opções de nomes do
-    programador
+      programador
 
     - Ex: Cobol tem 300 palavras reservadas
 
@@ -235,14 +235,14 @@ semântica de uma linguagem de programação
 
     - Declaração implícita (através de convenção)
 
-        - Fortran: variáveis (que não foram explicitamente declaradas) cujo o
-        nome começa com `I`, `J`, `K`, `L`, `M`, ou `N` são inteiras, caso
-        contrário, reais
+        - Fortran: variáveis (que não foram explicitamente declaradas) cujo
+          o nome começa com `I`, `J`, `K`, `L`, `M`, ou `N` são inteiras, caso
+          contrário, reais
 
         - Perl: nome inicia com `$`, `@` ou `%`
 
         - Facilita a escrita, mas prejudica a confiabilidade (nem tanto no
-        Perl)
+          Perl)
 
 
 ## Vinculação dinâmica de tipo
@@ -331,8 +331,8 @@ semântica de uma linguagem de programação
 - Estática: vinculada a célula de memória antes da execução do programa
   e permanece vinculada a mesma célula durante a execução
 
-    - Exemplos: Variáveis globais, variável `static` dentro de uma função em C
-        \pause
+    - Exemplos: Variáveis globais, variável `static` dentro de uma função em
+      C \pause
 
     - Vantagens: eficiência, sensibilidade a história
 
@@ -342,8 +342,8 @@ semântica de uma linguagem de programação
 
 ## Vinculação de memória e tempo de vida
 
-- Dinâmica na pilha: vinculada a célula de memória quando a sua declaração é
-    elaborada
+- Dinâmica na pilha: vinculada a célula de memória quando a sua declaração
+  é elaborada
 
     - Exemplos: Variáveis locais em Java \pause
 
@@ -409,7 +409,7 @@ Escopo
   declarada nesta unidade mas acessível nela
 
 - As regras de escopo de uma linguagens de programação determinam como uma
-    ocorrência particular de um nome é associado a uma variável
+  ocorrência particular de um nome é associado a uma variável
 
     - Escopo estático
 
