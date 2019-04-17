@@ -20,7 +20,7 @@ Introdução a manipulação de exceções
       retornava para o sistema operacional que imprimia uma mensagem de erro
       na tela
 
-- Outros erros podem ser detectados por software, como índice de array fora do
+- Outros erros podem ser detectados por software, como índice do arranjo fora do
   intervalo, final de arquivo, etc
 
 
@@ -436,7 +436,7 @@ Manipulação de exceções em Java
     - As outras exceções são chamadas de **exceções checadas**
 
     - As exceções checadas que podem ser geradas por um método, devem estar
-      listadas na cláusula throws ou serem manipuladas no método
+      listadas na cláusula `throws` ou serem manipuladas no método
 
 
 ## Manipulação de exceções em Java

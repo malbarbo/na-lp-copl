@@ -685,7 +685,7 @@ método do tipo declarado de `r`.
 
     - Similar a C++
 
-    - Todos os tipos são objetos, exceto os primitivos (boolean, char,
+    - Todos os tipos são objetos, exceto os primitivos (booleano, caractere,
       numéricos)
 
     - Para os tipos primitivos poderem ser usados com tipos objetos, eles devem
