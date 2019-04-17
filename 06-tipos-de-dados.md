@@ -1,5 +1,13 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
+# TODO: adicionar mais exemplos
+# TODO: melhorar a discussão sobre decimal e bcd (ver padrões ieee decimal32...)
+# TODO: mais exemplos de tipos enumerados e subintervalo
+# TODO: funções seguras (strncpy, etc) em C
+# TODO: exemplo não tipada Forth
+# TODO: melhorar arranjos associativos
+# TODO: melhorar a discução de fatias (numpy, Julia)
+# TODO: registros: aninhados, com auto-referência, padding
 title: Tipos de dados
 ---
 
@@ -91,7 +99,7 @@ Tipos primitivos
 
         - Modelo (aproximado) dos números reais
 
-        - Padronização IEEE 754 (float e double)
+        - Padronização IEEE 754 (`float` e `double`)
 
 
 ## Tipos primitivos
@@ -131,7 +139,7 @@ Tipos primitivos
     - Algumas linguagens (C89) não tem tipo booleano, valores inteiros iguais
       a zero são considerados falsos e valores diferentes de zero verdadeiros
 
-    - O tipo boolean é mais legível que inteiros quando usados na representação
+    - O tipo booleano é mais legível que inteiros quando usados na representação
       de flags e switches
 
 
@@ -148,10 +156,10 @@ Tipos primitivos
         - ISO 8859-1 (8 bits - 256 valores)
 
         - Unicode (16 - não é suficiente, e 32 bits - suficiente para
-        representar todos os caracteres utilizados pelos humanos)
+          representar todos os caracteres utilizados pelos humanos)
 
     - Python não tem um tipo caractere, um caractere é representado como um
-      string de tamanho 1
+      cadeia de tamanho 1
 
 
 
@@ -193,7 +201,7 @@ Cadeia de caracteres
 
     - Uso de arranjo de caracteres
 
-    - A cadeia é terminada com um caractere especial null
+    - A cadeia é terminada com um caractere especial nulo (`'\0'`)
 
     - Biblioteca de funções (`strcpy`, `strcat`, `strcmp`, `strlen`)
 
@@ -277,6 +285,7 @@ Cadeia de caracteres
       implementação deve ser levado em consideração
 
 
+
 Tipo ordinal definido pelo usuário
 ==================================
 
@@ -308,11 +317,11 @@ Tipo ordinal definido pelo usuário
 - Exemplo em C\#
 
     ```cs
-    enum Days {Mon, Tue, Wed, Thu, Fri, Sat, Sun};
+    enum Dia { Seg, Ter, Qua, Qui, Sex, Sab, Dom };
     ```
 
-- Em geral, os valores 0, 1, 2, ... são atribuídos implicitamente as constantes
-  enumeradas, mas outros valores podem ser explicitamente atribuídos
+- Em geral, os valores $0, 1, 2, \dots$ são atribuídos implicitamente as
+  constantes enumeradas, mas outros valores podem ser explicitamente atribuídos
 
 
 ## Tipo ordinal definido pelo usuário - tipos enumerados
@@ -331,23 +340,35 @@ Tipo ordinal definido pelo usuário
 
 - Linguagens sem suporte a tipos enumerados
 
-    - `int red = 0, blue = 1;`
+    ```
+    type Cor = int;
+    Cor vermelho = 0, azul = 1; // Possíveis cores
+    Cor x = vermelho;
+    ```
 
-    - Problemas?
+- Limitações? \pause Qualquer valor inteiro, mesmo que não seja uma cor válida,
+  pode ser atribuída a valores do "tipo" `Cor`. Todas as operações do tipo
+  `int` pode ser feita em variáveis do tipo `Cor`, etc...
 
-    \pause
+    ```
+    x = 2;
+    x = x + 3;
+    ```
+
+
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
 - C / C++
 
-    - As constantes enumeradas só podem aparecer em um tipo
+    ```cpp
+    enum Cor { vermelho, azul, verde, preto };
+    Cor c = azul;
+    int i = c; // válido em C e C++
+    c++;       // ilegal em C++, legal em C
+    c = 4;     // ilegal em C++, legal em C
+    ```
 
-        ```cpp
-        enum colors {red, blue, green, yellow, black};
-        colors myColor = blue;
-        int c = myColor; // válido em C e C++
-        myColor++;       // ilegal em C++, legal em C
-        myColor = 4;     // ilegal em C++, legal em C
-        ```
+- As constantes enumeradas só podem aparecer em um tipo
 
 
 ## Tipo ordinal definido pelo usuário - tipos enumerados
@@ -383,7 +404,8 @@ Tipo ordinal definido pelo usuário
     - É possível utilizar o mesmo nome da constante enumerada em diferentes
       tipos
 
-    \pause
+
+## Tipo ordinal definido pelo usuário - tipos enumerados
 
 - Outras linguagens
 
@@ -407,25 +429,29 @@ Tipo ordinal definido pelo usuário
 
 ## Tipo ordinal definido pelo usuário - tipos subintervalo
 
-- Um **tipo subintervalo** é uma subsequência contínua de um tipo ordinal. Em
-  geral, são utilizados para índices de arranjos \pause
+- Um **tipo subintervalo** é uma subsequência contínua de um tipo ordinal
+
+- Em geral,são utilizados para índices de arranjos
+
+
+## Tipo ordinal definido pelo usuário - tipos subintervalo
 
 - Exemplo em Ada
 
     ```ada
-    type Days is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);
-    subtype Weekdays is Days range Mon..Fri;
-    subtype Index is Interger range 1..100;
-    Day1 : Days;
-    Day2 : Weekdays;
+    subtype Indice is Integer range 1..100;
+    type Dia is (Seg, Ter, Qua, Qui, Sex, Sab, Dom);
+    subtype Dia_Semana is Dia range Seg..Sex;
+    Dia1 : Dia;
+    Dia2 : Dia_Semana;
     ...
-    Day2 := Day1;
+    Dia2 := Dia1;
     ```
 
     \pause
 
-- A atribuição `Day2 := Day1` é verificada em tempo de execução e só será
-  válida se `Day1` estiver no intervalo `Mon..Fri`.
+- A atribuição `Dia2 := Dia1` é verificada em tempo de execução e só será
+  válida se `Dia1` estiver no intervalo `Seg..Sex`.
 
 
 ## Tipo ordinal definido pelo usuário - tipos subintervalo
@@ -441,8 +467,9 @@ Tipo ordinal definido pelo usuário
       contínuo?)
 
 
-Arranjos e registros
-====================
+
+Arranjos
+========
 
 ## Arranjos
 
@@ -477,14 +504,14 @@ Arranjos e registros
       índice(s), e o elemento correspondente é obtido
 
         ```
-        array_name(indices) -> element
+        nome_arranjo(indices) -> elemento
         ```
 
     - Sintaxe da seleção
 
-        - Fortran e Ada: `Sum := Sum + B(I)`
+        - Fortran e Ada: `Soma := Soma + B(I)`
 
-        - Maioria das linguagens: `Sum := Sum + B[I]`
+        - Maioria das linguagens: `Soma := Soma + B[I]`
 
 
 ## Arranjos
@@ -498,9 +525,8 @@ Arranjos e registros
         - Ada: qualquer tipo ordinal
 
             ```ada
-            type Week_Day_Type is (Monday, Tuesday, Wednesday,
-                       Thursday, Friday);
-            type Sales is array (Week_Day_Type) of Float;
+            type Dia_Semana is (Seg, Ter, Qua, Qui, Sex);
+            type Vendas is array (Dia_Semana) of Float;
             ```
 
 
@@ -522,32 +548,35 @@ Arranjos e registros
 ## Arranjos
 
 Categorização segundo a vinculação do intervalo de índices, da vinculação da
-memória e de onde a memória é alocada
+memória e de onde a memória é alocada \pause
 
 - Estático
 
-    - Intervalo de índices e memória vinculados estaticamente \pause
-
-- Dinâmico fixo na pilha
-
-    - Intervalo de índices vinculado estaticamente, mas a alocação é feita
-    em tempo de execução (na elaboração da variável)
+    - Intervalo de índices e memória vinculados estaticamente
 
 
 ## Arranjos
+
+- Dinâmico fixo na pilha
+
+    - Intervalo de índices vinculado estaticamente, mas a alocação é feita em
+      tempo de execução (na elaboração da variável)
 
 - Dinâmico na pilha
 
     - Intervalo de índices e memória são vinculados em tempo de execução
 
-    - O intervalo de índices não pode ser alterado depois de vinculado \pause
+    - O intervalo de índices não pode ser alterado depois de vinculado
+
+
+## Arranjos
 
 - Dinâmico fixo no heap
 
     - Semelhante ao dinâmico fixo na pilha
 
-    - Intervalo de índices é vinculado em tempo de execução, mas não pode
-    ser alterado \pause
+    - Intervalo de índices é vinculado em tempo de execução, mas não pode ser
+      alterado
 
 - Dinâmico no heap
 
@@ -556,24 +585,24 @@ memória e de onde a memória é alocada
     - Podem ser alterados a qualquer momento
 
 
-## Arranjos - Exemplos
+## Arranjos - exemplos
 
 - C++ suporta os 5 tipos
 
     ```cpp
     void f(int n) {
-        static int a[10];
-        int b[10];
-        int c[n];
-        int *d = new int[n];
-        vector<int> e;
-        e.push_back(52); // aumenta o tamanho em 1
+        static int a[10];    // Estático
+        int b[10];           // Dinâmico fixo na pilha
+        int c[n];            // Dinâmico na pilha
+        int *d = new int[n]; // Dinâmico fixo no heap
+        vector<int> e;       // Dinâmico no heap
+        e.push_back(52);     // aumenta o tamanho em 1
         delete[] d;
     }
     ```
 
 
-## Arranjos - Exemplos
+## Arranjos - exemplos
 
 - Java e C\#
 
@@ -583,72 +612,83 @@ memória e de onde a memória é alocada
 
     \pause
 
-- Perl, Javascript, Ruby, Lua, Python: dinâmicos no heap
+- Perl, JavaScript, Ruby, Lua, Python: dinâmicos no heap
 
 
-## Arranjos
+## Arranjos - inicialização
 
-- Inicialização
+- Fortran
 
-    - Fortran
+    ```fortran
+    Integer, Dimension (3) :: List = (/0, 5, 5/)
+    ```
 
-        ```fortran
-        Integer, Dimension (3) :: List = (/0, 5, 5/)
-        ```
+    \pause
 
-        \pause
+- C, C++, Java, C\#
 
-    - C, C++, Java, C\#
-
-        ```cpp
-        int list[] = {4, 5, 7, 83};
-        ```
-
-        \pause
-
-    - Strings em C
-
-        ```c
-        char name[] = "freddie";
-        char *name[] = {"Bob", "Jake", "Darcie"};
-        ```
-
-        \pause
-
-    - Ada
-
-        ```ada
-        List : array (1..5) of Integer := (1, 3, 5, 7, 9);
-        Bunch : array (1..5) of Integer :=
-                (1 => 17, 3 => 34, others => 0);
-        ```
-
-## Arranjos
-
-- Operações
-
-    - Atribuição
-
-    - Comparação de igualdade
-
-    - Fatias \pause
-
-- Exemplos
-
-    - APL fornece o mais poderoso conjunto de operações com arranjos
-
-    - Ada: atribuição, comparação de igualdade e desigualdade, concatenação
-      (`&`)
-
-    - Python: atribuição (referência), igualdade, pertinência (`in`),
-      concatenação (`+`)
-
-    - Fortran 95: atribuição, operações aritméticas, relacionais e lógicas
-
-    - Linguagens baseadas no C: através de funções de biblioteca
+    ```cpp
+    int list[] = {4, 5, 7, 83};
+    ```
 
 
-## Arranjos
+## Arranjos - inicialização
+
+- Strings em C
+
+    ```c
+    char name[] = "freddie";
+    char *name[] = {"Bob", "Jake", "Darcie"};
+    ```
+
+    \pause
+
+- Ada
+
+    ```ada
+    List : array (1..5) of Integer := (1, 3, 5, 7, 9);
+    Bunch : array (1..5) of Integer :=
+            (1 => 17, 3 => 34, others => 0);
+    ```
+
+
+## Arranjos - inicialização
+
+- Python suporta *list comprehensions* (criação de listas com uma notação
+  semelhante a de conjuntos)
+
+    ```python
+    > a = [4, 10, -6]
+    > [x ** 2 for x in range(12) if x % 3 == 0]
+    [0, 9, 36, 81]
+    ```
+
+
+## Arranjos - operações
+
+- Atribuição
+
+- Comparação de igualdade
+
+- Fatias
+
+
+## Arranjos - operações
+
+- APL fornece o mais poderoso conjunto de operações com arranjos
+
+- Ada: atribuição, comparação de igualdade e desigualdade, concatenação
+  (`&`)
+
+- Python: atribuição (referência), igualdade, pertinência (`in`),
+  concatenação (`+`)
+
+- Fortran 95: atribuição, operações aritméticas, relacionais e lógicas
+
+- Linguagens baseadas no C: através de funções de biblioteca
+
+
+## Tipos de arranjos
 
 - Um **arranjo regular** é um arranjo multidimensional onde todas as linhas tem
   o mesmo número de elementos, todas as colunas tem o mesmo números de
@@ -657,17 +697,49 @@ memória e de onde a memória é alocada
 - Um **arranjo irregular** tem linhas (colunas, etc), com um número variado de
   elementos
 
-    - Em geral quando arranjos multidimensionais são arranjos de arranjos \pause
+    - Em geral quando arranjos multidimensionais são arranjos de arranjos
 
-- Exemplos
 
-    - Arranjo irregular (C, C++, Java)
+## Tipos de arranjos - exemplos
 
-        myArray[3][7]
+- Arranjo irregular (Java)
 
-    - Arranjo regular (Fortran, Ada, C\#)
+    ```java
+    myArray[3][7]
+    ```
 
-        myArray[3, 7]
+- Arranjo regular (Julia, Python, Fortran, Ada, C\#)
+
+    ```julia
+    myArray[3, 7]
+    ```
+
+- Ambos (C/C++, Julia, C\#)
+
+
+## Tipos de arranjos - exemplos
+
+
+- Arranjo regular em C/C++
+
+    ```c
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+    };
+    ```
+
+- Arranjo irregular em C/C++
+
+    ```c
+    int a[3] = {1, 2, 3};
+    int b[2] = {4, 5};
+    int *matrix[2] = {
+        a,
+        b,
+    };
+    ```
+
 
 
 ## Arranjos
@@ -688,8 +760,8 @@ memória e de onde a memória é alocada
         vector[0:7:2] # [2, 6, 10, 14]
         ```
 
-    - Fortran 95: mais elaborado, se `mat` é uma matrix, a coluna 2 pode ser
-        referenciada por `mat(:,2)`
+    - Fortran 95: mais elaborado, se `mat` é uma matriz, a coluna 2 pode ser
+      referenciada por `mat(:,2)`
 
 
 ## Arranjos
@@ -706,42 +778,35 @@ memória e de onde a memória é alocada
 
         - Arranjos dinâmicos
 
-        - Arranjos associativos
+
+## Arranjos - implementação
+
+- A função de acesso mapeia os índices para um endereço do arranjo \pause
+
+- Arranjos unidimensionais
+
+    - `endereco(arranjo[k]) = endereco(arranjo[limite_inferior]) + ((k - limite_inferior) * tamanho_elemento)`
+
+    - Se `limite_inferior` é 0, \newline
+      `endereco(arranjo[k]) = endereco(arranjo[0]) + k * tamanho_elemento`
 
 
-## Arranjos
+## Arranjos - implementação
 
-- Implementação
+- Arranjos multidimensionais regulares
 
-    - A função de acesso mapeia os índices para um endereço do arranjo \pause
+    - Ordenados por linhas ou colunas \pause
 
-    - Arranjos unidimensionais
-
-        - `address(list[k]) = address (list[lower_bound]) + ((k - lower_bound) * element_size)`
-
-        - Se o limite inferior for 0,
-        `address(list[k]) = address(list[0]) + k * element_size`
-
-        \pause
-
-    - Arranjos multidimensionais regulares
-
-        - Ordenados por linhas
-
-        - Ordenados por colunas \pause
-
-        - O tipo da implementação tem alguma influência na execução do
-        programa?
+    - O tipo da implementação tem alguma influência na execução do
+      programa?
 
 
 ## Arranjos associativos
 
-- Um **arranjo associativo** é um agregado de elementos indexados através de
-  uma chave. Normalmente conhecido como tipo hash \pause
+- Um **arranjo associativo** ou **dicionário** é um agregado de elementos
+  indexados através de chaves
 
 - Exemplo Perl
-
-    \scriptsize
 
     ```perl
     %salarios = ("Gary" => 75000, "Perry" => 57000
@@ -751,25 +816,32 @@ memória e de onde a memória é alocada
     %salaries = ();
     ```
 
-    \normalsize
 
-    \pause
+## Arranjos associativos
 
 - Outras linguagens que possuem arranjos associativos
 
-    - PHP, Lua, Python, Javascript (primitivo)
+    - PHP, Lua, Python, JavaScript (primitivo)
 
-    - C\# e C++ (bibliotecas)
+    - C\#, C++, Java (bibliotecas)
 
     \pause
 
-- Como os arranjos associativos podem ser implementados?
+- Como os arranjos associativos podem ser implementados? \pause
 
+    - Tabelas hash
+
+    - Árvores de busca (AVL, vermelho e preto, etc)
+
+
+
+Registros e tuplas
+==================
 
 
 ## Registros
 
-- Um **registro** é um agregado (heterogêneo) de elementos identificados pelo
+- Um **registro** é um agregado heterogêneo de elementos identificados pelo
   nome e acessados pelo deslocamento em relação ao início do registro \pause
 
 - Questões de projeto
@@ -779,107 +851,96 @@ memória e de onde a memória é alocada
     - Referências elípticas são permitidas?
 
 
-## Registros
+## Registros - definição
 
-- Definição de registros
+- Cobol utiliza números para mostrar o nível de registros aninhados
 
-    - Cobol utiliza números para mostrar o nível de registros aninhados
-
-        ```cobol
-        01 EMPLOYEE-RECORD.
-        02 EMPLOYEE-NAME.
-        05 FIRST  PICTURE IS X(20).
-        05 MIDDLE PICTURE IS X(10).
-        05 LAST PICTURE IS x(20).
-        02 HOURLY-RATE PICURE IS 99V99.
-        ```
+    ```cobol
+    01  EMPLOYEE-RECORD.
+        02  EMPLOYEE-NAME.
+            05  FIRST  PICTURE IS X(20).
+            05  MIDDLE PICTURE IS X(10).
+            05  LAST PICTURE IS x(20).
+        02  HOURLY-RATE PICURE IS 99V99.
+    ```
 
 
-## Registros
+## Registros - definição
 
-- Definição de registros
+- Ada, os registros são definidos de uma forma mais ortogonal
 
-    - Ada, os registros são definidos de uma forma mais ortogonal
+    ```ada
+    type Employee_Name_Type is record
+      First: String(1..20);
+      Middle: String(1..10);
+      Last: String(1..20);
+    end record;
 
-        \scriptsize
-
-        ```ada
-        type Employee_Name_Type is record
-        First: String(1..20);
-        Middle: String(1..10);
-        Last: String(1..20);
-        end record;
-
-        type Employee_Record_Type is record
-        Employee_Name: Employe_Name_Type;
-        Hourly_Rate: Float;
-        end record;
-        ```
-
-        \pause
-
-    - Em Lua, os registros podem ser simulados com o tipo table
-
-        \scriptsize
-
-        ```lua
-        employee = {}
-        employee.name = "Freddie"
-        employee.hourlyRate = 13.20
-        ```
+    type Employee_Record_Type is record
+      Employee_Name: Employe_Name_Type;
+      Hourly_Rate: Float;
+    end record;
+    ```
 
 
-## Registros
+## Registros - definição
 
-- Referência aos campos
+- Em Lua, os registros podem ser simulados com o tipo table
 
-    - Cobol: `nome_do_campo of nome_do_registro_1 ... nome_do_registro_n`
-
-    - Demais linguagens: `registro.campo` (Fortran usa %)
-
-    - Referência totalmente especificada: inclui todos os nomes dos registros
-
-    - Referências elípticas: nem todos os nomes dos registros precisam ser
-      especificados, deste que não haja ambiguidade
-
-        - Cobol: FIRST, FIRST of EMPLOYEE-NAME, FIRST of EMPLOYEE-RECORD
+    ```lua
+    employee = {}
+    employee.name = "Freddie"
+    employee.hourlyRate = 13.20
+    ```
 
 
-## Registros
+## Registros - referência aos campos
 
-- Operações
+- Cobol: `nome_do_campo of nome_do_registro_1 ... nome_do_registro_n`
 
-    - Atribuição (cópia) - C/C++, Ada
+- Demais linguagens: `registro.campo` (Fortran usa %)
 
-    - Comparação por igualdade - Ada
+- Referência totalmente especificada: inclui todos os nomes dos registros
 
+- Referências elípticas: nem todos os nomes dos registros precisam ser
+  especificados, deste que não haja ambiguidade
 
-## Registros
-
-- Avaliação
-
-    - As referências elípticas do Cobol são ruins para a legibilidade
-
-    - Usado quando uma coleção de valores heterogêneos são necessários
-
-    - Acesso a um elemento de um registro é rápido, pois o deslocamento do
-      início do registro é estático
+    - Cobol: `FIRST`, `FIRST of EMPLOYEE-NAME`, `FIRST of EMPLOYEE-RECORD`
 
 
-## Registros
+## Registros - operações
 
-- Implementação
+- Atribuição (cópia) - C/C++, Ada
 
-    - Os campos do registro são armazenados em células adjacentes de memória
+- Comparação por igualdade - Ada
 
-    - A cada campo é associado o deslocamento relativo ao início do registro
+- Outras? \pause
 
-    ![](figs/6-7.pdf){width=6cm}
+    - Exibição para depuração
+
+    - Cálculo de hash
+
+    - Ordem relativa
 
 
+## Registros - avaliação
 
-Tuplas e listas
-===============
+- As referências elípticas do Cobol são ruins para a legibilidade
+
+- Usado quando uma coleção de valores heterogêneos são necessários
+
+- Acesso a um elemento de um registro é rápido, pois o deslocamento do início
+  do registro é estático
+
+
+## Registros - implementação
+
+- Os campos do registro são armazenados em células adjacentes de memória
+
+- A cada campo é associado o deslocamento relativo ao início do registro
+
+![](figs/6-7.pdf){width=6cm}
+
 
 ## Tuplas
 
@@ -888,82 +949,39 @@ Tuplas e listas
 - Em geral usados para retornar múltiplos valores
 
 
-## Tuplas / Exemplos
+## Tuplas - exemplo Python
 
-- Python
-
-    ```python
-    > x = (1, 3.4, 'casa')
-    > x[0]
-    1
-    > x[2]
-    'casa'
-    > a, b, c = x
-    ```
-
-- ML
-
-    ```ocaml
-    val myTuple = (3, 5.8, 'apple');
-    #1(myTuple); (* primeiro elemento *)
-    type intReal = int * real;
-    ```
+```python
+> x = (1, 3.4, 'casa')
+> x[0]
+1
+> x[2]
+'casa'
+> a, b, c = x
+> y = zip([1, 2, 3], [4, 5, 6])
+> next(y)
+(1, 2)
+> for a, b in y: print(a, b)
+2 5
+3 6
+```
 
 
+## Tuplas - exemplo ML
 
-## Listas
-
-- Suportado primeiramente em Lisp
-
-- Comum nas linguagens imperativas atuais
-
-
-## Listas - Exemplos
-
-- Lisp (imutável)
-
-    - Elementos podem ser de tipos diferentes
-
-    - Literal: `’(1 2 5 8)`, vazio `null`
-
-    - Construção: `(cons 0 ’(1 2))` resulta em `’(0 1 2)`
-
-    - Cabeça: `(car ’(1 2 3))` resulta em `1`
-
-    - Cauda: `(cdr ’(1 2 3))` resulta em `’(2 3)`
+```ocaml
+val myTuple = (3, 5.8, 'apple');
+#1(myTuple);
+```
 
 
-## Listas - Exemplos
+## Tuplas - exemplo Rust
 
-- ML (imutável)
-
-    - Elementos precisam ser do mesmo tipo
-
-    - Literal: `[1, 2, 5, 8]`, vazio `[]`
-
-    - Construção: `0 :: [1, 2]` resulta em `[0, 1, 2]`
-
-    - Cabeça: `hd [1, 2, 3]` resulta em `5`
-
-    - Cauda: `tl [1, 2, 3]` resulta em `[2, 3]`
-
-
-## Listas
-
-- Python (mutável)
-
-    - Arranjo dinâmico
-
-    - *List comprehensions*, usado para criar listas usando uma notação
-    semelhante a de conjuntos
-
-        ```python
-        > a = [4, 10, -6]
-        > a[0]
-        4
-        > [x ** 2 for x in range(12) if x % 3 == 0]
-        [0, 9, 36, 81]
-        ```
+```rust
+let p = ("casa", 20);
+assert_eq!(p.0, "casa");
+assert_eq!(p.1, 20);
+```
 
 
 
@@ -991,36 +1009,43 @@ Uniões
 
 ## Uniões
 
-- Uniões livres não fornecem suporte a checagem de tipo. Exemplos: Fortran, C,
-  C++
+- Uniões livres não fornecem suporte a checagem de tipo
 
-- Exemplo C
+    - Fortran, C, C++, Rust
 
-    ```c
-    union flexType {
-        int a;
-        float b;
-    };
-    union flexType x;
-    float y;
-    ...
-    x.a = 10;
-    y = x.b;
-    ```
+
+## Uniões - exemplo C
+
+```c
+union Integer {
+    int small;
+    BigInteger *large;
+};
+union Integer x;
+x.small = 10;
+...
+// sem verifcação
+// o programador tem que garantir que x.large é valido
+BigInteger *y = x.large;
+```
+
 
 ## Uniões
 
-- Uniões discriminadas fornecem suporte a checagem de tipo. Exemplos: Algol 68,
-  Pascal, Ada
+- Uniões discriminadas fornecem suporte a checagem de tipo
 
-- Exemplo Ada
+    - Algol 68, Pascal, Ada, ML, F\#, Rust, etc
+
+
+## Uniões - exemplo Ada
 
 <div class="columns">
 <div class="column" width="50%">
-\tiny
+\scriptsize
 
 ```ada
-type is (Circle, Triangle, Rectangle);
+type Shape is (Circle, Triangle,
+               Rectangle);
 type Colors is (Red, Green, Blue);
 type Figure (Form : Shape) is record
     Filled : Boolean;
@@ -1031,7 +1056,7 @@ type Figure (Form : Shape) is record
     when Triangle =>
         Left_Side : Integer;
         Right_Side : Integer;
-    Angle : Float;
+        Angle : Float;
     when Rectangle =>
         Side_1 : Integer;
         Side_2 : Integer;
@@ -1040,13 +1065,13 @@ end record;
 ```
 </div>
 <div class="column" width="50%">
-\tiny
+\scriptsize
 
 ```ada
-// pode assumir qualquer forma
+-- pode assumir qualquer forma
 Figure_1 : Figure;
 
-// só pode ser um Triangle
+-- só pode ser um Triangle
 Figure_2 : Figure(Form => Triangle);
 ...
 Figure_1 := (Filled => True,
@@ -1056,62 +1081,92 @@ Figure_1 := (Filled => True,
          Side_2 => 3);
 
 ...
-// checado em tempo de execução
-// se o Firgure_1.Form não
-// for Circle, um erro é gerado
+-- checado em tempo de execução
+-- se o Firgure_1.Form não
+-- for Circle, um erro é gerado
 if (Figure_1.Diameter > 3.0) ...
 ```
 </div>
 </div>
 
 
-## Uniões
+## Uniões - exemplo Rust
+
+<div class="columns">
+<div class="column" width="50%">
+\scriptsize
+
+```rust
+enum Shape {
+    Circle {
+        diameter: f64,
+    },
+    Triangle {
+        left_side: f64,
+        righ_side: f64,
+        angle: f64,
+    },
+    Rectangle {
+        side_1: f64,
+        side_2: f64,
+    },
+}
+enum Color { Red, Green, Blue }
+struct Figure {
+    filled: bool,
+    color: Color,
+    shape: Shape,
+}
+```
+</div>
+<div class="column" width="50%">
+\scriptsize
+
+```rust
+let fig1 = Figure {
+    filled: false,
+    color: Color::Blue,
+    shape: Shape::Rectangle {
+        side_1: 12.0,
+        side_2: 3.0,
+    },
+};
+
+// ...
+
+let area = match &fig1.shape {
+    Shape::Circle { .. } =>
+        /* código */,
+    Shape::Triangle { .. } =>
+        /* código */,
+    Shape::Rectangle { side_1,
+                       side_2 } =>
+        side_1 * side_2,
+};
+```
+</div>
+</div>
+
+
+## Uniões - implementação
 
 ![](figs/6-8.pdf)
 
 
-## Uniões
 
-- F\# (semelhante a Haskell e ML)
+## Uniões - avaliação
 
-    \footnotesize
+- Uniões livres não são seguras, mas são necessárias para programação de
+  sistemas
 
-    ```fsharp
-    type intReal =
-     | IntValue of int
-     | RealValue of float;;
+- Uniões discriminadas do Ada são mais seguras
 
-    let ir1 = IntValue 17;;
-    let ir2 = RealValue 3.4;;
+- Uniões discriminadas de Rust, Haskell, ML e F\# são completamente seguras
 
-    let printType value =
-        match value with
-        | IntValue value -> printfn "It is an integer"
-        | RealValue value -> printfn "It is a float";;
+- Java e C\# não oferecem suporte a uniões
 
-    printType ir1;;
-    It is an integer
-    printType ir2;;
-    It is a float
-    ```
-
-
-## Uniões
-
-- Avaliação
-
-    - Uniões livres não são seguras, mas são necessárias para programação de
-      sistemas
-
-    - Uniões discriminadas (como o do Ada) são mais seguras
-
-    - Linguagens funcionais como Haskell, ML e F\# são completamente seguras
-
-    - Java e C\# não oferecem suporte a uniões
-
-    - Em linguagens com suporte a programação orientada a objetos, a herança
-      com polimorfismo é uma alternativa (para conjuntos de campos
-      alternativos)
+- Em linguagens com suporte a programação orientada a objetos, a herança com
+  polimorfismo é uma alternativa (para conjuntos de campos alternativos)
 
 
 
@@ -1174,12 +1229,12 @@ Ponteiros e referências
 - Problemas com ponteiros \pause
 
     - Ponteiro pendente: \pause O valor do ponteiro aponta para uma variável
-      dinâmica no heap que foi desalocada
+      dinâmica no heap que foi desalocada \pause
 
         - Como criar um ponteiro pendente? \pause
 
     - Vazamento de memória: \pause Uma variável dinâmica na pilha não é mais
-      acessível no programa (lixo)
+      acessível no programa (lixo) \pause
 
         - Como criar lixo?
 
@@ -1344,7 +1399,7 @@ Verificação de tipos, tipificação forte e equivalência de tipos
 
     - Java e C\# são semelhantes a Ada
 
-    - ML Haskell são fortemente tipadas
+    - ML e Haskell são fortemente tipadas
 
 - As regras de coerção afetam o valor da verificação de tipos
 
