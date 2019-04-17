@@ -14,7 +14,6 @@ Introdução
 
     - Elementos fundamentais dos programas
 
-
 - Abstração de dados
 
     - Capítulos 11 e 12
@@ -68,19 +67,19 @@ Fundamentos
 
 - Exemplos de cabeçalhos
 
-    - Fortran: `Subrotine Adder(parameters)`
+    - Fortran: `Subrotine Adder(parameters)`{.fortran}
 
-    - Ada: `procedure Adder(parameters)`
+    - Ada: `procedure Adder(parameters)`{.ada}
 
-    - Python: `def adder(parameters):`
+    - Python: `def adder(parameters):`{.python}
 
-    - C: `void adder(parameters)`
+    - C: `void adder(parameters)`{.c}
 
     - Lua (funções são entidades de primeira classe)
 
-        - `function cube(x) return x * x * x end`
+        - `function cube(x) return x * x * x end`{.lua}
 
-        - `cube = function (x) return x * x * x end`
+        - `cube = function (x) return x * x * x end`{.lua}
 
 
 ## Fundamentos
@@ -203,8 +202,8 @@ Fundamentos
 
         ```python
         def fun1(p1, p2, *p3, **p4):
-            print 'p1 =', p1, 'p2 =', p2,
-                  'p3 =', p3, 'p4 =', p4
+            print('p1 =', p1, 'p2 =', p2,
+                  'p3 =', p3, 'p4 =', p4)
 
         > fun1(2, 4, 6, 8, mon=68, tue=72, wed=77)
         p1 = 2  p2 = 4  p3 = (6, 8)
@@ -270,11 +269,15 @@ Ambientes de referência local
 
     - Podem ser estáticas ou dinâmicas na pilha
 
-        - Vantagens e desvantagens (cap 5 e seção 9.4.1)
+        - Vantagens e desvantagens (capítulo 5 e seção 9.4.1)
 
     - Poucas linguagens utilizam apenas vinculação estática
 
-    - A linguagem C, permite o programado escolher (`static int x` vs `int x`)
+    - A linguagem C, permite o programado escolher
+
+        - `static int x`{.c}
+
+        - `int x`{.c}
 
 
 ## Ambientes de referência local
@@ -1085,7 +1088,7 @@ public class Exemplo {
     - É possível especificar restrições sobre as classes que podem ser
       utilizadas como parâmetros genéricos
 
-    - Parâmetro genéricos do tipo wildcard (curinga)
+    - Parâmetro genéricos do tipo curinga (**wildcard**)
 
 
 ## Subprogramas genéricos
@@ -1096,7 +1099,7 @@ public class Exemplo {
 
     - Semelhante ao Java
 
-    - Não tem suporte a tipo wildcard
+    - Não tem suporte a tipo curinga
 
     - Uma versão para cada tipo primitivo
 
