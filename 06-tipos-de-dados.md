@@ -8,6 +8,7 @@
 # TODO: melhorar arranjos associativos
 # TODO: melhorar a discução de fatias (numpy, Julia)
 # TODO: registros: aninhados, com auto-referência, padding
+# TODO: sistema de tipos
 title: Tipos de dados
 ---
 
@@ -1408,8 +1409,8 @@ Verificação de tipos, tipificação forte e equivalência de tipos
 
 - Equivalência de tipos
 
-    - Dois tipos são equivalentes se um operando de tipo em uma expressão puder
-      ser substituído por um de outro tipo, sem coerção
+    - Dois tipos são equivalentes se um operando de um tipo em uma expressão
+      puder ser substituído por um de outro tipo, sem coerção
 
     - Por nome
 
@@ -1449,13 +1450,6 @@ Verificação de tipos, tipificação forte e equivalência de tipos
 
     - Não permite a diferenciação entre tipos com a mesma estrutura mas nomes
       diferentes
-
-
-## Verificação de tipos, tipificação forte e equivalência de tipos
-
-- Muitas linguagens usam uma combinação dos dois
-
-- Linguagens de script: duck type
 
 
 ## Referências
