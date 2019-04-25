@@ -24,10 +24,10 @@ Introdução
 
 - Muita pesquisa e discussão entre meados de 1960 e meados 1970
 
-    - Apenas um sentença de controle é necessária, o `goto`, mas esta
+    - Apenas um sentença de controle é necessária, o `goto`{.c}, mas esta
       sentença tem diversos problemas
 
-    - O `goto` pode ser substituído por duas sentenças de controle: seleção
+    - O `goto`{.c} pode ser substituído por duas sentenças de controle: seleção
       e repetição
 
     - Na prática, o aspecto importante não é a quantidade de sentenças de
@@ -78,7 +78,7 @@ Sentenças de seleção
 
     - Qual é a forma e o tipo da expressão que controla a seleção?
 
-    - Como as cláusulas `then` e `else` são especificadas?
+    - Como as cláusulas `then`{.ada} e `else`{.ada} são especificadas?
 
     - Como o significado dos seletores aninhados devem ser especificados?
 
@@ -88,7 +88,7 @@ Sentenças de seleção
 - A expressão de controle
 
     - A expressão de controle é especificada entre parênteses se a palavra
-      reservada `then` (ou outro marca sintática) não é usada
+      reservada `then`{.ada} (ou outro marca sintática) não é usada
 
     - Algumas linguagens permitem expressões aritméticas (C/C++, Python),
       outras permitem apenas expressões booleanas (Ada, Java, Ruby, C\#)
@@ -96,7 +96,7 @@ Sentenças de seleção
 
 ## Sentenças de seleção de duas vias
 
-- Forma da cláusulas `then` e `else`
+- Forma da cláusulas `then`{.ada} e `else`{.ada}
 
     - Em Perl, todas as cláusulas precisam ser sentenças compostas
 
@@ -106,7 +106,7 @@ Sentenças de seleção
         - As linguagens baseadas em C utilizam chaves para formar sentenças
           compostas
 
-    - Em Fortran 95, Ada e Ruby as cláusulas `then` e `else` são sequências de
+    - Em Fortran 95, Ada e Ruby as cláusulas `then`{.ada} e `else`{.ada} são sequências de
       sentenças. A seleção completa acaba com uma palavra reservada
 
     - Python usa indentação para especificar sentenças compostas
@@ -120,9 +120,9 @@ Sentenças de seleção
 
 ## Seletores aninhados
 
-- Quando uma construção de seleção é aninhada com a cláusula `then` de outra
-  construção de seleção, não fica claro com qual `if` a cláusula `then` deve
-  ser associada
+- Quando uma construção de seleção é aninhada com a cláusula `then`{.ada} de
+  outra construção de seleção, não fica claro com qual `if`{.ada} a cláusula
+  `then`{.ada} deve ser associada
 
 
 ## Seletores aninhados
@@ -168,10 +168,11 @@ if (sum == 0) {
 
 ## Seletores aninhados
 
-- Em Perl, as cláusulas `then` e `else` têm que ser compostas \pause
+- Em Perl, as cláusulas `then`{.ada} e `else`{.ada} têm que ser compostas
+  \pause
 
-- Em Java, a semântica estática especifica que a cláusula `else` faz par com o a
-  cláusula `then` sem par mais próxima \pause
+- Em Java, a semântica estática especifica que a cláusula `else`{.ada} faz par
+  com o a cláusula `then`{.ada} sem par mais próxima \pause
 
 - Uma alternativa sintática é o uso de uma palavra reservada para marcar o fim
   do seletor (Fortran 95, Ada, Ruby, Lua)
@@ -356,7 +357,7 @@ end case;
 
 ## Sentenças de seleção múltipla
 
-Exemplo em Ruby (semelhante a ifs aninhados)
+Exemplo em Ruby (semelhante a `if`{.c}s aninhados)
 
 ```ruby
 leap = case
@@ -369,7 +370,7 @@ end
 
 ## Sentenças de seleção múltipla
 
-Exemplo em Ruby (semelhante ao switch)
+Exemplo em Ruby (semelhante ao `switch`{.c})
 
 ```ruby
 case int_val
@@ -383,7 +384,7 @@ end
 
 ## Sentenças de seleção múltipla
 
-Exemplo em Python (seleção múltipla usando `if`)
+Exemplo em Python (seleção múltipla usando `if`{.python})
 
 ```python
 if count < 10:
@@ -399,7 +400,7 @@ else:
 
 ## Sentenças de seleção múltipla
 
-Exemplo em Python (seleção múltipla usando `if`)
+Exemplo em Python (seleção múltipla usando `if`{.python})
 
 ```python
 if count < 10:
@@ -420,7 +421,7 @@ Sentenças de iteração
 - Uma **sentença de iteração** é aquela que causa a execução de uma sentença
   (ou coleção de sentenças) zero, uma ou mais vezes
 
-- Também chamada de laço (loop)
+- Também chamada de laço
 
 - Questões de projeto
 
@@ -431,10 +432,11 @@ Sentenças de iteração
 
 ## Sentenças de iteração
 
-- O **corpo** de uma construção iterativa é a coleção de sentenças cuja a
-  execução é controlada pela sentença de iteração
+- O **corpo** de uma construção iterativa é a coleção de sentenças cuja
+  a execução é controlada pela sentença de iteração
 
-- A sentença de iteração junto com o corpo é chamada de **construção iterativa**
+- A sentença de iteração junto com o corpo é chamada de **construção
+  iterativa**
 
 
 ## Laços controlados por contador
@@ -633,13 +635,13 @@ Sentenças de iteração
 - A função responsável por percorrer a estrutura de dados é chamada
   **iterador**
 
-- No início de cada iteração o iterador é chamado, a cada chamada um valor é
-  retornado (em uma ordem específica)
+- No início de cada iteração o iterador é chamado, a cada chamada um valor
+  é retornado (em uma ordem específica)
 
 
 ## Iteração baseada em estrutura de dados
 
-- Devido a flexibilidade do `for` do C, ele pode ser usado para simular uma
+- Devido a flexibilidade do `for`{.c} do C, ele pode ser usado para simular uma
   iteração definida pelo usuário
 
     ```c
@@ -650,29 +652,46 @@ Sentenças de iteração
 
 ## Iteração baseada em estrutura de dados
 
-- Exemplo em PHP
+- Exemplo em Java
 
     \small
 
-    ```php
-    reset $list;
-    print ("First number: " + current($list) + "<br />");
-    while ($current_value = next($list))
-        print ("Next number: " + $current_value + "<br />");
+    ```java
+    List<String> lista = Arrays.asList("casa", "janela", "pé");
+    for (String x : lista) {
+        System.out.println(x);
+    }
+    ```
+
+    é equivalente a:
+
+    ```java
+    List<String> lista = Arrays.asList("casa", "janela", "pé");
+    {
+        Iterator<String> iter = lista.iterator();
+        while (iter.hasNext()) {
+            String x = iter.next();
+            System.out.println(x);
+        }
+    }
     ```
 
 
 ## Iteração baseada em estrutura de dados
 
-- Exemplo em C\#
+- O programador pode implementar as interfaces `Iterable` e `Iterator` para que
+  um tipo possa ser usado no `for`{.java}
 
-    ```cs
-    String[] strList == {"Bob", "Carol", "Ted"};
-    ...
-    foreach (String name in strList)
-        Console.WriteLine("Name: {0}", name);
+    ```java
+    public interface Iterable<T> {
+        Iterator<T> iterator();
+    }
+
+    public interface Iterator<T> {
+        bool hasNext();
+        T next();
+    }
     ```
-
 
 
 Desvio incondicional
