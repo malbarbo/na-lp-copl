@@ -202,13 +202,11 @@ Linguagens baseadas em C Esquerda: `*`, `/`, `%`, `+` e `-` binários
 
 - Forma de avaliação dos operandos
 
-  - Variável: o valor é buscado da memória
+  - Variável: o valor é lido da memória
 
-  - Constante: o valor é buscado da memória ou faz parte da instrução da
-    máquina
+  - Constante: o valor é lido da memória ou faz parte da instrução da máquina
 
-  - Expressão parentizada: todos os operandos e operadores devem ser
-    avaliados
+  - Expressão parentizada: todos os operandos e operadores devem ser avaliados
 
   - Função: deve ser executada
 
@@ -306,8 +304,6 @@ Sobrecarga de operadores
 
     - Nem tanto (segundo o Sebesta): `&`, usado para endereço e e-bit-a-bit
 
-    - A utilização do `-` como operador binário e unário é adequada?
-
 
 ## Sobrecarga de operadores
 
@@ -333,11 +329,12 @@ Conversões de tipos
 - As conversões podem ser
 
     - De **estreitamento**, quando um objeto é convertido para um tipo que não
-      pode incluir todos os valores do tipo original. Ex: `float` para `int`
+      pode incluir todos os valores do tipo original. Ex: `float`{.c} para
+      `int`{.c}
 
     - De **ampliação**, quando um objeto é convertido para um tipo que contém
-      pelo menos aproximações para os valores do tipo original. Ex: `int` para
-      `float`
+      pelo menos aproximações para os valores do tipo original. Ex: `int`{.c}
+      para `float`{.c}
 
     - Em geral, as conversões de ampliação são seguras
 
@@ -373,9 +370,9 @@ Conversões de tipos
 
     - Exemplos
 
-        - C: `(float) angle`
+        - C: `(float) angle`{.c}
 
-        - Ada: `Float(angle)`
+        - Ada: `Float(angle)`{.ada}
 
 
 
@@ -409,12 +406,14 @@ Expressões relacionais e booleanas
 - Uma **expressão booleana** consiste de variáveis ou constantes booleanas,
   expressões relacionais e operadores booleanos
 
-- Os operadores booleanos comuns são: `and`, `or` e `not`
+- Os operadores booleanos comuns são: `and`{.python}, `or`{.python}
+  e `not`{.python}
 
-- Na maioria das linguagens o `and` tem prioridade sobre o `or`
+- Na maioria das linguagens o `and`{.python} tem prioridade sobre
+  o `or`{.python}
 
-- Em Ada os operadores `and` e `or` tem a mesma prioridade e não são
-  associativos
+- Em Ada os operadores `and`{.python} e `or`{.python} tem a mesma prioridade
+  e não são associativos
 
 - Os operadores booleanos em geral têm prioridade menor que os operadores
   relacionais
@@ -428,14 +427,14 @@ Expressões relacionais e booleanas
 
 - C/C++
 
-    - Qual o significado da expressão `x > y > z`?
+    - Qual o significado da expressão `x > y > z`{.c}?
 
     \pause
 
 - Python
 
-    - A expressão `x > y > z` tem o significado esperado, isto é `x > y and
-      y > z`
+    - A expressão `x > y > z`{.python} tem o significado esperado, isto é
+      `x > y and y > z`{.python}
 
 
 
@@ -477,8 +476,8 @@ Avaliação em curto-circuito
     - C/C++, Java usam os operadores em curto circuito `&&` e `||`,
       e operadores que não são curto circuito `&` e `|` \pause
 
-    - Ada usa `and then` e `or else` para especificar que a expressão deve ser
-      avaliada em curto circuito
+    - Ada usa `and then`{.ada} e `or else`{.ada} para especificar que
+      a expressão deve ser avaliada em curto circuito
 
 
 
