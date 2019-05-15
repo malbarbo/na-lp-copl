@@ -30,7 +30,7 @@ As imagens foram retiradas do livro e redistribuídas aqui, o que consideramos u
 Execute o comando `make pdf`. Os arquivos pdfs serão gerados no diretório `target/pdf`.
 
 É necessário o [pandoc](https://pandoc.org/) e o pdflatex. O pandoc é baixado
-automáticamente enquanto o pdflatex precisa ser instalado. Em um sistema
+automaticamente enquanto o pdflatex precisa ser instalado. Em um sistema
 baseado no Debian (Ubuntu, Mint, etc), os seguintes pacotes são necessários:
 `texlive`, `texlive-xetex`, `texlive-fonts-extra`, `texlive-lang-portuguese`.
 
