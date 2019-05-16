@@ -1,10 +1,11 @@
 ---
+# TODO: colocar exemplo de fechamento antes de apresentar o conceito
 # vim: set spell spelllang=pt_br sw=4:
 title: Subprogramas
 ---
 
-Introdução
-==========
+Fundamentos
+===========
 
 ## Introdução
 
@@ -18,10 +19,6 @@ Introdução
 
     - Capítulos 11 e 12
 
-
-
-Fundamentos
-===========
 
 ## Fundamentos
 
@@ -92,14 +89,12 @@ Fundamentos
     - O **protocolo** é o perfil dos parâmetros mais o tipo de retorno (em
       caso de funções)
 
-    - Declarações
+    - Declarações (protótipos em C/C++)
 
         - A declaração especifica o protocolo do subprograma, mas não as ações
 
-        - Necessário em linguagens que não permitem referencias diretas
-          a subprogramas
-
-        - Em C/C++ uma declaração é chamada de protótipo
+        - Necessário em linguagens que não permitem referencias futuras
+          (**forward references**) a subprogramas
 
 
 ## Parâmetros
@@ -110,15 +105,7 @@ Fundamentos
 
     - Acesso direto as variáveis não locais
 
-        - O acesso extensivo a variáveis não locais pode reduzir
-          a confiabilidade
-
-        \pause
-
     - Passagem de parâmetros
-
-        - Dados passados por parâmetro são acessados por nomes que são locais
-          ao subprograma
 
 
 ## Parâmetros
@@ -129,15 +116,21 @@ Fundamentos
 - Os parâmetros passados em uma chamada de subprograma são chamados de
   **parâmetros reais**
 
+
+## Parâmetros
+
 - Vinculação entre os parâmetros reais e os parâmetros formais
 
     - A maioria das linguagens faz a vinculação através da posição
       (**parâmetros posicionais**): o primeiro parâmetro real é vinculado com
       o primeiro parâmetro formal, e assim por diante
 
-        - Funciona bem quando o número de parâmetros é pequeno
+\pause
 
-    - Existem outras formas?
+- Os parâmetros posicionais funcionam bem quando o número de parâmetros
+  é pequeno
+
+- Existem outras formas?
 
 
 ## Parâmetros
@@ -215,21 +208,31 @@ Fundamentos
 
 - Existem duas categorias de subprogramas
 
-    - **Procedimentos** são coleções de instruções que definem uma computação
-      parametrizada
+    - Procedimentos
 
-        - Produzem resultados para a unidade chamadora de duas formas: através
-          das variáveis não locais e alterando os parâmetros
+    - Funções
 
-        - São usados para criar novas instruções (sentenças)
 
-    - **Funções** são baseadas no conceito matemático de função
+## Procedimentos e funções
 
-        - Produz um valor, que ó o efeito desejado
+- **Procedimentos** são coleções de instruções que definem uma computação
+  parametrizada
 
-        - São usadas para criar novos operadores
+    - Produzem resultados para a unidade chamadora de duas formas: através
+      das variáveis não locais e alterando os parâmetros
 
-        - Uma função sem efeito colateral é chamada de **função pura**
+    - São usados para criar novas instruções (sentenças)
+
+
+## Procedimentos e funções
+
+- **Funções** são baseadas no conceito matemático de função
+
+    - Produz um valor, que ó o efeito desejado
+
+    - São usadas para criar novos operadores
+
+    - Uma função sem efeito colateral é chamada de **função pura**
 
 
 
@@ -271,14 +274,6 @@ Ambientes de referência local
 
         - Vantagens e desvantagens (capítulo 5 e seção 9.4.1)
 
-    - Poucas linguagens utilizam apenas vinculação estática
-
-    - A linguagem C, permite o programado escolher
-
-        - `static int x`{.c}
-
-        - `int x`{.c}
-
 
 ## Ambientes de referência local
 
@@ -302,11 +297,11 @@ Métodos de passagens de parâmetros
 
 - Os parâmetros formais são caracterizados por um de três modelos semânticos
 
-    - Podem receber dados dos parâmetros reais (in mode)
+    - Podem receber dados dos parâmetros reais (modo de entrada)
 
-    - Podem transmitir dados para os parâmetros reais (out mode)
+    - Podem transmitir dados para os parâmetros reais (modo de saída)
 
-    - Podem fazer ambos (inout mode)
+    - Podem fazer ambos (modo de entrada/saída)
 
 
 ## Métodos de passagens de parâmetros
@@ -331,8 +326,8 @@ Métodos de passagens de parâmetros
     - Passagem por valor
 
         - Quando um parâmetro ó passado por valor, o valor do parâmetro real
-          é utilizado para inicializar o parâmetro formal correspondente (in
-          mode)
+          é utilizado para inicializar o parâmetro formal correspondente
+          (modo de entrada)
 
         - A passagem por valor geralmente é implementada por cópia, mas pode
           ser implementada transmitindo-se o caminho de acesso \pause
@@ -349,7 +344,7 @@ Métodos de passagens de parâmetros
 
     - Passagem por resultado
 
-        - É uma implementação do modelo out mode
+        - É uma implementação do modo de saída
 
         - Quando um parâmetro é passado por resultado, nenhum valor
           é transmitido para o subprograma
@@ -401,7 +396,7 @@ Métodos de passagens de parâmetros
 
     - Passagem por valor-resultado (por cópia)
 
-        - É uma implementação do modelo inout mode
+        - É uma implementação do modo de entrada/saída
 
         - É uma combinação da passagem por valor e passagem por resultado
 
@@ -415,7 +410,7 @@ Métodos de passagens de parâmetros
 
     - Passagem por referência
 
-        - É uma implementação do modelo inout mode
+        - É uma implementação do modo de entrada/saída
 
         - Ao invés de copiar os dados, um caminho de acesso é transmitido
           (geralmente um endereço) \pause
@@ -453,7 +448,7 @@ Métodos de passagens de parâmetros
 
     - Passagem por nome
 
-        - É um método de passagem de parâmetro inout mode
+        - É um método de passagem de parâmetro de modo de entrada/saída
 
         - Não corresponde a um único modelo de implementação
 
@@ -512,11 +507,11 @@ Métodos de passagens de parâmetros
         ```
 
 
-    - Parâmetros como out mode podem ser atribuídos mas não referenciados
+    - Parâmetros no modo de saída podem ser atribuídos mas não referenciados
 
-    - Parâmetros como in mode podem ser referenciados mas não atribuídos
+    - Parâmetros no modo de entrada podem ser referenciados mas não atribuídos
 
-    - Parâmetros in out mode podem ser referenciados e atribuídos
+    - Parâmetros no modo de entrada/saída podem ser referenciados e atribuídos
 
 
 ## Métodos de passagens de parâmetros
@@ -552,10 +547,10 @@ Métodos de passagens de parâmetros
         ```cpp
         double sin(x) // sem checagem
           double c;
-        {...}
-        double value;
-        int count;
-        value = sin(count);
+        { ... }
+
+        int count = 123;
+        double value = sin(count);
 
         double sin(double x) // com checagem
         { ... }
@@ -564,7 +559,7 @@ Métodos de passagens de parâmetros
 
 ## Métodos de passagens de parâmetros
 
-- Arranjos multimensionais como parâmetros
+- Arranjos multidimensionais como parâmetros
 
     - O compilador precisa saber o tamanho do arranjo multidimensional
       para criar a função de mapeamento
@@ -588,20 +583,17 @@ Métodos de passagens de parâmetros
 
 - Considerações de projeto
 
-    - Considerações importantes
+    - Eficiência
 
-        - Eficiência
+    - Transferência de dados em uma ou duas direções
 
-        - Transferência de dados em uma ou duas direções
+- Estas considerações estão em conflito
 
-    - Estas considerações estão em conflito
+    - As boas práticas de programação sugerem limitar o acesso as variáveis,
+      o que implica em usar transferência em uma direção quando possível
 
-        - As boas práticas de programação sugerem limitar o acesso as
-          variáveis, o que implica em usar transferência em uma direção quando
-          possível
-
-        - Mas passagem por referência é mais eficiente para estruturas com
-          tamanho significativo
+    - Mas passagem por referência é mais eficiente para estruturas com tamanho
+      significativo
 
 
 <!-- TODO: exemplos de passagem de parâmetros -->
@@ -622,28 +614,11 @@ Parâmetros que são subprogramas e fechamentos
 
 ## Parâmetros que são subprogramas
 
-- Simples se apenas o endereço da função fosse necessário, mas existem duas
-  questões que devem ser consideradas
-
-    - Os parâmetros do subprograma passado como parâmetro são checados?
+- Simples se apenas o endereço da função fosse necessário, mas existe uma
+  questão que deve ser considerada
 
     - Qual é o ambiente de referenciamento usado na execução do subprograma
       passado como parâmetro?
-
-
-## Parâmetros que são subprogramas
-
-- Os parâmetros do subprograma passado como parâmetro são checados?
-
-    - Versão original do Pascal permitia a passagem de subprogramas como
-      parâmetro sem incluir informações dos tipos dos parâmetros
-
-    - Fortran, C/C++ incluem informações dos tipos
-
-    - Ada não permite parâmetros que são subprogramas (uma forma alternativa é
-      fornecida através de construções genéricas)
-
-    - Java 8 permite parâmetros que são subprogramas e faz a checagem de tipo
 
 
 ## Fechamentos
@@ -744,7 +719,7 @@ Questões de projeto referentes a funções
 
     \pause
 
-    - Funções em Ada podem ter apenas parâmetros in mode, o que diminui as
+    - Funções em Ada podem ter apenas parâmetros de entrada, o que diminui as
       formas de efeitos colaterais
 
 
@@ -775,8 +750,8 @@ Questões de projeto referentes a funções
 
 
 
-Subprogramas sobrecarregados
-============================
+Subprogramas sobrecarregados e genéricos
+========================================
 
 ## Subprogramas sobrecarregados
 
@@ -791,6 +766,22 @@ Subprogramas sobrecarregados
 
 ## Subprogramas sobrecarregados
 
+- Exemplo da biblioteca padrão do Java
+
+    \small
+
+    ```java
+    public class Arrays {
+        static void sort(byte[] a) { ... }
+        static void sort(byte[] a, int from, int to) { ... }
+        static void sort(short[] a) { ... }
+        static void sort(short[] a, int from, int to) { ... }
+    }
+    ```
+
+
+## Subprogramas sobrecarregados
+
 - Quando coerção de parâmetros são permitidas, o processo de distinção fica
   complicado. Exemplo e C++
 
@@ -799,6 +790,9 @@ Subprogramas sobrecarregados
     int f(double x) { ... }
     int a = f(2); // erro de compilação
     ```
+
+
+## Subprogramas sobrecarregados
 
 - Subprogramas sobrecarregados com parâmetros padrões podem levar a uma chamada
   ambígua. Exemplo em C++
@@ -835,19 +829,15 @@ Subprogramas sobrecarregados
     - Dificulta a utilização de reflexão
 
 
-
-Subprogramas genéricos
-======================
-
 ## Subprogramas genéricos
 
 - Um **subprograma polimórfico** recebe diferente tipos de parâmetros em
   diferentes ativações
 
-- Subprogramas sobrecarregados fornecem o chamado **polimorfismo ad hoc**
+- Subprogramas sobrecarregados fornecem o chamado **polimorfismo _ad hoc_**
 
-- Linguagens que suportam programa OO oferecem o **polimorfismo de subtipo**,
-  quando um parâmetro de um tipo recebe uma valor de um subtipo
+- Linguagens que suportam programação OO oferecem o **polimorfismo de
+  subtipo**, quando um parâmetro de um tipo recebe uma valor de um subtipo
 
 - Python e Ruby fornecem um tipo mais geral de polimorfismo (em tempo de
   execução)
@@ -861,6 +851,17 @@ Subprogramas genéricos
 
 - Os subprogramas com polimorfismo paramétricos são chamados de **subprogramas
   genéricos**
+
+
+## Subprogramas genéricos
+
+- Em geral polimorfismo _ad hod_ e paramétrico são estáticos enquanto
+  polimorfismo de subtipo é dinâmico
+
+    - Estático é mais rápido mas pode gerar executáveis maiores (os
+      subprogramas são monomorfizados)
+
+    - Dinâmico é mais flexível mas mais lento
 
 
 ## Subprogramas genéricos
