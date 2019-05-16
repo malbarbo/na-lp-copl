@@ -3,10 +3,10 @@
 title: Implementação de subprogramas
 ---
 
-A semântica geral das chamadas e retornos
-=========================================
+Semântica geral das chamadas e retornos
+=======================================
 
-## A semântica geral das chamadas e retornos
+## Semântica geral das chamadas e retornos
 
 - As operações de chamada e retorno de subprogramas são denominadas
   conjuntamente de **ligação de subprograma**
@@ -15,7 +15,7 @@ A semântica geral das chamadas e retornos
   subprogramas
 
 
-## A semântica geral das chamadas e retornos
+## Semântica geral das chamadas e retornos
 
 - Ações associadas com as chamadas de subprogramas
 
@@ -31,11 +31,11 @@ A semântica geral das chamadas e retornos
       aninhados)
 
 
-## A semântica geral das chamadas e retornos
+## Semântica geral das chamadas e retornos
 
 - Ações associadas com os retornos de subprogramas
 
-    - Retorno dos parâmetros out e inout
+    - Retorno dos parâmetros de saída
 
     - Desalocação das variáveis locais
 
@@ -45,19 +45,19 @@ A semântica geral das chamadas e retornos
 
 
 
-Implementação de subprogramas "simples"
-=======================================
+Subprogramas "simples"
+======================
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
-- Subprogramas simples
+- Não aninhados
 
-    - Subprogramas não podem ser aninhados
+- Não recursivos
 
-    - Todas as variáveis locais são estáticas
+- Todas as variáveis locais são estáticas
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - Semântica da chamada requer as ações
 
@@ -70,12 +70,12 @@ Implementação de subprogramas "simples"
     4. Transferir o controle ao subprograma chamado
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - Semântica do retorno requer as ações
 
-    1. Copiar os valores dos parâmetros formais inout (passagem por cópia)
-       e out para os parâmetros reais
+    1. Copiar os valores dos parâmetros formais de saída para os parâmetros
+       reais
 
     2. Copiar o valor de retorno (no caso de função)
 
@@ -84,13 +84,13 @@ Implementação de subprogramas "simples"
     4. Transferir o controle de volta ao chamador
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - Como estas ações são distribuídas entre o subprograma chamador
   e o subprograma chamado?
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - Memória requerida para a chamada e retorno
 
@@ -105,7 +105,7 @@ Implementação de subprogramas "simples"
     - Valores temporários utilizados no código do subprograma
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - As ações do subprograma chamado podem ocorrer
 
@@ -114,16 +114,16 @@ Implementação de subprogramas "simples"
     - No final da execução (**epílogo**)
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - Um subprograma simples consiste de duas partes de tamanhos fixos
 
     - Código do subprograma
 
-    - As variáveis locais e os dados (não código, listados anteriormente)
+    - As variáveis locais e os demais dados
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 - O formato (layout) da parte não código do subprograma é chamado de **registro
   de ativação**
@@ -137,34 +137,34 @@ Implementação de subprogramas "simples"
 - Como o registro de ativação tem tamanho fixo, pode ser alocado estaticamente
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 ![](figs/10-1.pdf)
 
 
-## Implementação de subprogramas "simples"
+## Subprogramas "simples"
 
 ![](figs/10-2.pdf)
 
 
-Implementação de subprogramas com variáveis locais dinâmicas na pilha
-=====================================================================
+Subprogramas com variáveis locais dinâmicas na pilha
+====================================================
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
-- Registros de ativação mais complexos \pause
+- Registros de ativação mais complexos
 
     - O compilador precisa gerar código para alocação e desalocação das
       variáveis locais
 
-    - Suporte a recursão (mais de uma instância de registro de ativação para um
-      subprograma)
+- Suporte a recursão
+
+    - Mais de uma instância de registro de ativação para um subprograma
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
-- O formato de registro de ativação é conhecido em tempo de compilação (na
-  maioria das linguagens)
+- O formato de registro de ativação é conhecido em tempo de compilação
 
 - O tamanho do registro de ativação pode variar (se existirem arranjos
   dinâmicos na pilha, por exemplo)
@@ -172,12 +172,12 @@ Implementação de subprogramas com variáveis locais dinâmicas na pilha
 - Os registros de ativação precisam ser criados dinamicamente
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 ![](figs/10-3.pdf)
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - O endereço de retorno geralmente consiste em um ponteiro para a instrução que
   segue a chamada do subprograma
@@ -191,7 +191,7 @@ Implementação de subprogramas com variáveis locais dinâmicas na pilha
   subprograma chamado
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 <div class="columns">
 <div class="column" width="30%">
@@ -211,7 +211,7 @@ void sub(float total, int part){
 </div>
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - Ativar um subprograma requer a criação dinâmica de um registro de ativação
 
@@ -221,7 +221,7 @@ void sub(float total, int part){
   registro de ativação da unidade de programa que está executando
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - O EP é mantido pelo sistema \pause
 
@@ -240,7 +240,7 @@ void sub(float total, int part){
   instância do registro de ativação
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - Ações do subprograma chamador
 
@@ -255,7 +255,7 @@ void sub(float total, int part){
     5. Transferir o controle ao subprograma chamado
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - Ações no prólogo do subprograma chamado
 
@@ -264,12 +264,12 @@ void sub(float total, int part){
     2. Alocar as variáveis locais
 
 
-## Implementação de subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - Ações no epílogo do subprograma chamado
 
-    1. Copiar os valores dos parâmetros formais inout (passagem por cópia)
-       e out para os parâmetros reais
+    1. Copiar os valores dos parâmetros formais de saída para os parâmetros
+       reais
 
     2. Copiar o valor de retorno (no caso de função)
 
@@ -314,7 +314,7 @@ void main() {
 </div>
 
 
-## Implementação subprogramas com variáveis locais dinâmicas na pilha
+## Subprogramas com variáveis locais dinâmicas na pilha
 
 - A coleção de vínculos dinâmicos na pilha em um determinado momento é chamado
   de **cadeia dinâmica** ou **cadeia de chamadas**
@@ -628,10 +628,10 @@ void main() {
 </div>
 
 
-Implementação escopo dinâmico
-=============================
+Escopo dinâmico
+===============
 
-## Implementação escopo dinâmico
+## Escopo dinâmico
 
 - Existem duas maneiras para implementar acesso a variáveis não locais em
   linguagens com escopo dinâmico
@@ -641,7 +641,7 @@ Implementação escopo dinâmico
     - Acesso raso
 
 
-## Implementação escopo dinâmico
+## Escopo dinâmico
 
 - Acesso profundo
 
@@ -653,7 +653,7 @@ Implementação escopo dinâmico
     - Os nomes das variáveis devem ser armazenadas nos registros de ativação
 
 
-## Implementação escopo dinâmico
+## Escopo dinâmico
 
 <div class="columns">
 <div class="column" width="30%">
@@ -685,7 +685,7 @@ void main() {
 </div>
 
 
-## Implementação escopo dinâmico
+## Escopo dinâmico
 
 - Acesso raso
 
@@ -697,7 +697,7 @@ void main() {
     <!-- TODO: completar os tópicos de escopo dinâmico -->
 
 
-## Implementação escopo dinâmico
+## Escopo dinâmico
 
 <div class="columns">
 <div class="column" width="30%">
