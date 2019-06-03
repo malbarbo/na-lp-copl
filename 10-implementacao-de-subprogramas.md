@@ -8,11 +8,10 @@ Semântica geral das chamadas e retornos
 
 ## Semântica geral das chamadas e retornos
 
-- As operações de chamada e retorno de subprogramas são denominadas
-  conjuntamente de **ligação de subprograma**
+- A implementação de subprogramas deve ser baseada na semântica da **ligação de
+  subprogramas**
 
-- A implementação de subprogramas deve ser baseada na semântica da ligação de
-  subprogramas
+    - Envolve as operações de chamada e retorno
 
 
 ## Semântica geral das chamadas e retornos
