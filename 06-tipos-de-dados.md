@@ -9,6 +9,7 @@
 # TODO: melhorar a discução de fatias (numpy, Julia)
 # TODO: registros: aninhados, com auto-referência, padding
 # TODO: sistema de tipos
+# TODO: abordagem preguiçosa vs ansiosa para gerência de memória
 title: Tipos de dados
 ---
 
