@@ -56,10 +56,8 @@ Introdução à abstração de dados
     - Confiabilidade, os clientes não podem mudar a representação dos objetos
       diretamente, aumentando a integridade dos objetos
 
-    - Evita colisões de nomes
-
-    - Possibilidade de alterar a representação e implementação sem afetar os
-      clientes
+    - Flexibilidade, a representação e implementação das operações podem ser
+      alteradas sem afetar os clientes
 
 - Vantagens da segunda condição
 
@@ -72,11 +70,11 @@ Introdução à abstração de dados
 
     \pause
 
-    - Tipo float
+    - `float`
 
     \pause
 
-    - Tipo pilha
+    - `stack`
 
         ```c
         // create(stack), destroy(stack), empty(stack),
@@ -225,11 +223,11 @@ procedure Use_Stacks is
   Topone : Integer;
   Stack : Stack_Type;
   begin
-  Push(Stack, 42);
-  Push(Stack, 17);
-  Topone := Top(Stack);
-  Pop(Stack);
-  ...
+    Push(Stack, 42);
+    Push(Stack, 17);
+    Topone := Top(Stack);
+    Pop(Stack);
+    ...
   end Use_Stacks;
 ```
 
@@ -265,11 +263,11 @@ procedure Use_Stacks is
 
 - Ocultação de informação
 
-    - `private`, para entidades ocultas
+    - `private`{.cpp}, para entidades ocultas
 
-    - `public`, para entidades públicas
+    - `public`{.cpp}, para entidades públicas
 
-    - `protected`, para entidades visíveis apenas para as subclasses
+    - `protected`{.cpp}, para entidades visíveis apenas para as subclasses
 
 - Construtores
 
@@ -412,7 +410,7 @@ class Stack {
     private int [] stackRef;
     private int maxLen;
     private int topIndex;
-    public Stack() { // a constructor
+    public Stack() {
       stackRef = new int [100];
       maxLen = 99;
       topPtr = -1;
@@ -494,12 +492,12 @@ oldDegreeDays = w.DegreeDays;
 
     - Capacidade semelhante as classes em C++ e Java
 
-    - Os nomes das variáveis de instâncias começam com `@` e de classes com `@@`
+    - Os nomes das variáveis de instâncias começam com `@`{.ruby} e de classes com `@@`{.ruby}
 
     - Os métodos são declarados com as mesma sintaxe que as funções
 
-    - O construtor é o `initialize`, que é chamado quando o método `new` da
-      classe é chamado
+    - O construtor é o `initialize`{.ruby}, que é chamado quando o método
+      `new`{.ruby} da classe é chamado
 
     - As classes são dinâmicas
 
@@ -705,7 +703,7 @@ Construções de encapsulamento
     - A interface é colocada em um arquivo de cabeçalho, e a implementação em
       outro arquivo
 
-    - `#include` é utilizado para incluir o cabeçalho
+    - `#include`{.c} é utilizado para incluir o cabeçalho
 
     - O ligador não checa os tipos entre o cabeçalho e a implementação
 
@@ -719,7 +717,7 @@ Construções de encapsulamento
     - Os arquivos de cabeçalho de templates em geral incluem a declaração
       e a definição
 
-    - `friend` fornece um mecanismo para permitir acesso a membros privados
+    - `friend`{.cpp} fornece um mecanismo para permitir acesso a membros privados
 
 
 ## Construções de encapsulamento
