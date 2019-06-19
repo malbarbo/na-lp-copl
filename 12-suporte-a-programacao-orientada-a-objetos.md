@@ -9,6 +9,7 @@ Introdução
 
 ## Introdução
 
+
 - Muitas linguagens suportam programação orientada a objeto
 
     - De Cobol a Lisp
@@ -20,6 +21,7 @@ Introdução
     - Java e C\# (orientada a objetos mas usa construções imperativas)
 
     - Smalltalk (orientada a objeto pura)
+
 
 
 

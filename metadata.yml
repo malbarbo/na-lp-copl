@@ -5,7 +5,7 @@ institute:
 lang: pt-BR \
 toc-title: Conteúdo
 theme: metropolis
-themeoptions: numbering=fraction,sectionpage=simple,block=fill
+themeoptions: numbering=fraction,sectionpage=simple
 header-includes: |
     \usepackage{caption}
     \captionsetup[figure]{labelformat=empty}
