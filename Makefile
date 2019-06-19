@@ -36,6 +36,17 @@ tex: $(TEX)
 
 exemplos: $(EX)
 
+# TODO: generalizar esta regra
+$(DEST_PDF)/exercicios-1.pdf: exercicios-1.md templates/default.latex metadata.yml $(FIGS_DIR)/* $(PANDOC) Makefile
+	@mkdir -p $(DEST_PDF)
+	@echo $@
+	@$(PANDOC) --template templates/default.latex -o $@ $<
+
+$(DEST_PDF)/exercicios-2.pdf: exercicios-2.md templates/default.latex metadata.yml $(FIGS_DIR)/* $(PANDOC) Makefile
+	@mkdir -p $(DEST_PDF)
+	@echo $@
+	@$(PANDOC) --template templates/default.latex -o $@ $<
+
 $(DEST_PDF)/%.pdf: %.md templates/default.latex metadata.yml $(FIGS_DIR)/* $(PANDOC) Makefile
 	@mkdir -p $(DEST_PDF)
 	@echo $@
