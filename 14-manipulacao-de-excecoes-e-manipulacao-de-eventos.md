@@ -1,13 +1,12 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
-title: Manipulação de excecões e manipulação de eventos
-# TODO: usar o termo tratamento ao invés de manipulação
+title: Tratamento de excecões e tratamento de eventos
 ---
 
-Introdução a manipulação de exceções
+Introdução a tratamento de exceções
 ====================================
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 - A maioria dos computadores (hardware) são capazes de detectar certos erros em
   tempo de execução, como divisão por zero, falha de dispositivo de entrada
@@ -20,17 +19,20 @@ Introdução a manipulação de exceções
       retornava para o sistema operacional que imprimia uma mensagem de erro
       na tela
 
+
+## Introdução a tratamento de exceções
+
 - Outros erros podem ser detectados por software, como índice do arranjo fora do
   intervalo, final de arquivo, etc
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 - Em ambos os casos é interessante permitir que o programa reaja ao erro
   e possivelmente continue a sua execução
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 - Conceitos básicos
 
@@ -38,7 +40,7 @@ Introdução a manipulação de exceções
       hardware ou software que precisa de processamento especial
 
     - O processamento especial que é necessário quando uma exceção é detectada
-      é chamado de **manipulação de exceção**
+      é chamado de **tratamento de exceção**
 
     - Este processamento é feito por uma unidade de código chamada de
       **manipulador de exceção**
@@ -47,10 +49,10 @@ Introdução a manipulação de exceções
       ocorre
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
-- Uma linguagem que não oferece mecanismos específicos de manipulação de
-  exceção, não exclui a possibilidade de manipulação de exceções definidas pelo
+- Uma linguagem que não oferece mecanismos específicos de tratamento de
+  exceção, não exclui a possibilidade de tratamento de exceções definidas pelo
   usuário e identificadas por software
 
     - Passar um parâmetro auxiliar, que é usado como variável de estado
@@ -60,7 +62,7 @@ Introdução a manipulação de exceções
     - Passar um subprograma, que é utilizado como manipulador da exceção
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 - Limitações
 
@@ -70,9 +72,9 @@ Introdução a manipulação de exceções
       deve ser passado para todos os subprogramas na sequência de chamadas
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
-- Vantagens de mecanismos de manipulação de exceção integrados a linguagem
+- Vantagens de mecanismos de tratamento de exceção integrados a linguagem
 
     - Geração de código pelo compilador para checagem e geração de exceção
 
@@ -80,10 +82,10 @@ Introdução a manipulação de exceções
 
     - Encorajamento do programador a considerar várias possíveis erros
 
-    - Reuso de código de manipulação de exceção
+    - Reuso de código de tratamento de exceção
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 - Questões de projeto
 
@@ -102,7 +104,7 @@ Introdução a manipulação de exceções
     - Como as exceções definidas pelo usuário são especificadas?
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 - Questões de projeto
 
@@ -119,16 +121,16 @@ Introdução a manipulação de exceções
     - Deve ser possível desabilitar exceções pré-definidas?
 
 
-## Introdução a manipulação de exceções
+## Introdução a tratamento de exceções
 
 ![](figs/14-1.pdf)
 
 
 
-Manipulação de exceções em Ada
+Tratamento de exceções em Ada
 ==============================
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Baseado nas boas partes de PL/I e CLU
 
@@ -137,7 +139,7 @@ Manipulação de exceções em Ada
   para o manipulador
 
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Forma do manipulador
 
@@ -154,7 +156,7 @@ Manipulação de exceções em Ada
     ```
 
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Manipuladores podem ser colocados em blocos ou no corpo de subprogramas,
   pacotes ou tarefas
@@ -177,7 +179,7 @@ Manipulação de exceções em Ada
     ```
 
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Vinculação das exceções aos manipuladores
 
@@ -198,7 +200,7 @@ Manipulação de exceções em Ada
         - Tarefa, sem propagação, a tarefa é marcada como completada
 
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Vinculação das exceções aos manipuladores
 
@@ -210,7 +212,7 @@ Manipulação de exceções em Ada
       o final do bloco ou unidade
 
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Outras decisões de projeto
 
@@ -228,14 +230,14 @@ Manipulação de exceções em Ada
     - Algumas exceções podem ser desativadas com a cláusula `pragma`:\ `pragma
       Suppress(check_name)`
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Exemplo (ruim) do livro
 - O único uso adequado neste exemplo é a entrada de um número inválido
 - Arquivo `grade_distribution.adb`
 
 
-## Manipulação de exceções em Ada
+## Tratamento de exceções em Ada
 
 - Avaliação
 
@@ -251,10 +253,10 @@ Manipulação de exceções em Ada
 
 
 
-Manipulação de exceções em C++
+Tratamento de exceções em C++
 ==============================
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Adicionada a linguagem em 1990
 
@@ -263,7 +265,7 @@ Manipulação de exceções em C++
 - Diferente de Ada, não tem exceções pré-definidas
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Os manipuladores de exceções tem a forma
 
@@ -281,7 +283,7 @@ Manipulação de exceções em C++
     ```
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Cada cláusula `catch` define um manipulador
 
@@ -296,14 +298,14 @@ Manipulação de exceções em C++
   exceções não manipuladas
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Geração de exceções
 
     - `throw [expression]`
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Vinculação das exceções aos manipuladores
 
@@ -318,7 +320,7 @@ Manipulação de exceções em C++
     - A busca por um manipulador começa pelos manipuladores que seguem o `try`
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Vinculação das exceções aos manipuladores
 
@@ -333,7 +335,7 @@ Manipulação de exceções em C++
       manipuladores que `M` faz parte
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Outras decisões de projeto
 
@@ -351,12 +353,12 @@ Manipulação de exceções em C++
       exceção
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Arquivo `grade_distribution.cpp`
 
 
-## Manipulação de exceções em C++
+## Tratamento de exceções em C++
 
 - Avaliação
 
@@ -370,17 +372,17 @@ Manipulação de exceções em C++
 
 
 
-Manipulação de exceções em Java
+Tratamento de exceções em Java
 ===============================
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Baseado em C++, alinhado com o POO
 
 - Todas as exceções são objetos de classes que são descendentes de `Throwable`
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - `Throwable` tem duas subclasses \pause
 
@@ -404,7 +406,7 @@ Manipulação de exceções em Java
           é `ArrayIndexOutOfBoundsException`
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Manipuladores de exceções
 
@@ -414,7 +416,7 @@ Manipulação de exceções em Java
     - As exceções são geradas com a cláusula `throw`
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Vinculação das exceções aos manipuladores
 
@@ -424,7 +426,7 @@ Manipulação de exceções em Java
       classe ou de uma classe ancestral
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Outras decisões de projeto
 
@@ -439,7 +441,7 @@ Manipulação de exceções em Java
       listadas na cláusula `throws` ou serem manipuladas no método
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Um método não pode declarar mais exceções na cláusula `throws` do que
   o método que ele sobrescreve
@@ -455,7 +457,7 @@ Manipulação de exceções em Java
     - Declarar a exceção em sua cláusula `throws` e não tratar a exceção
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - A cláusula `finally`
 
@@ -465,7 +467,7 @@ Manipulação de exceções em Java
       executada independente do que acontece na cláusula `try`
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Arquivo `GradeDistribution.java`
 - Arquivo `GradeDistribution2.java` (uso adequado de exceção)
@@ -477,7 +479,7 @@ Manipulação de exceções em Java
 - Arquivo `grade_distribution.py`
 
 
-## Manipulação de exceções em Java
+## Tratamento de exceções em Java
 
 - Avaliação
 
@@ -492,10 +494,10 @@ Manipulação de exceções em Java
 
 
 
-Introdução a manipulação de eventos
+Introdução a tratamento de eventos
 ===================================
 
-## Introdução a manipulação de eventos
+## Introdução a tratamento de eventos
 
 - Um **evento** é criado por uma ação externa, como por exemplo, a interação do
   usuário com uma interface gráfica
@@ -505,10 +507,10 @@ Introdução a manipulação de eventos
 
 
 
-Manipulação de eventos em Java
+Tratamento de eventos em Java
 ==============================
 
-## Manipulação de eventos em Java
+## Tratamento de eventos em Java
 
 - Os manipuladores de eventos são chamados de **ouvidores de evento** (event
   listeners) em Java
@@ -522,7 +524,7 @@ Manipulação de eventos em Java
 - Os ouvidores devem ser registrados nos geradores de evento explicitamente
 
 
-## Manipulação de eventos em Java
+## Tratamento de eventos em Java
 
 - Exemplo
 
