@@ -27,6 +27,10 @@ def read_ints(min, max, stop, message):
 
 
 def distribute_grades(grades):
+    '''
+    >>> distribute_grades([10, 20, 30, 20])
+    [0, 1, 2, 1, 0, 0, 0, 0, 0, 0]
+    '''
     frequency = [0] * 10
     for grade in grades:
         index = grade // 10 if grade < 100 else 9

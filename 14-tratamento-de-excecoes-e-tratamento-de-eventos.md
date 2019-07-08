@@ -1,5 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
+# TODO: falar de implementação, incluir setjmp
 title: Tratamento de excecões e tratamento de eventos
 ---
 
@@ -43,9 +44,9 @@ Introdução a tratamento de exceções
       é chamado de **tratamento de exceção**
 
     - Este processamento é feito por uma unidade de código chamada de
-      **manipulador de exceção**
+      **tratador de exceção**
 
-    - Uma exceção é **gerada** (thrown, raised) quando seu evento associado
+    - Uma exceção é **lançada** (thrown, raised) quando seu evento associado
       ocorre
 
 
@@ -55,11 +56,13 @@ Introdução a tratamento de exceções
   exceção, não exclui a possibilidade de tratamento de exceções definidas pelo
   usuário e identificadas por software
 
-    - Passar um parâmetro auxiliar, que é usado como variável de estado
+    - Retorno de código de erro
 
-    - Passar um rótulo, que é utilizado como endereço de retorno
+    - Parâmetro auxiliar, que é usado como variável de estado
 
-    - Passar um subprograma, que é utilizado como manipulador da exceção
+    - Rótulo, que é utilizado como endereço de retorno
+
+    - Subprograma, que é utilizado como tratador da exceção
 
 
 ## Introdução a tratamento de exceções
@@ -89,14 +92,14 @@ Introdução a tratamento de exceções
 
 - Questões de projeto
 
-    - Como e onde os manipuladores de exceções são especificados, quais são
+    - Como e onde os tratadores de exceções são especificados, quais são
       seus escopos?
 
-    - Como a ocorrência de uma exceção é vinculada ao manipulador de exceção?
+    - Como a ocorrência de uma exceção é vinculada ao tratador de exceção?
 
-    - Informações sobre as exceções podem ser passadas para o manipulador?
+    - Informações sobre as exceções podem ser passadas para o tratador?
 
-    - Onde a execução continua, se é que continua, depois que o manipulador da
+    - Onde a execução continua, se é que continua, depois que o tratador da
       exceção completa a sua execução?
 
     - Alguma forma de finalização é fornecida?
@@ -108,8 +111,8 @@ Introdução a tratamento de exceções
 
 - Questões de projeto
 
-    - Se existem exceções pré-definidas, deve haver manipuladores de exceção
-      padrões para programas que não fornecem seus próprios manipuladores?
+    - Se existem exceções pré-definidas, deve haver tratadores de exceção
+      padrões para programas que não fornecem seus próprios tratadores?
 
     - As exceções pré-definidas podem ser explicitamente geradas?
 
@@ -134,14 +137,14 @@ Tratamento de exceções em Ada
 
 - Baseado nas boas partes de PL/I e CLU
 
-- Em geral os manipuladores de exceções são locais ao código em que a exceção
+- Em geral os tratadores de exceções são locais ao código em que a exceção
   pode ocorrer, desta forma, não é necessário (nem possível) passar parâmetros
-  para o manipulador
+  para o tratador
 
 
 ## Tratamento de exceções em Ada
 
-- Forma do manipulador
+- Forma do tratador
 
     ```ada
     when exception_choice {| exception_choice} =>
@@ -158,10 +161,10 @@ Tratamento de exceções em Ada
 
 ## Tratamento de exceções em Ada
 
-- Manipuladores podem ser colocados em blocos ou no corpo de subprogramas,
+- Tratadores podem ser colocados em blocos ou no corpo de subprogramas,
   pacotes ou tarefas
 
-- Os manipuladores são agrupados em uma cláusula `exception`, que deve aparecer
+- Os tratadores são agrupados em uma cláusula `exception`, que deve aparecer
   no final do bloco ou unidade
 
     \small
@@ -181,12 +184,12 @@ Tratamento de exceções em Ada
 
 ## Tratamento de exceções em Ada
 
-- Vinculação das exceções aos manipuladores
+- Vinculação das exceções aos tratadores
 
-    - Quando um bloco ou unidade que gera uma exceção inclui um manipulador
-      para aquela exceção, a exceção é vinculada estaticamente ao manipulador
+    - Quando um bloco ou unidade que gera uma exceção inclui um tratador
+      para aquela exceção, a exceção é vinculada estaticamente ao tratador
 
-    - Se o bloco ou unidade não inclui um manipulador para aquela exceção,
+    - Se o bloco ou unidade não inclui um tratador para aquela exceção,
       a exceção é propagada para ser manipulada em outro lugar
 
         - Procedimentos, propagada para o chamados
@@ -202,7 +205,7 @@ Tratamento de exceções em Ada
 
 ## Tratamento de exceções em Ada
 
-- Vinculação das exceções aos manipuladores
+- Vinculação das exceções aos tratadores
 
     - O bloco ou unidade que gera a exceção, juntamente com todos as unidades
       para os quais a exceção é propagada, mas que não manipularão a exceção,
@@ -262,12 +265,10 @@ Tratamento de exceções em C++
 
 - Baseada no projeto da CLU, Ada e ML
 
-- Diferente de Ada, não tem exceções pré-definidas
-
 
 ## Tratamento de exceções em C++
 
-- Os manipuladores de exceções tem a forma
+- Os tratadores de exceções tem a forma
 
     ```cpp
     try {
@@ -285,16 +286,16 @@ Tratamento de exceções em C++
 
 ## Tratamento de exceções em C++
 
-- Cada cláusula `catch` define um manipulador
+- Cada cláusula `catch` define um tratador
 
 - Pode ter apenas um parâmetro formal, e o tipo tem que ser único
 
 - Não é necessário definir o nome do parâmetro formal
 
 - O parâmetro formal pode ser usado para transferir informações para
-  o manipulador
+  o tratador
 
-- O parâmetro formal pode ser `...`, o que defini um manipulador para todas as
+- O parâmetro formal pode ser `...`, o que defini um tratador para todas as
   exceções não manipuladas
 
 
@@ -307,32 +308,32 @@ Tratamento de exceções em C++
 
 ## Tratamento de exceções em C++
 
-- Vinculação das exceções aos manipuladores
+- Vinculação das exceções aos tratadores
 
-    - O tipo da expressão na cláusula `throw` seleciona o manipulador
+    - O tipo da expressão na cláusula `throw` seleciona o tratador
 
-    - Um manipulador com parâmetro formal do tipo `T`, `const T`, `T&`, `const
+    - Um tratador com parâmetro formal do tipo `T`, `const T`, `T&`, `const
       T&`, ou qualquer tipo derivado de `T`, casa com uma expressão do tipo `T`
 
     - Quando uma exceção é gerada em uma cláusula `try`, a execução do código
       do `try` é interrompida
 
-    - A busca por um manipulador começa pelos manipuladores que seguem o `try`
+    - A busca por um tratador começa pelos tratadores que seguem o `try`
 
 
 ## Tratamento de exceções em C++
 
-- Vinculação das exceções aos manipuladores
+- Vinculação das exceções aos tratadores
 
-    - A busca por um manipulador é sequencial
+    - A busca por um tratador é sequencial
 
-    - Se um manipulador não é encontrado, a exceção é propagada
+    - Se um tratador não é encontrado, a exceção é propagada
 
-    - Quando a exceção chega a função principal, o manipulador padrão é chamado
+    - Quando a exceção chega a função principal, o tratador padrão é chamado
 
-    - Quando a execução de um manipulador `M` é completada, o fluxo de controle
-      segue para a primeira instrução após o último manipulador da sequencia de
-      manipuladores que `M` faz parte
+    - Quando a execução de um tratador `M` é completada, o fluxo de controle
+      segue para a primeira instrução após o último tratador da sequencia de
+      tratadores que `M` faz parte
 
 
 ## Tratamento de exceções em C++
@@ -341,7 +342,7 @@ Tratamento de exceções em C++
 
     - Todas as exceções são definidas pelo usuário
 
-    - Existe um manipulador padrão, chamado `unexpected`, que pode ser
+    - Existe um tratador padrão, chamado `unexpected`, que pode ser
       redefinido
 
     - As exceções podem ter qualquer tipo
@@ -368,7 +369,7 @@ Tratamento de exceções em C++
 
     - Problemas de legibilidade, qualquer tipo pode ser usado como exceção
 
-    - É possível passar informações ao manipulador
+    - É possível passar informações ao tratador
 
 
 
@@ -408,7 +409,7 @@ Tratamento de exceções em Java
 
 ## Tratamento de exceções em Java
 
-- Manipuladores de exceções
+- Tratadores de exceções
 
     - Semelhante ao do C++, exceto que cada `catch` requer um nome para
       o parâmetro, e o tipo do parâmetro precisa ser descendente de `Throwable`
@@ -418,7 +419,7 @@ Tratamento de exceções em Java
 
 ## Tratamento de exceções em Java
 
-- Vinculação das exceções aos manipuladores
+- Vinculação das exceções aos tratadores
 
     - Semelhante ao C++
 
@@ -449,9 +450,9 @@ Tratamento de exceções em Java
 - Um método que chama um método que lista um exceção checada em sua cláusula
   `throws`, tem três opções para lidar com a exceção \pause
 
-    - Pegar e manipular a exceção
+    - Capturar e tratar a exceção
 
-    - Pegar a exceção e gerar uma exceção que está lista na sua cláusula
+    - Capturar a exceção e lançar uma exceção que está lista na sua cláusula
       `throw`
 
     - Declarar a exceção em sua cláusula `throws` e não tratar a exceção
@@ -502,7 +503,7 @@ Introdução a tratamento de eventos
 - Um **evento** é criado por uma ação externa, como por exemplo, a interação do
   usuário com uma interface gráfica
 
-- Um **manipulador de evento** é um segmento de código que é chamado em
+- Um **tratador de evento** é um segmento de código que é chamado em
   resposta a um evento
 
 
@@ -512,7 +513,7 @@ Tratamento de eventos em Java
 
 ## Tratamento de eventos em Java
 
-- Os manipuladores de eventos são chamados de **ouvidores de evento** (event
+- Os tratadores de eventos são chamados de **ouvidores de evento** (event
   listeners) em Java
 
 - Um gerador de evento avisa que um evento ocorreu através do envio de mensagem
