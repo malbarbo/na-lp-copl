@@ -6,7 +6,7 @@ DEST=target
 DEST_PDF=$(DEST)/pdfs
 DEST_PDF_HANDOUT=$(DEST)/pdfs/handout
 DEST_TEX=$(DEST)/tex
-IGNORAR=README.md
+IGNORAR=README.md exercicios-1.md exercicios-2.md
 SOURCES=$(filter-out $(IGNORAR), $(sort $(wildcard *.md)))
 PDF=$(addprefix $(DEST_PDF)/, $(SOURCES:.md=.pdf))
 PDF_HANDOUT=$(addprefix $(DEST_PDF_HANDOUT)/, $(SOURCES:.md=.pdf))
